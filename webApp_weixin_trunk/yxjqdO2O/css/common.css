@@ -1,3 +1,15 @@
+/*******头部背景样式****/
+header {
+	background: url(../img/top-navigation.png) no-repeat;
+	background-size: 100% 100%;
+	color: #fff;
+}
+.mui-bar .mui-icon {
+	color: #fff;
+}
+.mui-bar .mui-title {
+	color: #fff;
+}
 /********浮动**********/
 .left {
 	float: left;
@@ -32,6 +44,9 @@
 }
 .line-through {
 	text-decoration: line-through;
+}
+.num {
+	color: #777777;
 }
 /***********遮罩层***************/
 .modal-backdrop {
