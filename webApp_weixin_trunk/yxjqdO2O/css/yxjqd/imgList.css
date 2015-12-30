@@ -1,0 +1,20 @@
+.mui-table-view-cell {
+    padding: 0;
+    margin-bottom: 10px;
+}
+.img-block {
+	height: 80px;
+}
+.img-block img {
+	width: 100%;
+	height: 80px;
+}
+.font-content {
+	padding: 10px 5px 10px 10px;
+	font-size: 16px;
+	background-color: #E4E4E4;
+}
+.font-content .info {
+	font-size: 15px;
+	color: #A95880;
+}

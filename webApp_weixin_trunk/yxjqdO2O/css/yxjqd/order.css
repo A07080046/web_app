@@ -1,0 +1,83 @@
+.my-info {
+	background-color: #fff;
+}
+.head-portrait {
+	/*float: left;
+	margin-right: 10px;*/
+	display: inline-block;
+	vertical-align: middle;
+	width: 80px;
+	height: 80px;
+	line-height: 80px;
+	-moz-border-radius: 40px; 
+	-webkit-border-radius: 40px; 
+	border-radius: 40px;
+}
+.user {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 16px;
+	line-height: 25px;
+}
+.user .inline {
+	width: 50%;
+}
+
+/*******选项卡样式********/
+.mui-bar~.mui-content .mui-fullscreen {
+	top: 156px;
+	height: auto;
+}
+.mui-slider-indicator {
+	background-color: #fff;
+}
+
+/*********列表复选框*******/
+.mui-table-view-cell .mui-checkbox {
+	width: 50px;
+}
+.mui-table-view-cell .mui-checkbox input[type='checkbox'] {
+	line-height: 70px;
+}
+/*******设置列表样式*********/
+.mui-table-view .mui-media-object {
+	line-height: 70px;
+	max-width: 70px;
+	height: 70px;
+}
+.mui-tab-item .mui-btn {
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 100px;
+	border-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.mui-media-body .mui-ellipsis {
+	font-weight: bold;
+}
+.mui-media-body .inline {
+	width: 40%;
+}
+.mui-media-body .mui-numbox {
+	display: inline-block;
+	/*width: 50%;*/
+}
+.float-left {
+	float: left;
+	margin-top: 5px;
+}
+.float-right {
+	float: right;
+	margin-top: 5px;
+}
+.font-right {
+	text-align: right;
+}
+.font-line {
+	line-height: 25px;
+}
