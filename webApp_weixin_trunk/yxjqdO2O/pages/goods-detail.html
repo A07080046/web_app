@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+</head>
+<body>
+		<!--css-->
+		<style>
+		#brief {
+			/*color: red;*/
+			text-align:left;
+			height: 80px;
+			margin-top: 2px;
+			margin-bottom: 2px;
+			background-color: white;
+		}
+		#promise {
+			color: grey;
+			text-align:center;
+			height: 80px;
+			background-color: white;
+		}
+		/*#appraise {
+			color: red;
+			text-align:center;
+			height: 80px;
+			background-color: gray;
+		}*/
+		/*#seller {
+			color: red;
+			text-align:center;
+			height: 80px;
+			background-color: green;
+		}*/
+		.title {
+			display: inline-block;
+			width: 30%;
+			text-align: center;
+		}
+		.xian {
+			display: inline-block;
+			border-top: 1px solid #ccc;
+			vertical-align: middle;
+			width: 35%;
+		}
+		.contact-seller {
+			float:left ;
+		}
+		.flex-container {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-flex-flow: row wrap;
+				justify-content: space-between;
+				text-align: center;
+			}
+		.mui-control-content {
+				background-color: white;
+				min-height: 215px;
+			}
+		.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+		.img-info img {
+				width: 100%;
+				height: auto;
+				margin: 0;
+			}
+			
+		</style>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<a class="mui-icon mui-pull-right" onclick="gotoChoosePage()"><img style="width: 26px;height: 24px;" src="../img/iconfont-gouwu.png"></a>
+			<h1 class="mui-title">产品名字</h1>
+		</header>
+		<div class="mui-content">
+		<!--轮播商品图片区-->
+		<div id="slider" class="mui-slider">
+			<div class="mui-slider-group mui-slider-loop">
+				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="#">
+						<img src="../img/yuantiao.jpg">
+					</a>
+				</div>
+				<!-- 第一张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="../img/shuijiao.jpg">
+					</a>
+				</div>
+				<!-- 第二张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="../img/muwu.jpg">
+					</a>
+				</div>
+				<!-- 第三张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="../img/cbd.jpg">
+					</a>
+				</div>
+				<!-- 第四张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="../img/yuantiao.jpg">
+					</a>
+				</div>
+				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="#">
+						<img src="../img/shuijiao.jpg">
+					</a>
+				</div>
+			</div>
+			<div class="mui-slider-indicator">
+				<div class="mui-indicator mui-active"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+			</div>
+		</div>
+		<!--商品简介-->
+		<div id="brief">
+			<table style="vertical-align: middle; width:65%;float: left;text-align: left;border-color: gray;margin: 6px;">
+					<tr>
+						<th>
+							商品名
+						</th>
+						
+					</tr>
+					<tr>
+						<th>
+							商品简介:这不是一只普通的猫
+						</th>
+						
+					</tr>
+					<tr>
+						<th style="color: red;">
+							¥888.50
+						</th>
+						
+					</tr>
+				</table>
+
+		 		<table border="1" style="margin: 6px; width:25%;float: right;text-align: center;border-color: gray;">
+					<tr>
+						<th>
+							<img src="../img/iconfont-dianhua.png" width="15" height="15" align="center">咨询</img>
+						</th>
+						
+					</tr>
+					<tr>
+						<th>
+							<img src="../img/iconfont-fenxiang.png" width="15" height="15" align="center">分享</img>
+						</th>
+						
+					</tr>
+					<tr>
+						<th style="color: red;">
+							去店铺
+						</th>
+						
+					</tr>
+				</table>
+		
+		</div>
+
+		<div style="height: 40px;">
+			<div style="float: left;width: 60%;height: 40px;border:groove;line-height: 30px;background-color: white">
+			<img src="../img/iconfont-xingxing.png" width="25" height="25" align="center" style="margin: auto;"></img>
+			<img src="../img/iconfont-xingxing.png" width="25" height="25" align="center" style="margin: auto;"></img>
+			<img src="../img/iconfont-xingxing.png" width="25" height="25" align="center" style="margin: auto;"></img>
+			</div>
+			<div style="float: left;width: 40%;height: 40px;border:groove;line-height: 30px;background-color: white;">
+			<img src="../img/iconfont-heart.png" width="25" height="25" align="center"></img>
+			<img src="../img/iconfont-heart.png" width="25" height="25" align="center"></img>
+			5629
+			</div>
+		</div>
+		<!--<hr align=center width=300 color=#987cb9 size=1>-->
+		<div style="height: 40px;background-color: white;">
+			<div class="xian"></div><div class="title">产品<img src="../img/iconfont-heart.png" width="25" height="25" align="center"></img>介绍</div><div class="xian"></div>
+		</div>
+
+		<div class="img-info">
+			<img src="../img/shuijiao.jpg"><img src="../img/cbd.jpg"><img src="../img/muwu.jpg"><img src="../img/yuantiao.jpg">
+		</div>
+		<!--底部导航-->
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item" href="http://www.runoob.com/html/html-tutorial.html">
+		    收藏
+		  	</a>
+		  	<a class="mui-tab-item" href="#" onclick="gotoSubmitAppraisePage()">
+		    喜爱
+		  	</a>
+		  	<a class="mui-tab-item" href="#" onclick="gotoShopingTrolleyPage()">
+		    加入购物车
+		  	</a>
+		  	<a class="mui-tab-item" href="#" onclick="gotoChoosePage()">
+		    立即购买
+		  	</a>
+		</nav>
+		<script src="../js/mui.min.js"></script>
+		<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+		<script>
+			mui.init({
+				swipeBack: true
+			});
+			$(function(){        
+		        //获取要定位元素距离浏览器顶部的距离
+		        var navH = $("#sliderSegmentedControl").offset().top;
+		        //滚动条事件
+		        $(window).scroll(function(){
+		                //获取滚动条的滑动距离
+		                var scroH = $(this).scrollTop();
+		                //滚动条的滑动距离大于等于定位元素距离浏览器顶部的距离，就固定，反之就不固定
+		                if(scroH>=navH){
+		                	 $("#sliderSegmentedControl").css({"position":"fixed","z-index": 100,"top":0,"left":0,"zoom":1,"background": "#F8FBFD"});
+		                }else if(scroH<navH){
+		                	$("#sliderSegmentedControl").css({"position":"static","margin":"0 auto"});
+		                }
+//		                console.log(scroH==navH);
+		        })
+			})
+		function gotoShopingTrolleyPage()
+		{
+		window.location.href='goods-detail-shoping-trolley.html';
+		}
+		function gotoChoosePage()
+		{
+		window.location.href='goods-detail-choose.html';
+		}
+		function gotoSubmitAppraisePage()
+		{
+		window.location.href='goods-detail-submit-appraise.html';
+		}
+		</script>
+</body>
+</html>
