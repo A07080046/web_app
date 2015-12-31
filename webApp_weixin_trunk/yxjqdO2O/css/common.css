@@ -77,3 +77,24 @@ header {
 	font-size: 16px;
     z-index: 1050;
 }
+/*******按钮**********/
+.btn-back {
+	min-width: 82px;
+	/*height: 33px;*/
+	display: inline-block;
+	vertical-align: top;
+    white-space: nowrap;
+	padding: 6px 22px;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 500;
+	letter-spacing: 1px;
+    /*line-height: 1.42;*/
+	text-align: center;
+	background: url(../img/button.png) no-repeat;
+	background-size: 100% 100%;
+}
+.btn-back:hover {
+	background: url(../img/button-hover.png) no-repeat;
+	background-size: 100% 100%;
+}
