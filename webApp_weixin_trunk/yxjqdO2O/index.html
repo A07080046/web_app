@@ -98,6 +98,33 @@
 			.navbar-icon {
 				width: 40px !important;
 				height: 40px !important;
+				background-size: 40px 40px;
+				background-repeat: no-repeat;
+				background-position: top center;
+			}
+			.navbar-icon.home {
+				background-image: url(img/home/home_normal.png);
+			}
+			.mui-active>.navbar-icon.home {
+				background-image: url(img/home/home_press.png);
+			}
+			.navbar-icon.order {
+				background-image: url(img/home/order_form_normal.png);
+			}
+			.mui-active>.navbar-icon.order {
+				background-image: url(img/home/order_form_press.png);
+			}
+			.navbar-icon.trolley {
+				background-image: url(img/home/shopping_cart_normal.png);
+			}
+			.mui-active>.navbar-icon.trolley {
+				background-image: url(img/home/shopping_cart_press.png);
+			}
+			.navbar-icon.person-center {
+				background-image: url(img/home/personal_center_normal.png);
+			}
+			.mui-active>.navbar-icon.person-center {
+				background-image: url(img/home/personal_center_press.png);
 			}
 			.navbar-icon-badge {
 				position: absolute;
@@ -107,10 +134,10 @@
 				z-index: 100;
 			}
 			.mui-tab-label {
-				color:#fff;
+				color: lightgray;
 			}
 			.mui-active .mui-tab-label {
-				color:gray;
+				color:#fff;
 			}
 			.mui-price {
 				position: absolute;
@@ -317,20 +344,20 @@
 		</header>
 		<nav class="mui-bar mui-bar-tab navbar">
 			<a class="mui-tab-item mui-active navbar-tab-item" href="#tabbar-with-home">
-				<img src="img/home/home_press.png" class="mui-icon navbar-icon"/>
+				<div class="mui-icon navbar-icon home"></div>
 				<span class="mui-tab-label">首页</span>
 			</a>
 			<a class="mui-tab-item navbar-tab-item" href="#tabbar-with-order">
-				<img src="img/home/order_form_press.png" class="mui-icon navbar-icon"/>
+				<div class="mui-icon navbar-icon order"></div>
 				<span class="mui-badge navbar-icon-badge">9</span>
 				<span class="mui-tab-label">我的订单</span>
 			</a>
 			<a class="mui-tab-item navbar-tab-item" href="#tabbar-with-trolley">
-				<img src="img/home/shopping_cart_press.png" class="mui-icon navbar-icon"/>
+				<div class="mui-icon navbar-icon trolley"></div>
 				<span class="mui-tab-label">购物车</span>
 			</a>
 			<a class="mui-tab-item navbar-tab-item" href="#tabbar-with-person-center">
-				<img src="img/home/personal_center_press.png" class="mui-icon navbar-icon"/>
+				<div class="mui-icon navbar-icon person-center"></div>
 				<span class="mui-tab-label">个人中心</span>
 			</a>
 		</nav>
@@ -549,23 +576,23 @@
 				<!-- 菜单 -->
 				<div id="slider" class="mui-slider">
 					<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-						<a class="mui-control-item  mui-active" href="#item1mobile">
+						<a class="mui-control-item  mui-active" href="#collect_shop">
 							<span class="menu_icon1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>收藏店铺
 						</a>
-						<a class="mui-control-item" href="#item2mobile">
+						<a class="mui-control-item" href="#collect_commodity">
 							<span class="menu_icon2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>收藏商品
 						</a>
-						<a class="mui-control-item" href="#item3mobile">
+						<a class="mui-control-item" href="#my_distributor">
 							<span class="menu_icon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>我的分销商
 						</a>
 					</div>
 					<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
 					<div class="mui-slider-group">
-						<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="collect_shop" class="mui-slider-item mui-control-content mui-active">
 						</div>
-						<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div id="collect_commodity" class="mui-slider-item mui-control-content">
 						</div>
-						<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<div id="my_distributor" class="mui-slider-item mui-control-content">
 						</div>
 					</div>
 				</div>
@@ -590,15 +617,22 @@
 	<script src="js/jquery-1.11.3.min.js"></script>
 	<script>
 		mui.init();
-		mui('.mui-content').on('shown.mui.tab', '.mui-control-content', function(e) {
-			if (e.detail.tabNumber == 0) {
+		mui('.mui-content').on('shown.mui.tab', '.mui-control-content', function(e, b,c) {
+			var id = e.target.id;
+			if (id == 'tabbar-with-home') {
 				$('header').html('<div class="search-header"><input type="search" class="mui-input-clear" placeholder=""><img src="img/home/search_line.png" class="search-line"><a class="search-button"><img src="img/home/search_press.png" class="search-button-image"></a></div>');
-			} else if (e.detail.tabNumber == 1) {
+			} else if (id == 'tabbar-with-order') {
 				$('header').html('<h1 class="mui-title">我的订单</h1>');
-			} else if (e.detail.tabNumber == 2) {
+			} else if (id == 'tabbar-with-trolley') {
 				$('header').html('<h1 class="mui-title">购物车</h1>');
-			} else if (e.detail.tabNumber == 3) {
+			} else if (id == 'tabbar-with-person-center') {
 				$('header').html('<h1 class="mui-title">个人中心</h1>');
+			} else if (id == 'collect_shop') {
+				console.log("collect_shop");
+			} else if (id == 'collect_commodity') {
+				console.log("collect_commodity");
+			} else if (id == 'my_distributor') {
+				console.log("my_distributor");
 			}
 		});
 	</script>

@@ -1,0 +1,17 @@
+.mui-table-view .mui-media-object {
+	line-height: 80px;
+	max-width: 70px;
+	height: 80px;
+}
+.mui-media-body {
+	font-size: 14px;
+}
+.mui-media-body .title {
+	font-size: 16px;
+}
+.mui-media-body .info {
+	color: #A95880;
+}
+.stock {
+	color: #777777;
+}

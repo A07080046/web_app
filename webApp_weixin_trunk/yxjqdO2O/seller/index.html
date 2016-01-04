@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+
+</head>
+<body>
+	<style>
+		.mui-table-view .mui-media-object {
+		    max-width: 80px;
+		    height: 80px;
+		}
+		.mui-table-view-cell p {
+   			 margin-top: 30px;
+		}
+	</style>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 class="mui-title">大房子公司</h1>
+	</header>
+	<div class="mui-content">
+		<!--顶部栏-->
+		<ul class="mui-table-view">
+			<li class="mui-table-view-cell mui-media">
+				<a class="mui-navigate-right">
+					<img class="mui-media-object mui-pull-left" src="../img/goods-detail/cbd.jpg">
+					<div class="mui-media-body">
+						<h4 style="display: inline;">房子</h4>
+						<div style="float: right;margin-right: 40px;">
+							<span class="mui-icon mui-icon-star"></span>
+							<div style="font-size: small;">3125</div>
+						</div>
+						<p class='mui-ellipsis'>烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
+					</div>
+				</a>
+			</li>
+		</ul>
+		<!--店面-->
+		<div style="margin-top: 10px;">
+			<h4>商店门面：</h4>
+			<img src="../img/goods-detail/cbd.jpg" height="180px" width="100%">
+		</div>
+		<!--公告-->
+		<div style="margin-top: 10px;">
+			<h4>公告：</h4>
+			<textarea rows="5" placeholder="尊敬的客户"></textarea>
+		</div>
+	</div>
+	<!--底部导航-->
+	<nav class="mui-bar mui-bar-tab">
+		<a class="mui-tab-item" href="#">
+	    导航1
+	  	</a>
+	  	<a class="mui-tab-item" href="#" onclick="gotoSubmitAppraisePage()">
+	    导航2
+	  	</a>
+	  	<a class="mui-tab-item" href="#" onclick="gotoShopingTrolleyPage()">
+	    导航3
+	  	</a>
+	  	<a class="mui-tab-item" href="#" onclick="gotoChoosePage()">
+	    导航4
+	  	</a>
+	</nav>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+</body>
+</html>
