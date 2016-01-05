@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title></title>
     <link href="../css/mui.min.css" rel="stylesheet"/>
-
+	<link rel="stylesheet" href="../css/common.css" />
 </head>
 <body>
 	<style>
@@ -14,7 +14,12 @@
 		    height: 80px;
 		}
 		.mui-table-view-cell p {
-   			 margin-top: 30px;
+   			 margin-top: 8px;
+		}
+		.nav-title {
+			font-size: small;
+			margin-top: 0px;
+			color: white;
 		}
 	</style>
 	<header class="mui-bar mui-bar-nav">
@@ -25,43 +30,50 @@
 		<!--顶部栏-->
 		<ul class="mui-table-view">
 			<li class="mui-table-view-cell mui-media">
-				<a class="mui-navigate-right">
-					<img class="mui-media-object mui-pull-left" src="../img/goods-detail/cbd.jpg">
-					<div class="mui-media-body">
-						<h4 style="display: inline;">房子</h4>
-						<div style="float: right;margin-right: 40px;">
-							<span class="mui-icon mui-icon-star"></span>
-							<div style="font-size: small;">3125</div>
-						</div>
-						<p class='mui-ellipsis'>烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
+				<img class="mui-media-object mui-pull-left" src="../img/goods-detail/cbd.jpg">
+				<img class="mui-media-object mui-pull-right" style="width: 40px;height: 40px;margin-top: 20px;" src="../img/order/forward.png" />
+				<div class="mui-media-body">
+					<h4 style="display: inline;">房子</h4>
+					<p class='mui-ellipsis'>如同打翻的调色盘一般.</p>
+					<div style="margin-right: 40px;">
+						<span class="mui-icon mui-icon-star-filled" style="color: orangered;"></span>
+						<span class="num">3125</span>
 					</div>
-				</a>
+				</div>
 			</li>
 		</ul>
 		<!--店面-->
 		<div style="margin-top: 10px;">
-			<h4>商店门面：</h4>
+			<h4 style="height: 40px;background: url(../img/seller/title.png);color: white;background-size: 100%;line-height: 40px;">
+				商店门头
+			</h4>
 			<img src="../img/goods-detail/cbd.jpg" height="180px" width="100%">
 		</div>
 		<!--公告-->
 		<div style="margin-top: 10px;">
-			<h4>公告：</h4>
+			<h4 style="height: 40px;background: url(../img/seller/title.png);color: white;background-size: 100%;line-height: 40px;">
+				我的公告
+			</h4>
 			<textarea rows="5" placeholder="尊敬的客户"></textarea>
 		</div>
 	</div>
 	<!--底部导航-->
-	<nav class="mui-bar mui-bar-tab">
-		<a class="mui-tab-item" href="#">
-	    导航1
+	<nav class="mui-bar mui-bar-tab" style="background-color: orange;">
+		<a class="mui-tab-item" href="#"">
+		<img src="../img/seller/order_normal.png" height="60%" width="40%" style="margin-top: 5px;">
+		<div class="nav-title">订单</div>
 	  	</a>
 	  	<a class="mui-tab-item" href="#" onclick="gotoSubmitAppraisePage()">
-	    导航2
+	    <img src="../img/seller/commodity_normal.png" height="60%" width="40%" style="margin-top: 2px";>
+		<div class="nav-title">商品</div>
 	  	</a>
 	  	<a class="mui-tab-item" href="#" onclick="gotoShopingTrolleyPage()">
-	    导航3
+	    <img src="../img/seller/statistics_normol.png" height="60%" width="40%" style="margin-top: 5px";>
+		<div class="nav-title">统计</div>
 	  	</a>
 	  	<a class="mui-tab-item" href="#" onclick="gotoChoosePage()">
-	    导航4
+	    <img src="../img/seller/i_normal.png" height="60%" width="40%" style="margin-top: 5px";>
+		<div class="nav-title">我</div>
 	  	</a>
 	</nav>
 	<script src="../js/mui.min.js"></script>
