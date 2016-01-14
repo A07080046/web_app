@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>发货</title>
+    <link href="../../../css/mui.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="../../../css/common.css" />
+	<link href="../../../css/mui.picker.all.css" rel="stylesheet" />
+</head>
+<body>
+	<style>
+		.order-info {
+			height: 120px;
+			background-color: white;
+		}
+		p {
+			float: left;
+			color: black;
+			margin-top: 6px;
+			margin-right: 6px;
+			font-size: large;
+		}
+		p+p {
+			float: left;
+			color: orange;
+			font-size: large;
+		}
+		span {
+			margin-bottom: 16px;
+			margin-right: 6px;
+			color: gray;
+		}
+		.transport-flow {
+			/*background-color: white;*/
+		}
+		.transport-flow h4{
+			height: 40px;
+			padding-top: 10px;
+			background-color: white;
+		}
+		.mui-table-view-cell>a:not(.mui-btn) {
+		    display: block;
+		    overflow: hidden;
+		    margin: -22px 0px;
+		    padding: inherit;
+		    white-space: nowrap;
+		    text-overflow: ellipsis;
+		    color: inherit;
+		}
+		.mui-table-view-cell{
+		    position: initial;
+		}
+		.mui-table-view .mui-media-object {
+		    max-width: 20px;
+		    height: 80px;
+		}
+		.title.mui-ellipsis {
+			margin-top: 20px;
+		}
+		.transport-flow p {
+			float: left;
+			width: 30%;
+			margin-right: 2px;
+			text-align: right;
+		}
+	</style>
+
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 class="mui-title">发货</h1>
+	</header>
+	
+	<div class="mui-content">
+		<!--订单信息-->
+		<div class="order-info">
+			<div>
+				<p>私人定制服饰</p><p>¥2004.00</p><p class="num">X2</p>
+			</div>
+			<div style="clear: both;"></div>
+			<div>
+				<span>订单号:</span><span>123123908102938</span>
+			</div>
+			<div>
+				<span>收件人:</span><span>姓名</span><span>电话号码</span>
+			</div>
+			<div>
+				<span>地址:</span><span>国</span><span>省</span><span>市</span>
+			</div>
+		</div>
+		<!--物流信息-->
+		<div class="transport-flow">
+			<h4>顺丰物流</h4>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a href="javascript:;">
+						<img src="../../../img/seller/order-info/progres_ok.png" style="float: right;padding-top: 20px;" width="5%" height="5%"/>
+						<p>2016-1-5</p>
+						<img class="mui-media-object mui-pull-left" src="../../../img/seller/order-info/progress_point_arrive.png">
+						<div class="mui-media-body">
+							<div class="title mui-ellipsis">商品已到达贵阳小二黑已签收</div>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="javascript:;">
+						<p>2016-12-25</p>
+						<img class="mui-media-object mui-pull-left" src="../../../img/seller/order-info/progress_point_way.png">
+						<div class="mui-media-body">
+							<div class="title mui-ellipsis">商品已到达河北</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--提交按钮-->
+	<button class="mui-btn mui-btn-block" style="background-color: orangered;color:white;position: absolute;bottom: 0px;">确定</button>
+	<script src="../../../js/thirdparty/mui.min.js"></script>
+	<script src="../../../js/thirdparty/mui.picker.all.js"></script>
+	<script type="text/javascript" charset="utf-8">
+    </script>
+</body>
+</html>

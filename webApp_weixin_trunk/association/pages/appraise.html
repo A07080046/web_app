@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta http-equiv="content-security-policy">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>协会</title>
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+</head>
+<style>
+	header {
+		background: url(../img/navigation_bar.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	header .mui-title {
+		color: #fff;
+		font-weight: bold;
+	}
+
+	.img-title {
+		margin-top: 20px;
+		width: 100%;
+		height: 15px;
+	}
+	.title-name {
+		margin-top: 5px;
+		color: #fb6f33;
+		font-size: 16px;
+		text-align: center;
+		font-weight: 700;
+	}
+	.small-title {
+		display: block;
+		width: 150px;
+		height: 25px;
+	}
+	.input-back {
+		width: 100%;
+		height: 46px;
+		margin-bottom: 15px;
+		padding: 5px 10px 0 50px;
+		color: #a2a2a2;
+	}
+	.input-back input[type=text] {
+		height: 36px;
+	}
+	.user {
+		background: url(../img/contacts.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.telphone {
+		background: url(../img/tel.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.email {
+		background: url(../img/mail.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.qq {
+		background: url(../img/qq.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.weixin {
+		background: url(../img/weixin.png) no-repeat;
+		background-size: 100% 100%;
+	}
+
+	.business .title img {
+		display: inline-block;
+		vertical-align: middle;
+		width: 40%;
+	}
+	.business .title span {
+		display: inline-block;
+		vertical-align: middle;
+		width: 60%;
+		color: #fbb533;
+	}
+	.business .content {
+		padding: 10px;
+		background-color: #fff;
+		box-shadow: 0 3px 5px #BBBBBB;
+	}
+	.business .content .img {
+		float: left;
+		margin-right: 10px;
+		width: 120px;
+		height: 120px;
+		padding: 5px;
+		background: url(../img/image_1.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.business .content .img img {
+		width: 110px;
+		height: 110px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+	}
+	.business .content .font {
+		color: #a2a2a2;
+		font-size: 12px;
+		text-indent: 2em;
+		word-break: break-all;
+		word-wrap:break-word;
+	}
+	.business .content .font span {
+		display: block;
+		line-height: 30px;
+		text-align: center;
+		font-size: 14px;
+	}
+	.operation .content {
+		padding: 10px;
+		background-color: #fff;
+		font-size: 12px;
+		color: #a2a2a2;
+		text-indent: 2em;
+		box-shadow: 0 2px 5px #BBBBBB;
+		word-break: break-all;
+		word-wrap:break-word;
+	}
+	.aptitude .content {
+		padding: 10px 0;
+		background-color: #fff;
+		box-shadow: 0 2px 5px #BBBBBB;
+	}
+	.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-object {
+		height: 110px;
+	}
+	.goodness div {
+		margin-top: 5px;
+		font-size: 12px;
+		color: #a2a2a2;
+		text-indent: 2em;
+		word-break: break-all;
+		word-wrap:break-word;
+	}
+	.product .content {
+		padding: 10px 0;
+		background-color: #fff;
+	}
+	#product ul li {
+		background: url(../img/qualifications_ image1.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	#product ul li.active {
+		background: url(../img/product_ image_press.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	#product .mui-table-view.mui-grid-view .mui-table-view-cell {
+		padding: 8px 8px 3px 8px;
+	}
+	#product .mui-table-view.mui-grid-view {
+		padding: 0px;
+	}
+	#tabShow {
+		margin-top: 2px;
+		padding: 10px 0 20px 0;
+		background-color: #fff;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		box-shadow: 0 2px 5px #BBBBBB;
+	}
+	#tabShow .mui-slider {
+		padding: 10px 0;
+		background: url(../img/product_ image_press_3.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	#tabShow .mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-object {
+		height: 80px;
+	}
+	#tabShow .mui-table-view.mui-grid-view .mui-table-view-cell {
+		padding: 5px 0 0 8px;
+	}
+	#tabShow .mui-table-view.mui-grid-view {
+		padding: 0px;
+	}
+	.product-info {
+		padding: 10px;
+		margin: 10px 0;
+		background-color: #FFDBDE;
+		text-indent: 2em;
+		color: #a2a2a2;
+		font-size: 12px;
+		word-break: break-all;
+		word-wrap:break-word;
+	}
+	.connection .content {
+		padding: 10px 20px;
+		background-color: #fff;
+		box-shadow: 0 2px 5px #BBBBBB;
+	}
+	.appraise .content {
+		padding: 20px 0;
+		background-color: #fff;
+	}
+	.button {
+		float: left;
+		width: 33.3333%;
+		height: 45px;
+		color: #fff;
+		line-height: 45px;
+		text-align: center;
+		font-size: 16px;
+		font-weight: 500;
+	}
+	.zan {
+		background: url(../img/button_zan.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.xie {
+		background: url(../img/button_xie.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.qi {
+		background: url(../img/button_qi.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.praise {
+		display: inline-block;
+		vertical-align: middle;
+		width: 36px;
+		height: 30px;
+	}
+	.grade {
+		width: 130px;
+		height: 45px;
+		margin: 0 auto;
+		margin-top: 20px;
+		background: url(../img/score_button_normal.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.grade:hover {
+		background: url(../img/score_button_press.png) no-repeat;
+		background-size: 100% 100%;
+	}
+</style>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-pull-left"><img style="width: 29px;height: 22px;margin-top: 8px;" src="../img/icon2_normal.png" /> </a>
+		<h1 id="title" class="mui-title"></h1>
+	</header>
+	<div class="mui-content" style="visibility:hidden;">
+		<div class="business">
+			<div class="title">
+				<img src="../img/title_line.png" /><span class="mui-ellipsis"><!--京东商城--></span>
+			</div>
+			<div class="content">
+				<div class="img">
+					<img src="../img/qualifications_ image2.png" />
+				</div>
+				<div class="font">
+					<span>公司简介</span>
+					<!--京东JD.COM-专业的综合网上购物商城，销售超4020万种商品。然后还有很多介绍，可以即为其翻译噶抵抗力附近说的-->
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		</div>
+		<div class="operation">
+			<img class="img-title" src="../img/main_business.png" />
+			<div class="content"><!--在线销售:计算机、手机及其其他数码产品、家电、起床配件、服装和鞋类、奢侈品、家居和家庭用品、化妆品和其他个人护理用品、解释道廖富空间撒打开了附近的史莱克电视看了多少；发空间电视里咖啡机圣诞快乐发圣诞快乐附件是多亏了发师大刻录机几十块来得及阿卡丽圣诞节阿斯利康看来借口了--></div>
+		</div>
+		<div class="aptitude">
+			<img class="img-title" src="../img/qualifications.png" />
+			<div class="content">
+				<div id="aptitude" class="mui-slider">
+			        <div class="mui-slider-group mui-slider-loop">
+
+			        </div>
+			    </div>
+			    <div class="goodness">
+			    	<img class="small-title" src="../img/company_advantage.png" />
+			    	<div><!--双方都刻录机费卢卡斯的减肥了可适当反倒是离开房间大赛福建省的空间发见识到了咖啡机菲利克斯的减肥了可适当认为日哦浪费的开发--></div>
+			    </div>
+			</div>
+		</div>
+		<div class="product">
+			<img class="img-title" src="../img/product.png" />
+			<div class="content">
+				<div id="product" class="mui-slider">
+			        <div class="mui-slider-group mui-slider-loop">
+			        	<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一个图文表格) -->
+			            <!--<div class="mui-slider-item mui-slider-item-duplicate">
+			                <ul class="mui-table-view mui-grid-view">
+			                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/jd.png"></li>
+			                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/qualifications_ image2.png"></li>
+			                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/qualifications_ image2.png"></li>
+			                </ul>
+			            </div>
+			            <div class="mui-slider-item item">
+			                <ul class="mui-table-view mui-grid-view">
+			                    <li class="mui-table-view-cell mui-media mui-col-xs-4 active"><img class="mui-media-object" src="../img/jinjian.png"></li>
+			                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/zuoyue.png"></li>
+			                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/qualifications_ image2.png"></li>
+			                </ul>
+			            </div>
+			            <div class="mui-slider-item item">
+			                <ul class="mui-table-view mui-grid-view">
+			                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/jd.png"></li>
+			                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/qualifications_ image2.png"></li>
+			                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/qualifications_ image2.png"></li>
+			                </ul>
+			            </div>-->
+			            <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一个图文表格) -->
+			            <!--<div class="mui-slider-item mui-slider-item-duplicate">
+			                <ul class="mui-table-view mui-grid-view">
+			                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/jinjian.png"></li>
+			                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/zuoyue.png"></li>
+			                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/qualifications_ image2.png"></li>
+			                </ul>
+			            </div>-->
+			        </div>
+			    </div>
+			    <div id="tabShow">
+			    	<div id="productImgs" class="mui-slider">
+				        <div class="mui-slider-group mui-slider-loop">
+
+				        </div>
+				    </div>
+				    <div class="title-name"><!--京东商城--></div>
+			    	<img class="small-title" src="../img/produc_-introduction.png" />
+			    	<div id="productInfo" class="product-info"><!--房间上来点咖发的可是了姐姐库存机卡啊啊啊啊的方式啡机谁离开的金箔纽约速度击缶恩我币金额UI佛微积分--></div>
+			    	<img class="small-title" src="../img/product_case.png" />
+			    	<div id="productCase" class="product-info">
+			    		<!--<div>进口量金坷垃富家大室，就啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</div>
+			    		<div>顶顶顶顶顶顶顶顶顶顶顶顶顶顶是事实上事实上事实上事实上事实上事实上事实上事实上事实上是啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</div>-->
+			    	</div>
+			    </div>
+			</div>
+		</div>
+		<div class="connection">
+			<img class="img-title" src="../img/contact_information.png" />
+			<div class="content">
+				<div class="input-back user"><input type="text" placeholder="联系人" readonly="readonly" /></div>
+				<div class="input-back telphone"><input type="text" placeholder="联系电话" readonly="readonly"  /></div>
+				<div class="input-back email"><input type="text" placeholder="邮箱地址" readonly="readonly" /></div>
+				<div class="input-back qq"><input type="text" placeholder="QQ号" readonly="readonly" /></div>
+				<div class="input-back weixin"><input type="text" placeholder="微信号" readonly="readonly" /></div>
+			</div>
+		</div>
+		<div class="appraise">
+			<img class="img-title" src="../img/company_evaluation.png" />
+			<div class="content">
+				<div id="praise" class="button zan"><img class="praise" src="../img/praise_1.png" />赞<!--&nbsp;7868--></div>
+				<div class="button xie">协会打分<!--&nbsp;88--></div>
+				<div class="button qi">企业家打分<!--&nbsp;90--></div>
+				<div style="clear: both;"></div>
+				<div id="grade" class="grade"></div>
+			</div>
+		</div>
+
+		<div class="case hide">
+			<div class="top">打&nbsp;&nbsp;&nbsp;&nbsp;分</div>
+			<div class="content">
+				<div class="title">评分制为100分制</div>
+				<input id="scores" type="text" placeholder="请直接输入所打分数" />
+			</div>
+			<div class="footer">
+				<div id="cancel" class="left">取&nbsp;&nbsp;消</div><div id="submitScore" class="right">确&nbsp;&nbsp;定</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/mui.min.js" ></script>
+<script type="text/javascript" src="../js/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="../js/spin.min.js" ></script>
+<script type="text/javascript" src="../app/app.js" ></script>
+<script>
+	mui.init();
+
+	var params = app.utils.getParameter();
+	var openid = params.openid;
+	var enterpriseId = params.id;//企业id
+	var goodsList = null;//公司产品列表
+	var index = 0;//公司产品列表下标
+	var praiseNum = 0;//点赞数
+	$(function(){
+		$('#title').html(params.name);
+		var data = {id: enterpriseId, openid: openid};
+		app.utils.setWait("请稍后...");
+		//请求后台初始化数据
+		app.utils.ajax({
+			type : "POST",
+			url : app.route.ROUTE_GET_COMPANYDETAIL,
+			data: data,
+			success : callback
+		});
+	});
+	//初始化页面数据
+	function callback(data){
+		if(data.status="success"){
+			var enterprise = data.context.enterprise;
+			$(".business .title .mui-ellipsis").html(enterprise.name);
+			$(".business .content img").attr("src",enterprise.logo);
+			$(".business .content .font").html("<span>公司简介</span>"+enterprise.descr);
+			$(".operation .content").html(enterprise.business);
+			if(enterprise.aptitude != null && enterprise.aptitude != ''){
+				var imgs = enterprise.aptitude.split(",");
+				slider(imgs,"aptitude");
+			}
+			$(".aptitude .content .goodness div").html(enterprise.advantage);
+			var imgsObj = new Array();
+			goodsList = enterprise.goodsList;
+			for (var i=0;i<goodsList.length;i++) {
+				var goods = goodsList[i].img.split(",");
+				imgsObj.push(goods[0]);
+			}
+			slider(imgsObj,"product");
+			goodsHtml(0);
+			if (params.top5) {
+				$(".connection .user").find('input').val(enterprise.applicant);
+				$(".connection .telphone").find('input').val(enterprise.telPhone);
+				$(".connection .email").find('input').val(enterprise.email);
+				$(".connection .qq").find('input').val(enterprise.qq);
+				$(".connection .weixin").find('input').val(enterprise.weChat);
+			} else {
+				$(".connection").hide();
+			}
+			praiseNum = enterprise.praise;
+
+			if(enterprise.isPraise == 1){
+				$("#praise").html('<img class="praise" src="../img/praise_2.png" />赞&nbsp;'+enterprise.praise).css("color","red");
+			}else{
+				$("#praise").html('<img class="praise" src="../img/praise_1.png" />赞&nbsp;'+enterprise.praise);
+			}
+			$(".appraise .content .xie").html("协会打分"+enterprise.score0);
+			$(".appraise .content .qi").html("企业家打分"+enterprise.score1);
+			$(".mui-content").css({visibility:'visible'});
+		}
+		app.utils.clearWait();
+	};
+	//左右滑动图片表格数据
+	function slider(imgs,sliderId){
+		if(imgs == null || imgs.length<=0){
+			return;
+		}
+		var li = '';
+		//额外增加的一个节点(循环轮播：第一个节点是最后一个图文表格)
+		if(imgs.length % 3 == 0 && imgs.length >3 ){
+			li +='<div class="mui-slider-item mui-slider-item-duplicate">'+
+		         '       <ul class="mui-table-view mui-grid-view">'+
+		         '           <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="'+imgs[imgs.length-3]+'"></li>'+
+		         '           <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="'+imgs[imgs.length-2]+'"></li>'+
+		         '           <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="'+imgs[imgs.length-1]+'"></li>'+
+		         '       </ul>'+
+		         '   </div>';
+		}else if(imgs.length >3){
+			var i = imgs.length % 3;
+			li +='<div class="mui-slider-item mui-slider-item-duplicate">'+
+		         '       <ul class="mui-table-view mui-grid-view">';
+		    if(i==2){
+		    li +='           <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="'+imgs[imgs.length-2]+'"></li>'+
+		         '           <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="'+imgs[imgs.length-1]+'"></li>'+
+		         '           <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/qualifications_ image2.png"></li>';
+		    }else if(i==1){
+		    li +='           <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="'+imgs[imgs.length-1]+'"></li>'+
+		         '           <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/qualifications_ image2.png"></li>'+
+		         '           <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/qualifications_ image2.png"></li>';
+		    }
+		    li +='       </ul>'+
+		         '   </div>';
+		}
+
+		for (var i=0;i<imgs.length;i++) {
+			if(i % 3 == 0 ){
+				li+='<div class="mui-slider-item">'+
+		            '    <ul class="mui-table-view mui-grid-view">';
+			}
+			if(imgs.length % 3 == 0 ){
+				if(i == 0){
+					li += '<li class="mui-table-view-cell mui-media mui-col-xs-4 active"><img class="mui-media-object" src="'+imgs[i]+'">'+
+						  '<input type="hidden" name="productIndex" value="'+i+'" /></li>';
+				}else{
+					li += '<li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="'+imgs[i]+'">'+
+						  '<input type="hidden" name="productIndex" value="'+i+'" /></li>';
+				}
+			}else{
+				if(i == 0){
+					li += '<li class="mui-table-view-cell mui-media mui-col-xs-4 active"><img class="mui-media-object" src="'+imgs[i]+'">'+
+					      '<input type="hidden" name="productIndex" value="'+i+'" /></li>';
+				}else{
+					li += '<li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="'+imgs[i]+'">'+
+						  '<input type="hidden" name="productIndex" value="'+i+'" /></li>';
+				}
+				var j = imgs.length % 3;
+				if(j==2 && (i==imgs.length-1)){
+					li+='<li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/qualifications_ image2.png">'+
+						'<input type="hidden" name="productIndex" value="'+(i+1)+'" /></li>';
+				}else if(j==1 && (i==imgs.length-1)){
+					li+='<li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/qualifications_ image2.png">'+
+						'<input type="hidden" name="productIndex" value="'+(i+1)+'" /></li>'+
+						'<li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/qualifications_ image2.png">'+
+						'<input type="hidden" name="productIndex" value="'+(i+2)+'" /></li>';
+				}
+			}
+
+			if((i==imgs.length-1) || (i > 0 && (i+1)%3 == 0)){
+				li+=	'</ul>'+
+            		'</div>';
+			}
+		}
+
+		//额外增加的一个节点(循环轮播：最后一个节点是第一个图文表格)
+		if(imgs.length % 3 == 0 && imgs.length >3 ){
+			li +='<div class="mui-slider-item mui-slider-item-duplicate">'+
+		         '       <ul class="mui-table-view mui-grid-view">'+
+		         '           <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="'+imgs[0]+'"></li>'+
+		         '           <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="'+imgs[1]+'"></li>'+
+		         '           <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="'+imgs[2]+'"></li>'+
+		         '       </ul>'+
+		         '   </div>';
+		}else if(imgs.length >3){
+			var i = imgs.length % 3;
+			li +='<div class="mui-slider-item mui-slider-item-duplicate">'+
+		         '       <ul class="mui-table-view mui-grid-view">';
+		    if(i==2){
+		    li +='           <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="'+imgs[0]+'"></li>'+
+		         '           <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="'+imgs[1]+'"></li>'+
+		         '           <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/qualifications_ image2.png"></li>';
+		    }else if(i==1){
+		    li +='           <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="'+imgs[0]+'"></li>'+
+		         '           <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/qualifications_ image2.png"></li>'+
+		         '           <li class="mui-table-view-cell mui-media mui-col-xs-4"><img class="mui-media-object" src="../img/qualifications_ image2.png"></li>';
+		    }
+		    li +='       </ul>'+
+		         '   </div>';
+		}
+		$("#"+sliderId+" .mui-slider-group").html(li);
+		mui('.mui-slider').slider();
+	}
+	//点击更换产品数据
+	function goodsHtml(index){
+		if(index >= goodsList.length){
+			return;
+		}
+
+		var imgs = goodsList[index].img.split(",");
+		slider(imgs,"productImgs");
+		$("#tabShow .title-name").html(goodsList[index].goodsName);
+		$("#productInfo").html(goodsList[index].descr);
+		var cas = '';
+		for (var i=0;i<goodsList[index].caseList.length;i++) {
+			cas += '<div>'+goodsList[index].caseList[i].caseDesc+'</div>';
+		}
+		$("#productCase").html(cas);
+	}
+	//点击公司产品更换tab选项卡
+	mui("#product").on('tap','li',function(e){
+		$(this).closest("#product").find("li").removeClass("active");
+		$(this).addClass("active");
+		var ind = $(this).find("input[name='productIndex']").val();
+		if(ind != index ){
+			index = ind;
+			goodsHtml(index);
+		}
+	});
+	//滚动公司产品更换tab选项卡
+	$("#product").on('slide', function(e) {
+		$(this).find("li").removeClass("active");
+		var item = $(this).find('.item').eq(e.originalEvent.detail.slideNumber);
+		item.find("li").eq(0).addClass("active");
+		var ind = item.find("li").eq(0).find("input[name='productIndex']").val();
+		if(ind != index ){
+			index = ind;
+			goodsHtml(index);
+		}
+	});
+	//打分
+	$("#grade").on('tap',function(){
+		$("body").append('<div class="modal-backdrop"></div>');
+		$(".case").show("slow");
+	});
+	//提交打分
+	$("#submitScore").on('tap',function(){
+		var scores = $("#scores").val();
+		if(!checkNum(scores)){
+			alert("请输入数字");
+			return;
+		}
+		if(scores > 100 || scores < 0){
+			alert("分数不能大于100分");
+			return;
+		}
+		var data = {enterpriseId: enterpriseId,openid: openid,score: scores};
+		app.utils.setWait("请稍后...");
+		app.utils.ajax({
+			type : "POST",
+			url : app.route.ROUTE_SUMBIT_PRAISE,
+			data: data,
+			success : callbackScores
+		});
+	});
+	function callbackScores(data){
+		if(data.status == 'success'){
+			$(".appraise .content .xie").html("协会打分"+data.context.score0);
+			$(".appraise .content .qi").html("企业家打分"+data.context.score1);
+		}else{
+			alert(data.msg);
+		}
+		app.utils.clearWait();
+		$(".modal-backdrop").remove();
+		$(".case").hide("slow");
+	}
+	//关闭打分
+	$(".case").on('tap','#cancel',function(){
+		$(".modal-backdrop").remove();
+		$(".case").hide("slow");
+	});
+	//点赞
+	$("#praise").on('tap',function(){
+		var data = {enterpriseId: enterpriseId,openid: openid};
+		app.utils.setWait("请稍后...");
+		app.utils.ajax({
+			type : "POST",
+			url : app.route.ROUTE_SUMBIT_STAR,
+			data: data,
+			success : callbackPraise
+		});
+
+	});
+	function callbackPraise(data){
+		if(data.status == 'success'){
+			$("#praise").html('<img class="praise" src="../img/praise_2.png" />赞&nbsp;'+(praiseNum+1)).css("color","red");
+		}else{
+			alert(data.msg);
+		}
+		app.utils.clearWait();
+	}
+	/**
+	 * 验证数字
+	*/
+	function checkNum(str){
+	    var re = /^[0-9]+.?[0-9]*$/;
+	    if(re.test(str)){
+	        return true;
+	    }else{
+	        return false;
+	    }
+	}
+</script>
+</html>

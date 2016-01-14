@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" href="../../css/mui.min.css" />
+	<link rel="stylesheet" href="../../css/common.css" />
+	<style>
+		.mui-table-view-cell {
+		    padding: 0;
+		    margin-bottom: 0px;
+		}
+		.mui-table-view-cell:before, .mui-table-view-cell:last-child:before, .mui-table-view-cell:first-child:before{
+		    position: absolute;
+		    right: 0;
+		    left: 0;
+		    content: '';
+		    height: 20px;
+		    top: 0px;
+		    background: linear-gradient(#8F8F8F, transparent);
+		}
+		.dis_image_container {
+			height: 80px;
+		}
+		.dis_image {
+			height: 100%;
+		}
+		.dis_info_container {
+			height: 50px;
+			font-size: 18px;
+			padding: 14px 20px;
+		}
+		.dis_person_dist {
+			float: right;
+		}
+		.dis_person_coin {
+			color: #F93D00;
+		}
+	</style>
+</head>
+<body style="background-color: #fff;">
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 id="title" class="mui-title">我的分销商</h1>
+	</header>
+	<div class="mui-content">
+		<ul class="mui-table-view" style="margin-top:0px;">
+			 <li class="mui-table-view-cell">
+				 <div class="dis_image_container">
+					 <img class="dis_image" src="../../img/personal/brand_1.png">
+				 </div>
+				 <div class="dis_info_container">
+					 <span class="dis_person_num">共50人</span>
+					 <span class="dis_person_dist">贡献<span class="dis_person_coin">￥15000.40</span></span>
+				 </div>
+			 </li>
+			 <li class="mui-table-view-cell">
+				 <div class="dis_image_container">
+					 <img class="dis_image" src="../../img/personal/brand_2.png">
+				 </div>
+				 <div class="dis_info_container">
+					 <span class="dis_person_num">共50人</span>
+					 <span class="dis_person_dist">贡献<span class="dis_person_coin">￥15000.40</span></span>
+				 </div>
+			 </li>
+			 <li class="mui-table-view-cell">
+				 <div class="dis_image_container">
+					 <img class="dis_image" src="../../img/personal/brand_3.png">
+				 </div>
+				 <div class="dis_info_container">
+					 <span class="dis_person_num">共50人</span>
+					 <span class="dis_person_dist">贡献<span class="dis_person_coin">￥15000.40</span></span>
+				 </div>
+			 </li>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+</html>

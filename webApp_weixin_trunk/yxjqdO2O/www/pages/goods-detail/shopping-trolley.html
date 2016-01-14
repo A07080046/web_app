@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="../../css/mui.min.css" rel="stylesheet"/>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<a class="mui-icon mui-pull-right"><img style="width: 26px;height: 24px;" src="../../img/goods-detail/iconfont-gouwu.png"></a>
+		<h1 class="mui-title">购物车</h1>
+	</header>
+	<style>
+		.mui-table-view .mui-media-object {
+		    max-width: 100px;
+		    height: 100px;
+		}
+	</style>
+	<div class="mui-content mui-scroll">
+		<ul class="mui-table-view">
+			<li class="mui-table-view-cell mui-media">
+				<a href="#">
+					<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">
+					<img class="mui-media-object mui-pull-left" src="../../img/goods-detail/muwu.jpg">
+					<div class="mui-media-body">
+						<p>商品名称</p>
+						<div style="clear: all;font-size: small;color: gray">
+							<span style="vertical-align: middle;">购买数量：</span>
+							<div class="mui-numbox" data-numbox-step='1' data-numbox-min='0' style="float: right;">
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input class="mui-input-numbox" type="number" />
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+						</div>
+						<div style="clear: all;font-size: small;color: gray">
+							¥1283.00
+						</div>
+					</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media">
+				<a href="#">
+					<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">
+					<img class="mui-media-object mui-pull-left" src="../../img/goods-detail/muwu.jpg">
+					<div class="mui-media-body">
+						<p>商品名称</p>
+						<div style="clear: all;font-size: small;color: gray">
+							<span style="vertical-align: middle;">购买数量：</span>
+							<div class="mui-numbox" data-numbox-step='1' data-numbox-min='0' style="float: right;">
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input class="mui-input-numbox" type="number" />
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+						</div>
+						<div style="clear: all;font-size: small;color: gray">
+							¥1283.00
+						</div>
+					</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media">
+				<a href="#">
+					<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">
+					<img class="mui-media-object mui-pull-left" src="../../img/goods-detail/muwu.jpg">
+					<div class="mui-media-body">
+						<p>商品名称</p>
+						<div style="clear: all;font-size: small;color: gray">
+							<span style="vertical-align: middle;">购买数量：</span>
+							<div class="mui-numbox" data-numbox-step='1' data-numbox-min='0' style="float: right;">
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input class="mui-input-numbox" type="number" />
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+						</div>
+						<div style="clear: all;font-size: small;color: gray">
+							¥1283.00
+						</div>
+					</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media">
+				<a href="#">
+					<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">
+					<img class="mui-media-object mui-pull-left" src="../../img/goods-detail/muwu.jpg">
+					<div class="mui-media-body">
+						<p>商品名称</p>
+						<div style="clear: all;font-size: small;color: gray">
+							<span style="vertical-align: middle;">购买数量：</span>
+							<div class="mui-numbox" data-numbox-step='1' data-numbox-min='0' style="float: right;">
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input class="mui-input-numbox" type="number" />
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+						</div>
+						<div style="clear: all;font-size: small;color: gray">
+							¥1283.00
+						</div>
+					</div>
+				</a>
+			</li>
+		</ul>
+
+		<!--<div>
+			<input type="checkbox" id="CheckedAll" style="margin-left: 6px;margin-top: 20px;">全选</input>
+			<span style="clear: all;font-size: small;color: gray">
+				¥1283.00
+			</span>
+		</div>-->
+	</div>
+	<!--底部导航-->
+	<nav class="mui-bar mui-bar-tab">
+		<div class="mui-tab-item" href="#" style="background-color:#F14E41;color: black;clear: all;">
+			<input id="CheckedAll" type="checkbox">全选</input>
+	  	</div>
+		<a class="mui-tab-item" href="#" style="background-color: #F14E41;color: blue;">
+			¥1283.00
+	  	</a>
+	  	<a class="mui-tab-item" href="#" style="background-color: red;color: black;">
+	    		结算
+	  	</a>
+	</nav>
+	<script src="../../js/thirdparty/mui.min.js"></script>
+    <script src="../../js/thirdparty/jquery-1.11.3.min.js"></script>
+    <script src="../../js/utils/app.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	$("#CheckedAll").click(function () {
+            if ($(this).is(":checked")) {
+                $("[name=items]:checkbox").prop("checked", true);
+            } else {
+                $("[name=items]:checkbox").prop("checked", false);
+            }
+        });
+    		function getTrolleyList() {
+		var url = app.route.ROUTE_GET_TROLLEY_LIST;
+		var data = {
+			openid: '',
+		};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : getTrolleyListSuccess
+		});
+	};
+	function getTrolleyListSuccess(data) {
+			if (data.status === 'success' && data.context) {
+				var context = data.context;
+				saved.data = context;
+//				showPage(context);
+			}
+		};
+		getTrolleyList();
+//	var params = app.router.getParameter();
+//	var saved = app.router.getSavedData();
+//	if (saved.list) {
+//		showPage(saved.data);
+//	} else {
+//		getHomeData();
+//	}
+    </script>
+</body>
+</html>

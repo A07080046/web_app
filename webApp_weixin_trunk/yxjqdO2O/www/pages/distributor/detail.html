@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" href="../../css/mui.min.css" />
+	<link rel="stylesheet" href="../../css/common.css" />
+</head>
+<style>
+	.mui-control-content {
+		    position: absolute;
+		    top: 85px;
+		    right: 0;
+		    bottom: 0;
+		    left: 0;
+		    width: 100%;
+		    height: auto;
+	}
+	.mui-segmented-control {
+		border: 1px solid #ccc;
+	}
+	.mui-segmented-control .mui-control-item {
+		color: #555555;
+	    border-color: #E29C43;
+	    border-left: 1px solid #E29C43;
+	}
+	.mui-segmented-control .mui-control-item.mui-active {
+		background: -webkit-linear-gradient(top, #F99032,#FFBA33);
+		background: -o-linear-gradient(top, #F99032,#FFBA33);
+		background: -moz-linear-gradient(top, #F99032,#FFBA33);
+		background: linear-gradient(top, #F99032,#FFBA33);
+	}
+	.mui-table-view-cell {
+		font-size: 14px;
+	}
+</style>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 id="title" class="mui-title">分销明细</h1>
+	</header>
+	<div class="mui-content">
+		<div>
+			<div id="segmentedControl" class="mui-segmented-control">
+				<a class="mui-control-item mui-active" href="#item1">
+					分销记录
+				</a>
+				<a class="mui-control-item" href="#item2">
+					提现记录
+				</a>
+			</div>
+		</div>
+		<div>
+			<div id="item1" class="mui-control-content mui-active">
+				<div id="scroll" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+								<div><span class="font-gray">分润：</span><span class="font-red">￥18.00</span></div>
+								<div class="font-gray">时间：2016-01-07</div>
+							</li>
+							<li class="mui-table-view-cell">
+								<div><span class="font-gray">分润：</span><span class="font-red">￥18.00</span></div>
+								<div class="font-gray">时间：2016-01-07</div>
+							</li>
+							<li class="mui-table-view-cell">
+								<div><span class="font-gray">分润：</span><span class="font-red">￥18.00</span></div>
+								<div class="font-gray">时间：2016-01-07</div>
+							</li>
+							<li class="mui-table-view-cell">
+								<div><span class="font-gray">分润：</span><span class="font-red">￥18.00</span></div>
+								<div class="font-gray">时间：2016-01-07</div>
+							</li>
+							<li class="mui-table-view-cell">
+								<div><span class="font-gray">分润：</span><span class="font-red">￥18.00</span></div>
+								<div class="font-gray">时间：2016-01-07</div>
+							</li>
+							<li class="mui-table-view-cell">
+								<div><span class="font-gray">分润：</span><span class="font-red">￥18.00</span></div>
+								<div class="font-gray">时间：2016-01-07</div>
+							</li>
+							<li class="mui-table-view-cell">
+								<div><span class="font-gray">分润：</span><span class="font-red">￥18.00</span></div>
+								<div class="font-gray">时间：2016-01-07</div>
+							</li>
+							<li class="mui-table-view-cell">
+								第一个选项卡子项-10
+							</li>
+							<li class="mui-table-view-cell">
+								第一个选项卡子项-11
+							</li>
+							<li class="mui-table-view-cell">
+								第一个选项卡子项-12
+							</li>
+							<li class="mui-table-view-cell">
+								第一个选项卡子项-13
+							</li>
+							<li class="mui-table-view-cell">
+								第一个选项卡子项-14
+							</li>
+							<li class="mui-table-view-cell">
+								第一个选项卡子项-15
+							</li>
+							<li class="mui-table-view-cell">
+								第一个选项卡子项-16
+							</li>
+							<li class="mui-table-view-cell">
+								第一个选项卡子项-17
+							</li>
+							<li class="mui-table-view-cell">
+								第一个选项卡子项-18
+							</li>
+							<li class="mui-table-view-cell">
+								第一个选项卡子项-19
+							</li>
+							<li class="mui-table-view-cell">
+								第一个选项卡子项-20
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="item2" class="mui-control-content">
+				<div id="scroll" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+								<div><span class="font-gray">提现：</span><span class="font-red">￥18.00</span></div>
+								<div class="font-gray">时间：2016-01-07</div>
+							</li>
+							<li class="mui-table-view-cell">
+								<div><span class="font-gray">提现：</span><span class="font-red">￥18.00</span></div>
+								<div class="font-gray">时间：2016-01-07</div>
+							</li>
+							<li class="mui-table-view-cell">
+								<div><span class="font-gray">提现：</span><span class="font-red">￥18.00</span></div>
+								<div class="font-gray">时间：2016-01-07</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../js/mui.min.js" ></script>
+<script>
+	mui.init();
+	mui('.mui-scroll-wrapper').scroll();
+</script>
+</html>

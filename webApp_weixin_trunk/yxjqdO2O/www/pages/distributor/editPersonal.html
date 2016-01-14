@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" href="../../css/mui.min.css" />
+	<link rel="stylesheet" href="../../css/common.css" />
+</head>
+<style>
+	.title {
+		margin-top: 10px;
+		width: 100%;
+		font-size: 16px;
+		text-align: center;
+		background: url(../../img/distributor/title_line.png) no-repeat center;
+		background-size: 100%;
+	}
+	.name .content {
+		margin-top: 10px;
+		background-color: #fff;
+		padding: 20px;
+	}
+	.name .content .input {
+		padding: 5px;
+		background: -webkit-linear-gradient(top,#FFBD34,#F88D31);
+		background: -o-linear-gradient(top, #FFBD34,#F88D31);
+		background: -moz-linear-gradient(top, #FFBD34,#F88D31);
+		background: linear-gradient(#FFBD34,#F88D31);
+	}
+	.name .content .input input[type="text"] {
+		margin-bottom: 0;
+		text-align: center;
+	}
+	.logo {
+		margin-top: 20px;
+	}
+	.logo .content {
+		margin: 0 auto;
+		margin-top: 10px;
+		text-align: center;
+		background-color: #fff;
+		padding: 20px;
+	}
+	.head-portrait {
+		width: 140px;
+		height: 140px;
+		-moz-border-radius: 70px; 
+		-webkit-border-radius: 70px; 
+		border-radius: 70px; 
+		border: 1px solid #ccc;
+		background-color: #ccc;
+	}
+	.mui-bar-tab .mui-tab-item {
+		color: #fff;
+		background: -webkit-linear-gradient(top,#FF6935,#FA4534);
+		background: -o-linear-gradient(top, #FF6935,#FA4534);
+		background: -moz-linear-gradient(top, #FF6935,#FA4534);
+		background: linear-gradient(#FF6935,#FA4534);
+	}
+	.mui-bar-tab .mui-tab-item.mui-active {
+		color: #fff;
+		background: -webkit-linear-gradient(top,#F99237,#FFBB33);
+		background: -o-linear-gradient(top, #F99237,#FFBB33);
+		background: -moz-linear-gradient(top, #F99237,#FFBB33);
+		background: linear-gradient(#F99237,#FFBB33);
+	}
+</style>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 id="title" class="mui-title">修改个人信息</h1>
+	</header>
+	<nav class="mui-bar mui-bar-tab">
+	    <a class="mui-tab-item" href="#">
+	    	确&nbsp;&nbsp;&nbsp;&nbsp;定
+	    </a>
+	</nav>
+	<div class="mui-content">
+		<div class="name">
+			<div class="title font-red">店铺名称</div>
+			<div class="content">
+				<div class="input"><input type="text" placeholder="请输入您要设置的店铺名称" /></div>
+			</div>
+		</div>
+		<div class="logo">
+			<div class="title font-red">店铺LOGO</div>
+			<div class="content">
+				<img class="head-portrait" src="../../img/distributor/empty_head.png" />
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../js/mui.min.js" ></script>
+<script>
+	mui.init();
+</script>
+</html>

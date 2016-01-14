@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" href="../../css/mui.min.css" />
+	<link rel="stylesheet" href="../../css/common.css" />
+	<link rel="stylesheet" href="../../css/yxjqd/distributorOrder.css" />
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 id="title" class="mui-title">分销统计</h1>
+	</header>
+	<div class="mui-content">
+		<div id="slider" class="mui-slider mui-fullscreen">
+			<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+				<a class="mui-control-item mui-active" href="#item1mobile">
+					<div class="item-icon icon1"></div>
+					所有订单
+				</a>
+				<a class="mui-control-item" href="#item2mobile">
+					<div class="item-icon icon2"></div>
+					已付款
+				</a>
+				<a class="mui-control-item" href="#item3mobile">
+					<div class="item-icon icon3"></div>
+					待付款
+				</a>
+				<a class="mui-control-item" href="#item4mobile">
+					<div class="item-icon icon4"></div>
+					已完成
+				</a>
+			</div>
+			<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-3"></div>
+			<div class="mui-slider-group">
+				<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+					<div id="scroll1" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="../../img/img1.jpg">
+										<div class="mui-media-body font-line">
+											<div class="product-name mui-ellipsis">私人订制服饰</div>
+											<div class="product-num">X2</div>
+											<div class="font-gray font-12">订单号：2016010716564225</div>
+											<div class="font-red font-12">一级用户</div>
+											<div class="li-price">￥2080.00</div>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="../../img/img3.jpg">
+										<div class="mui-media-body font-line">
+											<div class="product-name mui-ellipsis">私人订制服饰</div>
+											<div class="product-num">X2</div>
+											<div class="font-gray font-12">订单号：2016010716564225</div>
+											<div class="font-red font-12">一级用户</div>
+											<div class="li-price">￥2080.00</div>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="../../img/img4.jpg">
+										<div class="mui-media-body font-line">
+											<div class="product-name mui-ellipsis">私人订制服饰</div>
+											<div class="product-num">X2</div>
+											<div class="font-gray font-12">订单号：2016010716564225</div>
+											<div class="font-red font-12">一级用户</div>
+											<div class="li-price">￥2080.00</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					
+					<nav class="mui-bar mui-bar-tab">
+					    <a class="mui-tab-item mui-active" href="#">
+					     	 合计：<span id="totalPrice">￥12345.00</span>
+					    </a>
+					    <a class="mui-tab-item" href="#">
+							<button type="button" class="mui-btn mui-btn-danger">支付</button>
+					    </a>
+					</nav>
+				</div>
+				<div id="item2mobile" class="mui-slider-item mui-control-content">
+					<div id="scroll2" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<!--<div class="mui-loading">
+								<div class="mui-spinner">
+								</div>
+							</div>-->
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="../../img/img1.jpg">
+										<div class="mui-media-body font-line">
+											<div class="product-name mui-ellipsis">私人订制服饰</div>
+											<div class="product-num">X2</div>
+											<div class="font-gray font-12">订单号：2016010716564225</div>
+											<div class="font-red font-12">一级用户</div>
+											<div class="li-price">￥2080.00</div>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="../../img/img1.jpg">
+										<div class="mui-media-body font-line">
+											<div class="product-name mui-ellipsis">私人订制服饰</div>
+											<div class="product-num">X2</div>
+											<div class="font-gray font-12">订单号：2016010716564225</div>
+											<div class="font-red font-12">一级用户</div>
+											<div class="li-price">￥2080.00</div>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="../../img/img3.jpg">
+										<div class="mui-media-body font-line">
+											<div class="product-name mui-ellipsis">私人订制服饰</div>
+											<div class="product-num">X2</div>
+											<div class="font-gray font-12">订单号：2016010716564225</div>
+											<div class="font-red font-12">一级用户</div>
+											<div class="li-price">￥2080.00</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+				<div id="item3mobile" class="mui-slider-item mui-control-content">
+					<div id="scroll3" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<!--<div class="mui-loading">
+								<div class="mui-spinner">
+								</div>
+							</div>-->
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="../../img/img2.jpg">
+										<div class="mui-media-body font-line">
+											<div class="product-name mui-ellipsis">私人订制服饰</div>
+											<div class="product-num">X2</div>
+											<div class="font-gray font-12">订单号：2016010716564225</div>
+											<div class="font-red font-12">一级用户</div>
+											<div class="li-price">￥2080.00</div>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="../../img/img1.jpg">
+										<div class="mui-media-body font-line">
+											<div class="product-name mui-ellipsis">私人订制服饰</div>
+											<div class="product-num">X2</div>
+											<div class="font-gray font-12">订单号：2016010716564225</div>
+											<div class="font-red font-12">一级用户</div>
+											<div class="li-price">￥2080.00</div>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="../../img/img4.jpg">
+										<div class="mui-media-body font-line">
+											<div class="product-name mui-ellipsis">私人订制服饰</div>
+											<div class="product-num">X2</div>
+											<div class="font-gray font-12">订单号：2016010716564225</div>
+											<div class="font-red font-12">一级用户</div>
+											<div class="li-price">￥2080.00</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+				<div id="item4mobile" class="mui-slider-item mui-control-content">
+					<div id="scroll4" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<!--<div class="mui-loading">
+								<div class="mui-spinner">
+								</div>
+							</div>-->
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="../../img/img4.jpg">
+										<div class="mui-media-body font-line">
+											<div class="product-name mui-ellipsis">私人订制服饰</div>
+											<div class="product-num">X2</div>
+											<div class="font-gray font-12">订单号：2016010716564225</div>
+											<div class="font-red font-12">一级用户</div>
+											<div class="li-price">￥2080.00</div>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="../../img/img2.jpg">
+										<div class="mui-media-body font-line">
+											<div class="product-name mui-ellipsis">私人订制服饰</div>
+											<div class="product-num">X2</div>
+											<div class="font-gray font-12">订单号：2016010716564225</div>
+											<div class="font-red font-12">一级用户</div>
+											<div class="li-price">￥2080.00</div>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="../../img/img3.jpg">
+										<div class="mui-media-body font-line">
+											<div class="product-name mui-ellipsis">私人订制服饰</div>
+											<div class="product-num">X2</div>
+											<div class="font-gray font-12">订单号：2016010716564225</div>
+											<div class="font-red font-12">一级用户</div>
+											<div class="li-price">￥2080.00</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../js/mui.min.js" ></script>
+<script>
+	mui.init();
+	mui('.mui-scroll-wrapper').scroll({
+		indicators: true //是否显示滚动条
+	});
+</script>
+</html>

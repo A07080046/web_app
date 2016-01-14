@@ -4,10 +4,13 @@
 	<head>
 		<meta charset="utf-8">
 		<title>协会</title>
+		<meta http-equiv="Access-Control-Allow-Origin" content="*">
+		<meta http-equiv="content-security-policy">
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/common.css" />
 		<style>
 		header {
 			background: url(img/top5/navigation_bar.png) no-repeat;
@@ -68,18 +71,20 @@
 		}
 		.top5-title-container {
 			height: 60px;
-			display: flex;
-			align-items: center;
 			background-color: #E8EAEB;
 		}
 		.top5-title-image {
 			height: 25px;
+			margin-top: 18px;
+			float: left;
 		}
 		.top5-title-name {
 			font-weight: bold;
 			font-size: 18px;
 			color: #FC9D00;
-			margin-left: 20px;
+			position: absolute;
+		    left: 160px;
+		    top: 20px;
 		}
 		.top5-content-container {
 			height: 170px;
@@ -99,14 +104,13 @@
 		}
 		.top5-text-container-container {
 			height: 170px;
-			display: flex;
-			align-items: center;
+			padding-top: 40px;
 		}
 		.top5-text-container {
-			min-height:30px;
-		    max-height:80px;
+		    height:80px;
 			overflow: hidden;
 			background-color: #E8EAEB;
+			text-align: justify;
 		}
 		.top5-text-container p {
 		    height:auto !important;
@@ -142,18 +146,35 @@
 			width: 100%;
 			background-repeat: no-repeat;
 			background-size: 100% 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
+			padding-top: 8px;
 		}
 		.menu-item.active .menu-item-text{
 			background-image: url(img/top5/select_button_press.png);
+		}
+		@media (min-width: 320px) {
+			.top5-title-image {
+				height: 20px;
+			}
+			.top5-title-name {
+			    left: 125px;
+			}
+			.top5-content-container {
+				padding: 10px;
+			}
+			.mui-table-view .mui-media-object {
+			    line-height: 120px;
+			    max-width: 120px;
+			    height: 120px;
+			}
+			.top5-text-container-container {
+			    padding-top: 30px;
+			}
 		}
 		</style>
 	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav">
-			<h1 class="mui-title"><span id="top5-title">信息产业</span></h1>
+			<h1 class="mui-title"><span id="top5-title">机构组织</span></h1>
 			<a href="#select_menu" class="mui-icon select mui-pull-right"></a>
 		</header>
 		<div id="select_menu" class="mui-popover menu_container">
@@ -161,7 +182,7 @@
 			<div class="mui-scroll-wrapper">
 				<div class="mui-scroll">
 					<ul class="mui-table-view menu">
-						<li data-index=1 class="mui-table-view-cell menu-item" style="border-radius:0px"><div class="menu-item-text">机构组织</div></li>
+						<li data-index=1 class="mui-table-view-cell menu-item active" style="border-radius:0px"><div class="menu-item-text">机构组织</div></li>
 						<li data-index=2 class="mui-table-view-cell menu-item"><div class="menu-item-text">农林牧渔</div></li>
 						<li data-index=3 class="mui-table-view-cell menu-item"><div class="menu-item-text">医疗卫生</div></li>
 						<li data-index=4 class="mui-table-view-cell menu-item"><div class="menu-item-text">建筑建材</div></li>
@@ -200,20 +221,28 @@
 	<script src="js/spin.min.js"></script>
 	<script src="app/app.js"></script>
 	<script>
-		function getListItem(name, img, text) {
+		function getScrollTop() {
+			return mui('#pullrefresh').pullRefresh().y;
+		}
+		function setScrollTop(y) {
+			setTimeout(function() {
+				mui('#pullrefresh').pullRefresh().scrollTo(0, y);
+			}, 0);
+		}
+		function getListItem(item, index) {
 			html = '';
-			html += '<li class="mui-table-view-cell mui-media">';
+			html += '<li class="mui-table-view-cell mui-media" data-index="'+index+'">';
 			html += '    <div class="top5-title-container">';
 			html += '        <img class="top5-title-image" src="img/top5/after_no5.png">';
-			html += '        <span class="top5-title-name">'+name+'</span>';
+			html += '        <span class="top5-title-name">'+getVisibleTitle(item.name, 20)+'</span>';
 			html += '    </div>';
 			html += '    <div class="top5-content-container">';
 			html += '        <div class="mui-media-object mui-pull-left top5-image-container">';
-			html += '            <img class="top5-image" src="'+img+'">';
+			html += '            <img class="top5-image" src="'+item.logo+'">';
 			html += '        </div>';
 			html += '        <div class="top5-text-container-container">';
-			html += '        <div class="top5-text-container">';
-			html += '            <p>'+text+'</p>';
+			html += '        <div class="top5-text-container no'+(index*1+1)+'">';
+			html += '            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+item.descr+'</p>';
 			html += '        </div>';
 			html += '        </div>';
 			html += '    </div>';
@@ -245,20 +274,18 @@
 		function showList(list, append) {
 			html = '';
 			for (var i in list) {
-				var item = list[i];
-				var descr = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+item.descr;
-				html += getListItem(getVisibleTitle(item.name, 20), item.logo, descr);
+				html += getListItem(list[i], i);
 			}
 			if (!append) {
 				$('#top5_list').html(html);
 			} else {
 				$('#top5_list').append(html);
 			}
+			if (query.dir === "none") {
+				app.router.resetScollerBar(setScrollTop);
+			}
 		}
 		function getList(type, pageNo, needWait) {
-			if (pageNo == 1) {
-				mui('#pullrefresh').pullRefresh().refresh(true);
-			}
 			var param = {
 			};
 			var url = app.route.ROUTE_GET_COMPANYINFO+"?"+ $.param(param);
@@ -280,21 +307,38 @@
 		};
 		function onGetListSuccess(data) {
 			if (data.status === 'success') {
-				showList(data.context.list, query.dir==='up');
-				app.utils.clearWait();
+				var context = data.context||{};
+				var list = data.context.list;
+				if (!list || !list.length) {
+					if (query.pageNo == 1) {
+						showEmptyList();
+					}
+				} else {
+					if (query.dir==='up') {
+						saved.list = saved.list.concat(list);
+					} else {
+						saved.list = list;
+					}
+					showList(list, query.dir==='up');
+				}
 				if (query.dir === 'down') {
 					mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+					mui('#pullrefresh').pullRefresh().refresh(true);
 				} else if (query.dir === 'up') {
 					mui('#pullrefresh').pullRefresh().endPullupToRefresh();
 				}
 			} else {
 				if (query.dir === 'down') {
 					mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
-					app.showError('加载数据失败');
 				} else if (query.dir === 'up') {
 					mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
 				}
+				if (query.pageNo == 1) {
+					showEmptyList();
+				}
 			}
+			query.dir = 'none';
+			app.utils.clearWait();
 		};
 		function onGetListError(error) {
 			if (query.dir === 'down') {
@@ -302,6 +346,7 @@
 			} else if (query.dir === 'up') {
 				mui('#pullrefresh').pullRefresh().endPullupToRefresh();
 			}
+			query.dir = 'none';
 		};
 		function pulldownRefresh() {
 			query.pageNo = 1;
@@ -314,7 +359,6 @@
 			getList(query.type, query.pageNo);
 		}
 
-		var query = {pageNo: 1, type: 1, dir:'none'};
 		mui.init({
 			pullRefresh: {
 				container: '#pullrefresh',
@@ -336,10 +380,27 @@
 			$('#top5-title').html($(this).find('.menu-item-text').html());
 			query.pageNo = 1;
 			query.type = type;
+			mui('#pullrefresh').pullRefresh().refresh(true);
 			getList(query.type, query.pageNo);
 		});
+		$('#pullrefresh').on('tap', 'li', function() {
+			var index = $(this).data('index');
+			var data = {
+				id: saved.list[index].id,
+				name: saved.list[index].name,
+				openid: params.openid,
+			}
+			saved.query = query;
+			app.router.showView('pages/appraise.html', data, saved, getScrollTop);
+		});
 
-		getList(query.type, query.pageNo, true);
-
+		var params = app.utils.getParameter();
+		var saved = app.router.getSavedData();
+		var query = saved.query||{pageNo: 1, type: 1, dir:'none'};
+		if (saved.list) {
+			showList(saved.list);
+		} else {
+			getList(query.type, query.pageNo, true);
+		}
 	</script>
 </html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" href="../../css/mui.min.css" />
+	<link rel="stylesheet" href="../../css/common.css" />
+</head>
+<style>
+	.fulltop img {
+		width: 100%;
+		height: 250px;
+	}
+	.erweima {
+		margin: 20px auto;
+		text-align: center;
+	}
+	.erweima img {
+		width: 150px;
+		height: 150px;
+	}
+	.mui-bar-tab .mui-tab-item.share-url {
+		background: url(../../img/distributor/connection_distribution_normal.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.mui-bar-tab .mui-tab-item.share-img {
+		background: url(../../img/distributor/picture_distribution_normal.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.mui-bar-tab .mui-tab-item.share-url.mui-active {
+		background: url(../../img/distributor/connection_distribution_press.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.mui-bar-tab .mui-tab-item.share-img.mui-active {
+		background: url(../../img/distributor/picture_distribution_press.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.share {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 1050;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.share img {
+		float: right;
+		width: 272px;
+		height: 264px;
+		margin-top: 3px;
+		margin-right: 15px;
+	}
+	.case {
+		padding: 15px;
+	}
+	.case .info img {
+		display: inline-block;
+		vertical-align: middle;
+		width: 50px;
+		height: 50px;
+	}
+	.case .info div {
+		display: inline-block;
+		vertical-align: middle;
+		width: 170px;
+		color: #6a6761;
+	}
+	.case .button {
+		margin: 0 auto;
+		margin-top: 10px;
+		width: 100px;
+		padding: 6px 10px;
+		text-align: center;
+		color: #fff;
+		background: url(../../img/distributor/buttn_wzdl.png) no-repeat;
+		background-size: 100% 100%;
+	}
+</style>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 id="title" class="mui-title">我的二维码</h1>
+	</header>
+	<nav class="mui-bar mui-bar-tab">
+	    <a class="mui-tab-item share-url" href="#">
+	    </a>
+	    <a class="mui-tab-item share-img" href="#">
+	    </a>
+	</nav>
+	<div class="mui-content">
+		<div class="fulltop">
+			<img src="../../img/picture.png" />
+		</div>
+		<div class="erweima">
+			<img src="../../img/distributor/160107202032.png" />
+		</div>
+		<div class="share over-share hide">
+			<img src="../../img/distributor/arrow.png" />
+		</div>
+		<div class="case hide">
+			<div class="info">
+				<img src="../../img/distributor/prompt_icon.png"/>
+				<div>长按保存图片并将图片转发给您的好友</div>
+			</div>
+			<div id="overCase" class="button">我知道了</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../js/mui.min.js" ></script>
+<script type="text/javascript" src="../../js/jquery-1.11.3.min.js" ></script>
+<script>
+	mui.init();
+	$(".share-url").on('tap',function(){
+		$("body").append('<div class="modal-backdrop over-share"></div>');
+		$(".share").show();
+	});
+	$("body").on('tap','.over-share',function(){
+		$(".modal-backdrop").remove();
+		$(".share").hide();
+	});
+	$(".share-img").on('tap',function(){
+		$("body").append('<div class="modal-backdrop"></div>');
+		$(".case").show()
+	});
+	$("#overCase").on('tap',function(){
+		$(".modal-backdrop").remove();
+		$(".case").hide();
+	});
+</script>
+</html>

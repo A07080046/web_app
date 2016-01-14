@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>发货</title>
+    <link href="../../../css/mui.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="../../../css/common.css" />
+	<link href="../../../css/mui.picker.all.css" rel="stylesheet" />
+</head>
+<body>
+	<style>
+		.order-info {
+			height: 120px;
+			background-color: white;
+		}
+		.transport-info {
+			height: 120px;
+			margin-top: 12px;
+			background-color: white;
+		}
+		p {
+			float: left;
+			color: black;
+			margin-top: 6px;
+			margin-right: 6px;
+			font-size: large;
+		}
+		p+p {
+			float: left;
+			color: orange;
+			font-size: large;
+		}
+		#num {
+			float: left;
+			color: gray;
+			font-size: large;
+			margin-left: 10px;
+		}
+		span {
+			margin-bottom: 16px;
+			margin-right: 6px;
+			color: gray;
+		}
+		.transport-info+button {
+			float: right;
+			width: 20%;
+			background-color: orangered;
+			color: white;
+			margin-right: 16px;
+		}
+	</style>
+
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 class="mui-title">发货</h1>
+	</header>
+	
+	<div class="mui-content">
+	<!--订单信息-->
+	<div class="order-info">
+		<div>
+			<p>私人定制服饰</p><p>¥2004.00</p><p class="num">X2</p>
+		</div>
+		<div style="clear: both;"></div>
+		<div>
+			<span>订单号:</span><span>123123908102938</span>
+		</div>
+		<div>
+			<span>收件人:</span><span>姓名</span><span>电话号码</span>
+		</div>
+		<div>
+			<span>地址:</span><span>国</span><span>省</span><span>市</span>
+		</div>
+	</div>
+	<!--货运信息-->
+	<div class="transport-info">
+		<div>
+			<span>关联货运单号:</span><span>123123908102938</span>
+		</div>
+		<!--<input id='showUserPicker' style="height: 40px;" placeholder="选择快递公司" >
+			<!--<input type="text" placeholder="选择快递公司"></input>-->
+		<!--</input>-->
+		<input id='showUserPicker' style="margin-top: 12px;" type="text" placeholder="选择快递公司"/>
+		<input type="text" placeholder="输入快递单号"/>
+	</div>
+	</div>
+	<!--提交按钮-->
+	<button class="mui-btn mui-btn-block" style="background-color: orangered;color:white;position: absolute;bottom: 0px;">确定</button>
+	<script src="../../../js/thirdparty/mui.min.js"></script>
+	<script src="../../../js/thirdparty/mui.picker.all.js"></script>
+	<script type="text/javascript" charset="utf-8">
+	  	(function($, doc) {
+			$.init();
+			var userPicker = new $.PopPicker();
+			userPicker.setData([{
+				value: 'ywj',
+				text: '圆通快递'
+			}, {
+				value: 'aaa',
+				text: '中通快递'
+			}, {
+				value: 'lj',
+				text: '申通快递'
+			}, {
+				value: 'ymt',
+				text: '顺丰快递'
+			}, {
+				value: 'shq',
+				text: '宅急送快递'
+			}, {
+				value: 'zhbh',
+				text: '小灵通快递'
+			}, {
+				value: 'zhy',
+				text: '打不通快递'
+			}, {
+				value: 'gyf',
+				text: '关一帆'
+			}, {
+				value: 'zhz',
+				text: '智子'
+			}, {
+				value: 'gezh', 
+				text: '歌者'
+			}]);
+			var showUserPickerButton = doc.getElementById('showUserPicker');
+			var userResult = doc.getElementById('showUserPicker');
+			showUserPickerButton.addEventListener('tap', function(event) {
+				userPicker.show(function(items) {
+					userResult.placeholder = items[0].text;
+					//返回 false 可以阻止选择框的关闭
+					//return false;
+				});
+			}, false);
+		})(mui, document);
+    </script>
+</body>
+</html>

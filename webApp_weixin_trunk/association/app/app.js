@@ -1,15 +1,72 @@
 window.app = {};
 
-// var SERVER = 'http://www.gyyxjqd.com/association/associationPhone/';
-var SERVER = 'http://192.168.1.119:3000/';
+var SERVER = 'http://www.gyyxjqd.com/association/associationPhone/';
+// var SERVER = 'http://192.168.1.119:3000/';
 app.route = {
-    ROUTE_GET_COMPANYINFO: SERVER+'getCompanyInfo',
-    ROUTE_GET_WEEKTOP: SERVER+'getWeekTop',
-    ROUTE_GET_COMPANYDETAIL: SERVER+'getCompanyDetail',
+    ROUTE_GET_COMPANYINFO: SERVER+'enterpriseList',
+    ROUTE_GET_WEEKTOP: SERVER+'enterpriseList',
+    ROUTE_GET_COMPANYDETAIL: SERVER+'getEnterpriseById',
     ROUTE_ADD_COMPANY: SERVER+'insertEnterprise',
     ROUTE_SUMBIT_PRAISE: SERVER+'gradeScore',
     ROUTE_SUMBIT_STAR: SERVER+'praise',
 };
+
+app.router = (function(){
+    var ls = window.localStorage;
+    var HISTORY = "app_history";
+    var scrollTop = 0;
+    var router = {
+        showView: function(url, param, saved, getScrollTop) {
+            var history = JSON.parse(ls[HISTORY]||'[]');
+            history.push({
+                href: window.location.href,
+                path: window.location.pathname,
+                saved: saved,
+                scrollTop: getScrollTop ? getScrollTop() : $(document).scrollTop(),
+                from: url,
+            });
+            ls[HISTORY] = JSON.stringify(history);
+            window.location.href = url+'?'+$.param(param);
+        },
+        pop: function(step, param) {
+            var history = JSON.parse(ls[HISTORY]||'[]');
+            if (!step) {
+                step = 1;
+            }
+            var obj, len=history.length;
+            obj = history[len-step];
+            if (obj) {
+                (step-1)&&history.splice(len-step, step-1);
+                ls[HISTORY] = JSON.stringify(history);
+                window.location.href = obj.href;
+            }
+        },
+        getSavedData: function() {
+            var history = JSON.parse(ls[HISTORY]||'[]');
+            var item = history[history.length-1];
+            if (!item) {
+                return {};
+            }
+            var path = window.location.pathname;
+            if (item.path == path) {
+                history.pop();
+                ls[HISTORY] = JSON.stringify(history);
+                scrollTop = item.scrollTop;
+                this.from = item.from;
+            }
+            return item.saved||{};
+        },
+        resetScollerBar: function(setScrollTop) {
+            if (setScrollTop) {
+                setScrollTop(scrollTop);
+            } else {
+                $(document).scrollTop(scrollTop);
+            }
+        }
+    };
+    return router;
+})();
+
 
 app.utils = {
     ajax: function(opt) {
@@ -69,12 +126,26 @@ app.utils = {
     //      left: 'auto'// spinner 相对父容器Left定位 单位 px
         };
     	this.spinner = new Spinner(opts);
-        $(document.body).append('<div id="mask_container"><div class="modal-backdrop"></div><div class="spinner-text-container">'+text+'</div></div>');
-    	this.spinner.spin(document.body);//打开等待加载
+        var el = $('<div id="mask_container" style="transition:opacity 0.5s;"><div class="modal-backdrop"></div><div class="spinner-text-container">'+text+'</div></div>');
+        $(document.body).append(el);
+    	this.spinner.spin(el[0]);//打开等待加载
     },
     clearWait: function() {
-        $("#mask_container").remove();
-        this.spinner&&this.spinner.spin();//关闭等待加载
-        this.spinner = null;
+        var el = $("#mask_container");
+        el.css('opacity', 0);
+        var self = this;
+        el.on('webkitTransitionEnd', function () {
+            el.remove();
+            self.spinner&&self.spinner.spin();//关闭等待加载
+            self.spinner = null;
+        });
     },
+    getParameter : function(val){
+        var ret = {};
+        window.location.search.substr(1).replace(/([^=&]+)=([^&]*)/g, function(m, key, value) {
+            ret[decodeURIComponent(key)] = decodeURIComponent(value);
+        });
+        console.log("pass", ret);
+        return ret;
+	},
 }

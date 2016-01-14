@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" href="../../css/mui.min.css" />
+	<link rel="stylesheet" href="../../css/common.css" />
+</head>
+<style>
+	.store {
+		background-color: #fff;
+		padding: 10px;
+		font-size: 16px;
+	}
+	.head-portrait {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 10px;
+		width: 50px;
+		height: 50px;
+		-moz-border-radius: 25px; 
+		-webkit-border-radius: 25px; 
+		border-radius: 25px; 
+		border: 1px solid #ccc;
+		background-color: #ccc;
+	}
+	.store .name {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.store .title {
+		margin-top: -15px;
+		color: #A2A2A2;
+		text-align: right;
+		font-size: 14px;
+	}
+	.statistics {
+		margin-top: 10px;
+		padding: 10px 20px;
+		background-color: #fff;
+	}
+	.statistics .button {
+		margin-top: 10px;
+		height: 40px;
+		width: 100%;
+		line-height: 40px;
+		color: #fff;
+		text-align: center;
+		background: url(../../img/distributor/long_button_tx_normal.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.statistics .button:active {
+		background: url(../../img/distributor/long_button_tx_press.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.list {
+		margin-top: 15px;
+	}
+	.list .li {
+		padding: 8px 20px;
+		background: url(../../img/distributor/background_normal.png) no-repeat;
+		background-size: 100% 100%;
+		color: #6a6761;
+		font-size: 16px;
+	}
+	.list .li:active {
+		background: url(../../img/distributor/background_press.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.list .li .icon {
+		margin-right: 15px;
+		width: 23px;
+		height: 23px;
+		display: inline-block;
+		vertical-align: bottom;
+	}
+	.list .li .total {
+		background: url(../../img/distributor/profit_statistics_icon.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.list .li .detail {
+		background: url(../../img/distributor/share_details_icoon.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.list .li .team {
+		background: url(../../img/distributor/my_team_icon.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.list .li .order {
+		background: url(../../img/distributor/distribution_order_icon.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.list .li .erweima {
+		background: url(../../img/distributor/erweima_icon.png) no-repeat;
+		background-size: 100% 100%;
+	}
+	.list .li .ranking {
+		background: url(../../img/distributor/distribution_charts_icon.png) no-repeat;
+		background-size: 100% 100%;
+	}
+</style>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 id="title" class="mui-title">分销统计</h1>
+	</header>
+	<div class="mui-content">
+		<div class="store">
+			<img class="head-portrait" src="../../img/lv-logo.jpg" />
+			<div class="name li-price">LV官方旗舰店</div>
+			<div class="title">开店时间：2015-03-16</div>
+		</div>
+		<div class="statistics">
+			<div><span class="font-gray">累计佣金：</span><span class="font-red">￥9723.00</span></div>
+			<div><span class="font-gray">可提佣金：</span><span class="font-red">￥972.00</span></div>
+			<div class="button">提&nbsp;&nbsp;现</div>
+		</div>
+		<div class="list">
+			<div class="li">
+				<div class="icon total"></div>分润统计
+			</div>
+			<div style="margin-top: 10px;" class="li">
+				<div class="icon detail"></div>分润明细
+			</div>
+			<div class="li">
+				<div class="icon team"></div>我的团队
+			</div>
+			<div style="margin-top: 10px;" class="li">
+				<div class="icon order"></div>分销订单
+			</div>
+			<div style="margin-top: 10px;" class="li">
+				<div class="icon erweima"></div>二维码
+			</div>
+			<div class="li">
+				<div class="icon ranking"></div>分销排行榜
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../js/mui.min.js" ></script>
+<script>
+	mui.init();
+</script>
+</html>

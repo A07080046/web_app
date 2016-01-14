@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" href="../../css/mui.min.css" />
+	<link rel="stylesheet" href="../../css/common.css" />
+	<style>
+		.integral_container {
+			color: red;
+		}
+		.info_container {
+			text-align:left !important;
+			line-height:1.5em;
+			color: darkgray;
+		}
+		.box1to4 {
+			display:inline-block;
+			position: relative;
+			width: 100%;
+		}
+		.box1to4::after{
+		  display: block;
+		  padding-top: 50%;
+		  content : '';
+		}
+		.box-full-image {
+			width:100%;
+			height:100%;
+			left:0px;
+			top:0px;
+			position:absolute;
+		}
+	</style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 id="title" class="mui-title">换购详情</h1>
+	</header>
+	<div class="mui-content">
+		<ul class="mui-table-view mui-grid-view" style="margin-top:0px;">
+	        <li class="mui-table-view-cell mui-media info_container">
+	            <div class="integral_container">我的积分：<span>899999</span></div>
+				<div><span>收件人：<span>刘刚</span></span><span>电话：<span>189</span></span></div>
+				<div>地址：<span>贵州省贵阳市云岩区樱花巷科技情报所</span></div>
+			</li>
+			<li class="mui-table-view-cell mui-media">
+				<div class="box1to4">
+					<img src="../../img/img1.jpg"  class="box-full-image"/>
+				</div>
+			</li>
+	    </ul>
+	</div>
+</body>
+<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script>
+	mui.init();
+	mui('.mui-scroll-wrapper').scroll();
+</script>
+</html>

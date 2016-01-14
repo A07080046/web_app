@@ -42,6 +42,17 @@ function checkEmail(str){
     }
 }
 /**
+ * 验证数字
+*/
+function checkNum(str){
+    var re = /^[0-9]*$ /
+    if(re.test(str)){
+        return true;
+    }else{
+        return false;
+    }
+}
+/**
  * 验证身份证号码
  * @param {Object} card
  */

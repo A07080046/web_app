@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/yxjqd/settlement.css" />
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 id="title" class="mui-title">结算</h1>
+	</header>
+	<nav class="mui-bar mui-bar-tab">
+	    <a class="mui-tab-item mui-active" href="#">
+	     	 合计：<span id="totalPrice">￥12345.00</span>
+	    </a>
+	    <a class="mui-tab-item" href="#">
+			<button type="button" class="mui-btn mui-btn-danger">支付</button>
+	    </a>
+	</nav>
+	<div class="mui-content">
+		<div id="edtAddress" class="mui-table-view-cell">
+			<a class="mui-navigate-right">
+				<div id="userName" class="inline">收货人：王敏</div><div id="telPhone" class="inline">18685306265</div>
+				<p id="userAddress" class="mui-ellipsis-2">收货地址：贵阳云岩区安云路樱花巷</p>
+			</a>
+		</div>
+		<div style="margin-top: 10px;">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="../img/img1.jpg">
+						<div class="mui-media-body">
+							<div class="mui-ellipsis">云南草莓，美容养颜，新鲜甜美</div>
+							<span class="li-price">￥12</span>
+							<div class="float-right">X2</div>								
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="../img/img2.jpg">
+						<div class="mui-media-body">
+							<div class="mui-ellipsis">云南草莓，美容养颜，新鲜甜美</div>
+							<span class="li-price">￥12</span>
+							<div class="float-right">X2</div>	
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="../img/img3.jpg">
+						<div class="mui-media-body">
+							<div class="mui-ellipsis">云南草莓，美容养颜，新鲜甜美</div>
+							<span class="li-price">￥12</span>
+							<div class="float-right">X2</div>	
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="use-integral">
+			<div class="mui-input-row mui-checkbox">
+				<label>你的积分：1982，可兑换19元</label>
+				<input name="checkbox1" value="Item 3" type="checkbox" >
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/thirdparty/mui.min.js" ></script>
+<script>
+	mui.init();
+</script>
+</html>
