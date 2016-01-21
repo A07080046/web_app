@@ -21,7 +21,10 @@
 		vertical-align: middle;
 	}
 	.font-gray {
-		font-size: 14px;
+		font-size: 16px;
+	}
+	#totalMoney {
+		font-size: 18px;
 	}
 	.font-red {
 		margin-top: 5px;
@@ -81,20 +84,20 @@
 		<div class="total">
 			<div class="left-num">
 				<div class="font-gray">累计佣金</div>
-				<div class="li-price">￥12345.34</div>	
-			</div><div class="right-forward">
-				<img src="../../img/order/forward.png" /></div>
+				<div id="totalMoney" class="li-price"><!--￥12345.34--></div>
+			</div><!--<div class="right-forward">
+				<img src="../../img/order/forward.png" /></div>-->
 		</div>
 		<div class="grade">
 			<div class="top">
 				<div>一级分润</div>
-				<div>￥321.43</div>
+				<div id="classAMoney"><!--￥321.43--></div>
 			</div><div class="bottom">
 				<div>二级分润</div>
-				<div>￥541.43</div>
+				<div id="classBMoney"><!--￥541.43--></div>
 			</div><div class="top">
 				<div>三级分润</div>
-				<div>￥651.43</div>
+				<div id="classCMoney"><!--￥651.43--></div>
 			</div>
 		</div>
 		<div class="fullbottom">
@@ -102,8 +105,30 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+<script src="../../js/utils/app.js"></script>
 <script>
+	"use strict";
 	mui.init();
+	var params = app.router.getParameter();
+	$(function(){
+		var url = app.route.ROUTE_GET_THIRDPARTY_STATISTICS_DATA;
+		var data = {openID: params.openid};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : callback,
+		});
+	});
+	function callback(data){
+		if (data.success === true && data.context) {
+			$("#totalMoney").html("￥"+data.context.totalMoney);
+			$("#classAMoney").html("￥"+data.context.classAMoney);
+			$("#classBMoney").html("￥"+data.context.classBMoney);
+			$("#classCMoney").html("￥"+data.context.classCMoney);
+		}
+	}
+
 </script>
 </html>

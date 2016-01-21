@@ -93,3 +93,14 @@ function checkZipcode(str){
 
     }
 }
+/**
+ * 验证数字(包含小数点)
+*/
+function checkNum(str){
+    var re = /^[0-9]+.?[0-9]*$/;
+    if(re.test(str)){
+        return true;
+    }else{
+        return false;
+    }
+}

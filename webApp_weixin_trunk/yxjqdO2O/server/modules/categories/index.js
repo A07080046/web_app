@@ -1,7 +1,7 @@
 module.exports = (function() {
 
     var successData = {
-        "status": "success",
+        "success": true,
         "msg": "获取数据成功",
         "context": {}
     };
@@ -26,11 +26,11 @@ module.exports = (function() {
     function Mgr() {
     }
     Mgr.prototype.register = function(app) {
-        app.post(['/getCategoriesList', '/getSearchResult'], function (req, res) {
+        app.post(['/getGoodsList', '/searchData'], function (req, res) {
             res.setHeader("Access-Control-Allow-Origin", "*");
             res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
             res.setHeader("Cache-Control", "no-cache");
-            var data = JSON.parse(req.body.data);
+            var data = JSON.parse(Object.keys(req.body)[0]);
             var pageNo = data.pageNo;
             if (pageNo > 3) {
                 setTimeout(function() {

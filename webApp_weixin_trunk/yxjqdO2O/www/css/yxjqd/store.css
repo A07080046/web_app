@@ -2,56 +2,79 @@
 	position: fixed;
 	width: 100%;
 	height: 100px;
-	background: url(../../img/store-back.jpg) no-repeat;
+	background: url(../../img/home/banner.png) no-repeat;
 	background-size: 100% 100%;
 }
+
 .store-logo {
 	position: absolute;
-	top: 54px;
+	border-radius: 33px;
+	background-color: #ccc;
+	padding: 3px;
+	top: 56px;
 	left: 20px;
-	width: 60px;
-	height: 60px;
+	width: 66px;
+	height: 66px;
 }
+
 .store-logo img {
+	border-radius: 30px;
 	width: 60px;
 	height: 60px;
 }
+
 .store-info {
-	padding-top: 20px;
-	margin-left: 100px;
+	padding-top: 8px;
+	margin-left: 20px;
 	line-height: 25px;
 }
+
 .store-info .name {
 	font-size: 16px;
 	color: red;
 }
+
 .store-info .info {
 	font-size: 12px;
 }
+
 .store-like {
 	position: absolute;
 	top: 5px;
 	right: 5px;
-	text-align: center;
-	
+	text-align: right;
+	background: #333333;
+	opacity: 0.7;
 }
+
 .store-like span {
-	color: red;
+	padding-right: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	color: white;
 }
+
 .store-like .num {
 	font-size: 12px;
 }
+
 .store-ad {
-	margin-top: 32px;
+	position: absolute;
+	margin-top: 27px;
 	font-size: 14px;
+	z-index: 100;
 }
+
 .store-ad .title {
-	margin-left: 110px;
+	margin-left: 95px;
 	color: red;
 }
 
 .mui-scroll-wrapper {
-	top: 194px;
+	top: 175px;
+}
+.mui-bar-nav~.mui-content .mui-pull-top-pocket {
+	top: 0;
 }
 .mui-table-view.mui-grid-view .mui-table-view-cell {
 	font-size: 14px;
@@ -59,4 +82,11 @@
 }
 .mui-table-view-cell .info {
 	color: #A95880;
+	font-size: 12px;
+}
+.line-through {
+	font-size: 12px;
+}
+.li-price {
+	font-size: 16px;
 }

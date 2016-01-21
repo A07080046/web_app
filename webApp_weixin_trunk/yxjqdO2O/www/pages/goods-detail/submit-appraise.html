@@ -20,7 +20,7 @@
 				height: 18px;
 				text-align: center;
 			}
-			
+
 			.icon_lists .icon {
 				font-size: 32px;
 				line-height: 60px;
@@ -30,7 +30,7 @@
 				-moz-transition: font-size 0.25s ease-out 0s;
 				transition: font-size 0.25s ease-out 0s;
 			}
-			
+
 			.icon_lists .icon:hover {
 				font-size: 40px;
 			}
@@ -61,11 +61,12 @@
 			<button onclick="sumitAppraise()" class="mui-btn mui-btn-block" style="background-color: red;color: white;">提交</button>
 		</div>
 	</body>
-	<script type="text/javascript" src="../../js/thirdparty/mui.min.js"></script>
+	<script src="../../js/thirdparty/mui.min.js"></script>
 	<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
 	<script src="../../js/thirdparty/spin.min.js"></script>
 	<script src="../../js/utils/app.js"></script>
-	<script charset="utf-8">
+	<script>
+		"use strict";
 		mui.init({
 			swipeBack: true
 		});
@@ -129,7 +130,7 @@
 			var url = app.route.ROUTE_POST_APPRAISE_DATA;
 			var data = {
 				goodsID: params.goodsID,
-				openid: params.openid,
+				openID: params.openid,
 				comments: content,
 				score: score,
 			};
@@ -143,9 +144,9 @@
 		var saved = app.router.getSavedData();
 
 		function postAppraisDataSuccess(data) {
-			if (data.status === 'success') {
-				mui.toast('提交成功');
-				app.router.showView('../order.html', "1", saved);
+			if (data.success === true) {
+				app.router.setBackParameter({'shouldShowSuccess':true});
+				mui.back();
 			} else {
 				mui.toast('提交失败');
 			}

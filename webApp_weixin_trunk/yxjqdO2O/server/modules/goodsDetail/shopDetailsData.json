@@ -1,0 +1,12 @@
+{
+	"success": true,
+	"msg": "获取数据成功",
+	"context": {
+		"shopName": "阡陌店",
+		"shopIntroduction": "光临本店，将是您最正确的决定",
+		"shopCollection": 4165,
+		"shopNotice": "本店励志于让客户感受到最佳的体验，光临本店，将是您最正确的决定",
+		"shopImg": "http://localhost:3000/goods_details/goods-2.jpg",
+		"shopBackImg": "http://localhost:3000/goods_details/shop_bg.jpg"
+	}
+}

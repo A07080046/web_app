@@ -12,15 +12,15 @@
 <style>
 	.fulltop img {
 		width: 100%;
-		height: 250px;
+		height: 230px;
 	}
 	.erweima {
 		margin: 20px auto;
 		text-align: center;
 	}
 	.erweima img {
-		width: 150px;
-		height: 150px;
+		width: 200px;
+		height: 200px;
 	}
 	.mui-bar-tab .mui-tab-item.share-url {
 		background: url(../../img/distributor/connection_distribution_normal.png) no-repeat;
@@ -51,8 +51,8 @@
 		float: right;
 		width: 272px;
 		height: 264px;
-		margin-top: 3px;
-		margin-right: 15px;
+		margin-top: 5px;
+		margin-right: 25px;
 	}
 	.case {
 		padding: 15px;
@@ -96,7 +96,7 @@
 			<img src="../../img/picture.png" />
 		</div>
 		<div class="erweima">
-			<img src="../../img/distributor/160107202032.png" />
+			<!--<img src="../../img/distributor/160107202032.png" />-->
 		</div>
 		<div class="share over-share hide">
 			<img src="../../img/distributor/arrow.png" />
@@ -110,13 +110,34 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
-<script type="text/javascript" src="../../js/thirdparty/zepto.1.1.6.min.js" ></script>
+<script src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/zepto.1.1.6.min.js" ></script>
+<script src="../../js/utils/app.js"></script>
 <script>
+	"use strict";
 	mui.init();
+	var params = app.router.getParameter();
+	$(function(){
+		var url = app.route.ROUTE_GET_THIRDPARTY_CODE_DATA;
+		var data = {openID: params.openid,};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : callback,
+		});
+	});
+	function callback(data){
+		if (data.success === true && data.context) {
+			$(".erweima").html('<img src="'+data.context.distributorQR+'" />');
+		}
+	}
 	$(".share-url").on('tap',function(){
 		$("body").append('<div class="modal-backdrop over-share"></div>');
 		$(".share").show();
+		setTimeout(function() {
+			$(".modal-backdrop").remove();
+			$(".share").hide();
+		}, 3000);
 	});
 	$("body").on('tap','.over-share',function(){
 		$(".modal-backdrop").remove();

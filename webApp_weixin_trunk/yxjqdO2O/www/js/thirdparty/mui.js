@@ -1870,7 +1870,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 		return $.addAction('inits', init);
 	};
 	/**
-	 * 处理html5版本subpages 
+	 * 处理html5版本subpages
 	 */
 	$.addInit({
 		name: 'iframe',
@@ -2222,7 +2222,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 					webview = plus.webview.getWebviewById(id);
 				}
 
-				//之前没有，那就新创建	
+				//之前没有，那就新创建
 				if (!webview) {
 					webview = plus.webview.create(options.url, id, $.windowOptions(options.styles), $.extend({
 						preload: true
@@ -2259,7 +2259,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 				var webviewCache = $.webviews[first];
 				if (webviewCache && webviewCache.webview) {
 					//需要将自己打开的所有页面，全部close；
-					//关闭该预加载webview	
+					//关闭该预加载webview
 					$.closeAll(webviewCache.webview);
 				}
 				//删除缓存
@@ -2557,7 +2557,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 						if (wobj.id === plus.runtime.appid) { //首页
 							//首页不存在opener的情况下，后退实际上应该是退出应用；
 							//这个交给项目具体实现，框架暂不处理；
-							//plus.runtime.quit();	
+							//plus.runtime.quit();
 						} else { //其他页面，
 							if (wobj.preload) {
 								wobj.hide("auto");
@@ -3010,7 +3010,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 			left : box.left + window.pageXOffset - element.clientLeft
 		};
 	};
-})(mui, window); 
+})(mui, window);
 /**
  * mui animation
  */
@@ -4349,7 +4349,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 			} else if (options.up && options.up.auto) { //如果设置了auto，则自动上拉一次
 				pullRefreshApi.pullupLoading();
 			}
-			//暂不提供这种调用方式吧			
+			//暂不提供这种调用方式吧
 			//			if (typeof options === 'string') {
 			//				var methodValue = pullRefreshApi[options].apply(pullRefreshApi, $.slice.call(arguments, 1));
 			//				if (methodValue !== undefined) {
@@ -5965,7 +5965,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 			if (target.parentNode && target.parentNode.classList && target.parentNode.classList.contains(CLASS_SEGMENTED_CONTROL_VERTICAL)) {
 				//vertical 如果preventDefault会导致无法滚动
 			} else {
-				event.preventDefault(); //stop hash change				
+				event.preventDefault(); //stop hash change
 			}
 			//			if (target.hash) {
 			return target;

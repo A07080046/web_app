@@ -78,14 +78,15 @@
 		</ul>
 	</div>
 </body>
-<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/mui.min.js" ></script>
 <script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
 <script src="../../js/utils/app.js"></script>
 <script>
+	"use strict";
 	function getMyDisstributorData() {
 		var url = app.route.ROUTE_GET_MY_DISTRIBUTOR_DATA;
 		var data = {
-			openid: params.openid,
+			openID: params.openid,
 		};
 		app.utils.post({
 			url : url,
@@ -94,7 +95,7 @@
 		});
 	}
 	function getMyDisstributorDataSuccess(data) {
-		if (data.status === 'success' && data.context) {
+		if (data.success === true && data.context) {
 			var context = data.context;
 			saved.data = context;
 			showPage(context);

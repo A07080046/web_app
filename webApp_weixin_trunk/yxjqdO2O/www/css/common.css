@@ -9,6 +9,11 @@ header {
 .mui-bar .mui-title {
 	color: #fff;
 }
+.mui-bar .mui-btn-link {
+    padding-right: 10px;
+    font-size: small;
+    color: white;
+}
 /********浮动**********/
 .left {
 	float: left;
@@ -134,6 +139,18 @@ header {
 	background: linear-gradient(top, #FC703F,#FA4534);
 }
 .case .footer .right:active {
+	background: -webkit-linear-gradient(top, #C32A1B,#C74C1B);
+	background: -moz-linear-gradient(top, #C32A1B,#C74C1B);
+	background: linear-gradient(top, #C32A1B,#C74C1B);
+}
+.case .footer .singal {
+	display: inline-block;
+	width: 100%;
+	background: -webkit-linear-gradient(top, #FC703F,#FA4534);
+	background: -moz-linear-gradient(top, #FC703F,#FA4534);
+	background: linear-gradient(top, #FC703F,#FA4534);
+}
+.case .footer .singal:active {
 	background: -webkit-linear-gradient(top, #C32A1B,#C74C1B);
 	background: -moz-linear-gradient(top, #C32A1B,#C74C1B);
 	background: linear-gradient(top, #C32A1B,#C74C1B);

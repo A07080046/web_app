@@ -1,192 +1,289 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="Access-Control-Allow-Origin" content="*">
-	<meta http-equiv="content-security-policy">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>赢销截拳道电子商城</title>
-	<link rel="stylesheet" href="../../css/mui.min.css" />
-	<link rel="stylesheet" href="../../css/common.css" />
-	<style>
-		.mui-table-view-cell {
-		    padding: 0;
-		    margin-bottom: 10px;
-		}
-		.box1to4 {
-			display:inline-block;
-			position: relative;
-			width: 100%;
-		}
-		.box1to4::after{
-		  display: block;
-		  padding-top: 50%;
-		  content : '';
-		}
-		.box-full-image {
-			width:100%;
-			height:100%;
-			left:0px;
-			top:0px;
-			position:absolute;
-		}
-		.info-container {
-			height: 50px;
-			padding-left: 120px;
-			position: relative;
-			overflow: visible;
-		}
-		.shop-logo-container {
-			width: 80px;
-			height: 80px;
-			border-radius: 80px;
-			background: linear-gradient(#DDDDDD, #8F8F8F);
-			position: absolute;
-			left: 20px;
-    		top: -50px;
-			padding: 4px;
-		}
-		.shop-logo {
-			width: 72px;
-			height: 72px;
-			border-radius: 72px;
-		}
-		.shop-name {
-			font-size: 18px;
-			color:red;
-		}
-		.shop-sign {
-			font-size: 15px;
-			color:darkgray;
-		}
-		.praise-container {
-			height: 50px;
-			width: 80px;
-			position: absolute;
-			top:0px;
-			right:0px;
-			display: flex;
-			align-items: center;
-		}
-		.shop-praise {
-			font-size: 15px;
-			color:darkgray;
-		}
-	</style>
-</head>
-<body style="background-color: #fff;">
-	<header class="mui-bar mui-bar-nav">
-		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		<h1 id="title" class="mui-title">店铺收藏</h1>
-	</header>
-	<div class="mui-content">
-		<ul class="mui-table-view" style="margin-top:0px;">
-			 <li class="mui-table-view-cell">
-				 <div class="box1to4">
-					 <img src="../../img/img1.jpg"  class="box-full-image"/>
-				 </div>
-				<div class="info-container">
-					<div class="shop-logo-container">
-						<img class="shop-logo" src="../../img/logo.png" >
-					</div>
-					<div class="shop-name">LV 官方旗舰店</div>
-					<div class="shop-sign">世界品牌 值得信赖</div>
-					<div class="praise-container">
-						<img src="../../img/personal/collect.png"/>
-						<span class="shop-praise">1000</span>
-					</div>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*">
+		<meta http-equiv="content-security-policy">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>赢销截拳道电子商城</title>
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/common.css" />
+		<style>
+			.mui-table-view-cell {
+				padding: 0;
+				margin-bottom: 10px;
+			}
+
+			.box1to4 {
+				display: inline-block;
+				position: relative;
+				width: 100%;
+			}
+
+			.box1to4::after {
+				display: block;
+				padding-top: 50%;
+				content: '';
+			}
+
+			.box-full-image {
+				width: 100%;
+				height: 100%;
+				left: 0px;
+				top: 0px;
+				position: absolute;
+			}
+
+			.info-container {
+				height: 50px;
+				padding-left: 120px;
+				position: relative;
+				overflow: visible;
+			}
+
+			.shop-logo-container {
+				width: 80px;
+				height: 80px;
+				border-radius: 80px;
+				background: linear-gradient(#DDDDDD, #8F8F8F);
+				position: absolute;
+				left: 20px;
+				top: -50px;
+				padding: 4px;
+			}
+
+			.shop-logo {
+				width: 72px;
+				height: 72px;
+				border-radius: 72px;
+			}
+
+			.shop-name {
+				font-size: 18px;
+				color: red;
+			}
+
+			.shop-sign {
+				font-size: 15px;
+				color: darkgray;
+			}
+
+			.praise-container {
+				height: 50px;
+				width: 80px;
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				display: flex;
+				align-items: center;
+			}
+
+			.shop-praise {
+				font-size: 15px;
+				color: darkgray;
+			}
+		</style>
+	</head>
+
+	<body style="background-color: #fff;">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">店铺收藏</h1>
+		</header>
+		<div class="mui-content">
+			<div id="pullrefresh" class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul id="shop_list_ul" class="mui-table-view" style="margin-top:0px;">
+						<!--<li class="mui-table-view-cell">
+							<div class="box1to4">
+								<img src="../../img/img1.jpg" class="box-full-image" />
+							</div>
+							<div class="info-container">
+								<div class="shop-logo-container">
+									<img class="shop-logo" src="../../img/logo.png">
+								</div>
+								<div class="shop-name">LV 官方旗舰店</div>
+								<div class="shop-sign">世界品牌 值得信赖</div>
+								<div class="praise-container">
+									<img src="../../img/personal/collect.png" />
+									<span class="shop-praise">1000</span>
+								</div>
+							</div>
+						</li>-->
+					</ul>
 				</div>
-			 </li>
-			 <li class="mui-table-view-cell">
-				 <div class="box1to4">
-					 <img src="../../img/img1.jpg"  class="box-full-image"/>
-				 </div>
-				<div class="info-container">
-					<div class="shop-logo-container">
-						<img class="shop-logo" src="../../img/logo.png" >
-					</div>
-					<div class="shop-name">LV 官方旗舰店</div>
-					<div class="shop-sign">世界品牌 值得信赖</div>
-					<div class="praise-container">
-						<img src="../../img/personal/collect.png"/>
-						<span class="shop-praise">1000</span>
-					</div>
-				</div>
-			 </li>
- <li class="mui-table-view-cell">
-	 <div class="box1to4">
-		 <img src="../../img/img1.jpg"  class="box-full-image"/>
-	 </div>
-	<div class="info-container">
-		<div class="shop-logo-container">
-			<img class="shop-logo" src="../../img/logo.png" >
+			</div>
 		</div>
-		<div class="shop-name">LV 官方旗舰店</div>
-		<div class="shop-sign">世界品牌 值得信赖</div>
-		<div class="praise-container">
-			<img src="../../img/personal/collect.png"/>
-			<span class="shop-praise">1000</span>
-		</div>
-	</div>
- </li>
-		</ul>
-	</div>
-</body>
-<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
-<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
-<script src="../../js/utils/app.js"></script>
-<script>
-	function getShopCollectionData() {
-		var url = app.route.ROUTE_GET_SHOP_COLLECTION_DATA;
-		var data = {
-			openid: params.openid,
-		};
-		app.utils.post({
-			url : url,
-			data: data,
-			success : getShopCollectionDataSuccess,
+	</body>
+	<script src="../../js/thirdparty/mui.min.js"></script>
+	<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+	<script src="../../js/thirdparty/spin.min.js"></script>
+	<script src="../../js/utils/app.js"></script>
+	<script>
+		"use strict";
+		mui.init({
+			swipeBack: true,
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: {
+					callback: pulldownRefresh
+				},
+				up: {
+					contentrefresh: '正在加载...',
+					callback: pullupRefresh
+				}
+			}
 		});
-	}
-	function getShopCollectionDataSuccess(data) {
-		if (data.status === 'success' && data.context && data.context.goodsList) {
-			var goodsList = data.context.goodsList;
-			saved.data = goodsList;
-			showPage(goodsList);
-		}
-	}
-	function showPage(data) {
-		var html = '';
-		for (var i in data) {
-			var item = data[i];
-			html += '<li class="mui-table-view-cell">';
-			html += '	<div class="box1to4">';
-			html += '		<img src="'+item.shopBackImg+'"  class="box-full-image"/>';
-			html += '	</div>';
-			html += '	<div class="info-container">';
-			html += '		<div class="shop-logo-container">';
-			html += '			<img class="shop-logo" src="'+item.shopImg+'" >';
-			html += '		</div>';
-			html += '		<div class="shop-name">'+item.shopName+'</div>';
-			html += '		<div class="shop-sign">'+item.shopIntroduction+'</div>';
-			html += '		<div class="praise-container">';
-			html += '			<img src="../../img/personal/collect.png"/>';
-			html += '			<span class="shop-praise">'+item.shopCollection+'</span>';
-			html += '		</div>';
-			html += '	</div>';
-			html += '</li>';
-		}
-		$('.mui-content .mui-table-view').html(html);
-		app.router.resetScollerBar();
-	}
+		mui('.mui-scroll-wrapper').scroll();
 
-	mui.init();
+		function getScrollTop() {
+			return mui('#pullrefresh').pullRefresh().y;
+		}
 
-	var params = app.router.getParameter();
-	var saved = app.router.getSavedData();
-	if (saved.data) {
-		showPage(saved.data);
-	} else {
-		getShopCollectionData();
-	}
-</script>
+		function setScrollTop(y) {
+			setTimeout(function() {
+				mui('#pullrefresh').pullRefresh().scrollTo(0, y);
+			}, 0);
+		}
+
+		function pulldownRefresh() {
+			query.pageNo = FIRST_PAGE_NO;
+			query.dir = 'down';
+			getShopCollectionData(query.pageNo);
+		}
+
+		function pullupRefresh() {
+			query.pageNo++;
+			query.dir = 'up';
+			getShopCollectionData(query.pageNo);
+		}
+
+		function getShopCollectionData(pageNo, needWait) {
+			var url = app.route.ROUTE_GET_SHOP_COLLECTION_DATA;
+			var data = {
+				openID: params.openid,
+				pageNo: pageNo,
+				rows: 5,
+			};
+			needWait && app.utils.setWait("请稍后...");
+			app.utils.post({
+				url: url,
+				data: data,
+				success: getShopCollectionDataSuccess,
+				error: onGetListError
+			});
+		}
+
+		function onGetListError(error) {
+			if (query.dir === 'down') {
+				mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+			} else if (query.dir === 'up') {
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+			}
+			query.dir = 'none';
+		};
+
+		function showEmptyList() {
+			$('#top5_list').html('<div class="empty_list">没有相关数据</div>');
+		}
+
+		function getShopCollectionDataSuccess(data) {
+			if (data.success === true) {
+				var context = data.context || {};
+				var list = data.context.goodsList;
+				console.log(list);
+				if (!list || !list.length) {
+					if (query.pageNo == FIRST_PAGE_NO) {
+						showEmptyList();
+					}
+				} else {
+					if (query.dir === 'up') {
+						showList(list, saved.list.length);
+						saved.list = saved.list.concat(list);
+					} else {
+						showList(list);
+						saved.list = list;
+					}
+				}
+				if (query.dir === 'down') {
+					mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+					mui('#pullrefresh').pullRefresh().refresh(true);
+				} else if (query.dir === 'up') {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+				}
+			} else {
+				if (query.dir === 'down') {
+					mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+				} else if (query.dir === 'up') {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+				}
+				if (query.pageNo == FIRST_PAGE_NO) {
+					showEmptyList();
+				}
+			}
+			query.dir = 'none';
+			app.utils.clearWait();
+		}
+
+		function showList(list, append) {
+			var html_2 = '';
+			for (var i in list) {
+				html_2 += showCollectListData(list[i], i, append);
+			}
+			if (!append) {
+				$('#shop_list_ul').html(html_2);
+			} else {
+				$('#shop_list_ul').append(html_2);
+			}
+			if (query.dir === "none") {
+				app.router.resetScollerBar(setScrollTop);
+			}
+		}
+
+		function showCollectListData(item, index, append) {
+			index = index * 1 + (append || 0) * 1;
+			var html_2 = '';
+			html_2 += '<li data-index=' + index + ' class="mui-table-view-cell">';
+			html_2 += '	<div class="box1to4">';
+			html_2 += '		<img src="' + item.shopBackImg + '"  class="box-full-image"/>';
+			html_2 += '	</div>';
+			html_2 += '	<div class="info-container">';
+			html_2 += '		<div class="shop-logo-container">';
+			html_2 += '			<img class="shop-logo" src="' + item.shopImg + '" >';
+			html_2 += '		</div>';
+			html_2 += '		<div class="shop-name">' + item.shopName + '</div>';
+			html_2 += '		<div class="shop-sign">' + item.shopIntroduction + '</div>';
+			html_2 += '		<div class="praise-container">';
+			html_2 += '			<img src="../../img/personal/collect.png"/>';
+			html_2 += '			<span class="shop-praise">' + item.shopCollection + '</span>';
+			html_2 += '		</div>';
+			html_2 += '	</div>';
+			html_2 += '</li>';
+			return html_2;
+		}
+		$('#pullrefresh').on('tap', 'li', function() {
+			var index = $(this).data('index');
+			var data = {
+				goodsID: saved.list[index].goodsID,
+				goodsName: saved.list[index].goodsName,
+				openID: params.openid,
+			}
+			saved.query = query;
+			app.router.showView('store.html', data, saved, getScrollTop);
+		});
+		var FIRST_PAGE_NO = 0;
+		var params = app.router.getParameter();
+		var saved = app.router.getSavedData();
+		var query = saved.query || {
+			pageNo: FIRST_PAGE_NO,
+			dir: 'none'
+		};
+		if (saved.list) {
+			showList(saved.list);
+		} else {
+			getShopCollectionData(query.pageNo, true);
+		}
+	</script>
+
 </html>

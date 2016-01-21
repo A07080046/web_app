@@ -32,7 +32,7 @@
 		font-size: 14px;
 		line-height: 35px;
 	}
-	.btn-backimg input[type=text] {
+	.btn-backimg input[type=text],input[type=number] {
 		float: right;
 		margin-bottom: 0;
 		width: 200px;
@@ -57,7 +57,7 @@
 		<h1 id="title" class="mui-title">申请提现</h1>
 	</header>
 	<nav class="mui-bar mui-bar-tab">
-	    <a class="mui-tab-item" href="#">
+	    <a id="submit" class="mui-tab-item" href="#">
 	     	 确&nbsp;&nbsp;定
 	    </a>
 	</nav>
@@ -69,11 +69,11 @@
 				<div style="clear: both;"></div>
 			</div>
 			<div class="btn-backimg">
-				<span>可提资金</span><input type="text" class="font-red" value="￥1234.00" readonly="readonly" />
+				<span>可提资金</span><input id="leftBrokerage" type="text" class="font-red" value="" readonly="readonly" />
 				<div style="clear: both;"></div>
 			</div>
 			<div class="btn-backimg">
-				<span>提现金额</span><input type="text" placeholder="请输入您需要提现的金额" />
+				<span>提现金额</span><input id="money" type="text" placeholder="请输入需要提现的金额" />
 				<div style="clear: both;"></div>
 			</div>
 			<div class="btn-backimg">
@@ -83,8 +83,50 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+<script src="../../js/utils/app.js"></script>
+<script src="../../js/utils/regular.js"></script>
 <script>
+	"use strict";
 	mui.init();
+	var leftBrokerage = 0;
+	var parames = app.router.getParameter();
+	$(function(){
+		leftBrokerage = parames.leftBrokerage;
+		$("#leftBrokerage").val(leftBrokerage);
+	});
+
+	$("#submit").on('tap',function(){
+		var money = $("#money").val();
+		if(money == ''){
+			mui.toast("请输入提现金额！");
+			return;
+		}
+		if(!checkNum(money)){
+			mui.toast("请不要输入非法数字！");
+			return;
+		}
+		if(parseFloat(money) > parseFloat(leftBrokerage)){
+			mui.toast("提现金额不能大于可提金额！");
+			return;
+		}
+		var url = app.route.ROUTE_GET_THIRDPARTY_APPLY_SUBMIT;
+		var data = {openID: parames.openid,money:money};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : callback,
+		});
+	});
+	function callback(data){
+		if (data.success === true) {
+			alert("提现成功！");
+			app.router.setBackParameter({'updataData':true});
+			mui.back();
+		}else{
+			mui.toast(data.msg);
+		}
+	};
 </script>
 </html>

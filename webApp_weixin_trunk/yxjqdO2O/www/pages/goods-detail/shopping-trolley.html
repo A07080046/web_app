@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title>赢销截拳道电子商城</title>
-    <link href="../../css/mui.min.css" rel="stylesheet"/>
-    <link href="../../css/common.css" rel="stylesheet"/>
-</head>
-<body>
-	<header class="mui-bar mui-bar-nav">
-		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		<a class="mui-icon mui-pull-right"><img style="width: 26px;height: 24px;" src="../../img/goods-detail/iconfont-gouwu.png"></a>
-		<h1 class="mui-title">购物车</h1>
-	</header>
-	<!--底部导航-->
-	<nav class="mui-bar mui-bar-tab">
-		<div class="mui-tab-item" href="#" style="background-color:#F14E41;color: black;clear: all;">
-			<input id="CheckedAll" type="checkbox">全选</input>
-	  	</div>
-		<a class="mui-tab-item" href="#" style="background-color: #F14E41;color: blue;">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>赢销截拳道电子商城</title>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/common.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<!--<a class="mui-icon mui-pull-right"><img style="width: 26px;height: 24px;" src="../../img/goods-detail/iconfont-gouwu.png"></a>-->
+			<h1 class="mui-title">购物车</h1>
+		</header>
+		<!--底部导航-->
+		<nav class="mui-bar mui-bar-tab">
+			<div class="mui-tab-item" href="#" style="background-color:#F14E41;color: black;clear: all;">
+				<input id="CheckedAll" type="checkbox">全选</input>
+			</div>
+			<a class="mui-tab-item" href="#" style="background-color: #F14E41;color: blue;">
 			¥1283.00
 	  	</a>
-	  	<a class="mui-tab-item" href="#" style="background-color: red;color: black;">
+			<a class="mui-tab-item" id="settlement" style="background-color: red;color: black;">
 	    		结算
 	  	</a>
-	</nav>
-	<style>
-		.mui-table-view .mui-media-object {
-		    max-width: 100px;
-		    height: 100px;
-		}
-	</style>
-	<div class="mui-content mui-scroll">
-		<ul class="mui-table-view" id="trolley-list">
-			<!--<li class="mui-table-view-cell">
+		</nav>
+		<style>
+			.mui-table-view .mui-media-object {
+				max-width: 100px;
+				height: 100px;
+			}
+		</style>
+		<div class="mui-content mui-scroll">
+			<ul class="mui-table-view" id="trolley-list">
+				<!--<li class="mui-table-view-cell">
 				<a  href="javascript:;">
 					<div class="mui-slider-right mui-disabled">
 						<a class="mui-btn mui-btn-red">删除</a>
@@ -123,107 +125,120 @@
 					</div>
 				</a>
 			</li>>-->
-		</ul>
-	</div>
-	
-	<div class="case hide">
-		<div class="top">提&nbsp;&nbsp;示</div>
-		<div class="center">
-			是否删除选中商品？
+			</ul>
 		</div>
-		<div class="footer">
-			<div class="left cancel">取&nbsp;&nbsp;消</div><div class="right confirm">确&nbsp;&nbsp;定</div>
-		</div>
-	</div>
-	<script src="../../js/thirdparty/mui.min.js"></script>
-    <script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
-    <script src="../../js/utils/app.js"></script>
-    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf-8">
-      	mui.init();
-      	$("#CheckedAll").click(function () {
-            if ($(this).is(":checked")) {
-                $("[name=items]:checkbox").prop("checked", true);
-            } else {
-                $("[name=items]:checkbox").prop("checked", false);
-            }
-        });
-   		var delNode;
-		//关闭
-		$(".case").on('tap','.cancel',function() {
-			$(".modal-backdrop").remove();
-			$(".case").hide(300);
-		});
-		
-		//确定
-		$(".case").on('tap','.confirm',function(e) {
-			delNode.parentNode.removeChild(delNode);
-			$(".modal-backdrop").remove();
-			$(".case").hide(300);
-		});
-		
-        $('#trolley-list').on('tap', '.mui-btn', function(event) {
-        		$("body").append('<div class="modal-backdrop"></div>');
-			$(".case").show();
-			delNode=this.parentNode.parentNode;
-		});
-				
-    		function getTrolleyList() {
-		var url = app.route.ROUTE_GET_TROLLEY_LIST;
-		var data = {
-			openid: '',
-			pageNo:'0',
-		};
-		app.utils.post({
-			url : url,
-			data: data,
-			success : getTrolleyListSuccess
-		});
-	};
-		function getTrolleyListSuccess(data) {
-			if (data.status === 'success' && data.context) {
-				var list = data.context.goodsList;
-				showList(list,'up');
-			}
-		};
-		getTrolleyList();
 
-	function getListItem(item) {
-			html = '';
-			html += '<li class="mui-table-view-cell mui-media">'
-			html += '<div class="mui-slider-right mui-disabled">'
-			html += 		'<a class="mui-btn mui-btn-red">删除</a>'
-			html += 	'</div>'
-			html += 	'<div class="mui-slider-handle">'
-			html += 		'<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">'
-			html += 		'<img class="mui-media-object mui-pull-left" src="../../img/goods-detail/muwu.jpg">'
-			html += 		'<div class="mui-media-body">'
-			html += 			'<p>'+item.goodsName+'</p>'
-			html += 			'<div style="clear: all;font-size: small;color: gray">'
-			html += 				'<span style="vertical-align: middle;">购买数量：</span>'
-			html += 				'<div class="mui-numbox" data-numbox-step="1" data-numbox-min="0" style="float: right;">'
-			html += 					'<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>'
-			html += 					'<input class="mui-input-numbox" type="number" value='+item.goodsNum+' />'
-			html += 					'<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>'
-			html += 				'</div>'
-			html += 			'</div>'
-			html += 		'</div>'
-			html += 		'<div style="clear: all;font-size: small;color: gray">¥'+item.goodsPrice+'</div>'
-			html += 	'</div>'
-			html += '</li>'
-			return html;
-	}
-		function showList(list, append) {
-			html = '';
-			for (var i in list) {
-				html += getListItem(list[i]);
+		<div class="case hide">
+			<div class="top">提&nbsp;&nbsp;示</div>
+			<div class="center">
+				是否删除选中商品？
+			</div>
+			<div class="footer">
+				<div class="left cancel">取&nbsp;&nbsp;消</div>
+				<div class="right confirm">确&nbsp;&nbsp;定</div>
+			</div>
+		</div>
+		<script src="../../js/thirdparty/mui.min.js"></script>
+		<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+		<script src="../../js/utils/app.js"></script>
+		<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+		<script>
+			"use strict";
+			mui.init();
+			$("#CheckedAll").click(function() {
+				if ($(this).is(":checked")) {
+					$("[name=items]:checkbox").prop("checked", true);
+				} else {
+					$("[name=items]:checkbox").prop("checked", false);
+				}
+			});
+			var delNode;
+			//关闭
+			$(".case").on('tap', '.cancel', function() {
+				$(".modal-backdrop").remove();
+				$(".case").hide(300);
+			});
+			//确定
+			$(".case").on('tap', '.confirm', function(e) {
+				delNode.parentNode.removeChild(delNode);
+				$(".modal-backdrop").remove();
+				$(".case").hide(300);
+			});
+			$('#trolley-list').on('tap', '#deleteTrolleyItem', function(event) {
+				$("body").append('<div class="modal-backdrop"></div>');
+				$(".case").show();
+				delNode = this.parentNode.parentNode;
+			});
+
+			function getTrolleyList() {
+				var url = app.route.ROUTE_GET_TROLLEY_LIST;
+				var data = {
+					openID: params.openid,
+					pageNo: '0',
+				};
+				app.utils.post({
+					url: url,
+					data: data,
+					success: getTrolleyListSuccess
+				});
+			};
+
+			function getTrolleyListSuccess(data) {
+				if (data.success === true && data.context) {
+					var list = data.context.goodsList;
+					showList(list, 'up');
+				}
+			};
+
+			function getListItem(item) {
+				var html = '';
+				html += '<li class="mui-table-view-cell mui-media">'
+				html += '<div class="mui-slider-right mui-disabled">'
+				html += '<a class="mui-btn mui-btn-red" id="deleteTrolleyItem">删除</a>'
+				html += '</div>'
+				html += '<div class="mui-slider-handle">'
+				html += '<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">'
+				html += '<img class="mui-media-object mui-pull-left" src="../../img/goods-detail/muwu.jpg">'
+				html += '<div class="mui-media-body">'
+				html += '<p>' + item.goodsName + '</p>'
+				html += '<div style="clear: all;font-size: small;color: gray">'
+				html += '<span style="vertical-align: middle;">购买数量：</span>'
+				html += '<div class="mui-numbox" data-numbox-step="1" data-numbox-min="0" style="float: right;">'
+				html += '<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>'
+				html += '<input class="mui-input-numbox" type="number" value=' + item.goodsNum + ' />'
+				html += '<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>'
+				html += '</div>'
+				html += '</div>'
+				html += '</div>'
+				html += '<div style="clear: all;font-size: small;color: gray">¥' + item.goodsPrice + '</div>'
+				html += '</div>'
+				html += '</li>'
+				return html;
 			}
-			if (!append) {
-				$('#trolley-list').html(html);
-			} else {
-				$('#trolley-list').append(html);
+
+			function showList(list, append) {
+				var html = '';
+				for (var i in list) {
+					html += getListItem(list[i]);
+				}
+				if (!append) {
+					$('#trolley-list').html(html);
+				} else {
+					$('#trolley-list').append(html);
+				}
 			}
-		}
-    </script>
-</body>
+			var params = app.router.getParameter();
+			var saved = app.router.getSavedData();
+			if (params) {
+				getTrolleyList();
+			}
+			$("#settlement").on('tap', function() {
+				app.router.showView('./settlement.html', 1, saved);
+			});
+			$('.mui-content').on('tap', '.mui-media-object', function() {
+				app.router.showView('./goods-details.html', 1, saved);
+			});
+		</script>
+	</body>
+
 </html>

@@ -58,67 +58,11 @@
 				<div id="scroll" class="mui-scroll-wrapper">
 					<div class="mui-scroll">
 						<ul class="mui-table-view">
-							<li class="mui-table-view-cell">
+							<!--<li class="mui-table-view-cell">
 								<div><span class="font-gray">分润：</span><span class="font-red">￥18.00</span></div>
 								<div class="font-gray">时间：2016-01-07</div>
-							</li>
-							<li class="mui-table-view-cell">
-								<div><span class="font-gray">分润：</span><span class="font-red">￥18.00</span></div>
-								<div class="font-gray">时间：2016-01-07</div>
-							</li>
-							<li class="mui-table-view-cell">
-								<div><span class="font-gray">分润：</span><span class="font-red">￥18.00</span></div>
-								<div class="font-gray">时间：2016-01-07</div>
-							</li>
-							<li class="mui-table-view-cell">
-								<div><span class="font-gray">分润：</span><span class="font-red">￥18.00</span></div>
-								<div class="font-gray">时间：2016-01-07</div>
-							</li>
-							<li class="mui-table-view-cell">
-								<div><span class="font-gray">分润：</span><span class="font-red">￥18.00</span></div>
-								<div class="font-gray">时间：2016-01-07</div>
-							</li>
-							<li class="mui-table-view-cell">
-								<div><span class="font-gray">分润：</span><span class="font-red">￥18.00</span></div>
-								<div class="font-gray">时间：2016-01-07</div>
-							</li>
-							<li class="mui-table-view-cell">
-								<div><span class="font-gray">分润：</span><span class="font-red">￥18.00</span></div>
-								<div class="font-gray">时间：2016-01-07</div>
-							</li>
-							<li class="mui-table-view-cell">
-								第一个选项卡子项-10
-							</li>
-							<li class="mui-table-view-cell">
-								第一个选项卡子项-11
-							</li>
-							<li class="mui-table-view-cell">
-								第一个选项卡子项-12
-							</li>
-							<li class="mui-table-view-cell">
-								第一个选项卡子项-13
-							</li>
-							<li class="mui-table-view-cell">
-								第一个选项卡子项-14
-							</li>
-							<li class="mui-table-view-cell">
-								第一个选项卡子项-15
-							</li>
-							<li class="mui-table-view-cell">
-								第一个选项卡子项-16
-							</li>
-							<li class="mui-table-view-cell">
-								第一个选项卡子项-17
-							</li>
-							<li class="mui-table-view-cell">
-								第一个选项卡子项-18
-							</li>
-							<li class="mui-table-view-cell">
-								第一个选项卡子项-19
-							</li>
-							<li class="mui-table-view-cell">
-								第一个选项卡子项-20
-							</li>
+							</li>-->
+							
 						</ul>
 					</div>
 				</div>
@@ -127,18 +71,11 @@
 				<div id="scroll" class="mui-scroll-wrapper">
 					<div class="mui-scroll">
 						<ul class="mui-table-view">
-							<li class="mui-table-view-cell">
+							<!--<li class="mui-table-view-cell">
 								<div><span class="font-gray">提现：</span><span class="font-red">￥18.00</span></div>
 								<div class="font-gray">时间：2016-01-07</div>
-							</li>
-							<li class="mui-table-view-cell">
-								<div><span class="font-gray">提现：</span><span class="font-red">￥18.00</span></div>
-								<div class="font-gray">时间：2016-01-07</div>
-							</li>
-							<li class="mui-table-view-cell">
-								<div><span class="font-gray">提现：</span><span class="font-red">￥18.00</span></div>
-								<div class="font-gray">时间：2016-01-07</div>
-							</li>
+							</li>-->
+							
 						</ul>
 					</div>
 				</div>
@@ -146,9 +83,81 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+<script src="../../js/utils/app.js"></script>
 <script>
+	"use strict";
 	mui.init();
 	mui('.mui-scroll-wrapper').scroll();
+	var params = app.router.getParameter();
+	var saved = app.router.getSavedData();
+	$(function(){
+		if (saved.item1) {
+			callbackItem1(saved.item1);
+		} else {
+			initItem1();
+		}
+		if (saved.item2) {
+			callbackItem2(saved.item2);
+		} else {
+			initItem2();
+		}
+	});
+	
+	function initItem1(){
+		var url = app.route.ROUTE_GET_THIRDPARTY_DETAIL_DATA;
+		var data = {openID: params.openid,};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : callbackItem1,
+		});
+	}
+	function callbackItem1(data){
+		if (data.success === true && data.context) {
+			var profitInfo = data.context.profitInfo;
+			var li = '';
+			for(var i=0;i<profitInfo.length;i++){
+				li += htmlItem1(profitInfo[i]);
+			}
+			$("#item1 .mui-table-view").html(li);
+			saved.item1 = data;
+		}
+	}
+	function htmlItem1(list){
+		var li = '<li class="mui-table-view-cell">'+
+				 '		<div><span class="font-gray">分润：</span><span class="font-red">￥'+list.money+'</span></div>'+
+				 '		<div class="font-gray">时间：'+list.time+'</div>'+
+				 '	</li>';
+		return li;
+	}
+	function initItem2(){
+		var url = app.route.ROUTE_GET_THIRDPARTY_DETAILCASH_DATA;
+		var data = {openID: params.openid,};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : callbackItem2,
+		});
+	}
+	function callbackItem2(data){
+		if (data.success === true && data.context) {
+			var profitInfo = data.context.profitInfo;
+			var li = '';
+			for(var i=0;i<profitInfo.length;i++){
+				li += htmlItem2(profitInfo[i]);
+			}
+			$("#item2 .mui-table-view").html(li);
+			saved.item2 = data;
+		}
+	}
+	function htmlItem2(list){
+		var li = '<li class="mui-table-view-cell">'+
+				 '		<div><span class="font-gray">提现：</span><span class="font-red">￥'+list.money+'</span></div>'+
+				 '		<div class="font-gray">时间：'+list.time+'</div>'+
+				 '	</li>';
+		return li;
+	}
 </script>
 </html>

@@ -1,13 +1,21 @@
 #!/bin/bash
 
-cd ../server/modules
+rm -fr test
+mkdir -p test/server
+echo 正在拷贝文件....
+cp -r ../server/app.js test/server/
+cp -r ../server/modules test/server/
+cp -r ../server/public  test/server/
+cp -r ../www test/www
 
-ip=192.168.1.119
-if [ -z "$1" ];then
-    vim -e -s ../../www/js/utils/app.js -c ":%s/localhost/${ip}/" -c ":wq"
-    xfind -t "localhost" -v "-c \":%s/localhost/${ip}/g\""
-else
-    xfind -t "${ip}" -v "-c \":%s/${ip}/localhost/g\""
-    vim -e -s ../../www/js/utils/app.js -c ":%s/${ip}/localhost/" -c ":wq"
-fi
+cd test/server/modules
+
+target=${1-fang}
+ip=192.168.1.${target}:3001
+vim -e -s ../app.js -c ":%s/3000/3001/" -c ":wq"
+vim -e -s ../../www/js/utils/app.js -c ":%s/localhost:3000/${ip}/" -c ":wq"
+grep localhost:3000 -r . -l|xargs -I bbbb vim -e -s bbbb -c ":%s/localhost:3000/${ip}/" -c ":wq"
+
+cd ..
+node app.js
 

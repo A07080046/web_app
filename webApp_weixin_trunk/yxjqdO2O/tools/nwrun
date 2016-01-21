@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if ! [ -a '../www/js/thirdparty/mui.min.backup.js' ];then
+    mv ../www/js/thirdparty/mui.min.js ../www/js/thirdparty/mui.min.backup.js
+    mv ../www/js/thirdparty/mui-desktop.min.js ../www/js/thirdparty/mui.min.js
+    echo nw mode on
+else
+    mv ../www/js/thirdparty/mui.min.js ../www/js/thirdparty/mui-desktop.min.js
+    mv ../www/js/thirdparty/mui.min.backup.js ../www/js/thirdparty/mui.min.js
+    echo nw mode off
+fi

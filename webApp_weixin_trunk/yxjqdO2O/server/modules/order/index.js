@@ -3,17 +3,23 @@ module.exports = (function() {
     function Mgr() {
     }
     Mgr.prototype.register = function(app) {
-        app.post('/getWaitPayOrder', function (req, res) {
+        app.post('/getMyNoPayOrder', function (req, res) {
             app.send(res, __dirname+'/waitPay.json');
         });
-        app.post('/getWaitDeliverOrder', function (req, res) {
+        app.post('/getMyPayOrder', function (req, res) {
             app.send(res, __dirname+'/waitDeliver.json');
         });
-        app.post('/getWaitReceiveOrder', function (req, res) {
+        app.post('/getUnReceiveOrder', function (req, res) {
             app.send(res, __dirname+'/waitReceive.json');
         });
-        app.post('/getWaitCommentOrder', function (req, res) {
+        app.post('/getUnScoreOrder', function (req, res) {
             app.send(res, __dirname+'/waitComment.json');
+        });
+        app.post('/completeOrder', function (req, res) {
+            app.send(res, __dirname+'/complete.json');
+        });
+        app.post('/delMyOrder', function (req, res) {
+            app.send(res, __dirname+'/delMyOrder.json');
         });
     };
 

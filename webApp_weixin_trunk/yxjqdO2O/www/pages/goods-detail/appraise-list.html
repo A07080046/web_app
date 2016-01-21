@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title>评论</title>
+    <title>赢销截拳道电子商城</title>
     <script src="../../js/thirdparty/mui.min.js"></script>
     <link href="../../css/mui.min.css" rel="stylesheet"/>
     <link href="../../css/common.css" rel="stylesheet"/>
@@ -55,7 +55,8 @@
 	</div>
 	<script src="../../js/utils/app.js"></script>
 	<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
-	<script type="text/javascript" charset="utf-8">
+	<script>
+		"use strict";
       	mui.init({
 			pullRefresh: {
 				container: '#pullrefresh',
@@ -72,7 +73,7 @@
       	function getAppraiseList(type, pageNo, needWait) {
 			var url = app.route.ROUTE_GET_APPRAISE_LIST;
 			var data = {
-				openid: '',
+				openID: params.openid,
 				goodID: '',
 				pageNo:pageNo,
 			};
@@ -84,7 +85,7 @@
 			});
 		};
 		function onGetAppraiseListSuccess(data) {
-			if (data.status === 'success' && data.context) {
+			if (data.success === true && data.context) {
 				var list = data.context.commentsList;
 //				showList(list,'up');
 				if (!list || !list.length) {
@@ -125,7 +126,7 @@
 			}, 0);
 		}
 		function getListItem(item) {
-				html = '';
+				var html = '';
 				html += '<li class="mui-table-view-cell">'
 				html += 		'<div class="mui-table">'
 				html += 			'<div class="mui-table-cell mui-col-xs-10">'
@@ -143,7 +144,7 @@
 		$('#appraise-list').html('<div class="empty_list">没有相关数据</div>');
 		}
 		function showList(list, append) {
-			html = '';
+			var html = '';
 			for (var i in list) {
 				html += getListItem(list[i]);
 			}
@@ -170,8 +171,9 @@
 		var params = app.router.getParameter();
 		var saved = app.router.getSavedData();
 		var query = saved.query||{pageNo: FIRST_PAGE_NO, type: params.typeID, dir:'none'};
-		$('#title').html(params.title);
-	
+        saved.title = saved.title||params.title;
+    	$('#title').html(saved.title);
+
 		if (saved.list) {
 			showList(saved.list);
 		} else {

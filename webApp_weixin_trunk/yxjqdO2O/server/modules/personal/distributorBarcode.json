@@ -1,1 +1,1 @@
-{    "status": "success",    "msg": "获取数据成功",    "context": {        "distributorQR": "http://localhost:3000/personal/barcode.png"    }}
+{    "success": true,    "msg": "获取数据成功",    "context": {        "distributorQR": "http://localhost:3000/personal/barcode.png"    }}

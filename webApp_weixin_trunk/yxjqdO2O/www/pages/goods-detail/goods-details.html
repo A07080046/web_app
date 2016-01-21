@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="../../css/common.css" />
 	</head>
 
-	<body style="padding: 3px;">
+	<body style="padding: 3px;background:white ;">
 		<!--css-->
 		<style>
 			.brief {
@@ -101,6 +101,26 @@
 				color: black;
 			}
 			
+			#zan {
+				height: auto;
+				position: absolute;
+				left: 8%;
+				margin-top: -18%;
+				display: none;
+			}
+			
+			@keyframes moveUp {
+				top: 50px;
+			}
+			
+			.ask-text {
+				color: white;
+				font-size: 12px;
+				position: absolute;
+				left: 15%;
+				margin-top: 10px;
+			}
+			
 			.choice-text {
 				color: white;
 				font-size: 12px;
@@ -109,114 +129,274 @@
 				left: 50%;
 				margin-top: 10px;
 			}
+			
+			.choose-result {
+				width: 100%;
+				height: 100px;
+				background-color: #EEEEEE;
+			}
+			
+			.choose-para {
+				height: 60px;
+				background-color: #EEEEEE;
+				border-bottom-style: solid;
+				border-bottom-width: 1px;
+				border-color: gray;
+			}
+			
+			.choose-para button {
+				height: 35px;
+				width: 80px;
+				margin-left: 10px;
+				border-radius: 5px;
+				background-color: #A2A2A2;
+			}
+			
+			.choose-para button.choose-active {
+				color: #fff;
+				background: -webkit-linear-gradient(top, #FCBD3D, #F88D31);
+				background: -moz-linear-gradient(top, #FCBD3D, #F88D31);
+				background: linear-gradient(top, #FCBD3D, #F88D31);
+			}
+			
+			.choose-quantity {
+				height: 60px;
+				background-color: #EEEEEE;
+			}
+			
+			.choose-goods {
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				height: 430px;
+				background-color: #EEEEEE;
+				z-index: 1050;
+				/*opacity: 10;*/
+			}
+			
+			.choose-result .img-back {
+				position: relative;
+				top: -30px;
+				left: 10px;
+				height: 120px;
+				width: 120px;
+				text-align: center;
+				float: left;
+				background-color: gainsboro;
+				border-radius: 10px;
+			}
+			
+			.choose-result .choose-result-data {
+				position: relative;
+				left: 20px;
+				/*width: 120px;*/
+				height: 100px;
+				float: left;
+				/*background-color: red;*/
+			}
+			
+			.choose-result-data p {
+				color: red;
+				font-size: large;
+				margin-top: 20px;
+			}
+			
+			.choose-result img {
+				height: 100px;
+				width: 100px;
+				text-align: center;
+				margin-top: 10px;
+				border-radius: 10px;
+			}
 		</style>
 		</head>
 		</style>
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<a class="mui-icon mui-pull-right" onclick="gotoChoosePage()"><img style="width: 26px;height: 24px;" src="../../img/goods-detail/iconfont-gouwu.png"></a>
+			<a id="title_right_goChoosePage" class="mui-icon mui-pull-right"><img style="width: 26px;height: 24px;" src="../../img/goods-detail/shopping_cart_press.png"></a>
 			<h1 class="mui-title">商品详情</h1>
 		</header>
-		<div class="mui-content">
+		<!--底部导航-->
+		<nav class="mui-bar mui-bar-tab">
+			<a style="position:relative;height: 40px;width:20%;background: url(../../img/goods-detail/collection_normal.png);background-size: 100% 100%;" id="addCollect" class="mui-tab-item" href="#">
+				<p style="position:absolute;left:0;top:0;bottom:0;right:0;margin: auto;margin-top:33px;color: white;font-size: 14px;">收&nbsp;藏</p>
+			</a>
+			<a style="position:relative;height: 40px;width:20%;background: url(../../img/goods-detail/love_normal2.png);background-size: 100% 100%;" id="addLikeData" class="mui-tab-item" href="#">
+				<p style="position:absolute;left:0;top:0;bottom:0;right:0;margin: auto;margin-top:33px;color: white;font-size: 14px;">喜&nbsp;爱</p>
+			</a>
+			<a style="position:relative;height: 40px;width:45%;background: url(../../img/goods-detail/add_to_cart_normal.png);background-size: 100% 100%;" id="goShopingCart" class="mui-tab-item" href="#">
+				<p style="position:absolute;left:0;top:0;bottom:0;right:0;margin: auto;margin-top:16px;color: white;font-size: 17px;">加入购物车</p>
+			</a>
+			<a style="position:relative;height: 40px;width:45%;background: url(../../img/goods-detail/add_to_cart_normal.png);background-size: 100% 100%;" id="goChoosePage" class="mui-tab-item" href="#">
+				<p style="position:absolute;left:0;top:0;bottom:0;right:0;margin: auto;margin-top:16px;color: white;font-size: 17px;">立即购买</p>
+			</a>
+		</nav>
+		<div class="mui-content" style="background: white;">
+			<!--选择商品-->
+			<div class="choose-goods hide"></div>
 			<div id="goods_name" class="goods-name-title">
-				<div class="titleDIV">
+				<!--<div class="titleDIV" hidden="hidden">
 					<p class="title">商品名称</p>
 				</div>
-				<div class="xian"></div>
+				<div class="xian"></div>-->
 			</div>
 			<!--轮播商品图片区-->
 			<div id="bannerImg" class="mui-slider">
-				<img src="img/home/banner.png" style="width:100%;">
+				<!--<img src="../../img/home/banner.png" style="width:100%;">-->
 			</div>
 			<!--商品简介-->
 			<div id="IntroducesAndPraise" class="brief">
-				<div style="width:65%;float: left;text-align: left;border-color: gray;margin-top: 10px;margin-left: 10px;">
-					<div>这不是一只普通的猫这是两只加肥猫</div>
+				<!--<div style="width:65%;float: left;text-align: left;border-color: gray;margin-top: 10px;margin-left: 10px;">
+					<div></div>
 					<div style="margin-top: 10px;">
-						<span style="color: red;">¥:8.50</span><span style="text-decoration: line-through;margin-left: 20px;">原价：¥888.50</span>
+						<span style="color: red;">¥:</span><span style="text-decoration: line-through;margin-left: 20px;">原价：¥</span>
 					</div>
 				</div>
-				<div onclick="gotoPraise()" style="float: right;width: 30%;height: 40px;background-color: white;margin-top: 30px;">
-					<img src="../../img/goods-detail/comments_normal_1.png" width="20" height="25" align="center" style="margin: auto;"></img>
-					<img src="../../img/goods-detail/comments_normal_1.png" width="20" height="25" align="center" style="margin: auto;"></img>
-					<img src="../../img/goods-detail/comments_normal_2.png" width="20" height="25" align="center" style="margin: auto;"></img>
+				<div id="gotoPraise" style="float: right;width: 30%;height: 40px;background-color: white;margin-top: 30px;">
 					<img src="../../img/order/evaluate.png" width="20" height="25" align="center" style="margin: auto;"></img>
-					<img src="../../img/order/evaluate.png" width="20" height="25" align="center" style="margin: auto;"></img>
-				</div>
+				</div>-->
 			</div>
 
 			<!--咨询、分享、去店铺、评论-->
 			<div id="btn-div" style="width: 100%;height:40px;">
-				<button id="btn-consult" onclick="gotoConsult()" style="background:url(../../img/goods-detail/consultation_normal.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">咨询</span></button>
+				<!--<button id="btn-consult" onclick="gotoConsult()" style="background:url(../../img/goods-detail/consultation_normal.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span id="telPhone" class="choice-text">咨询</span></button>
 				<button id="btn-share" onclick="gotoShare()" style="background:url(../../img/goods-detail/share_normal.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">分享</span></button>
 				<button id="btn-shop" onclick="gotoShop" style="background:url(../../img/goods-detail/go_to_the_shop_normal.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">去店铺</span></button>
-				<button id="btn-praise" onclick="gotoPraise" style="background:url(../../img/goods-detail/love_buttion.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">121231</span><span style="position: absolute;top: 0;left: 5%;margin-top: 7px;"><img src="../../img/goods-detail/love_normal.png" width="60%" height="50%" alt="" /></span></button>
+				<button id="btn-praise" onclick="gotoPraise" style="background:url(../../img/goods-detail/love_buttion.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">121231</span><span style="position: absolute;top: 0;left: 5%;margin-top: 7px;"><img src="../../img/goods-detail/love_normal.png" width="60%" height="50%" alt="" /></span></button>-->
 			</div>
-			<div id="goodsIntroduces" style="background: white;">
-				<div style="margin-top: 10px;">
+			<div id="goodsIntroduces" style="background: white;margin-top: 20px;">
+				<!--<div style="margin-top: 10px;">
 					<br>
-				</div>
-				<div class="goods-name-title">
+				</div>-->
+				<!--<div class="goods-name-title">
 					<div class="titleDIV">
 						<p class="title">商品介绍</p>
 					</div>
 					<div class="xian"></div>
-				</div>
-				<p style="margin:5px;padding: 15px; background: #FF5053;color: black;">商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....</p>
-				<img src="../../img/goods-detail/shuijiao.jpg" style="width: 100%;">
-				<img src="../../img/goods-detail/cbd.jpg" style="width: 100%;">
-				<img src="../../img/goods-detail/muwu.jpg" style="width: 100%;">
-				<img src="../../img/goods-detail/yuantiao.jpg" style="width: 100%;">
+				</div>-->
+				<!--<p style="margin:5px;padding: 15px; background: #FF5053;color: black;"></p>-->
+				<!--<img src="../../img/home/banner.png" style="width: 100%;">-->
 			</div>
-			<!--底部导航-->
-			<nav class="mui-bar mui-bar-tab">
-				<a class="mui-tab-item" href="http://www.runoob.com/html/html-tutorial.html">收藏</a>
-				<a class="mui-tab-item" href="#" onclick="gotoSubmitAppraisePage()">喜爱</a>
-				<a class="mui-tab-item" href="#" onclick="gotoShopingTrolleyPage()">加入购物车</a>
-				<a class="mui-tab-item" href="#" onclick="gotoChoosePage()">立即购买</a>
-			</nav>
 
-			<script src="../../js/thirdparty/mui.js"></script>
-			<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
-			<script src="../../js/utils/app.js"></script>
-			<script>
-				mui.init({
-					swipeBack: true
-				});
+			<!--<div class="case hide">
+				<div class="top">拨打提示</div>
+				<div id="tel_div" class="center">-->
+			<!--<a href="tel:10086">10086</a>-->
+			<!--</div>
+				<div class="footer">
+					<div class="left cancel">取&nbsp;&nbsp;消</div>
+					<div class="right confirm">拨&nbsp;&nbsp;打</div>
+				</div>
+			</div>-->
+		</div>
 
-				function gotoShopingTrolleyPage() {
-					var param = 1;
-					app.router.showView('../goods-detail/shopping-trolley.html', param, saved);
-				}
-
-				function gotoChoosePage() {
-					var param = 1;
-					app.router.showView('../goods-detail/goods-choose.html', param, saved);
-				}
-
-				function gotoSubmitAppraisePage() {
-					//var param = 1;
-					//app.router.showView('../goods-detail/submit-appraise.html', param, saved);
-				}
-
-				function gotoConsult() {}
-
-				function gotoShare() {}
-
-				function gotoShop() {}
-
-				function gotoPraise() {
-					var param = 1;
-					app.router.showView('../goods-detail/appraise-list.html', param, saved);
-				}
-			</script>
 	</body>
+	<script src="../../js/thirdparty/mui.min.js"></script>
+	<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+	<script src="../../js/utils/app.js"></script>
+	<script type="text/javascript" src='https://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>
 	<script>
+		"use strict";
+		mui.init({
+			swipeBack: true
+		});
+
+		function gotoChoosePage() {
+			$("body").append('<div class="modal-backdrop close-shop"></div>');
+			$(".choose-goods").show();
+		}
+
+		function gotoShare() {}
+
+		function gotoShop() {
+			//如果是从商铺界面过来的，会直接返回,不再新建页面
+			var str = app.router.from + '';
+			if (str.endWith('store.html')) {
+				mui.back();
+			} else {
+				app.router.showView('../personal/store.html', '1', saved);
+			}
+		}
+
+		function gotoPraise() {
+			var param = {
+				openID: params.openid,
+				title: saved.data.goodsName
+			};
+			app.router.showView('../goods-detail/appraise-list.html', param, saved);
+		}
+		String.prototype.endWith = function(endStr) {
+				var d = this.length - endStr.length;
+				return (d >= 0 && this.lastIndexOf(endStr) == d)
+			}
+			/*喜爱亦点赞*/
+		function sumitAddLikeData() {
+			var url = app.route.ROUTE_GET_LIKE_GOODS_DATA;
+			var data = {
+				goodsID: params.goodsID,
+				openID: params.openid,
+			};
+			app.utils.post({
+				url: url,
+				data: data,
+				success: sumitLikeSuccess,
+			});
+		}
+
+		function sumitLikeSuccess(data) {
+			if (data.success === true) {
+				//点赞成功以后自动加一
+				$("#zan").show(300);
+				setTimeout(function() {
+					$("#zan").hide();
+				}, 1000)
+				var oldNum = $("#text-praise").text();
+				var newNum = parseInt(oldNum.toString()) + 1;
+				$("#text-praise span").text(newNum);
+				// var html_praise = '';
+				// html_praise += '<p id="text-praise" style="color: white;margin-top: 3px;">';
+				// html_praise += '<img width=25 height:25 src="../../img/goods-detail/love_normal.png" align=left border=0>';
+				// html_praise += newNum + '<br>&nbsp;<br clear=left></p></button>';
+				// $('#btn-praise').html(html_praise);
+				// mui('#btn-praise').slider();
+				//改变喜爱样式
+				$('#addLikeData').css('style', 'position:relative;height: 40px;width:20%;background: url(../../img/goods-detail/love_pressl2_2.png);background-size: 100% 100%;');
+				mui.toast("添加喜爱成功");
+			} else {
+				hadClick_like = false;
+				mui.toast("添加喜爱失败，请稍后重试");
+			}
+		}
+		/*添加收藏*/
+		function sumitAddMyCollectData() {
+			var url = app.route.ROUTE_GET_SUMIT_COLLECT_GOODS_DATA;
+			var data = {
+				goodsID: params.goodsID,
+				openID: params.openid,
+			};
+			app.utils.post({
+				url: url,
+				data: data,
+				success: sumitCollectSuccess,
+			});
+		}
+
+		function sumitCollectSuccess(data) {
+			if (data.success === true) {
+				//改变收藏样式
+				$('#addCollect').css('style', 'position:relative;height: 40px;width:20%;background: url(../../img/goods-detail/collection_press2_2.png);background-size: 100% 100%;');
+				mui.toast("收藏成功");
+			} else {
+				hadClick_collect = false;
+				mui.toast("添加收藏失败，请稍后重试");
+			}
+		}
+		/*获取商品详情数据*/
 		function getIntegralExchangeData() {
 			var url = app.route.ROUTE_GET_GOODS_DETAILS_DATA;
 			var data = {
 				goodsID: params.goodsID,
-				openid: params.openid,
+				openID: params.openid,
 			};
 			app.utils.post({
 				url: url,
@@ -226,7 +406,7 @@
 		}
 
 		function getGoodsDetailsDataSuccess(data) {
-			if (data.status === 'success' && data.context) {
+			if (data.success === true && data.context) {
 				var dataContext = data.context;
 				saved.data = dataContext;
 				showPage(dataContext);
@@ -239,7 +419,7 @@
 			if (imgs == "") {
 				return;
 			}
-			var imgURL = imgs.split("|");
+			var imgURL = imgs;
 			html1 += '<div class="mui-slider-item mui-slider-item-duplicate">';
 			html1 += '	<a href="#">';
 			html1 += '		<img src="' + imgURL[0] + '"style="height: 220px;"/>';
@@ -269,12 +449,12 @@
 			if (data.goodsIntroducesImgURLs == "") {
 				return;
 			}
-			var IntroducesImgURL = data.goodsIntroducesImgURLs.split("|");
+			var IntroducesImgURL = data.goodsIntroducesImgURLs;
 			var html1 = '';
 			html1 += '<div class="goods-name-title">';
 			html1 += '<div class="titleDIV"><p class="title">商品介绍</p></div>';
 			html1 += '<div class="xian"></div></div>';
-			html1 += '<p style = "margin:5px;padding: 15px; background: #FF5053;color: black;">' + data.goodsIntroduces + '</p>';
+			// html1 += '<p style = "padding: 10px;color: black; word-wrap:break-word; word-break:break-all; line-height:25px;font-size: 18px;"><span style = "background: #FF6060;">' + data.goodsIntroduces + '</span></p>';
 			for (var i in IntroducesImgURL) {
 				var img = IntroducesImgURL[i];
 				html1 += '<img src="' + img + '"style="width: 100%;"/>';
@@ -286,12 +466,12 @@
 		function showGoodsDetailsData(data) {
 			var htm1_1 = '';
 			htm1_1 += '<div style="width:65%;float: left;text-align: left;border-color: gray;margin-top: 10px;margin-left: 10px;">';
-			htm1_1 += '<div>' + data.goodsIntroduces + '</div>';
+			htm1_1 += '<div style="font-size: 15px">' + data.goodsIntroduces + '</div>';
 			htm1_1 += '<div style="margin-top: 10px;">';
-			htm1_1 += '<span style="color: red;">￥:' + data.goodsSalePrice + '</span>';
-			htm1_1 += '<span style="text-decoration: line-through;margin-left: 20px;">原价：' + data.goodsPrice + '</span>';
+			htm1_1 += '<span style="color: red;font-size: 24px;">￥' + data.goodsSalePrice + '</span>';
+			htm1_1 += '<span style="font-size: 13px;text-decoration: line-through;margin-left: 20px;">原价：￥' + data.goodsPrice + '</span>';
 			htm1_1 += '</div></div>';
-			htm1_1 += '<div onclick="gotoPraise()" style="float: right;width: 30%;height: 40px;background-color: white;margin-top: 30px;">';
+			htm1_1 += '<div id="gotoPraise" style="float: right;width: 30%;height: 40px;background-color: white;margin-top: 30px;">';
 			//根据数据设置评分
 			var temp = data.score.toString();
 			if (temp.indexOf(".") > 0) {
@@ -299,48 +479,50 @@
 				var strInt = parseInt(str[0]);
 				if (strInt < 5) {
 					for (var i = 0; i < strInt; i++) {
-						htm1_1 += '<img src="../../img/goods-detail/comments_normal_1.png" width="20" height="25" align="center" style="margin: auto;"></img>';
+						htm1_1 += '<img src="../../img/goods-detail/comments_normal_1.png" width="25" height="25" align="center" style="margin: auto;"></img>';
 					}
 					var temp = 5 - strInt; //得到剩余的需要设置的空心图数量
 					if (parseInt(str[1]) >= 5) {
 						temp = temp - 1; //如果有半颗就减一，保证空心图的数量正确
-						htm1_1 += '<img src="../../img/goods-detail/comments_normal_2.png" width="20" height="25" align="center" style="margin: auto;"></img>';
+						htm1_1 += '<img src="../../img/goods-detail/comments_normal_2.png" width="25" height="25" align="center" style="margin: auto;"></img>';
 					}
-					if (temp >= 1) {
-						for (var i = 0; i < temp; i++) {
-							htm1_1 += '<img src="../../img/order/evaluate.png" width="20" height="25" align="center" style="margin: auto;"></img>';
-						}
-					}
+					//if (temp >= 1) {
+					//for (var i = 0; i < temp; i++) {
+					//htm1_1 += '<img src="../../img/order/evaluate.png" width="25" height="25" align="center" style="margin: auto;"></img>';
+					//} }
 				} else if (strInt >= 5) {
 					//超出时只设置五颗星
 					for (var i = 0; i < 5; i++) {
-						htm1_1 += '<img src="../../img/goods-detail/comments_normal_1.png" width="20" height="25" align="center" style="margin: auto;"></img>';
+						htm1_1 += '<img src="../../img/goods-detail/comments_normal_1.png" width="25" height="25" align="center" style="margin: auto;"></img>';
 					}
 				}
 			} else {
-				//  小数后为0（如： 3.0 ）时， 转换的结果会去掉后面的零，只得到整数
+				//  小数点后为0（如： 3.0 ）时， 转换的结果会去掉后面的零，只得到整数
 				var tp = parseInt(temp);
 				if (tp <= 5) {
 					for (var i = 0; i < tp; i++) {
-						htm1_1 += '<img src="../../img/goods-detail/comments_normal_1.png" width="20" height="25" align="center" style="margin: auto;"></img>';
+						htm1_1 += '<img src="../../img/goods-detail/comments_normal_1.png" width="25" height="25" align="center" style="margin: auto;"></img>';
 					}
-					var tpTemp = 5 - tp;
-					if (tpTemp >= 1) {
-						//设置剩余的空心图
-						for (var j = 0; j < tpTemp; j++) {
-							htm1_1 += '<img src="../../img/order/evaluate.png" width="20" height="25" align="center" style="margin: auto;"></img>';
-						}
-					}
+					//var tpTemp = 5 - tp;
+					//if (tpTemp >= 1) {
+					////设置剩余的空心图
+					//for (var j = 0; j < tpTemp; j++) {
+					//htm1_1 += '<img src="../../img/order/evaluate.png" width="25" height="25" align="center" style="margin: auto;"></img>';
+					//} }
 				} else if (tp >= 5) {
 					//超出时只设置五颗星
 					for (var i = 0; i < 5; i++) {
-						htm1_1 += '<img src="../../img/goods-detail/comments_normal_1.png" width="20" height="25" align="center" style="margin: auto;"></img>';
+						htm1_1 += '<img src="../../img/goods-detail/comments_normal_1.png" width="25" height="25" align="center" style="margin: auto;"></img>';
 					}
 				}
 			}
 			htm1_1 += '</div>';
 			$('#IntroducesAndPraise').html(htm1_1);
 			mui('#IntroducesAndPraise').slider();
+			//进入评论列表
+			$("#gotoPraise").on('tap', function() {
+				gotoPraise();
+			});
 		}
 
 		function showGoodsName(data) {
@@ -350,17 +532,57 @@
 			html_name += '<div class="xian"></div>';
 			$('#goods_name').html(html_name);
 			mui('#goods_name').slider();
+			//判断是否已经收藏过和添加喜爱过
+			if (data.isConllection == 1) {
+				hadClick_collect = true;
+				$('#addCollect').css('style', 'position:relative;height: 40px;width:20%;background: url(../../img/goods-detail/collection_press2_2.png);background-size: 100% 100%;');
+			}
+			if (data.isPraise == 1) {
+				hadClick_like = true;
+				$('#addLikeData').css('style', 'position:relative;height: 40px;width:20%;background: url(../../img/goods-detail/love_pressl2_2.png);background-size: 100% 100%;');
+			}
 		}
+		wx.config({
+			debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+			appId: '', // 必填，公众号的唯一标识
+			timestamp: 0, // 必填，生成签名的时间戳
+			nonceStr: '', // 必填，生成签名的随机串
+			signature: '', // 必填，签名，见附录1
+			jsApiList: [0] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+		});
 
 		function showShareData(data) {
 			var html_sd = '';
-			html_sd += '<button id="btn-consult" onclick="gotoConsult()" style="background:url(../../img/goods-detail/consultation_normal.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">咨询</span></button>';
-			html_sd += '<button id="btn-share" onclick="gotoShare()" style="background:url(../../img/goods-detail/share_normal.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">分享</span></button>';
-			html_sd += '<button id="btn-shop" onclick="gotoShop" style="background:url(../../img/goods-detail/go_to_the_shop_normal.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">去店铺</span></button>';
-			html_sd += '<button id="btn-praise" onclick="gotoPraise" style="background:url(../../img/goods-detail/love_buttion.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">';
-			html_sd += data.loves + '</span><span style="position: absolute;top: 0;left: 5%;margin-top: 7px;"><img src="../../img/goods-detail/love_normal.png"width="60%" height="50%" alt="" /></span></button>';
+			html_sd += '<a href="tel:10086" style="background:url(../../img/goods-detail/consultation_normal.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span id="telPhone" class="ask-text">咨询</span></a>';
+			html_sd += '<button id="btn-share"  style="background:url(../../img/goods-detail/share_normal.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">分享</span></button>';
+			html_sd += '<button id="btn-shop" style="background:url(../../img/goods-detail/go_to_the_shop_normal.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">去店铺</span></button>';
+			html_sd += '<button id="btn-praise" style="background:url(../../img/goods-detail/love_buttion.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline">';
+			//html_sd += data.loves + '</span><span style="position: absolute;top: 0;left: 5%;margin-top: 7px;"><img src="../../img/goods-detail/love_normal.png"width="60%" height="50%" alt="" /></span></button>';
+			html_sd += '<p id="text-praise" style="color: white;margin-top: 3px;"><img width=25 height:25 src="../../img/goods-detail/love_normal.png" align=left border=0><img id="zan" src="../../img/goods-detail/love_press.png"><span>' + data.loves + '</spantext-praise></p></button>';
 			$('#btn-div').html(html_sd);
 			mui('#btn-div').slider();
+			//分享、去店铺
+			$("#btn-share").on('tap', function() {
+				wx.onMenuShareTimeline({
+					title: '', // 分享标题
+					link: '', // 分享链接
+					imgUrl: '', // 分享图标
+					success: function() {
+						// 用户确认分享后执行的回调函数
+					},
+					cancel: function() {
+						// 用户取消分享后执行的回调函数
+					}
+				});
+			});
+			//去店铺
+			$("#btn-shop").on('tap', function() {
+				gotoShop();
+			});
+			var html_tel = '';
+			html_tel += '<a href="tel:' + data.phone + '">' + data.phone + '</a>';
+			$('#tel_div').html(html_tel);
+			mui('#tel_div').slider();
 		}
 
 		function showPage(data) {
@@ -370,9 +592,255 @@
 			showGoodsIntroducesData(data); //商品介绍部分
 			showBannerImg(data.goodsImgURLs); //顶部滚动图片部分
 		}
+
+		function getShoppingData() {
+			var url = app.route.ROUTE_GET_SHOPPING_DATA;
+			var data = {
+				openID: params.openid,
+				pageNo: '0',
+			};
+			app.utils.post({
+				url: url,
+				data: data,
+				success: getShoppingDataSuccess
+			});
+		};
+
+		function getShoppingDataSuccess(data) {
+			if (data.success === true && data.context) {
+				var context = data.context;
+				priceDic = context.price;
+				var html = '';
+				html = getChooseGoodsView(context);
+				$('.choose-goods').html(html);
+				mui('.mui-numbox').numbox();
+				$('#price').text('¥:' + getChooseGoodsTotalPrice(priceDic).toFixed(2));
+				singlePrice = getChooseGoodsTotalPrice(priceDic);
+				attribute.push(getChooseGoodsTotalPrice(priceDic));
+			}
+		};
+
+		function addShoppingCart() {
+			var url = app.route.ROUTE_ADD_SHOPPING_CART;
+			var data = {
+				openID: params.openid,
+				attribute: attribute.join('-')+'-'+singlePrice,
+				goodsNum: $('#chooseGoodsNum').val(),
+			};
+			app.utils.post({
+				url: url,
+				data: data,
+				success: addShoppingCartSuccess
+			});
+		};
+
+		function addShoppingCartSuccess(data) {
+			if (data.success === true) {
+				mui.toast("加入购物车成功");
+				closeChooseGoodsView()
+			}
+		};
+		var priceDic;
+		var singlePrice;
+		var attribute = new Array();
+		/*getShoppingData();*/
+		var chooseData = new Object();
+
+		function getChooseGoodsView(item) {
+			chooseData["price"] = 0;
+			chooseData["goodsID"] = item.goodsID;
+			chooseData["attr"] = new Array();
+			attribute[0] = item.goodsID;
+			var html = '';
+			html += '<div class="choose-result">'
+			html += '<div class="img-back">'
+			html += '<img src="' + item.goodsImg + '"></img>'
+			html += '</div>'
+			html += '<div class="choose-result-data">'
+			html += '<p id="price">¥：8979.00</p>'
+				/*html += 			'<p id="stock">库存：897</p>'*/
+				/*html += 			'<p id="option">请选择</p>'*/
+			html += '</div>'
+			html += '<span class="mui-icon mui-icon-close" onclick="closeChooseGoodsView()" style="float: right;margin: 10px 10px 0 0;"></span>'
+			html += '</div>'
+			html += '<div style="clear: both;"></div>'
+			for (var attrKey in item.code) {
+				html += '<div class="choose-para" style="margin: 5px;" id="' + attrKey + '">'
+				html += '<div class="choose-goods-attr" style="font-size:15px;color:black;">' + item.code[attrKey].primary + '</div>'
+				for (var secondKey in item.code[attrKey].secondary) {
+					if (secondKey === item.code[attrKey].default) {
+						html += '<button id="' + secondKey + '" style="background-color: darkorange;color: white">' + item.code[attrKey].secondary[secondKey] + '</button>'
+					} else {
+						html += '<button id="' + secondKey + '">' + item.code[attrKey].secondary[secondKey] + '</button>'
+					}
+				}
+				chooseData["attr"][attrKey] = item.code[attrKey].default;
+				attribute.push(item.code[attrKey].default);
+				html += '</div>'
+			}
+			html += '<div class="choose-quantity">'
+			html += '<p style="float: left;margin-left: 15px;margin-top: 15px;font-size:15px;color:black">购买数量：</p>'
+			html += '<div class="mui-numbox" data-numbox-step="1" data-numbox-min="1" style="float: right;margin-right: 5px;margin-top: 9px;">'
+			html += '<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>'
+			html += '<input id="chooseGoodsNum" class="mui-input-numbox" type="number" value="1" />'
+			html += '<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>'
+			html += '</div>'
+			html += '</div>'
+			html += '<button class="mui-btn mui-btn-block chooseSureBtn" style="background-color: red;position: fixed;bottom: 0;margin-bottom:0">确认</button>'
+			return html;
+		}
+
+		function getChooseGoodsTotalPrice(price) {
+			attribute.splice(1);
+			var arr = new Array();
+			for (var attKey in chooseData["attr"]) {
+				attribute.push(chooseData["attr"][attKey]);
+				arr.push(chooseData["attr"][attKey]);
+			}
+			var hh = chooseData["attr"][0];
+			if (arr.length === 1) {
+				return price[arr[0]];
+			} else if (arr.length === 2) {
+				return price[arr[0]][arr[1]];
+			} else if (arr.length === 3) {
+				return price[arr[0]][arr[1]][arr[2]];
+			} else if (arr.length === 4) {
+				return price[arr[0]][arr[1]][arr[2]][arr[3]];
+			} else {
+				return 0;
+			}
+		}
+
+		function closeChooseGoodsView() {
+			$(".modal-backdrop").hide();
+			$(".choose-goods").hide();
+		}
+		//		getShoppingData();
+		function getChooseGoodsViewbak(item) {
+			var html = '';
+			html += '<div class="choose-result">'
+			html += '<div class="img-back">'
+			html += '<img src="../../img/goods-detail/muwu.jpg"></img>'
+			html += '</div>'
+			html += '<div class="choose-result-data">'
+			html += '<p>¥：8979.00</p>'
+			html += '<p>库存：897</p>'
+			html += '<p>请选择规格</p>'
+			html += '</div>'
+			html += '<span class="mui-icon mui-icon-close close-shop" style="float: right;margin: 10px 10px 0 0;"></span>'
+			html += '</div>'
+			html += '<div style="clear: both;"></div>'
+			for (var attrKey in item.code) {
+				html += '<div class="choose-para">'
+				html += '<div>' + item.code[attrKey].primary + '</div>'
+				for (var secondKey in item.code[attrKey].secondary) {
+					if (secondKey == 1 || secondKey == 4) {
+						html += '<button class="choose-active"><input type="hidden" name="secondKey" value="' + secondKey + '" />' + item.code[attrKey].secondary[secondKey] + '</button>'
+					} else {
+						html += '<button><input type="hidden" name="secondKey" value="' + secondKey + '" />' + item.code[attrKey].secondary[secondKey] + '</button>'
+					}
+				}
+				html += '</div>'
+			}
+			html += '<div class="choose-quantity">'
+			html += '<h3 style="float: left;margin-top: 20px;">购买数量：</h3>'
+			html += '<div class="mui-numbox" data-numbox-step="1" data-numbox-min="0" style="float: right;margin-right: 5px;margin-top: 15px;">'
+			html += '<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>'
+			html += '<input class="mui-input-numbox" type="number" value="1" />'
+			html += '<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>'
+			html += '</div>'
+			html += '</div>'
+			html += '<button class="mui-btn mui-btn-block addShopcar" style="background-color: red;position: fixed;bottom: 0;margin-bottom:0">确认</button>'
+				//加入购物车
+				//			if (chooseGoodsType === 1) {
+				//				html += '<button class="mui-btn mui-btn-block" style="background-color: red;position: fixed;bottom: 0;margin-bottom:0" onclick="gotoShopingTrolleyPage()">确认</button>'
+				//			} else if (chooseGoodsType === 2) { //立即购买
+				//				html += '<button class="mui-btn mui-btn-block" style="background-color: red;position: fixed;bottom: 0;margin-bottom:0"onclick="gotoSettlementPage()">确认</button>'
+				//			}
+			return html;
+		}
+		$(".choose-goods").on('tap', '.choose-para button', function() {
+			$(this).parent().find("button").removeClass("choose-active");
+			$(this).addClass("choose-active");
+		});
+		//注册选择按钮事件
+		$('.mui-content').on('tap', '.choose-para button', function() {
+			$(this).siblings().css({
+				"background-color": "#A2A2A2",
+				"color": "black"
+			});
+			$('.choose-goods-attr').css("background-color", "#EEEEEE");
+			$(this).css({
+				"background-color": "darkorange",
+				"color": "white"
+			});
+			chooseData["attr"][this.parentNode.id] = this.id;
+			singlePrice = getChooseGoodsTotalPrice(priceDic);
+			var ntotal = 0;
+			ntotal = singlePrice * $('#chooseGoodsNum').val();
+			$('#price').text('¥:' + ntotal.toFixed(2));
+		});
+		//注册确定按钮事件
+		$(".mui-content").on('tap', '.chooseSureBtn', function() {
+			if (chooseGoodsType === 1) {
+				addShoppingCart()
+			} else {
+				app.router.showView('../goods-detail/settlement.html', '1', saved);
+			}
+		});
+		$(".mui-content").on('change', '#chooseGoodsNum', function() {
+			var ntotal = 0;
+			ntotal = singlePrice * $(this).val();
+			$('#price').text('¥:' + ntotal.toFixed(2));
+		});
+
+		function submitAddShoppingcar(data) {
+			if (data.success === true) {
+				mui.toast("添加成功");
+				app.router.showView('../goods-detail/shopping-trolley.html', '1', saved);
+			} else {
+				mui.toast("添加失败");
+			}
+		}
+		$("body").on('tap', '.close-shop', function() {
+			$(".modal-backdrop").remove();
+			$(".choose-goods").hide();
+		});
+		//标题栏右侧进入购物车
+		$("#title_right_goChoosePage").on('tap', function() {
+			app.router.showView('shopping-trolley.html', params, saved);
+			// gotoChoosePage();
+		});
+		//底部导航的监听事件
+		$("#addCollect").on('tap', function() {
+			if (hadClick_collect == false) {
+				hadClick_collect = true; //表示已经正在请求数据了
+				sumitAddMyCollectData();
+			}
+		});
+		$("#addLikeData").on('tap', function() {
+			if (hadClick_like == false) {
+				hadClick_like = true; //表示已经正在请求数据了
+				sumitAddLikeData();
+			}
+		});
+		var chooseGoodsType;
+		$("#goShopingCart").on('tap', function() {
+			chooseGoodsType = 1;
+			getShoppingData();
+			gotoChoosePage();
+		});
+		$("#goChoosePage").on('tap', function() {
+			chooseGoodsType = 2;
+			getShoppingData();
+			gotoChoosePage();
+		});
+		//用于判断是否点击过请求添加喜爱、收藏，正在请求时限制点击
+		var hadClick_collect = false;
+		var hadClick_like = false;
+		//获取存储的页面数据
 		var params = app.router.getParameter();
 		var saved = app.router.getSavedData();
-		$('#title').html(params.goodsName);
 		if (saved.data) {
 			showPage(saved.data);
 		} else {

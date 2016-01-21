@@ -11,6 +11,7 @@ var modules = [
     'categories',
     'search',
     'order',
+    'distributor',
 ];
 
 app.use(express.static(__dirname + '/../www'));

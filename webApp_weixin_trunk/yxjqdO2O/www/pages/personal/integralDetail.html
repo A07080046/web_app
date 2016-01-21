@@ -103,20 +103,21 @@
 				<img src="../../img/personal/commodity_introduction.png"  style="width:100%;"/>
 				<div id="goods-desc-image-container">
 				</div>
-				<div class="button">换&nbsp;&nbsp;购</div>
+				<div class="button" id="do-exchage" style="display:none;">换&nbsp;&nbsp;购</div>
 				<br>
 			</li>
 	    </ul>
 	</div>
 </body>
-<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/mui.min.js" ></script>
 <script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
 <script src="../../js/utils/app.js"></script>
 <script>
+	"use strict";
 	function getIntegralDetailData() {
 		var url = app.route.ROUTE_GET_INTEGRAL_DETAIL_DATA;
 		var data = {
-			openid: params.openid,
+			openID: params.openid,
 		};
 		app.utils.post({
 			url : url,
@@ -125,10 +126,31 @@
 		});
 	}
 	function getIntegralDetailDataSuccess(data) {
-		if (data.status === 'success' && data.context) {
+		if (data.success === true && data.context) {
 			var context = data.context;
 			saved.data = context;
 			showPage(context);
+		}
+	}
+	function doExchange() {
+		var url = app.route.ROUTE_DO_EXCHANGE;
+		var data = {
+			openID: params.openid,
+			goodsID: saved.data.goodsID,
+			goodsDec: saved.data.goodsDec.data.join('-'),
+		};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : doExchangeSuccess,
+		});
+	}
+	function doExchangeSuccess(data) {
+		if (data.success === true) {
+			app.router.setBackParameter({'shouldUpdateData':true});
+			mui.back();
+		} else {
+			mui.toast('换购失败');
 		}
 	}
 	function showPage(data) {
@@ -137,7 +159,7 @@
 		$('#receiver_phone').html(data.phone);
 		$('#receiver_addr').html(data.addr);
 
-		var html = '', imgs = data.goodsImgURLs.split('|');
+		var html = '', imgs = data.goodsImgURLs;
 		for (var i in imgs) {
 			html += '<div class="box1to4"><img src="'+imgs[i]+'"  class="box-full-image"/></div>';
 		}
@@ -147,17 +169,23 @@
 		$('.goods-integral').html(data.goodsScore+'积分换购');
 		$('.goods-disc').html(data.goodsDec);
 
-		html = '', imgs = data.goodsIntroducesImgURLs.split('|');
+		html = '', imgs = data.goodsIntroducesImgURLs;
 		for (var i in imgs) {
 			html += '<img src="'+imgs[i]+'"  style="width:100%;"/>';
 		}
 		$('#goods-desc-image-container').html(html);
+		$('#do-exchage').show();
 		app.router.resetScollerBar();
 	}
 
 	mui.init();
 	$('#button-shop').on('click', function() {
-		// app.showView();
+		var data = {
+			goodsID: saved.data.goodsID,
+			goodsName: saved.data.goodsName,
+			openID: params.openid,
+		}
+		app.router.showView('/pages/personal/store.html', data, saved);
 	});
 	$('#button-share').on('click', function() {
 		// app.showView();
@@ -165,10 +193,13 @@
 	$('#button-info').on('click', function() {
 		// app.showView();
 	});
+	$('#do-exchage').on('click', function() {
+		doExchange();
+	});
 
 	var params = app.router.getParameter();
 	var saved = app.router.getSavedData();
-
+	$('#do-exchage').hide();
 	if (saved.data) {
 		showPage(saved.data);
 	} else {

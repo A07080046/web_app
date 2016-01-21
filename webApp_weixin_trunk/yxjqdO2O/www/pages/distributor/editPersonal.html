@@ -74,7 +74,7 @@
 		<h1 id="title" class="mui-title">修改个人信息</h1>
 	</header>
 	<nav class="mui-bar mui-bar-tab">
-	    <a class="mui-tab-item" href="#">
+	    <a id="submitInfo" class="mui-tab-item" href="#">
 	    	确&nbsp;&nbsp;&nbsp;&nbsp;定
 	    </a>
 	</nav>
@@ -82,7 +82,7 @@
 		<div class="name">
 			<div class="title font-red">店铺名称</div>
 			<div class="content">
-				<div class="input"><input type="text" placeholder="请输入您要设置的店铺名称" /></div>
+				<div class="input"><input id="storeName" type="text" placeholder="请输入您要设置的店铺名称" /></div>
 			</div>
 		</div>
 		<div class="logo">
@@ -93,8 +93,35 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+<script src="../../js/utils/app.js"></script>
 <script>
+	"use strict";
 	mui.init();
+	var params = app.router.getParameter();
+	$("#submitInfo").on('tap',function(){
+		var storeName = $("#storeName").val();
+		if(storeName == ''){
+			mui.toast("名称不能为空！");
+			return;
+		}
+		var url = app.route.ROUTE_GET_THIRDPARTY_EDITPERSONAL_SUBMIT;
+		var data = {openID: params.openid,name:storeName};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : callback,
+		});
+	});
+	function callback(data){
+		if (data.success === true) {
+			alert("修改成功！");
+			app.router.setBackParameter({'updataData':true});
+			mui.back();
+		}else{
+			mui.toast(data.msg);
+		}
+	};
 </script>
 </html>

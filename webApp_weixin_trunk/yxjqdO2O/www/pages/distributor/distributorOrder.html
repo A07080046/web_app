@@ -13,35 +13,35 @@
 <body>
 	<header class="mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		<h1 id="title" class="mui-title">分销统计</h1>
+		<h1 id="title" class="mui-title">分销订单</h1>
 	</header>
 	<div class="mui-content">
 		<div id="slider" class="mui-slider mui-fullscreen">
 			<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-				<a class="mui-control-item mui-active" href="#item1mobile">
+				<a class="mui-control-item mui-active" href="#item1mobile" data-tap=0>
 					<div class="item-icon icon1"></div>
 					所有订单
 				</a>
-				<a class="mui-control-item" href="#item2mobile">
+				<a class="mui-control-item" href="#item2mobile" data-tap=1>
 					<div class="item-icon icon2"></div>
 					已付款
 				</a>
-				<a class="mui-control-item" href="#item3mobile">
+				<a class="mui-control-item" href="#item3mobile" data-tap=2>
 					<div class="item-icon icon3"></div>
 					待付款
 				</a>
-				<a class="mui-control-item" href="#item4mobile">
+				<a class="mui-control-item" href="#item4mobile" data-tap=3>
 					<div class="item-icon icon4"></div>
 					已完成
 				</a>
 			</div>
 			<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-3"></div>
-			<div class="mui-slider-group">
+			<div class="mui-slider-group" id="order-container">
 				<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
 					<div id="scroll1" class="mui-scroll-wrapper">
 						<div class="mui-scroll">
 							<ul class="mui-table-view">
-								<li class="mui-table-view-cell">
+								<!--<li class="mui-table-view-cell">
 									<a href="javascript:;">
 										<img class="mui-media-object mui-pull-left" src="../../img/img1.jpg">
 										<div class="mui-media-body font-line">
@@ -52,88 +52,21 @@
 											<div class="li-price">￥2080.00</div>
 										</div>
 									</a>
-								</li>
-								<li class="mui-table-view-cell">
-									<a href="javascript:;">
-										<img class="mui-media-object mui-pull-left" src="../../img/img3.jpg">
-										<div class="mui-media-body font-line">
-											<div class="product-name mui-ellipsis">私人订制服饰</div>
-											<div class="product-num">X2</div>
-											<div class="font-gray font-12">订单号：2016010716564225</div>
-											<div class="font-red font-12">一级用户</div>
-											<div class="li-price">￥2080.00</div>
-										</div>
-									</a>
-								</li>
-								<li class="mui-table-view-cell">
-									<a href="javascript:;">
-										<img class="mui-media-object mui-pull-left" src="../../img/img4.jpg">
-										<div class="mui-media-body font-line">
-											<div class="product-name mui-ellipsis">私人订制服饰</div>
-											<div class="product-num">X2</div>
-											<div class="font-gray font-12">订单号：2016010716564225</div>
-											<div class="font-red font-12">一级用户</div>
-											<div class="li-price">￥2080.00</div>
-										</div>
-									</a>
-								</li>
+								</li>-->
+
 							</ul>
 						</div>
 					</div>
 
-					<nav class="mui-bar mui-bar-tab">
-					    <a class="mui-tab-item mui-active" href="#">
-					     	 合计：<span id="totalPrice">￥12345.00</span>
-					    </a>
-					    <a class="mui-tab-item" href="#">
-							<button type="button" class="mui-btn mui-btn-danger">支付</button>
-					    </a>
-					</nav>
 				</div>
 				<div id="item2mobile" class="mui-slider-item mui-control-content">
 					<div id="scroll2" class="mui-scroll-wrapper">
 						<div class="mui-scroll">
-							<!--<div class="mui-loading">
+							<div class="mui-loading">
 								<div class="mui-spinner">
 								</div>
-							</div>-->
+							</div>
 							<ul class="mui-table-view">
-								<li class="mui-table-view-cell">
-									<a href="javascript:;">
-										<img class="mui-media-object mui-pull-left" src="../../img/img1.jpg">
-										<div class="mui-media-body font-line">
-											<div class="product-name mui-ellipsis">私人订制服饰</div>
-											<div class="product-num">X2</div>
-											<div class="font-gray font-12">订单号：2016010716564225</div>
-											<div class="font-red font-12">一级用户</div>
-											<div class="li-price">￥2080.00</div>
-										</div>
-									</a>
-								</li>
-								<li class="mui-table-view-cell">
-									<a href="javascript:;">
-										<img class="mui-media-object mui-pull-left" src="../../img/img1.jpg">
-										<div class="mui-media-body font-line">
-											<div class="product-name mui-ellipsis">私人订制服饰</div>
-											<div class="product-num">X2</div>
-											<div class="font-gray font-12">订单号：2016010716564225</div>
-											<div class="font-red font-12">一级用户</div>
-											<div class="li-price">￥2080.00</div>
-										</div>
-									</a>
-								</li>
-								<li class="mui-table-view-cell">
-									<a href="javascript:;">
-										<img class="mui-media-object mui-pull-left" src="../../img/img3.jpg">
-										<div class="mui-media-body font-line">
-											<div class="product-name mui-ellipsis">私人订制服饰</div>
-											<div class="product-num">X2</div>
-											<div class="font-gray font-12">订单号：2016010716564225</div>
-											<div class="font-red font-12">一级用户</div>
-											<div class="li-price">￥2080.00</div>
-										</div>
-									</a>
-								</li>
 							</ul>
 						</div>
 					</div>
@@ -142,47 +75,11 @@
 				<div id="item3mobile" class="mui-slider-item mui-control-content">
 					<div id="scroll3" class="mui-scroll-wrapper">
 						<div class="mui-scroll">
-							<!--<div class="mui-loading">
+							<div class="mui-loading">
 								<div class="mui-spinner">
 								</div>
-							</div>-->
+							</div>
 							<ul class="mui-table-view">
-								<li class="mui-table-view-cell">
-									<a href="javascript:;">
-										<img class="mui-media-object mui-pull-left" src="../../img/img2.jpg">
-										<div class="mui-media-body font-line">
-											<div class="product-name mui-ellipsis">私人订制服饰</div>
-											<div class="product-num">X2</div>
-											<div class="font-gray font-12">订单号：2016010716564225</div>
-											<div class="font-red font-12">一级用户</div>
-											<div class="li-price">￥2080.00</div>
-										</div>
-									</a>
-								</li>
-								<li class="mui-table-view-cell">
-									<a href="javascript:;">
-										<img class="mui-media-object mui-pull-left" src="../../img/img1.jpg">
-										<div class="mui-media-body font-line">
-											<div class="product-name mui-ellipsis">私人订制服饰</div>
-											<div class="product-num">X2</div>
-											<div class="font-gray font-12">订单号：2016010716564225</div>
-											<div class="font-red font-12">一级用户</div>
-											<div class="li-price">￥2080.00</div>
-										</div>
-									</a>
-								</li>
-								<li class="mui-table-view-cell">
-									<a href="javascript:;">
-										<img class="mui-media-object mui-pull-left" src="../../img/img4.jpg">
-										<div class="mui-media-body font-line">
-											<div class="product-name mui-ellipsis">私人订制服饰</div>
-											<div class="product-num">X2</div>
-											<div class="font-gray font-12">订单号：2016010716564225</div>
-											<div class="font-red font-12">一级用户</div>
-											<div class="li-price">￥2080.00</div>
-										</div>
-									</a>
-								</li>
 							</ul>
 						</div>
 					</div>
@@ -191,47 +88,11 @@
 				<div id="item4mobile" class="mui-slider-item mui-control-content">
 					<div id="scroll4" class="mui-scroll-wrapper">
 						<div class="mui-scroll">
-							<!--<div class="mui-loading">
+							<div class="mui-loading">
 								<div class="mui-spinner">
 								</div>
-							</div>-->
+							</div>
 							<ul class="mui-table-view">
-								<li class="mui-table-view-cell">
-									<a href="javascript:;">
-										<img class="mui-media-object mui-pull-left" src="../../img/img4.jpg">
-										<div class="mui-media-body font-line">
-											<div class="product-name mui-ellipsis">私人订制服饰</div>
-											<div class="product-num">X2</div>
-											<div class="font-gray font-12">订单号：2016010716564225</div>
-											<div class="font-red font-12">一级用户</div>
-											<div class="li-price">￥2080.00</div>
-										</div>
-									</a>
-								</li>
-								<li class="mui-table-view-cell">
-									<a href="javascript:;">
-										<img class="mui-media-object mui-pull-left" src="../../img/img2.jpg">
-										<div class="mui-media-body font-line">
-											<div class="product-name mui-ellipsis">私人订制服饰</div>
-											<div class="product-num">X2</div>
-											<div class="font-gray font-12">订单号：2016010716564225</div>
-											<div class="font-red font-12">一级用户</div>
-											<div class="li-price">￥2080.00</div>
-										</div>
-									</a>
-								</li>
-								<li class="mui-table-view-cell">
-									<a href="javascript:;">
-										<img class="mui-media-object mui-pull-left" src="../../img/img3.jpg">
-										<div class="mui-media-body font-line">
-											<div class="product-name mui-ellipsis">私人订制服饰</div>
-											<div class="product-num">X2</div>
-											<div class="font-gray font-12">订单号：2016010716564225</div>
-											<div class="font-red font-12">一级用户</div>
-											<div class="li-price">￥2080.00</div>
-										</div>
-									</a>
-								</li>
 							</ul>
 						</div>
 					</div>
@@ -241,11 +102,187 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="../../js/mui.min.js" ></script>
+<script src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+<script src="../../js/utils/app.js"></script>
 <script>
+	"use strict";
 	mui.init();
 	mui('.mui-scroll-wrapper').scroll({
 		indicators: true //是否显示滚动条
+	});
+	var params = app.router.getParameter();
+	var saved = app.router.getSavedData();
+	var payType = 0//0、全部订单,1、已付款,2、待付款,3、已完成
+	var slider = {item1:0,item2:0,item3:0};//表示是否第一次点击这个slider
+	$(function(){
+
+		if (saved.context1) {
+			callbackItem1(saved.context1);
+		}else {
+			init();
+		}
+		if (saved.context2) {
+			callbackItem2(saved.context2);
+		}
+		if (saved.context3) {
+			callbackItem3(saved.context3);
+		}
+		if (saved.context4) {
+			callbackItem4(saved.context4);
+		}
+
+		if (saved.orderTabIndex) {
+			//显示指定轮播选
+			mui(".mui-slider").slider().gotoItem(saved.orderTabIndex);
+		}
+		
+	});
+	//点击或切换选项卡
+	document.getElementById('slider').addEventListener('slide', function(e) {
+		if (e.detail.slideNumber === 0) {
+			saved.orderTabIndex = 0;
+		}else if(e.detail.slideNumber === 1){
+			if(slider.item1 == 0){
+				payType = 1;
+				init();
+				slider.item1 = 1;
+			}
+			saved.orderTabIndex = 1;
+		}else if(e.detail.slideNumber === 2){
+			if(slider.item2 == 0){
+				payType = 2;
+				init();
+				slider.item2 = 1;
+			}
+			saved.orderTabIndex = 2;
+		}else if(e.detail.slideNumber === 3){
+			if(slider.item3 == 0){
+				payType = 3;
+				init();
+				slider.item3 = 1;
+			}
+			saved.orderTabIndex = 3;
+		}
+	});
+	function init(){
+		var url = app.route.ROUTE_GET_THIRDPARTY_DISTRIBUTORORDER_DATA;
+		var data = {openID: params.openid,payType:payType};
+		if(payType == 0 ){
+			app.utils.post({url : url,data: data.success === : callbackItem1});
+		}else if(payType == 1){
+			app.utils.post({url : url,data: data.success === : callbackItem2});
+		}else if(payType == 2){
+			app.utils.post({url : url,data: data.success === : callbackItem3});
+		}else if(payType == 3){
+			app.utils.post({url : url,data: data.success === : callbackItem4});
+		}
+	};
+	function callbackItem1(data){
+		if (data.success === true && data.context) {
+			var goodsList = data.context.goodsList;
+			var li = '';
+			for(var i=0;i<goodsList.length;i++){
+				li += htmlItem(goodsList[i]);
+			}
+			$("#item1mobile .mui-table-view").html(li);
+			var scroll = mui('#item1mobile .mui-scroll-wrapper').scroll();
+			if (saved.orderScrollTop) {
+				scroll.scrollTo(0, saved.orderScrollTop[1])
+			}
+			saved.context1 = data;
+		}
+	};
+	function callbackItem2(data){
+		if (data.success === true && data.context) {
+			var goodsList = data.context.goodsList;
+			var li = '';
+			for(var i=0;i<goodsList.length;i++){
+				li += htmlItem(goodsList[i]);
+			}
+			$("#item2mobile .mui-loading").remove();
+			$("#item2mobile .mui-table-view").html(li);
+			var scroll = mui('#item2mobile .mui-scroll-wrapper').scroll();
+			if (saved.orderScrollTop) {
+				scroll.scrollTo(0, saved.orderScrollTop[2])
+			}
+			saved.context2 = data;
+			slider.item1 = 1;
+		}
+	};
+	function callbackItem3(data){
+		if (data.success === true && data.context) {
+			var goodsList = data.context.goodsList;
+			var li = '';
+			for(var i=0;i<goodsList.length;i++){
+				li += htmlItem(goodsList[i]);
+			}
+			$("#item3mobile .mui-loading").remove();
+			$("#item3mobile .mui-table-view").html(li);
+			var scroll = mui('#item3mobile .mui-scroll-wrapper').scroll();
+			if (saved.orderScrollTop) {
+				scroll.scrollTo(0, saved.orderScrollTop[3])
+			}
+			saved.context3 = data;
+			slider.item2 = 1;
+		}
+	};
+	function callbackItem4(data){
+		if (data.success === true && data.context) {
+			var goodsList = data.context.goodsList;
+			var li = '';
+			for(var i=0;i<goodsList.length;i++){
+				li += htmlItem(goodsList[i]);
+			}
+			$("#item4mobile .mui-loading").remove();
+			$("#item4mobile .mui-table-view").html(li);
+			var scroll = mui('#item4mobile .mui-scroll-wrapper').scroll();
+			if (saved.orderScrollTop) {
+				scroll.scrollTo(0, saved.orderScrollTop[4])
+			}
+			saved.context4 = data;
+			slider.item3 = 1;
+		}
+	};
+	
+	function htmlItem(list){
+		var userType = '';
+		if(list.userType == 1){
+			userType = '一级分销商';
+		}else if(list.userType == 2){
+			userType = '二级分销商';
+		}else if(list.userType == 3){
+			userType = '三级分销商';
+		}
+		var li = '<li class="mui-table-view-cell">'+
+				 '		<a href="javascript:;">'+
+				 '			<input type="hidden" name="goodsId" value="'+list.id+'" />'+
+				 '			<img class="mui-media-object mui-pull-left" src="'+list.goodsImg+'">'+
+				 '			<div class="mui-media-body font-line">'+
+				 '				<div class="product-name mui-ellipsis">'+list.goodsName+'</div>'+
+				 '				<div class="product-num">X'+list.goodsNum+'</div>'+
+				 '				<div class="font-gray font-12">订单号：'+list.orderNo+'</div>'+
+				 '				<div class="font-red font-12">'+userType+'</div>'+
+				 '				<div class="li-price">￥'+list.goodsPrice+'</div>'+
+				 '			</div>'+
+				 '		</a>'+
+				 '	</li>';
+		return li;
+	};
+	//跳转商品详情
+	$('.mui-content .mui-slider-group').on('tap','li',function(){
+		var goodsId = $(this).find("input[name='goodsId']").val();
+		var data = {
+			goodsId: goodsId,
+			openID: params.openid
+		}
+		saved.orderScrollTop = {
+			1:mui('#item1mobile .mui-scroll-wrapper').scroll().y,
+			2:mui('#item2mobile .mui-scroll-wrapper').scroll().y,
+			3:mui('#item3mobile .mui-scroll-wrapper').scroll().y,
+			4:mui('#item4mobile .mui-scroll-wrapper').scroll().y,
+		}
+		app.router.showView('../goods-detail/goods-details.html', data, saved);
 	});
 </script>
 </html>

@@ -10,138 +10,185 @@
 	<link rel="stylesheet" href="../../css/common.css" />
 </head>
 <style>
-	.store {
-		background-color: #fff;
-		padding: 10px;
-		font-size: 16px;
-	}
-	.head-portrait {
-		display: inline-block;
-		vertical-align: middle;
-		margin: 10px;
-		width: 50px;
-		height: 50px;
-		-moz-border-radius: 25px;
-		-webkit-border-radius: 25px;
-		border-radius: 25px;
-		border: 1px solid #ccc;
-		background-color: #ccc;
-	}
-	.store .name {
-		display: inline-block;
-		vertical-align: middle;
-	}
-	.store .title {
-		margin-top: -15px;
-		color: #A2A2A2;
-		text-align: right;
-		font-size: 14px;
-	}
-	.statistics {
-		margin-top: 10px;
-		padding: 10px 20px;
-		background-color: #fff;
-	}
-	.statistics .button {
-		margin-top: 10px;
-		height: 40px;
-		width: 100%;
-		line-height: 40px;
-		color: #fff;
-		text-align: center;
-		background: url(../../img/distributor/long_button_tx_normal.png) no-repeat;
-		background-size: 100% 100%;
-	}
-	.statistics .button:active {
-		background: url(../../img/distributor/long_button_tx_press.png) no-repeat;
-		background-size: 100% 100%;
-	}
-	.list {
-		margin-top: 15px;
-	}
-	.list .li {
-		padding: 8px 20px;
-		background: url(../../img/distributor/background_normal.png) no-repeat;
-		background-size: 100% 100%;
-		color: #6a6761;
-		font-size: 16px;
-	}
-	.list .li:active {
-		background: url(../../img/distributor/background_press.png) no-repeat;
-		background-size: 100% 100%;
-	}
-	.list .li .icon {
-		margin-right: 15px;
-		width: 23px;
-		height: 23px;
-		display: inline-block;
-		vertical-align: bottom;
-	}
-	.list .li .total {
-		background: url(../../img/distributor/profit_statistics_icon.png) no-repeat;
-		background-size: 100% 100%;
-	}
-	.list .li .detail {
-		background: url(../../img/distributor/share_details_icoon.png) no-repeat;
-		background-size: 100% 100%;
-	}
-	.list .li .team {
-		background: url(../../img/distributor/my_team_icon.png) no-repeat;
-		background-size: 100% 100%;
-	}
-	.list .li .order {
-		background: url(../../img/distributor/distribution_order_icon.png) no-repeat;
-		background-size: 100% 100%;
-	}
-	.list .li .erweima {
-		background: url(../../img/distributor/erweima_icon.png) no-repeat;
-		background-size: 100% 100%;
-	}
-	.list .li .ranking {
-		background: url(../../img/distributor/distribution_charts_icon.png) no-repeat;
-		background-size: 100% 100%;
-	}
+.store {
+	background-color: #fff;
+	padding: 10px;
+	font-size: 16px;
+}
+.head-portrait {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 10px;
+	width: 50px;
+	height: 50px;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
+	border: 1px solid #ccc;
+	background-color: #ccc;
+}
+.store .name {
+	display: inline-block;
+	vertical-align: middle;
+}
+.store .title {
+	margin-top: -15px;
+	color: #A2A2A2;
+	text-align: right;
+	font-size: 14px;
+}
+.statistics {
+	margin-top: 10px;
+	padding: 10px 20px;
+	background-color: #fff;
+}
+.statistics .button {
+	margin-top: 10px;
+	height: 40px;
+	width: 100%;
+	line-height: 40px;
+	color: #fff;
+	text-align: center;
+	background: url(../../img/distributor/long_button_tx_normal.png) no-repeat;
+	background-size: 100% 100%;
+}
+.statistics .button:active {
+	background: url(../../img/distributor/long_button_tx_press.png) no-repeat;
+	background-size: 100% 100%;
+}
+.list {
+	margin-top: 15px;
+}
+.list .li {
+	padding: 8px 20px;
+	background: url(../../img/distributor/background_normal.png) no-repeat;
+	background-size: 100% 100%;
+	color: #6a6761;
+	font-size: 16px;
+}
+.list .li:active {
+	background: url(../../img/distributor/background_press.png) no-repeat;
+	background-size: 100% 100%;
+}
+.list .li .icon {
+	margin-right: 15px;
+	width: 23px;
+	height: 23px;
+	display: inline-block;
+	vertical-align: bottom;
+}
+.list .li .total {
+	background: url(../../img/distributor/profit_statistics_icon.png) no-repeat;
+	background-size: 100% 100%;
+}
+.list .li .detail {
+	background: url(../../img/distributor/share_details_icoon.png) no-repeat;
+	background-size: 100% 100%;
+}
+.list .li .team {
+	background: url(../../img/distributor/my_team_icon.png) no-repeat;
+	background-size: 100% 100%;
+}
+.list .li .order {
+	background: url(../../img/distributor/distribution_order_icon.png) no-repeat;
+	background-size: 100% 100%;
+}
+.list .li .erweima {
+	background: url(../../img/distributor/erweima_icon.png) no-repeat;
+	background-size: 100% 100%;
+}
+.list .li .ranking {
+	background: url(../../img/distributor/distribution_charts_icon.png) no-repeat;
+	background-size: 100% 100%;
+}
 </style>
 <body>
 	<header class="mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		<h1 id="title" class="mui-title">分销统计</h1>
+		<h1 id="title" class="mui-title">分销中心</h1>
 	</header>
 	<div class="mui-content">
 		<div class="store">
 			<img class="head-portrait" src="../../img/lv-logo.jpg" />
-			<div class="name li-price">LV官方旗舰店</div>
-			<div class="title">开店时间：2015-03-16</div>
+			<div class="name li-price"><!--LV官方旗舰店--></div>
+			<div class="title">开店时间：</div>
 		</div>
 		<div class="statistics">
-			<div><span class="font-gray">累计佣金：</span><span class="font-red">￥9723.00</span></div>
-			<div><span class="font-gray">可提佣金：</span><span class="font-red">￥972.00</span></div>
-			<div class="button">提&nbsp;&nbsp;现</div>
+			<div><span class="font-gray">累计佣金：</span><span id="totalBrokerage" class="font-red"><!--￥9723.00--></span></div>
+			<div><span class="font-gray">可提佣金：</span><span id="leftBrokerage" class="font-red"><!--￥972.00--></span></div>
+			<div id="toWithdraw" class="button">提&nbsp;&nbsp;现</div>
 		</div>
 		<div class="list">
-			<div class="li">
+			<div class="li" data-href="statistics">
 				<div class="icon total"></div>分润统计
 			</div>
-			<div style="margin-top: 10px;" class="li">
+			<div style="margin-top: 10px;" class="li" data-href="detail">
 				<div class="icon detail"></div>分润明细
 			</div>
-			<div class="li">
+			<div class="li" data-href="myDistributor">
 				<div class="icon team"></div>我的团队
 			</div>
-			<div style="margin-top: 10px;" class="li">
+			<div style="margin-top: 10px;" class="li" data-href="distributorOrder">
 				<div class="icon order"></div>分销订单
 			</div>
-			<div style="margin-top: 10px;" class="li">
+			<div style="margin-top: 10px;" class="li" data-href="code">
 				<div class="icon erweima"></div>二维码
 			</div>
-			<div class="li">
+			<div class="li" data-href="ranking">
 				<div class="icon ranking"></div>分销排行榜
 			</div>
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+<script src="../../js/utils/app.js"></script>
 <script>
+	"use strict";
 	mui.init();
+	var leftBrokerage = 0;
+	var params = app.router.getParameter();
+	var saved = app.router.getSavedData();
+	$(function(){
+		if (saved.context) {
+			callback(saved.context);
+		} else {
+			init();
+		}
+	});
+	function init(){
+		var url = app.route.ROUTE_GET_THIRDPARTY_CENTRE_DATA;
+		var data = {openID: params.openid};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : callback,
+		});
+	}
+	
+	function callback(data){
+		if (data.success === true && data.context) {
+			var div = '<img class="head-portrait" src="'+data.context.distributorImg+'" />'+
+					  '	<div class="name li-price">'+data.context.distributorName+'</div>'+
+					  '	<div class="title">开店时间：'+data.context.startDate+'</div>';
+			$(".mui-content .store").html(div);
+			$("#totalBrokerage").html("￥"+data.context.totalBrokerage);
+			leftBrokerage = data.context.leftBrokerage;
+			$("#leftBrokerage").html("￥"+leftBrokerage);
+			saved.context = data;
+		}
+	}
+	
+	$(".list").on('tap','.li',function(){
+		var data = {};
+		app.router.showView($(this).attr("data-href")+'.html',data,saved)
+	});
+	$(".mui-content .store").on('tap',function(){
+		app.router.showView('editPersonal.html',{},saved)
+	});
+	$("#toWithdraw").on('tap',function(){
+		var data = {leftBrokerage:leftBrokerage};
+		app.router.showView('withdraw.html',data,saved)
+	});
 </script>
 </html>

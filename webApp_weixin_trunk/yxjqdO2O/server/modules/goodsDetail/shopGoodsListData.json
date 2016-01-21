@@ -1,0 +1,49 @@
+{
+	"success": true,
+	"msg": "获取数据成功",
+	"context": {
+		"goodsList": [
+			{
+				"goodsID": 18,
+				"goodsName": "便捷叠衣架",
+				"goodsIntroduction": "方便快捷、实用,方便快捷、实用",
+				"goodsPrice": "52",
+				"goodsSalePrice": "23",
+				"sales": 1332,
+				"goodsImg": "http://localhost:3000/home/4.jpg"
+			}, {
+				"goodsID": 28,
+				"goodsName": "巧克力蛋糕",
+				"goodsIntroduction": "香甜可口",
+				"goodsPrice": "78",
+				"goodsSalePrice": "37",
+				"sales": 2132,
+				"goodsImg": "http://localhost:3000/home/2.jpg"
+			}, {
+				"goodsID": 22,
+				"goodsName": "创意椅子",
+				"goodsIntroduction": "高端大气上档次",
+				"goodsPrice": "60",
+				"goodsSalePrice": "22",
+				"sales": 234,
+				"goodsImg": "http://localhost:3000/home/5.jpg"
+			}, {
+				"goodsID": 5,
+				"goodsName": "购物袋",
+				"goodsIntroduction": "轻便、易拿、耐重",
+				"goodsPrice": "20",
+				"goodsSalePrice": "8",
+				"sales": 12325,
+				"goodsImg": "http://localhost:3000/home/1.jpg"
+			}, {
+				"goodsID": 13,
+				"goodsName": "便捷叠衣架",
+				"goodsIntroduction": "方便快捷、实用,方便快捷、实用",
+				"goodsPrice": "52",
+				"goodsSalePrice": "20",
+				"sales": 132,
+				"goodsImg": "http://localhost:3000/home/4.jpg"
+			}
+		]
+	}
+}

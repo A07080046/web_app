@@ -1,0 +1,20 @@
+{
+    "success": true,
+    "msg": "获取数据成功",
+    "context": {
+        "rankingList": [
+            {
+                "distributorName": "dsfsd",
+                "distributorNum": 56,
+                "distributorImg": "http://localhost:3000/home/4.jpg",
+                "distributorMoney": "51545"
+            },
+            {
+                "distributorName": "dsfsd",
+                "distributorNum": 56,
+                "distributorImg": "http://localhost:3000/home/5.jpg",
+                "distributorMoney": "51545"
+            }
+        ]
+    }
+}

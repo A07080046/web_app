@@ -55,14 +55,15 @@
 	    </ul>
 	</div>
 </body>
-<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/mui.min.js" ></script>
 <script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
 <script src="../../js/utils/app.js"></script>
 <script>
+	"use strict";
 	function getCommodityCollectionData() {
 		var url = app.route.ROUTE_GET_COMMODITY_COLLECTION_DATA;
 		var data = {
-			openid: params.openid,
+			openID: params.openid,
 		};
 		app.utils.post({
 			url : url,
@@ -71,17 +72,22 @@
 		});
 	}
 	function getCommodityCollectionDataSuccess(data) {
-		if (data.status === 'success' && data.context && data.context.goodsList) {
+		if (data.success === true && data.context && data.context.goodsList) {
 			var goodsList = data.context.goodsList;
 			saved.data = goodsList;
 			showPage(goodsList);
 		}
 	}
+	function showView(index) {
+		var goodsList = saved.data;
+		var param = goodsList[index];
+		app.router.showView('../goods-detail/goods-details.html', param, saved);
+	}
 	function showPage(data) {
 		var html = '';
 		for (var i in data) {
 			var item = data[i];
-			html += '<li class="mui-table-view-cell mui-media mui-col-xs-6">';
+			html += '<li class="mui-table-view-cell mui-media mui-col-xs-6" data-index='+i+'>';
 			html += '    <a href="#">';
 			html += '        <div class="box"><img class="box-full-image" src="'+item.goodsImg+'"></div>';
 			html += '        <div class="left good-name">'+item.goodsName+'</div><div class="right info">已售:'+item.salse+'</div>';
@@ -93,6 +99,9 @@
 		}
 		$('.mui-content .mui-table-view').html(html);
 		app.router.resetScollerBar();
+		$('.mui-table-view .mui-table-view-cell').on('click', function() {
+			showView($(this).data('index'));
+		});
 	}
 	mui.init();
 

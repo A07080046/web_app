@@ -55,14 +55,15 @@
 	    </ul>
 	</div>
 </body>
-<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/mui.min.js" ></script>
 <script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
 <script src="../../js/utils/app.js"></script>
 <script>
+	"use strict";
 	function getIntegralExchangeData() {
 		var url = app.route.ROUTE_GET_INTEGRAL_EXCHANGE_DATA;
 		var data = {
-			openid: params.openid,
+			openID: params.openid,
 		};
 		app.utils.post({
 			url : url,
@@ -71,7 +72,7 @@
 		});
 	}
 	function getIntegralExchangeDataSuccess(data) {
-		if (data.status === 'success' && data.context && data.context.goodsList) {
+		if (data.success === true && data.context && data.context.goodsList) {
 			var goodsList = data.context.goodsList;
 			saved.data = goodsList;
 			showPage(goodsList);
@@ -79,9 +80,8 @@
 	}
 	function showView(index) {
 		var goodsList = saved.data;
-		var param = goodsList[index];	
-		app.router.showView('../goods-detail/goods-details.html', param, saved);
-//		app.router.showView('integralDetail.html', param, saved);
+		var param = goodsList[index];
+		app.router.showView('integralDetail.html', param, saved);
 	}
 	function showPage(data) {
 		var html = '';
@@ -108,8 +108,11 @@
 
 	var params = app.router.getParameter();
 	var saved = app.router.getSavedData();
+	if (params.shouldUpdateData) {
+		mui.toast('换购成功');
+	}
 
-	if (saved.data) {
+	if (saved.data&&!params.shouldUpdateData) {
 		showPage(saved.data);
 	} else {
 		getIntegralExchangeData();

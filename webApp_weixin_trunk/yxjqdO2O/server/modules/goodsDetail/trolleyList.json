@@ -1,5 +1,5 @@
 {
-    "status": "success",
+    "success": true,
     "msg": "获取数据成功",
     "context": {
         "goodsList": [
@@ -7,59 +7,167 @@
                 "goodsID": 55,
                 "goodsName": "henhao",
                 "goodsNum": 8,
-                "goodsPrice": "15.00",
-                "goodsDec": "5千克|红色"
+                "goodsImg": "http://localhost:3000/home/4.jpg",
+                "goodsDec": {
+                    "code": {
+                        "8": {
+                            "primary": "颜色",
+                            "secondary": {
+                                "1": "红",
+                                "2": "黄",
+                                "3": "绿"
+                            }
+                        },
+                        "9": {
+                            "primary": "大小",
+                            "secondary": {
+                                "4": "XL",
+                                "5": "XXL",
+                                "6": "ML"
+                            }
+                        }
+                    },
+                    "price": {
+                        "1": {
+                            "3": {
+                                "6": 100
+                            }
+                        }
+                    }
+                }
             },
             {
                 "goodsID": 55,
                 "goodsName": "henhao",
                 "goodsNum": 8,
-                "goodsPrice": "15.00",
-                "goodsDec": "5千克|红色"
+                "goodsImg": "http://localhost:3000/home/5.jpg",
+                "goodsDec": {
+                    "code": {
+                        "8": {
+                            "primary": "颜色",
+                            "secondary": {
+                                "1": "红",
+                                "2": "黄",
+                                "3": "绿"
+                            }
+                        },
+                        "9": {
+                            "primary": "大小",
+                            "secondary": {
+                                "4": "XL",
+                                "5": "XXL",
+                                "6": "ML"
+                            }
+                        }
+                    },
+                    "price": {
+                        "1": {
+                            "3": {
+                                "6": 100
+                            }
+                        }
+                    }
+                }
             },
             {
                 "goodsID": 55,
                 "goodsName": "henhao",
                 "goodsNum": 8,
-                "goodsPrice": "15.00",
-                "goodsDec": "5千克|红色"
+                "goodsImg": "http://localhost:3000/home/6.jpg",
+                "goodsDec": {
+                    "code": {
+                        "8": {
+                            "primary": "颜色",
+                            "secondary": {
+                                "1": "红",
+                                "2": "黄",
+                                "3": "绿"
+                            }
+                        },
+                        "9": {
+                            "primary": "大小",
+                            "secondary": {
+                                "4": "XL",
+                                "5": "XXL",
+                                "6": "ML"
+                            }
+                        }
+                    },
+                    "price": {
+                        "1": {
+                            "3": {
+                                "6": 100
+                            }
+                        }
+                    }
+                }
             },
             {
                 "goodsID": 55,
                 "goodsName": "henhao",
                 "goodsNum": 8,
-                "goodsPrice": "15.00",
-                "goodsDec": "5千克|红色"
+                "goodsImg": "http://localhost:3000/home/4.jpg",
+                "goodsDec": {
+                    "code": {
+                        "8": {
+                            "primary": "颜色",
+                            "secondary": {
+                                "1": "红",
+                                "2": "黄",
+                                "3": "绿"
+                            }
+                        },
+                        "9": {
+                            "primary": "大小",
+                            "secondary": {
+                                "4": "XL",
+                                "5": "XXL",
+                                "6": "ML"
+                            }
+                        }
+                    },
+                    "price": {
+                        "1": {
+                            "3": {
+                                "6": 100
+                            }
+                        }
+                    }
+                }
             },
             {
                 "goodsID": 55,
                 "goodsName": "henhao",
                 "goodsNum": 8,
-                "goodsPrice": "15.00",
-                "goodsDec": "5千克|红色"
-            },
-            {
-                "goodsID": 55,
-                "goodsName": "henhao",
-                "goodsNum": 8,
-                "goodsPrice": "15.00",
-                "goodsDec": "5千克|红色"
-            },
-		{
-                "goodsID": 55,
-                "goodsName": "henhao",
-                "goodsNum": 8,
-                "goodsPrice": "15.00",
-                "goodsDec": "5千克|红色"
-            },
-            {
-                "goodsID": 55,
-                "goodsName": "henhao",
-                "goodsNum": 8,
-                "goodsPrice": "15.00",
-                "goodsDec": "5千克|红色"
+                "goodsImg": "http://localhost:3000/home/5.jpg",
+                "goodsDec": {
+                    "code": {
+                        "8": {
+                            "primary": "颜色",
+                            "secondary": {
+                                "1": "红",
+                                "2": "黄",
+                                "3": "绿"
+                            }
+                        },
+                        "9": {
+                            "primary": "大小",
+                            "secondary": {
+                                "4": "XL",
+                                "5": "XXL",
+                                "6": "ML"
+                            }
+                        }
+                    },
+                    "price": {
+                        "1": {
+                            "3": {
+                                "6": 100
+                            }
+                        }
+                    }
+                }
             }
         ]
 	}
 }
-

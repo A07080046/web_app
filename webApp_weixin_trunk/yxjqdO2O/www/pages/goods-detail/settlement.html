@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*">
+		<meta http-equiv="content-security-policy">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>赢销截拳道电子商城</title>
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../css/yxjqd/settlement.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">结算</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="#">
+	     	 	合计：<span id="totalPrice">￥12345.00</span>
+			</a>
+			<a class="mui-tab-item" href="#">
+				<button id="payBtn" type="button" class="mui-btn mui-btn-danger">支付</button>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<div id="edtAddress" class="mui-table-view-cell">
+				<!--<a class="mui-navigate-right">
+					<div id="userName" class="inline">收货人：王敏</div>
+					<div id="telPhone" class="inline">18685306265</div>
+					<p id="userAddress" class="mui-ellipsis-2">收货地址：贵阳云岩区安云路樱花巷</p>
+				</a>-->
+			</div>
+			<div style="margin-top: 10px;">
+				<ul id="goodslist_ul" class="mui-table-view">
+					<!--<li class="mui-table-view-cell">
+						<a href="javascript:;">
+							<img class="mui-media-object mui-pull-left" src="../../img/img1.jpg">
+							<div class="mui-media-body">
+								<div class="product-name mui-ellipsis">私人订制服饰私人订制服饰</div>
+								<div class="product-price">￥2080.00</div>
+								<div class="font-black">颜色&nbsp;尺寸&nbsp;规格</div>
+								<div class="product-num">X2</div>
+							</div>
+						</a>
+					</li>-->
+				</ul>
+			</div>
+			<div id="integral_checkbox" class="use-integral">
+				<!--<div class="mui-input-row mui-checkbox">
+					<label>你的积分：1982，可兑换19元</label>
+					<input checked="false" id="integral_input" name="checkbox1" value="Item 3" type="checkbox">
+				</div>-->
+			</div>
+		</div>
+	</body>
+	<script src="../../js/thirdparty/mui.min.js"></script>
+	<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+	<script src="../../js/utils/app.js"></script>
+	<script>
+		"use strict";
+		mui.init({
+			swipeBack: true
+		});
+
+		function getOrderNo() {
+			var url = app.route.ROUTE_GET_ORDER_NO;
+			var data = {
+				integral: params.personal.integral,
+				goodsList:getPayGoodsList(params.goodsList),
+				openID: params.openid,
+			};
+			app.utils.post({
+				url: url,
+				data: data,
+				success: getOrderNoSuccess,
+			});
+		}
+
+		function getOrderNoSuccess(data) {
+			if (data.success === 'success' && data.context) {
+				var dataContext = data.context;
+				saved.data = dataContext;
+			}
+		}
+		
+		function getPayGoodsList(data) {
+			var payGoodsList = new Array();
+			for (var obj in data) {
+				var goods = {
+					goodsID: data[obj].goodsID,
+		            goodsNum: data[obj].goodsNum,
+		            goodsDec: data[obj].goodsID+'-'+data[obj].goodsDecStr+'-'+data[obj].goodsPrice,
+				};
+				payGoodsList.push(goods);
+			}
+			return payGoodsList;
+		}
+		
+		function showPersonInfo(data) {
+			var html_info = '';
+			var html_integral = '';
+			if (data == null) {
+				return;
+			}
+			html_info += '<a class="mui-navigate-right">';
+			html_info += '<div id="userName" class="inline">收货人：' + data.name + '</div>';
+			html_info += '<div id="telPhone" class="inline">' + '</div>';
+			html_info += '<p id="userAddress">收货地址：' + '</p>';;
+			html_info += '</a>';
+			$('#edtAddress').html(html_info);
+			mui('#edtAddress').slider();
+			html_integral += '<div  class="mui-input-row mui-checkbox">';
+			var integral_price = parseInt(data.integral) / 100;
+			html_integral += '<label>当前积分: ' + data.integral + ' ,可兑换 ' + integral_price + ' 元</label>';
+			html_integral += '<input name="checkbox1" value="Item 3" type="checkbox">';
+			html_integral += '</div>';
+			$('#integral_checkbox').html(html_integral);
+			mui('#integral_checkbox').slider();
+		}
+
+		function showGoodsList(listData) {
+			var html_list = '';
+			var allPrice = 0;
+			for (var i in listData) {
+				var price = parseFloat(listData[i].goodsPrice + '') * listData[i].goodsNum;
+				html_list += '<li class="mui-table-view-cell">';
+				html_list += '<a href="javascript:;">';
+				html_list += '<img class="mui-media-object mui-pull-left" src="' + listData[i].goodsImg + '">';
+				html_list += '<div class="mui-media-body">';
+				html_list += '<div class="product-name mui-ellipsis">' + listData[i].goodsName + '</div>';
+				html_list += '<div class="product-price">￥ ' + price + '</div>';
+				var str = listData[i].goodsDecStr;
+				if (str.indexOf("-") > 0) {
+					var decStr = str.split("-");
+					var goodsStyle = ''; //商品的属性(颜色，大小，规格等)
+					var colorNum = '';
+					for (var j in decStr) {
+						colorNum = decStr[j];
+						for (var k in listData[i].goodsDec.code) {
+							var obj = listData[i].goodsDec.code[k].secondary;
+							for (var key in obj) {
+								if (obj.hasOwnProperty(key)) {
+									if (colorNum == key) {
+										var styleStr = obj[key];
+										console.log('dsdsds    ', "colorNum: " + colorNum + " styleStr: " + styleStr);
+										goodsStyle += ' ' + styleStr;
+									}
+								}
+							}
+						}
+					}
+				}
+				html_list += '<div class="font-black">' + goodsStyle + '</div>';
+				html_list += '<div class="product-num">x ' + listData[i].goodsNum + '</div>';
+				html_list += '</div></a></li>';
+				$('#goodslist_ul').html(html_list);
+				mui('#goodslist_ul').slider();
+				allPrice += price; //计算总价
+			}
+			//显示总价
+			$('#totalPrice').text('￥ ' + allPrice);
+		}
+
+		function showPage(params) {
+			showPersonInfo(params.personal);
+			showGoodsList(params.goodsList);
+		}
+		var params = app.router.getParameter();
+		var saved = app.router.getSavedData();
+		if (params) {
+			showPage(params);
+		}
+		$("#payBtn").on('tap', function() {
+			getOrderNo();
+		});
+	</script>
+
+</html>

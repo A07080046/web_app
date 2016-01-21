@@ -47,11 +47,12 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/mui.min.js" ></script>
 <script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
 <script src="../../js/thirdparty/spin.min.js"></script>
 <script src="../../js/utils/app.js"></script>
 <script>
+	"use strict";
 	function getScrollTop() {
 		return mui('#pullrefresh').pullRefresh().y;
 	}
@@ -62,7 +63,7 @@
 	}
 	function getListItem(item, index, append) {
 		index = index*1 + (append||0)*1;
-		html = '';
+		var html = '';
 		html += '<li class="mui-table-view-cell mui-media mui-col-xs-6" data-index='+index+'>';
 		html += '    <a>';
 		html += '		<div class="box"><img class="box-full-image" src="'+item.goodsImg+'"></div>';
@@ -100,7 +101,7 @@
 		$('#top5_list').html('<div class="empty_list">没有相关数据</div>');
 	}
 	function showList(list, append) {
-		html = '';
+		var html = '';
 		for (var i in list) {
 			html += getListItem(list[i], i, append);
 		}
@@ -129,7 +130,7 @@
 		});
 	};
 	function onGetListSuccess(data) {
-		if (data.status === 'success') {
+		if (data.success === true) {
 			var context = data.context||{};
 			var list = data.context.goodsList;
 			console.log(list);
@@ -202,7 +203,7 @@
 		var data = {
 			goodsID: saved.list[index].goodsID,
 			goodsName: saved.list[index].goodsName,
-			openid: params.openid,
+			openID: params.openid,
 		}
 		saved.query = query;
 		app.router.showView('../goods-detail/goods-details.html', data, saved, getScrollTop);
@@ -212,7 +213,8 @@
 	var params = app.router.getParameter();
 	var saved = app.router.getSavedData();
 	var query = saved.query||{pageNo: FIRST_PAGE_NO, type: params.typeID, dir:'none'};
-	$('#title').html(params.title);
+	saved.title = saved.title||params.title;
+	$('#title').html(saved.title);
 
 	if (saved.list) {
 		showList(saved.list);

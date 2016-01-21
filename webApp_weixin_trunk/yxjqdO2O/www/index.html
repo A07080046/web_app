@@ -6,6 +6,7 @@
 		<title>赢销截拳道电子商城</title>
 		<meta http-equiv="Access-Control-Allow-Origin" content="*">
 		<meta http-equiv="content-security-policy">
+		<meta version=1.0.0>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -22,13 +23,13 @@
 			}
 			.search-line {
 				position: absolute;
-				right: 15%;
+				right: 50px;
 				height: 50%;
 				top: 10px;
 			}
 			.search-button {
 				position: absolute;
-				right: 5%;
+				right: 10px;
 				height: 50%;
 				top: 10px;
 			}
@@ -41,30 +42,75 @@
 				padding-right: 18% !important;
 				background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#FAC7B7), to(#F9AC94)) !important;
 			}
-			.menu-icon {
+			#tabbar-with-home .announcement-container {
+				background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#FDBE42), to(#F69544));
+				color: #fff;
+			}
+			#tabbar-with-home #distributor_container {
+				background-color: lightgray;
+			}
+			#tabbar-with-home .shop-logo-container {
+				width: 80px;
+				height: 80px;
+				border-radius: 80px;
+				background: linear-gradient(#DDDDDD, #8F8F8F);
+				position: absolute;
+				left: 20px;
+				top: 10px;
+				padding: 4px;
+			}
+			#tabbar-with-home .shop-logo {
+				width: 72px;
+				height: 72px;
+				border-radius: 72px;
+			}
+			#tabbar-with-home .menu-button-img {
+				height: 30px;
+				width: 97px;
+				float: right;
+				margin: 20px 10px 0px 0px;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				color: #fff;
+				padding: 5px 0px 0px 40px;
+				font-size: 14px;
+			}
+
+			#tabbar-with-home .menu-button-img#button-erweima {
+				background-image: url("img/home/erweima_normal.png");
+			}
+			#tabbar-with-home  .menu-button-img#button-collection {
+				background-image: url("img/home/collection_normal.png");
+			}
+
+			#tabbar-with-home .personal_name_container {
+				padding: 20px 0px 0px 130px;
+				font-size: 18px;
+			}
+			#tabbar-with-home .menu-icon {
 				width: 80% !important;
 			}
-			.menu-icon-badge {
+			#tabbar-with-home .menu-icon-badge {
 				background-color: red;
 				color: #fff;
 				top: 20% !important;
 				right: 0 !important;
 			}
-			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+			#tabbar-with-home .mui-grid-view.mui-grid-9 .mui-table-view-cell {
 				padding-top: 0px !important;
 				padding-bottom: 0px !important;
 			}
-			.mui-grid-view.mui-grid-9 .mui-table-view-cell.bottom {
+			#tabbar-with-home .mui-grid-view.mui-grid-9 .mui-table-view-cell.bottom {
 				padding-bottom: 20px !important;
 			}
-			.title-bar-left {
+			#tabbar-with-home .title-bar-left {
 				position: absolute;
 				width: 35%;
 				height: 2px;
 				background: gray;
 				top: 15px;
 			}
-			.title-bar-right {
+			#tabbar-with-home .title-bar-right {
 				position: absolute;
 				width: 35%;
 				height: 2px;
@@ -72,25 +118,31 @@
 				background: gray;
 				top: 15px;
 			}
-			.title-container {
+			#tabbar-with-home .title-container {
 				position: relative;
 				height: 30px;
 			}
-			.title-context-container {
+			#tabbar-with-home .title-context-container {
 				position: absolute;
 				left: 35%;
 				width: 30%;
 				text-align: center;
 			}
-			.title-image {
+			#tabbar-with-home .title-image {
 				margin-top: 5px;
 				width: 25px;
 				height: 18px;
 			}
-			.title-text {
+			#tabbar-with-home .title-text {
 				padding-left: 5px;
 				color: red;
 				font-size: 18px;
+			}
+			#tabbar-with-home .main-good-price {
+				color: #F37E27;
+			}
+			#tabbar-with-home .main-good-price-text {
+				float: left;
 			}
 			.navbar {
 				background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#FAAE27), to(#F37E27));
@@ -99,9 +151,9 @@
 				position: relative;
 			}
 			.navbar-icon {
-				width: 40px !important;
-				height: 40px !important;
-				background-size: 40px 40px;
+				width: 30px !important;
+				height: 30px !important;
+				background-size: 30px 30px;
 				background-repeat: no-repeat;
 				background-position: top center;
 			}
@@ -236,105 +288,120 @@
 				right:0px;
 				position:absolute;
 			}
-			/*个人中心*/
-			.personal_info_container{
+			.empty_list {
+				color:red;
+				padding-top: 150px;
+				padding-bottom: 150px;
+				background-color: #efeff4;
+				text-align: center;
+				font-size: 25px;
+			}
+			/*个人中心css样式结束*/
+			#tabbar-with-person-center .personal_info_container{
 				height:120px;
 				position: relative;
 			}
-			.personal_info_head {
+			#tabbar-with-person-center .personal_info_head {
 				height: 100px;
 				width: 100px;
 				margin: 10px;
 				border-radius: 100px;
 			}
-			.personal_detail_container {
+			#tabbar-with-person-center .personal_detail_container {
 				position: absolute;
 				left: 120px;
 				top: 0px;
 				padding: 40px 10px;
 			}
-			.personal_name_container {
+			#tabbar-with-person-center .personal_name_container {
 				margin-bottom: 10px;
 				font-size: 14px;
 			}
-			.personal_info_name {
+			#tabbar-with-person-center .personal_info_name {
 				font-weight: bold;
 				font-size: 18px;
 				color:red;
 			}
-			.personal_sign {
+			#tabbar-with-person-center .personal_sign {
 				font-size: 13px;
 			}
-			.mui-control-item {
+			#tabbar-with-person-center .mui-control-item {
 				position: relative;
 			}
-			.mui-control-item.mui-active {
+			#tabbar-with-person-center .mui-control-item.mui-active {
 				color: #E4876B !important;
 			}
-			.menu_icon1 {
+			#tabbar-with-person-center .menu_icon1 {
 				height: 20px;
 				width: 20px;
 				background: url(img/personal/collection_shop.png);
 				background-size: 20px 20px;
 				background-repeat: no-repeat;
 			}
-			.menu_icon2 {
+			#tabbar-with-person-center .menu_icon2 {
 				height: 20px;
 				width: 20px;
 				background: url(img/personal/collection_commodity.png);
 				background-size: 20px 20px;
 				background-repeat: no-repeat;
 			}
-			.menu_icon3 {
+			#tabbar-with-person-center .menu_icon3 {
 				height: 20px;
 				width: 20px;
 				background: url(img/personal/distributor.png);
 				background-size: 20px 20px;
 				background-repeat: no-repeat;
 			}
-			.mui-active>.menu_icon1 {
+			#tabbar-with-person-center .mui-active>.menu_icon1 {
 				background: url(img/personal/collection_shop_press.png);
 				background-size: 20px 20px;
 				background-repeat: no-repeat;
 			}
-			.mui-active>.menu_icon2 {
+			#tabbar-with-person-center .mui-active>.menu_icon2 {
 				background: url(img/personal/collection_commodity_press.png);
 				background-size: 20px 20px;
 				background-repeat: no-repeat;
 			}
-			.mui-active>.menu_icon3 {
+			#tabbar-with-person-center .mui-active>.menu_icon3 {
 				background: url(img/personal/distributor_press.png);
 				background-size: 20px 20px;
 				background-repeat: no-repeat;
 			}
-			.company-container {
+			#tabbar-with-person-center .company-container {
 				display: flex;
 				flex-direction: column;
 			}
-			.image-container {
+			#tabbar-with-person-center .image-container {
 				flex:1;
 			}
-			.image-info {
+			#tabbar-with-person-center .image-info {
 				width: 100%;
 				height: 100%;
 			}
-			.company-info-container {
+			#tabbar-with-person-center .company-info-container {
 				text-align: center;
 				color: gray;
 				margin-bottom: 40px;
 				width: 100%;
 			}
-			.company-copy {
+			#tabbar-with-person-center .company-copy {
 				font-size: 13px;
 			}
-			.company-name {
+			#tabbar-with-person-center .company-name {
 				font-size: 16px;
 			}
-			.mui-table-view .mui-media-object {
+			/*个人中心css样式结束*/
+			#tabbar-with-trolley .mui-table-view-cell .mui-checkbox input[type='checkbox'] {
+			    line-height: 80px;
+			}
+			#tabbar-with-trolley .mui-table-view-cell .mui-checkbox {
+			    width: 40px;
+			}
+			#tabbar-with-trolley .mui-table-view .mui-media-object {
 			    max-width: 100px;
 			    height: 100px;
 			}
-			.trolley-select-all {
+			#tabbar-with-trolley .trolley-select-all {
 				float: left;
 				width: 35%;
 				height: 40px;
@@ -343,7 +410,7 @@
 				color: white;
 				padding-top: 10px;
 			}
-			.trolley-amount {
+			#tabbar-with-trolley .trolley-amount {
 				float: left;
 				width: 35%;
 				height: 40px;
@@ -352,7 +419,7 @@
 				color: #6a6761;
 				padding-top: 10px;
 			}
-			.trolley-accounts {
+			#tabbar-with-trolley .trolley-accounts {
 				float: left;
 				width: 30%;
 				height: 40px;
@@ -361,24 +428,175 @@
 				color: white;
 				background-color: orangered;
 			}
-			.trolly-content {
+			#tabbar-with-trolley .trolly-content {
 				margin-bottom: 80px;
 			}
-			.trolley-footer {
-				margin-top: 10px;
+			#tabbar-with-trolley .trolley-footer {
+				bottom: 56px;
+				height: 40px;
 			}
+			#tabbar-with-trolley .attribute-type {
+				color: gay;
+			}
+			#tabbar-with-trolley .attribute-value {
+				padding-right: 5px;
+			}
+			/*分销中心css样式开始*/
+			#become-distributor .fulltop img {
+				width: 100%;
+				height: 220px;
+			}
+			#become-distributor .content-padding {
+				padding: 0 10px;
+			}
+			#become-distributor .content-padding input {
+				margin-top: 15px;
+				margin-bottom: 0;
+			}
+			#become-distributor .font-black {
+				font-size: 15px;
+			}
+			#become-distributor .mui-btn-block {
+				margin-top: 15px;
+				padding: 10px 0;
+			}
+			#become-distributor .font-gray {
+				font-size: 14px;
+			}
+			#become-distributor .mui-card {
+				margin: 0;
+			}
+			#become-distributor .store-btn {
+				margin: 20px 0;
+				padding: 2px 10px;
+				-moz-border-radius: 5px;
+				-webkit-border-radius: 5px;
+				border-radius: 5px;
+				background: -webkit-linear-gradient(top, #FFBC35,#FA9033);
+				background: -moz-linear-gradient(top, #FFBC35,#FA9033);
+				background: linear-gradient(top, #FFBC35,#FA9033);
+			}
+			#become-distributor .store-btn img {
+				float: left;
+				width: 153px;
+				height: 45px;
+			}
+			#become-distributor .store-btn span {
+				float: right;
+				color: #fff;
+				line-height: 45px;
+				font-weight: bold;
+			}
+			/*分销中心*/
+			#distributor-center .store {
+				background-color: #fff;
+				padding: 10px;
+				font-size: 16px;
+			}
+			#distributor-center .head-portrait {
+				display: inline-block;
+				vertical-align: middle;
+				margin: 10px;
+				width: 50px;
+				height: 50px;
+				-moz-border-radius: 25px;
+				-webkit-border-radius: 25px;
+				border-radius: 25px;
+				border: 1px solid #ccc;
+				background-color: #ccc;
+			}
+			#distributor-center .store .name {
+				display: inline-block;
+				vertical-align: middle;
+			}
+			#distributor-center .store .title {
+				margin-top: -15px;
+				color: #A2A2A2;
+				text-align: right;
+				font-size: 14px;
+			}
+			#distributor-center .statistics {
+				margin-top: 10px;
+				padding: 10px 20px;
+				background-color: #fff;
+			}
+			#distributor-center .statistics .button {
+				margin-top: 10px;
+				height: 40px;
+				width: 100%;
+				line-height: 40px;
+				color: #fff;
+				text-align: center;
+				background: url(img/distributor/long_button_tx_normal.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			#distributor-center .statistics .button:active {
+				background: url(img/distributor/long_button_tx_press.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			#distributor-center .list {
+				margin-top: 15px;
+			}
+			#distributor-center .list .li {
+				padding: 8px 20px;
+				background: url(img/distributor/background_normal.png) no-repeat;
+				background-size: 100% 100%;
+				color: #6a6761;
+				font-size: 16px;
+			}
+			#distributor-center .list .li:active {
+				background: url(img/distributor/background_press.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			#distributor-center .list .li .icon {
+				margin-right: 15px;
+				width: 23px;
+				height: 23px;
+				display: inline-block;
+				vertical-align: bottom;
+			}
+			#distributor-center .list .li .total {
+				background: url(img/distributor/profit_statistics_icon.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			#distributor-center .list .li .detail {
+				background: url(img/distributor/share_details_icoon.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			#distributor-center .list .li .team {
+				background: url(img/distributor/my_team_icon.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			#distributor-center .list .li .order {
+				background: url(img/distributor/distribution_order_icon.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			#distributor-center .list .li .erweima {
+				background: url(img/distributor/erweima_icon.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			#distributor-center .list .li .ranking {
+				background: url(img/distributor/distribution_charts_icon.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			@media (max-width: 320px) {
+				#tabbar-with-home .title-image {
+					margin-top: 5px;
+					width: 22px;
+					height: 15px;
+				}
+				#tabbar-with-home .title-text {
+					padding-left: 5px;
+					color: red;
+					font-size: 15px;
+				}
+			}
+			/*分销中心css样式结束*/
 		</style>
 	</head>
 
 	<body>
 		<header class="mui-bar mui-bar-nav">
-			<div class="search-header">
-				<input type="search" class="mui-input-clear" placeholder="搜索商品" disabled="disabled">
-				<img src="img/home/search_line.png" class="search-line">
-				<a class="search-button">
-					<img src="img/home/search_press.png" class="search-button-image">
-				</a>
-			</div>
 		</header>
 		<nav class="mui-bar mui-bar-tab navbar">
 			<a class="mui-tab-item navbar-tab-item mui-active" href="#tabbar-with-home" data-tap=0>
@@ -387,8 +605,7 @@
 			</a>
 			<a class="mui-tab-item navbar-tab-item" href="#tabbar-with-order" data-tap=1>
 				<div class="mui-icon navbar-icon order"></div>
-				<span class="mui-badge navbar-icon-badge">9</span>
-				<span class="mui-tab-label">我的订单</span>
+				<span class="mui-tab-label">分销中心</span>
 			</a>
 			<a class="mui-tab-item navbar-tab-item" href="#tabbar-with-trolley" data-tap=2>
 				<div class="mui-icon navbar-icon trolley"></div>
@@ -408,58 +625,10 @@
 				<div class="announcement-container">
 					<div id="scroll-text"></div>
 				</div>
+				<ul id="distributor_container" class="mui-table-view" style="margin-top:0px;">
+				</ul>
 				<!-- 菜单 -->
 				<ul id="main-menu" class="mui-table-view mui-grid-view mui-grid-9">
-					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" data-index=1 data-href="pages/categories/imageList.html">
-						<a>
-							<img src="img/home/life.png" class="menu-icon"/>
-							<span class="mui-badge menu-icon-badge">5</span>
-							<div class="mui-media-body">生活</div>
-						</a>
-					</li>
-					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" data-index=2 data-href="pages/categories/tableList.html">
-						<a>
-							<img src="img/home/materna_and_child.png" class="menu-icon"/>
-							<span class="mui-badge menu-icon-badge">3</span>
-							<div class="mui-media-body">母婴</div>
-						</a>
-					</li>
-					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" data-index=3 data-href="pages/categories/mediaList.html">
-						<a>
-							<img src="img/home/travel.png" class="menu-icon"/>
-							<div class="mui-media-body">旅行</div>
-						</a>
-					</li>
-					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" data-index=4 data-href="pages/categories/mediaList.html">
-						<a>
-							<img src="img/home/car.png" class="menu-icon"/>
-							<div class="mui-media-body">汽车</div>
-						</a>
-					</li>
-					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3 bottom" data-index=5 data-href="pages/categories/imageList.html">
-						<a>
-							<img src="img/home/year.png" class="menu-icon"/>
-							<div class="mui-media-body">年货</div>
-						</a>
-					</li>
-					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3 bottom" data-index=6 data-href="pages/categories/tableList.html">
-						<a>
-							<img src="img/home/gift.png" class="menu-icon"/>
-							<div class="mui-media-body">礼品</div>
-						</a>
-					</li>
-					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3 bottom" data-index=7 data-href="pages/categories/imageList.html">
-						<a>
-							<img src="img/home/appliances.png" class="menu-icon"/>
-							<div class="mui-media-body">电器</div>
-						</a>
-					</li>
-					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3 bottom" data-index=8 data-href="pages/categories/tableList.html">
-						<a>
-							<img src="img/home/other.png" class="menu-icon"/>
-							<div class="mui-media-body">其他</div>
-						</a>
-					</li>
 				</ul>
 				<!-- 商品展示 -->
 				<div>
@@ -475,12 +644,17 @@
 					<div style="text-align:center" id="popularity_list">
 						<div class="box box2">
 							<img src="img/common/image_default.png"  class="box-full-image"/>
+							<div class="main-good-price box-full-image"><span class="main-good-price-text">￥0.00</span></div>
 						</div>
 						<div class="box box2">
 							<img src="img/common/image_default.png"  class="box-4-image-1"/>
+							<div class="main-good-price box-4-image-1"><span class="main-good-price-text">￥0.00</span></div>
 							<img src="img/common/image_default.png"  class="box-4-image-2"/>
+							<div class="main-good-price box-4-image-2"><span class="main-good-price-text">￥0.00</span></div>
 							<img src="img/common/image_default.png"  class="box-4-image-3"/>
+							<div class="main-good-price box-4-image-3"><span class="main-good-price-text">￥0.00</span></div>
 							<img src="img/common/image_default.png"  class="box-4-image-4"/>
+							<div class="main-good-price box-4-image-4"><span class="main-good-price-text">￥0.00</span></div>
 						</div>
 					</div>
 					<div style="position:relative">
@@ -496,20 +670,25 @@
 						<div style="text-align:center">
 							<div class="box1to4">
 								<img src="img/common/image_default.png"  class="box-full-image"/>
+								<div class="main-good-price box-full-image"><span class="main-good-price-text">￥0.00</span></div>
 							</div>
 						</div>
 						<div style="text-align:center">
 							<div class="box box4">
 								<img src="img/common/image_default.png"  class="box-full-image"/>
+								<div class="main-good-price box-full-image"><span class="main-good-price-text">￥0.00</span></div>
 							</div>
 							<div class="box box4">
 								<img src="img/common/image_default.png"  class="box-full-image"/>
+								<div class="main-good-price box-full-image"><span class="main-good-price-text">￥0.00</span></div>
 							</div>
 							<div class="box box4">
 								<img src="img/common/image_default.png"  class="box-full-image"/>
+								<div class="main-good-price box-full-image"><span class="main-good-price-text">￥0.00</span></div>
 							</div>
 							<div class="box box4">
 								<img src="img/common/image_default.png"  class="box-full-image"/>
+								<div class="main-good-price box-full-image"><span class="main-good-price-text">￥0.00</span></div>
 							</div>
 						</div>
 					</div>
@@ -525,12 +704,17 @@
 					<div style="text-align:center" id="recommend_list">
 						<div class="box box2">
 							<img src="img/common/image_default.png"  class="box-v2-image-b"/>
+							<div class="main-good-price box-v2-image-b"><span class="main-good-price-text">￥0.00</span></div>
 							<img src="img/common/image_default.png"  class="box-v2-image-m"/>
+							<div class="main-good-price box-v2-image-m"><span class="main-good-price-text">￥0.00</span></div>
 						</div>
 						<div class="box box2">
 							<img src="img/common/image_default.png"  class="box-v2-image-m" style="top:0px;"/>
+							<div class="main-good-price box-v2-image-m" style="top:0px;"><span class="main-good-price-text">￥0.00</span></div>
 							<img src="img/common/image_default.png"  class="box-v2-image-b1"/>
+							<div class="main-good-price box-v2-image-b1"><span class="main-good-price-text">￥0.00</span></div>
 							<img src="img/common/image_default.png"  class="box-v2-image-b2"/>
+							<div class="main-good-price box-v2-image-b2"><span class="main-good-price-text">￥0.00</span></div>
 						</div>
 					</div>
 				</div>
@@ -538,122 +722,93 @@
 				<br>
 			</div>
 			<div id="tabbar-with-order" class="mui-control-content">
-				我的订单
+				<div id="become-distributor" style="display:none;">
+					<div class="fulltop">
+						<img src="img/picture.png" />
+					</div>
+					<div class="content-padding">
+						<div class="font-black">欢迎加入<span class="font-red">赢销家俱乐部</span>，请填写申请信息！</div>
+						<div class="font-black">邀请人：<span class="font-red">李宇春</span>（请核对）</div>
+						<input id="name" type="text" placeholder="请填写真实姓名，用于佣金结算" />
+						<input id="phone" type="number" placeholder="请填写手机号码方便联系" />
+						<input id="weixinNo" type="text" placeholder="请填写微信号" />
+						<button id="submitApply" type="button" class="mui-btn mui-btn-danger mui-btn-block">申请成为分销商</button>
+						<div class="font-gray">分销商特权</div>
+						<div class="mui-card">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell mui-media">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="img/distributor/shop.png">
+										<div class="mui-media-body">
+											独立微店
+											<div class="font-gray">拥有自己的微店及推广二维码；</div>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="img/distributor/commission.png">
+										<div class="mui-media-body">
+											销售拿佣金
+											<div class="font-gray">微店卖出商品，您可以获得佣金；</div>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<div class="font-gray">分销商的商品销售统一由厂家直接收款、直接发货、并提供产品的售后服务，分销商佣金由厂家统一设置。</div>
+								</li>
+
+							</ul>
+						</div>
+						<div class="store-btn">
+							<img src="img/distributor/yingxiao_loogo.png" />
+							<span>点击直接关注</span>
+							<div style="clear: both;"></div>
+						</div>
+					</div>
+				</div>
+				<div id="distributor-center" style="display:show;margin-bottom: 20px;">
+					<div class="store">
+						<img class="head-portrait" src="img/lv-logo.jpg" />
+						<div class="name li-price"><!--LV官方旗舰店--></div>
+						<div class="title">开店时间：<!--2015-03-16--></div>
+					</div>
+					<div class="statistics">
+						<div><span class="font-gray">累计佣金：</span><span id="totalBrokerage" class="font-red"><!--￥9723.00--></span></div>
+						<div><span class="font-gray">可提佣金：</span><span id="leftBrokerage" class="font-red"><!--￥972.00--></span></div>
+						<div id="toWithdraw" class="button" data-href="pages/distributor/withdraw.html">提&nbsp;&nbsp;现</div>
+					</div>
+					<div class="list">
+						<div id="toStatistics" class="li dmenu" data-href="pages/distributor/statistics.html">
+							<div class="icon total"></div>分润统计
+						</div>
+						<div id="toDetail" style="margin-top: 10px;" class="li dmenu" data-href="pages/distributor/detail.html">
+							<div class="icon detail"></div>分润明细
+						</div>
+						<div class="li dmenu" data-href="pages/distributor/myDistributor.html">
+							<div class="icon team"></div>我的团队
+						</div>
+						<div id="toOrder" style="margin-top: 10px;" class="li dmenu" data-href="pages/distributor/distributorOrder.html">
+							<div class="icon order"></div>分销订单
+						</div>
+						<div id="toCode" style="margin-top: 10px;" class="li dmenu" data-href="pages/distributor/code.html">
+							<div class="icon erweima"></div>二维码
+						</div>
+						<div id="toRanking" class="li dmenu" data-href="pages/distributor/ranking.html">
+							<div class="icon ranking"></div>分销排行榜
+						</div>
+					</div>
+				</div>
 			</div>
 			<div id="tabbar-with-trolley" class="mui-control-content">
 				<div class="trolly-content">
-					<ul class="mui-table-view">
-						<li class="mui-table-view-cell mui-media">
-							<a>
-								<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">
-								<img class="mui-media-object mui-pull-left" src="./img/goods-detail/muwu.jpg">
-								<div class="mui-media-body">
-									<p>商品名称</p>
-									<div style="clear: all;font-size: small;color: gray">
-										<span style="vertical-align: middle;">购买数量：</span>
-										<div class="mui-numbox" data-numbox-step='1' data-numbox-min='0' style="float: right;">
-											<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-											<input class="mui-input-numbox" type="number" />
-											<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
-										</div>
-									</div>
-									<div style="clear: all;font-size: small;color: gray">
-										¥1283.00
-									</div>
-								</div>
-							</a>
-						</li>
-						<li class="mui-table-view-cell mui-media">
-							<a>
-								<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">
-								<img class="mui-media-object mui-pull-left" src="./img/goods-detail/muwu.jpg">
-								<div class="mui-media-body">
-									<p>商品名称</p>
-									<div style="clear: all;font-size: small;color: gray">
-										<span style="vertical-align: middle;">购买数量：</span>
-										<div class="mui-numbox" data-numbox-step='1' data-numbox-min='0' style="float: right;">
-											<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-											<input class="mui-input-numbox" type="number" />
-											<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
-										</div>
-									</div>
-									<div style="clear: all;font-size: small;color: gray">
-										¥1283.00
-									</div>
-								</div>
-							</a>
-						</li>
-						<li class="mui-table-view-cell mui-media">
-							<a>
-								<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">
-								<img class="mui-media-object mui-pull-left" src="./img/goods-detail/muwu.jpg">
-								<div class="mui-media-body">
-									<p>商品名称</p>
-									<div style="clear: all;font-size: small;color: gray">
-										<span style="vertical-align: middle;">购买数量：</span>
-										<div class="mui-numbox" data-numbox-step='1' data-numbox-min='0' style="float: right;">
-											<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-											<input class="mui-input-numbox" type="number" />
-											<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
-										</div>
-									</div>
-									<div style="clear: all;font-size: small;color: gray">
-										¥1283.00
-									</div>
-								</div>
-							</a>
-						</li>
-						<li class="mui-table-view-cell mui-media">
-							<a>
-								<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">
-								<img class="mui-media-object mui-pull-left" src="./img/goods-detail/muwu.jpg">
-								<div class="mui-media-body">
-									<p>商品名称</p>
-									<div style="clear: all;font-size: small;color: gray">
-										<span style="vertical-align: middle;">购买数量：</span>
-										<div class="mui-numbox" data-numbox-step='1' data-numbox-min='0' style="float: right;">
-											<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-											<input class="mui-input-numbox" type="number" />
-											<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
-										</div>
-									</div>
-									<div style="clear: all;font-size: small;color: gray">
-										¥1283.00
-									</div>
-								</div>
-							</a>
-						</li>
-						<li class="mui-table-view-cell mui-media">
-							<a>
-								<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">
-								<img class="mui-media-object mui-pull-left" src="./img/goods-detail/muwu.jpg">
-								<div class="mui-media-body">
-									<p>商品名称</p>
-									<div style="clear: all;font-size: small;color: gray">
-										<span style="vertical-align: middle;">购买数量：</span>
-										<div class="mui-numbox" data-numbox-step='1' data-numbox-min='0' style="float: right;">
-											<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-											<input class="mui-input-numbox" type="number" />
-											<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
-										</div>
-									</div>
-									<div style="clear: all;font-size: small;color: gray">
-										¥1283.00
-									</div>
-								</div>
-							</a>
-						</li>
-					</ul>
-					<nav class="trolley-footer">
+					<ul class="mui-table-view" id="trolley-list"></ul>
+					<nav class="mui-bar mui-bar-tab trolley-footer">
 						<div class="trolley-select-all">
-							<input id="CheckedAll" type="checkbox">全选</input>
+							<input id="CheckedAll" type="checkbox">&nbsp;&nbsp;全选</input>
 					  	</div>
-						<a class="trolley-amount">
-							¥1283.00
-					  	</a>
-					  	<a class="trolley-accounts">
-					    		结算
-					  	</a>
+						<a class="trolley-amount">¥0.00</a>
+					  	<a class="trolley-accounts">结算</a>
 					</nav>
 				</div>
 			</div>
@@ -696,9 +851,6 @@
 						<a class="mui-control-item" data-href="pages/personal/commodityCollection.html" data-index=1>
 							<span class="menu_icon2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>收藏商品
 						</a>
-						<a class="mui-control-item" data-href="pages/personal/myDistributor.html" data-index=2>
-							<span class="menu_icon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>我的分销商
-						</a>
 					</div>
 				</div>
 				<!-- 公司信息 -->
@@ -717,45 +869,81 @@
 				</div>
 			</div>
 		</div>
+		<div class="case hide delete-confirm">
+			<div class="top">提&nbsp;&nbsp;示</div>
+			<div class="center text">
+				是否删除选中商品？
+			</div>
+			<div class="footer">
+				<div class="left cancel">取&nbsp;&nbsp;消</div><div class="right confirm">确&nbsp;&nbsp;定</div>
+				<div class="singal cancel">确&nbsp;&nbsp;定</div>
+			</div>
+		</div>
 	</body>
-	<script src="js/thirdparty/mui.js"></script>
+	<script src="js/thirdparty/mui.min.js"></script>
 	<script src="js/thirdparty/zepto.1.1.6.min.js"></script>
 	<script src="js/thirdparty/marquee.js" ></script>
+	<script src="js/thirdparty/spin.min.js"></script>
+	<script src="js/utils/regular.js"></script>
 	<script src="js/utils/app.js"></script>
 	<script>
-		function getHomeData() {
-			var url = app.route.ROUTE_GET_HOME_DATA;
+		"use strict";
+		function showView(url, param, saved) {
+			saved.tabScollerBar[saved.tabIndex] = $(document.body).scrollTop();
+			app.router.showView(url, param, saved);
+		}
+		function getHomeDataOne() {
+			var url = app.route.ROUTE_GET_HOME_DATA_ONE;
 			var data = {
-				openid: '',
+				openID: params.openid,
+			};
+			app.utils.setWait('请稍后...');
+			app.utils.post({
+				url : url,
+				data: data,
+				success : getHomeDataOneSuccess,
+			});
+		}
+		function getHomeDataOneSuccess(data) {
+			if (data.success === true && data.context) {
+				var context = data.context;
+				saved.homeone = context;
+				showMainPageOne(context);
+			}
+			app.utils.clearWait();
+		}
+		function getHomeDataTwo() {
+			var url = app.route.ROUTE_GET_HOME_DATA_TWO;
+			var data = {
+				openID: params.openid,
 			};
 			app.utils.post({
 				url : url,
 				data: data,
-				success : getHomeDataSuccess,
+				success : getHomeDataTwoSuccess,
 			});
 		}
-		function getHomeDataSuccess(data) {
-			if (data.status === 'success' && data.context) {
+		function getHomeDataTwoSuccess(data) {
+			console.log("===");
+			if (data.success === true && data.context) {
 				var context = data.context;
-				saved.home = context;
-				showMainPage(context);
+				saved.hometwo = context;
+				showMainPageTwo(context);
 			}
 		}
 		function showBannerImg(imgs) {
-			var html1 = '',
-				html2 = '';
+			var html1 = '', html2 = '';
 			if (!imgs.length) {
 				return;
 			}
-
-			html1 += '<div class="mui-slider-item mui-slider-item-duplicate">';
+			html1 += '<div class="mui-slider-item mui-slider-item-duplicate" data-index="'+(imgs.length-1)+'">';
 			html1 += '	<a>';
 			html1 += '		<img src="'+imgs[imgs.length-1].goodsImg+'">';
 			html1 += '	</a>';
 			html1 += '</div>';
 			for (var i in imgs) {
 				var img = imgs[i];
-				html1 += '<div class="mui-slider-item">';
+				html1 += '<div class="mui-slider-item" data-index="'+i+'">';
 				html1 += '	<a>';
 				html1 += '		<img src="'+img.goodsImg+'">';
 				html1 += '	</a>';
@@ -763,7 +951,7 @@
 
 				html2 += '<div class="mui-indicator'+((i==0)?" mui-active":"")+'"></div>';
 			}
-			html1 += '<div class="mui-slider-item mui-slider-item-duplicate">';
+			html1 += '<div class="mui-slider-item mui-slider-item-duplicate"  data-index="'+0+'">';
 			html1 += '	<a>';
 			html1 += '		<img src="'+imgs[0].goodsImg+'">';
 			html1 += '	</a>';
@@ -773,26 +961,73 @@
 			html2 = '<div class="mui-slider-indicator">'+html2+'</div>';
 			$('#bannerImg').html(html1+html2);
 			mui('#bannerImg').slider();
+			$("#tabbar-with-home #bannerImg  .mui-slider-item").on('tap', function () {
+				var index = $(this).data('index');
+				var data = {
+					goodsID: imgs[index].goodsID,
+					openID: params.openid,
+				}
+				showView('pages/goods-detail/goods-details.html', data, saved);
+	        });
+		}
+		function showMainMenuView(menus) {
+			var html = '';
+			var hrefs = ["pages/categories/imageList.html", "pages/categories/tableList.html", "pages/categories/mediaList.html"];
+
+			for (var i in menus) {
+				var menu = menus[i];
+				html += '<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" data-index='+menu.typeID+' data-href="'+hrefs[menu.showType]+'">';
+				html += '	<a>';
+				html += '		<img src="'+menu.typeImg+'" class="menu-icon"/>';
+				html += '		<div class="mui-media-body">'+menu.typeName+'</div>';
+				html += '	</a>';
+				html += '</li>';
+			}
+			$('#main-menu').html(html);
+		}
+		function showDistributorInfo (data) {
+			var html = '';
+			html += '<div class="distributor_info_container">';
+			html += '<div class="shop-logo-container">';
+			html += '	<img class="shop-logo" src="'+data.distributorImg+'" >';
+			html += '</div>';
+			html += '<div class="personal_detail_container">';
+			html += '	<div class="personal_name_container">刘刚</div>';
+			html += '	<div class="menu-button-container">';
+			html += '		<div id="button-collection" class="menu-button-img">收&nbsp;&nbsp;藏</div>';
+			html += '		<div id="button-erweima" class="menu-button-img">二维码</div>';
+			html += '	</div>';
+			html += '</div>';
+			$('#distributor_container').html(html);
+			$('#distributor_container').css("height", "100px");
+			$('#tabbar-with-home #button-collection').on("tap", function() {
+				showView('pages/personal/shopCollection.html', {openID:params.openid}, saved);
+			});
+			$('#tabbar-with-home #button-erweima').on("tap", function() {
+					showView('pages/distributor/code.html', {openID:params.openid}, saved);
+			});
 		}
 		function showGoodDetailView(data) {
 			var data = {
 				goodsID: data.goodsID,
-				goodsName: data.goodsName,
-				openid: params.openid,
+				openID: params.openid,
 			}
-			app.router.showView('pages/goods-detail/goods-details.html', data, saved);
+			showView('pages/goods-detail/goods-details.html', data, saved);
 		}
 		function showGoodsImage(data) {
-			var els, imgs, goods;
+			var els, types, imgs, goods;
 			els = [$('#popularity_list'),  $('#characteristic_list'), $('#recommend_list')];
+			types = ['popularity', 'characteristic', 'recommend'];
 			for (var i in els) {
 				imgs = els[i].find('img');
-				goods = data.popularity;
+				goods = data[types[i]];
 				imgs.each(function(j){
 					var good = goods[j];
 					if (good) {
 						$(this).attr('src', good.goodsImg);
-						$(this).on('tap', showGoodDetailView.bind(null, good))
+						var next = $(this).next();
+						next.find('.main-good-price-text').html('￥'+good.goodsPrice);
+						next.on('tap', showGoodDetailView.bind(null, good));
 					}
 				});
 			}
@@ -802,16 +1037,33 @@
 				marquee.ScrollText($('#scroll-text'), 23, $(document).width(), data.announcement, 'right', 1, 20);
 			}
 		}
-		function showMainPage(data) {
+		function showMainPageOne(data) {
 			showBannerImg(data.bannerImg);
 			showAnnouncementPage(data);
+			if (data.isDistributor*1) {
+				showDistributorInfo(data);
+				$('#distributor-center').show();
+				$('#become-distributor').hide();
+			} else {
+				$('#become-distributor').show();
+				$('#distributor-center').hide();
+				$('.navbar .navbar-tab-item[data-tap="1"] .mui-tab-label').html('成为分销商');
+			}
+			showMainMenuView(data.type);
+			$("#tabbar-with-home #main-menu li").on('tap', function () {
+	            var typeID = $(this).data('index');
+				var href = $(this).data('href');
+				var title = $(this).find('.mui-media-body').html();
+				showView(href, {openID:params.openid, typeID:typeID, title:title}, saved);
+	        });
+		}
+		function showMainPageTwo(data) {
 			showGoodsImage(data);
-			app.router.resetScollerBar();
 		}
 		function getPersonalData() {
 			var url = app.route.ROUTE_GET_PERSONAL_DATA;
 			var data = {
-				openid: '',
+				openID: params.openid,
 			};
 			app.utils.post({
 				url : url,
@@ -820,7 +1072,7 @@
 			});
 		}
 		function getPersonalDataSuccess(data) {
-			if (data.status === 'success' && data.context) {
+			if (data.success === true && data.context) {
 				var context = data.context;
 				saved.personal = context;
 				showPersonalPage(context);
@@ -841,9 +1093,14 @@
 			if (index == 1) {
 				$('header').html('<h1 class="mui-title">我的订单</h1>');
 			} else if (index == 2) {
-				$('header').html('<h1 class="mui-title">购物车</h1>');
+				$('header').html('<a id="trolleyEdit" onclick="clickTrolleyEdit()" class="mui-btn mui-btn-link mui-pull-right">编辑</a><h1 class="mui-title">购物车</h1>');
 			} else if (index == 3) {
 				$('header').html('<h1 class="mui-title">个人中心</h1>');
+			} else {
+				$('header').html('<div class="search-header"><input type="search" class="mui-input-clear" placeholder="搜索商品" disabled="disabled"><img src="img/home/search_line.png" class="search-line"><a class="search-button"><img src="img/home/search_press.png" class="search-button-image"></a></div>');
+				$('.search-header').click(function() {
+					showSearchView();
+				});
 			}
 		}
 		function restorePersonalTabSegment(index) {
@@ -852,11 +1109,328 @@
 			el.find('.mui-control-item[data-index="'+index+'"]').addClass("mui-active");
 		}
 		function showSearchView() {
-			app.router.showView('pages/search/search.html', {openid:params.openid}, saved);
+			showView('pages/search/search.html', {openID:params.openid}, saved);
 		}
+		function getTrolleyList() {
+				var url = app.route.ROUTE_GET_TROLLEY_LIST;
+				var data = {
+					openID: params.openid
+				};
+				app.utils.post({
+					url : url,
+					data: data,
+					success : getTrolleyListSuccess
+				});
+			};
+		function getTrolleyListSuccess(data) {
+			if (data.success === true && data.context) {
+				var list = data.context.goodsList;
+				saved.trolleyList = list;
+				showTrolleyList(list);
+			}
+		};
+		function deletetTrolleyItem(index) {
+			var goodsList = saved.trolleyList;
+			goodsList[index].deleted = true;
+			$('#trolley-list .mui-table-view-cell[data-index="'+index+'"]').remove();
+			if (!$('#trolley-list').html()) {
+				showEmptyTrolleyList();
+			}
+		};
+		function deleteTrolleyList() {
+			var goodsList = saved.trolleyList;
+			for (var i in goodsList) {
+				var item = goodsList[i];
+				if (item.checked) {
+					delete item.checked;
+					deletetTrolleyItem(i);
+				}
+			}
+		}
+		function showSettlementPage() {
+			var goodsList = saved.trolleyList;
+			var list = [];
+			for (var i in goodsList) {
+				if (goodsList[i].checked) {
+					list.push(goodsList[i]);
+				}
+			}
+			if (!list.length) {
+				showMessageBox("请先选中商品");
+			}
+			var param = {
+				goodsList:list,
+				personal: saved.personal
+			};
+			showView('pages/goods-detail/settlement.html', param, saved);
+		}
+		function updateTrolleyTotalAmount(goodsList) {
+			if (saved.trolleyEditing) {
+				return;
+			}
+			var ntotal = 0;
+			for (var i in goodsList) {
+				var item = goodsList[i];
+				ntotal += (item.checked)?item.goodsNum*item.goodsPrice:0;
+			}
+			$('#tabbar-with-trolley .trolley-amount').html('￥'+ntotal.toFixed(2));
+		}
+		function showEmptyTrolleyList() {
+			$('#trolley-list').html('<div class="empty_list">购物车被清空了</div>');
+		}
+		function getGoodsDec(item) {
+			var code = item.goodsDec.code;
+			var goodsDec = item.goodsDec.price;
+			var keys = [];
+			do {
+				if (typeof goodsDec != 'object') { //适配微信浏览器
+					break;
+				}
+				var ks = Object.keys(goodsDec);
+				if (!ks.length) {
+					break;
+				}
+				keys.push(ks[0]);
+				goodsDec = goodsDec[ks[0]];
+			} while (1);
+			item.goodsPrice = goodsDec;
+			item.goodsDecStr = keys.join('-');
 
+			var discr = '';
+			for (var ki in keys) {
+				for (var k in code) {
+					var secondary = code[k].secondary;
+					for (var kj in secondary) {
+						if (kj == keys[ki]) {
+							discr += '<span class="attribute-type">'+code[k].primary+':</span><span class="attribute-value">'+secondary[kj]+'</span>';
+							break;
+						}
+					}
+				}
+			}
+			return discr;
+		}
+		function showTrolleyList(goodsList, append) {
+			var html = '';
+			for (var i in goodsList) {
+				var item = goodsList[i];
+				if (item.deleted) {
+					continue;
+				}
+				var discr = getGoodsDec(item);
+				html += '<li class="mui-table-view-cell mui-media" data-id="'+item.goodsID+'" data-name="'+item.goodsName+'" data-index="'+i+'">'
+				html += '	<div class="mui-slider-right delete-trolley-item-container" style="display:none;">'
+				html += '		<a class="mui-btn mui-btn-red delete-trolley-item">删除</a>'
+				html += '	</div>'
+				html += 	'<div class="mui-slider-handle">'
+				html += '		<div class="mui-checkbox mui-pull-left">';
+				html += '			<input name="trolley" value="'+i+'" type="checkbox"'+(item.checked?' checked':'')+'>';
+				html += '		</div>';
+				html += '		<div style="margin-left: 30px;" class="mui-media-body">';
+				html += '		<img class="trolley-image mui-media-object mui-pull-left" src="'+item.goodsImg+'">'
+				html += '		<div class="mui-media-body">'
+				html += '				<p>'+item.goodsName+'</p>'
+				html += '				<div style="clear: all;font-size: small;color: gray">'
+				html += '					<span style="vertical-align: middle;">购买数量：</span>'
+				html += '					<div class="mui-numbox" data-numbox-step="1" data-numbox-min="1" style="float: right;">'
+				html += '						<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>'
+				html += '						<input class="mui-input-numbox" type="number" value='+item.goodsNum+' readonly="readonly"/>'
+				html += '						<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>'
+				html += '					</div>'
+				html += '				</div>'
+				html += '			</div>'
+				html += '			<div style="clear: all;font-size: small;color: gray">¥'+item.goodsPrice+'</div>'
+				html += '			<div style="clear: all;font-size: small;color: gray">'+discr+'</div>'
+				html += '		</div>'
+				html += '	</div>'
+				html += '</li>'
+			}
+			$('#trolley-list').html(html);
+			restoreTrolleyEdit();
+			mui('#trolley-list .mui-numbox').numbox();
+			$('#trolley-list .mui-input-numbox').on('change', function() {
+				var index = $(this).parents('li').data('index');
+				goodsList[index].goodsNum = $(this).val();
+				updateTrolleyTotalAmount(goodsList);
+			});
+			$('#trolley-list input[type=checkbox]').on('change', function() {
+				var index = $(this).val();
+				goodsList[index].checked = $(this).attr("checked");
+				updateTrolleyTotalAmount(goodsList);
+			});
+			$('#trolley-list .mui-table-view-cell .mui-media-object').on('click', function() {
+				showGoodsDetail(this);
+			});
+			$('#trolley-list .mui-table-view-cell .delete-trolley-item').on('click', function() {
+				var index = $(this).parents('li').data('index');
+				if (saved.trolleyList[index]._ensureIndex == null) {
+					showMessageBox("确定要删除该商品吗？", MESSAGEOBX_TYPE_DELETE_ITEM, index);
+				}
+			});
+			updateTrolleyTotalAmount(goodsList);
+		}
+		function showMessageBox(text, type, index) {
+			messageBoxType = type;
+			$("body").append('<div class="modal-backdrop"></div>');
+			var box = $(".case.delete-confirm");
+			box.find('.center.text').html(text);
+			if (type!=null) {
+				box.find('.singal.cancel').hide();
+				box.find('.left.cancel').show();
+				box.find('.right.confirm').show();
+			} else {
+				box.find('.singal.cancel').show();
+				box.find('.left.cancel').hide();
+				box.find('.right.confirm').hide();
+			}
+			box.data('index', index);
+			box.show();
+		}
+		function showGoodsDetail(el) {
+			el = $(el).parents('li.mui-table-view-cell');
+			var id = el.data('id');
+			var name = el.data('name');
+			var data = {
+				goodsID: id,
+				goodsName: name,
+				openID: params.openid,
+			}
+			showView('pages/goods-detail/goods-details.html', data, saved);
+		}
+		function sumbitShoppingCartData() {
+			var url = app.route.ROUTE_SUBMIT_SHOPPING_CART_DATA;
+			var list = saved.trolleyList;
+			var goodsList = [];
+			for (var i in list) {
+				var item = list[i];
+				if (!item.deleted) {
+					goodsList.push({
+						goodsID: item.goodsID,
+						goodsNum: item.goodsNum,
+						goodsDec: item.goodsID+'-'+item.goodsDecStr+'-'+item.goodsPrice,
+					});
+				}
+			}
+			var data = {
+				openID: params.openid,
+				orderInfo: {
+					"goodsList": goodsList
+				},
+			};
+			app.utils.post({
+				url : url,
+				data: data,
+				success : onSumbitShoppingCartDataSuccess,
+				error : onSumbitShoppingCartDataError
+			});
+		};
+		function onSumbitShoppingCartDataSuccess(data) {
+			var goodsList = saved.trolleyList;
+			var newList = [];
+			if (data.success === true) {
+				for (var i in goodsList) {
+					if (!goodsList[i].deleted) {
+						newList.push(goodsList[i]);
+					}
+				}
+				saved.trolleyList = newList;
+				updateTrolleyTotalAmount(goodsList);
+				showMessageBox("修改成功");
+			} else {
+				showMessageBox("修改失败");
+				onSumbitShoppingCartDataError();
+			}
+		};
+		function onSumbitShoppingCartDataError() {
+			var goodsList = saved.trolleyList;
+			for (var i in goodsList) {
+				if (goodsList[i].deleted) {
+					delete goodsList[i].deleted;
+				}
+			}
+			showTrolleyList(goodsList);
+		};
+		function clickTrolleyEdit() {
+			saved.trolleyEditing = !saved.trolleyEditing;
+			restoreTrolleyEdit();
+			if (!saved.trolleyEditing) {
+				sumbitShoppingCartData();
+			}
+		}
+		function restoreTrolleyEdit() {
+			if (saved.trolleyEditing) {
+				$('#trolleyEdit').html('完成');
+				$('.trolley-amount').text("");
+				$('.trolley-accounts').text("删除");
+				$('.delete-trolley-item-container').show();
+			} else {
+				$('#trolleyEdit').html('编辑');
+				$('.trolley-amount').text("¥0.00");
+				$('.trolley-accounts').text("结算");
+				$('.delete-trolley-item-container').hide();
+			}
+		}
+		function applyContributor() {
+			var name = $("#become-distributor #name").val();
+			var phone = $("#become-distributor #phone").val();
+			var weixinNo = $("#become-distributor #weixinNo").val();
+			if(name == ''){
+				mui.toast("用户名不能为空！");
+				return;
+			}
+			if(!testPhone(phone)){
+				mui.toast("手机号码格式不对！");
+				return;
+			}
+			if(weixinNo == ''){
+				mui.toast("微信号不能为空！");
+				return;
+			}
+			var url = app.route.ROUTE_GET_THIRDPARTY_APPLY_SUBMIT;
+			var data = {openID: params.openid, name:name, phone:phone, weixinNo:weixinNo};
+			app.utils.post({
+				url : url,
+				data: data,
+				success : applyContributorSuccess,
+			});
+		}
+		function applyContributorSuccess(data) {
+			if (data.success === true) {
+				alert("申请成功！");
+			}else{
+				mui.toast(data.msg);
+			}
+		}
+		function showContributorCenter(data) {
+			var html = '';
+			html += '<img class="head-portrait" src="'+data.distributorImg+'" />';
+			html += '	<div class="name li-price">'+data.distributorName+'</div>';
+			html += '	<div class="title">开店时间：'+data.startDate+'</div>'
+			$("#distributor-center .store").html(html);
+			$("#distributor-center #totalBrokerage").html("￥"+data.totalBrokerage);
+			saved.leftBrokerage = data.leftBrokerage;
+			$("#distributor-center #leftBrokerage").html("￥"+data.leftBrokerage);
+		}
+		function getContributorCenterData() {
+			var url = app.route.ROUTE_GET_THIRDPARTY_CENTRE_DATA;
+			var data = {openID: params.openid};
+			app.utils.post({
+				url : url,
+				data: data,
+				success : getContributorCenterDataSuccess,
+			});
+		}
+		function getContributorCenterDataSuccess(data) {
+			if (data.success === true && data.context) {
+				saved.contributorCenter = data.context;
+				showContributorCenter(saved.contributorCenter);
+			}
+		}
 		mui.init();
 		//总体事件注册
+		$('.navbar').on('tap', '.navbar-tab-item', function(e) {
+			saved.tabScollerBar[saved.tabIndex] = $(document.body).scrollTop();
+		});
 		mui('.mui-content').on('shown.mui.tab', '.mui-control-content', function(e) {
 			var id = e.target.id;
 			if (id == 'tabbar-with-home') {
@@ -867,55 +1441,108 @@
 				});
 			} else if (id == 'tabbar-with-order') {
 				saved.tabIndex = 1;
-				$('header').html('<h1 class="mui-title">我的订单</h1>');
+				$('header').html('<h1 class="mui-title">分销中心</h1>');
 			} else if (id == 'tabbar-with-trolley') {
 				saved.tabIndex = 2;
-				$('header').html('<h1 class="mui-title">购物车</h1>');
+				$('header').html('<a id="trolleyEdit" onclick="clickTrolleyEdit()" class="mui-btn mui-btn-link mui-pull-right">编辑</a><h1 class="mui-title">购物车</h1>');
+				restoreTrolleyEdit();
+				updateTrolleyTotalAmount(saved.trolleyList);
 			} else if (id == 'tabbar-with-person-center') {
 				saved.tabIndex = 3;
 				$('header').html('<h1 class="mui-title">个人中心</h1>');
 			}
-		});
-
-		//主页面注册事件
-		$("#tabbar-with-home #main-menu li").click(function () {
-            var typeID = $(this).data('index');
-			var href = $(this).data('href');
-			var title = $(this).find('.mui-media-body').html();
-			app.router.showView(href, {openid:params.openid, typeID:typeID, title:title}, saved);
-        });
-		$('.search-header').click(function() {
-			showSearchView();
+			$(document.body).scrollTop(saved.tabScollerBar[saved.tabIndex]||0);
 		});
 
 		//购物车注册事件
 		$("#CheckedAll").click(function () {
-            if ($(this).is(":checked")) {
-                $("[name=items]:checkbox").prop("checked", true);
-            } else {
-                $("[name=items]:checkbox").prop("checked", false);
-            }
+			var goodsList = saved.trolleyList;
+			var checked = $(this).is(":checked");
+			$('#trolley-list input[name=trolley]').prop("checked", checked);
+			for (var i in goodsList) {
+				if (goodsList[i].deleted) {
+					continue;
+				}
+				goodsList[i].checked = checked;
+			}
+			updateTrolleyTotalAmount(goodsList);
         });
+		$('#tabbar-with-trolley .trolley-accounts').on('tap', function() {
+			if (saved.trolleyEditing) { //处于编辑状态
+				showMessageBox("确定要删除所有选中的商品吗？", MESSAGEOBX_TYPE_DELETE_LIST);
+			} else {
+				showSettlementPage();
+			}
+		});
+		//弹出框事件注册
+		$(".case.delete-confirm").on('tap', '.cancel', function() {
+			$(".modal-backdrop").remove();
+			$(".case.delete-confirm").hide(300);
+		}).on('tap', '.confirm', function(e) {
+			var el = $(".case.delete-confirm");
+			$(".modal-backdrop").remove();
+			el.hide(300);
+			if (messageBoxType === MESSAGEOBX_TYPE_DELETE_ITEM) {
+				deletetTrolleyItem(el.data('index'));
+			} else if (messageBoxType === MESSAGEOBX_TYPE_DELETE_LIST) {
+				deleteTrolleyList();
+			}
+		});
 
 		//个人中心事件注册
 		$('#personal-menu-list').find('a').on('tap', function(){
 			var href = $(this).data('href');
-			app.router.showView(href, {openid:params.openid}, saved);
+			showView(href, {openID:params.openid}, saved);
 		});
 
 		$('#personal-menu-slider').find('.mui-control-item').on('tap', function() {
 			var href = $(this).data('href');
 			var index = $(this).data('index');
 			saved.personalTabIndex = index;
-			app.router.showView(href, {openid:params.openid}, saved);
+			showView(href, {openID:params.openid}, saved);
 		});
 
+		//分销中心事件注册
+		$("#become-distributor #submitApply").on('tap', applyContributor);
+		$("#distributor-center .dmenu").on('tap',function(){
+			var href = $(this).data('href');
+			showView(href, {openID:params.openid}, saved);
+		});
+		$("#distributor-center .store").on('tap',function(){
+			showView('pages/distributor/editPersonal.html',{},saved)
+		});
+		$("#distributor-center #toWithdraw").on('tap',function(){
+			var data = {leftBrokerage:saved.leftBrokerage};
+			showView('pages/distributor/withdraw.html',data,saved)
+		});
+		var MESSAGEOBX_TYPE_DELETE_ITEM = 1,
+		 	MESSAGEOBX_TYPE_DELETE_LIST = 2;
+
+		var messageBoxType = 0;
 		var params = app.router.getParameter();
 		var saved = app.router.getSavedData();
-		if (saved.home) {
-			showMainPage(saved.home);
+		saved.tabScollerBar = saved.tabScollerBar||{};
+		saved.tabIndex = saved.tabIndex||0;
+		app.router.clearHistory(); //保证首页历史为空；
+		if (saved.homeone) {
+			showMainPageOne(saved.homeone);
 		} else {
-			getHomeData();
+			getHomeDataOne();
+		}
+		if (saved.hometwo) {
+			showMainPageTwo(saved.hometwo);
+		} else {
+			getHomeDataTwo();
+		}
+		if (saved.contributorCenter&&!params.shouldUpdateData) {
+			showContributorCenter(saved.contributorCenter);
+		} else {
+			getContributorCenterData();
+		}
+		if (saved.trolleyList) {
+			showTrolleyList(saved.trolleyList);
+		} else {
+			getTrolleyList();
 		}
 		if (saved.personal) {
 			showPersonalPage(saved.personal);
@@ -923,13 +1550,15 @@
 			getPersonalData();
 		}
 
-		if (saved.tabIndex) {
-			restoreTabSegment(saved.tabIndex);
-		}
+		restoreTabSegment(saved.tabIndex);
+		$(document.body).scrollTop(saved.tabScollerBar[saved.tabIndex]||0);
 
+		if (saved.tabIndex==2) {
+			restoreTrolleyEdit();
+			updateTrolleyTotalAmount(saved.trolleyList);
+		}
 		if (saved.personalTabIndex) {
 			restorePersonalTabSegment(saved.personalTabIndex);
 		}
-
 	</script>
 </html>

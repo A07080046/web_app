@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*">
+		<meta http-equiv="content-security-policy">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>赢销截拳道电子商城</title>
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../css/yxjqd/store.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<a class="mui-pull-right"><button id="collectStore" type="button" style="padding: 5px 10px;" class="mui-btn mui-btn-primary">收藏店铺</button></a>
+			<h1 id="h1_title" class="mui-title"></h1>
+		</header>
+		<div class="mui-content">
+			<div id="store_div">
+				<div class="store">
+					<div class="store-logo">
+						<img src="../../img/distributor/empty_head.png" />
+					</div>
+					<div class="store-info">
+						<div class="name"></div>
+						<div class="info"></div>
+					</div>
+					<div class="store-like">
+					</div>
+					<div class="store-ad">
+						<div class="title"></div>
+						<div id="scrollText"></div>
+					</div>
+				</div>
+			</div>
+			<div id="pullrefresh" class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul id="goods_list_ul" class="mui-table-view mui-grid-view">
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../js/thirdparty/mui.min.js"></script>
+	<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+	<script src="../../js/thirdparty/marquee.js"></script>
+	<script src="../../js/thirdparty/spin.min.js"></script>
+	<script src="../../js/utils/app.js"></script>
+	<script>
+		"use strict";
+		mui.init({
+			swipeBack: true,
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: {
+					callback: pulldownRefresh
+				},
+				up: {
+					contentrefresh: '正在加载...',
+					callback: pullupRefresh
+				}
+			}
+		});
+		mui('.mui-scroll-wrapper').scroll();
+
+		function getScrollTop() {
+			return mui('#pullrefresh').pullRefresh().y;
+		}
+
+		function setScrollTop(y) {
+			setTimeout(function() {
+				mui('#pullrefresh').pullRefresh().scrollTo(0, y);
+			}, 0);
+		}
+		/*商店商品信息*/
+		function getShopGoodsListData(pageNo, needWait) {
+			var url = app.route.ROUTE_GET_SHOP_GOODS_LIST_DATA;
+			var data = {
+				pageNo: pageNo,
+				shopID: params.shopID,
+				openID: params.openid,
+				rows: 5,
+			};
+			needWait && app.utils.setWait("请稍后...");
+			app.utils.post({
+				url: url,
+				data: data,
+				success: onGetListSuccess,
+				error: onGetListError
+			});
+		}
+
+		function onGetListSuccess(data) {
+			if (data.success === true) {
+				var context = data.context || {};
+				var list = data.context.goodsList;
+				console.log(list);
+				if (!list || !list.length) {
+					if (query.pageNo == FIRST_PAGE_NO) {
+						showEmptyList();
+					}
+				} else {
+					if (query.dir === 'up') {
+						showList(list, saved.list.length);
+						saved.list = saved.list.concat(list);
+					} else {
+						showList(list);
+						saved.list = list;
+					}
+				}
+				if (query.dir === 'down') {
+					mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+					mui('#pullrefresh').pullRefresh().refresh(true);
+				} else if (query.dir === 'up') {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+				}
+			} else {
+				if (query.dir === 'down') {
+					mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+				} else if (query.dir === 'up') {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+				}
+				if (query.pageNo == FIRST_PAGE_NO) {
+					showEmptyList();
+				}
+			}
+			query.dir = 'none';
+			app.utils.clearWait();
+		};
+
+		function onGetListError(error) {
+			if (query.dir === 'down') {
+				mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+			} else if (query.dir === 'up') {
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+			}
+			query.dir = 'none';
+		};
+
+		function showEmptyList() {
+			$('#top5_list').html('<div class="empty_list">没有相关数据</div>');
+		}
+
+		function pulldownRefresh() {
+			query.pageNo = FIRST_PAGE_NO;
+			query.dir = 'down';
+			getShopGoodsListData(query.pageNo);
+		}
+
+		function pullupRefresh() {
+			query.pageNo++;
+			query.dir = 'up';
+			getShopGoodsListData(query.pageNo);
+		}
+		/*商店信息*/
+		function getShopInfoData() {
+			var url = app.route.ROUTE_GET_SHOP_DETAILS_DATA;
+			var data = {
+				shopID: params.shopID,
+				openID: params.openid,
+			};
+			app.utils.post({
+				url: url,
+				data: data,
+				success: getShopInfoSuccess,
+			});
+		}
+
+		function getShopInfoSuccess(data) {
+			if (data.success === true && data.context) {
+				var dataContext = data.context;
+				saved.data = dataContext;
+				showPage(dataContext);
+			} else {
+				mui.toast("获取店铺信息失败");
+			}
+		}
+
+		function showPage(data) {
+			showShopData(data);
+		}
+		/*显示店铺信息*/
+		function showShopData(data) {
+			var html_1 = '';
+			if (data == "") {
+				return;
+			}
+			html_1 += '<div class="store" style="background: url(' + data.shopBackImg + ');background-size:100% 100%;">';
+			html_1 += '<div class="store-logo"><img src="' + data.shopImg + '" /></div>';
+			html_1 += '<div class="store-info">';
+			html_1 += '<div class="name">' + data.shopName + '</div>';
+			html_1 += '<div class="info">' + data.shopIntroduction + '</div></div>';
+			html_1 += '<div class="store-like"><span class="mui-icon mui-icon-star"></span><span> ' + data.shopCollection + '</span>';
+			html_1 += '</div><div class="store-ad"><div class="title">公告：</div>';
+			html_1 += '<div id="scrollText">' + data.shopNotice + "</div></div>";
+			html_1 += '</div>';
+			$('#store_div').html(html_1);
+			mui('#store_div').slider();
+			$('#h1_title').html(data.shopName);
+			mui('.mui-scroll-wrapper').scroll();
+			marquee.ScrollText($('#scrollText'), 21, $(document).width(), '公告：' + data.shopNotice, 'left', 1, 20);
+		}
+
+		function showList(list, append) {
+			var html_2 = '';
+			for (var i in list) {
+				html_2 += showGoodsListData(list[i], i, append);
+			}
+			if (!append) {
+				$('#goods_list_ul').html(html_2);
+			} else {
+				$('#goods_list_ul').append(html_2);
+			}
+			if (query.dir === "none") {
+				app.router.resetScollerBar(setScrollTop);
+			}
+		}
+
+		function showGoodsListData(item, index, append) {
+			index = index * 1 + (append || 0) * 1;
+			var html_2 = '';
+			html_2 += '<li data-index=' + index + ' class="mui-table-view-cell mui-media mui-col-xs-6">';
+			html_2 += '<a href="#"><img class="mui-media-object" src="' + item.goodsImg + '" style="height: 200px;">';
+			html_2 += '<div class="left">' + item.goodsName + '</div>';
+			html_2 += '<div class="right info">售出:' + item.sales + '</div>';
+			html_2 += '<div class="clear"></div>';
+			html_2 += ' <div class="mui-ellipsis">' + item.goodsIntroduction + '</div>';
+			html_2 += '<div><span class="li-price">￥ ' + item.goodsSalePrice + '</span>';
+			html_2 += '&nbsp;&nbsp;<span class="line-through">原价:￥ ' + item.goodsPrice + '</span></div>';
+			html_2 += '</a></li>';
+			return html_2;
+		}
+		$('#pullrefresh').on('tap', 'li', function() {
+			var index = $(this).data('index');
+			var data = {
+				goodsID: saved.list[index].goodsID,
+				goodsName: saved.list[index].goodsName,
+				openID: params.openid,
+			}
+			saved.query = query;
+			app.router.showView('../goods-detail/goods-details.html', data, saved, getScrollTop);
+		});
+		$("#collectStore").on('tap',function(){
+			var url = app.route.ROUTE_POST_COLLECTSHOP_DATA;
+			var data = {
+				shopID: params.shopID,
+				openID: params.openid,
+			};
+			app.utils.post({
+				url: url,
+				data: data,
+				success: collectshop,
+			});
+		});
+		function collectshop(data){
+			if (data.success === true) {
+				alert("收藏成功！");
+			}else{
+				alert(data.msg);
+			}
+		}
+		
+		var FIRST_PAGE_NO = 0;
+		var params = app.router.getParameter();
+		var saved = app.router.getSavedData();
+		var query = saved.query || {
+			pageNo: FIRST_PAGE_NO,
+			dir: 'none'
+		};
+		if (saved.list && saved.data) {
+			showPage(saved.data);
+			showList(saved.list);
+		} else {
+			getShopInfoData();
+			getShopGoodsListData(query.pageNo, true);
+		}
+	</script>
+
+</html>

@@ -24,13 +24,13 @@
 			}
 			.search-line {
 				position: absolute;
-				right: 15%;
+				right: 50px;
 				height: 50%;
 				top: 10px;
 			}
 			.search-button {
 				position: absolute;
-				right: 5%;
+				right: 18px;
 				height: 50%;
 				top: 10px;
 			}
@@ -77,14 +77,6 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav">
-			<div class="search-header">
-				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-				<input type="search" class="mui-input-clear" placeholder="搜索商品">
-				<img src="../../img/home/search_line.png" class="search-line">
-				<a class="search-button">
-					<img src="../../img/home/search_press.png" class="search-button-image">
-				</a>
-			</div>
 		</header>
 		<div class="mui-content">
 			<div class="menu-title">热门搜索</div>
@@ -95,14 +87,15 @@
 			</ul>
 		</div>
 	</body>
-	<script src="../../js/thirdparty/mui.js"></script>
+	<script src="../../js/thirdparty/miu.min.js"></script>
 	<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
 	<script src="../../js/utils/app.js"></script>
 	<script>
+		"use strict";
 		function getSearchData() {
 			var url = app.route.ROUTE_GET_SEARCH_DATA;
 			var data = {
-				openid: params.openid,
+				openID: params.openid,
 			};
 			app.utils.post({
 				url : url,
@@ -111,7 +104,7 @@
 			});
 		}
 		function getSearchDataSuccess(data) {
-			if (data.status === 'success' && data.context) {
+			if (data.success === true && data.context) {
 				var context = data.context;
 				saved.data = context;
 				showPage(context);
@@ -119,6 +112,18 @@
 		}
 		function showPage(data) {
 			var topGoods = data.topGoods, searchHistory = data.searchHistory, html ='';
+
+			html += '<div class="search-header">';
+			html += '	<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>';
+			html += '	<input type="search" class="mui-input-clear" placeholder="搜索商品">';
+			html += '	<img src="../../img/home/search_line.png" class="search-line">';
+			html += '	<a class="search-button">';
+			html += '		<img src="../../img/home/search_press.png" class="search-button-image">';
+			html += '	</a>';
+			html += '</div>';
+			$('header').html(html);
+
+			html = '';
 			for (var i in topGoods) {
 				html += '<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-keyword="'+topGoods[i]+'"><a>';
 				html += '<div class="menu-button-container"><div class="menu-button hot"><div class="menu-text">'+topGoods[i]+'</div></div></div>';
@@ -140,7 +145,7 @@
 			app.router.resetScollerBar();
 		}
 		function showSearchPage(keyword) {
-			app.router.showView('searchResult.html', {openid:params.openid,  keyword:keyword}, saved);
+			app.router.showView('searchResult.html', {openID:params.openid,  keyword:keyword}, saved);
 		}
 		mui.init();
 		$('header .search-button').on('tap', function() {

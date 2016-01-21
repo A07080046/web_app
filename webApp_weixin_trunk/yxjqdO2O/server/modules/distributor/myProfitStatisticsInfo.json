@@ -1,0 +1,10 @@
+{
+    "success": true,
+    "msg": "获取数据成功",
+    "context": {
+        "totalMoney": 522,
+        "classAMoney": "54564",
+        "classBMoney": "54564",
+        "classCMoney": "54564"
+    }
+}

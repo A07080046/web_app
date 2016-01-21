@@ -1,5 +1,5 @@
 {
-	"status": "success",
+	"success": true,
 	"msg": "提交成功",
 	"context": {
 		"goodsImgs": 6

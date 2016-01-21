@@ -1,0 +1,88 @@
+{
+    "success": true,
+    "msg": "获取数据成功",
+    "context": {
+        "goodsList": [
+            {
+                "goodsName": "dsfsd",
+                "goodsImg": "http://localhost:3000/home/4.jpg",
+                "goodsPrice": "45",
+                "goodsNum": 8,
+                "orderNo": "20156413154",
+                "userType": 1
+            },
+            {
+                "goodsName": "dsfsd",
+                "goodsImg": "http://localhost:3000/home/5.jpg",
+                "goodsPrice": "45",
+                "goodsNum": 8,
+                "orderNo": "20156413154",
+                "userType": 1
+            },
+            {
+                "goodsName": "dsfsd",
+                "goodsImg": "http://localhost:3000/home/4.jpg",
+                "goodsPrice": "45",
+                "goodsNum": 8,
+                "orderNo": "20156413154",
+                "userType": 1
+            },
+            {
+                "goodsName": "dsfsd",
+                "goodsImg": "http://localhost:3000/home/5.jpg",
+                "goodsPrice": "45",
+                "goodsNum": 8,
+                "orderNo": "20156413154",
+                "userType": 1
+            },
+            {
+                "goodsName": "dsfsd",
+                "goodsImg": "http://localhost:3000/home/4.jpg",
+                "goodsPrice": "45",
+                "goodsNum": 8,
+                "orderNo": "20156413154",
+                "userType": 1
+            },
+            {
+                "goodsName": "dsfsd",
+                "goodsImg": "http://localhost:3000/home/5.jpg",
+                "goodsPrice": "45",
+                "goodsNum": 8,
+                "orderNo": "20156413154",
+                "userType": 1
+            },
+            {
+                "goodsName": "dsfsd",
+                "goodsImg": "http://localhost:3000/home/4.jpg",
+                "goodsPrice": "45",
+                "goodsNum": 8,
+                "orderNo": "20156413154",
+                "userType": 1
+            },
+            {
+                "goodsName": "dsfsd",
+                "goodsImg": "http://localhost:3000/home/5.jpg",
+                "goodsPrice": "45",
+                "goodsNum": 8,
+                "orderNo": "20156413154",
+                "userType": 1
+            },
+            {
+                "goodsName": "dsfsd",
+                "goodsImg": "http://localhost:3000/home/4.jpg",
+                "goodsPrice": "45",
+                "goodsNum": 8,
+                "orderNo": "20156413154",
+                "userType": 1
+            },
+            {
+                "goodsName": "dsfsd",
+                "goodsImg": "http://localhost:3000/home/5.jpg",
+                "goodsPrice": "45",
+                "goodsNum": 8,
+                "orderNo": "20156413154",
+                "userType": 1
+            }
+        ]
+    }
+}

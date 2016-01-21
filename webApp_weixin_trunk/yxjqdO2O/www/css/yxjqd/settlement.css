@@ -19,6 +19,9 @@
 	background-color: #fff;
 	font-size: 14px;
 }
+.mui-table-view-cell {
+	font-size: 14px;
+}
 .mui-tab-item .mui-btn {
 	position: absolute;
 	right: 0;
@@ -30,4 +33,23 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+}
+.product-name {
+	display: inline-block;
+	vertical-align: top;
+	width: 60%;
+	color: #555555;
+	font-weight: 600;
+	word-wrap: break-word;
+	word-break:break-all;
+}
+.product-num {
+	float: right;
+	color: #a2a2a2;
+}
+.product-price {
+	display: inline-block;
+	vertical-align: top;
+	font-weight: bold;
+	color: #ff6060;
 }

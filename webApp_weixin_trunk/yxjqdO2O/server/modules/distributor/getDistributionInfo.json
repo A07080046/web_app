@@ -1,0 +1,11 @@
+{
+    "success": true,
+    "msg": "获取数据成功",
+    "context": {
+        "distributorName": "lynx",
+        "distributorImg": "http://localhost:3000/home/head.jpg",
+        "startDate": "2015-12-15",
+        "totalBrokerage": 53465,
+        "leftBrokerage": 535
+    }
+}

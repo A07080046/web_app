@@ -8,7 +8,158 @@
 	<title>赢销截拳道电子商城</title>
 	<link rel="stylesheet" href="../../css/mui.min.css" />
 	<link rel="stylesheet" href="../../css/common.css" />
-	<link rel="stylesheet" href="../../css/yxjqd/order.css" />
+	<style>
+		.order-my-info {
+			padding: 10px 0;
+			background-color: #fff;
+		}
+		.head-portrait {
+			float: left;
+			margin: 0 10px;
+			width: 60px;
+			height: 60px;
+			line-height: 60px;
+			-moz-border-radius: 12px;
+			-webkit-border-radius: 12px;
+			border-radius: 12px;
+		}
+		.user {
+			width: 60%;
+			float: left;
+			font-size: 16px;
+			line-height: 25px;
+		}
+		.user .inline {
+			width: 50%;
+		}
+		.user .mui-ellipsis-2 {
+			color: #6a6761;
+			font-size: 14px;
+		}
+		.right-forward {
+			float: right;
+			margin-right: 10px;
+			line-height: 60px;
+		}
+		.right-forward img{
+			width: 25px;
+			height: 25px;
+		}
+		/*******选项卡样式********/
+		.mui-bar~.mui-content .mui-fullscreen {
+			top: 134px;
+			height: auto;
+		}
+		.mui-slider-indicator {
+			background-color: #fff;
+		}
+
+		.mui-segmented-control .mui-control-item {
+			line-height: 19px;
+			font-size: 12px;
+		}
+		.item-icon {
+			margin: 0 auto;
+			margin-top: 3px;
+			width: 20px;
+			height: 20px;
+		}
+		.mui-control-item .icon1 {
+			background: url(../../img/order/payment.png) no-repeat;
+			background-size: 20px 20px;
+		}
+		.mui-control-item .icon2 {
+			background: url(../../img/order/receiving.png) no-repeat;
+			background-size: 20px 20px;
+		}
+		.mui-control-item .icon3 {
+			background: url(../../img/order/delivery.png) no-repeat;
+			background-size: 20px 20px;
+		}
+		.mui-control-item .icon4 {
+			background: url(../../img/order/evaluate.png) no-repeat;
+			background-size: 20px 20px;
+		}
+		.mui-control-item.mui-active .icon1 {
+			background: url(../../img/order/payment_press.png) no-repeat;
+			background-size: 20px 20px;
+		}
+		.mui-control-item.mui-active .icon2 {
+			background: url(../../img/order/fahuo.png) no-repeat;
+			background-size: 20px 20px;
+		}
+		.mui-control-item.mui-active .icon3 {
+			background: url(../../img/order/shouhuo.png) no-repeat;
+			background-size: 20px 20px;
+		}
+		.mui-control-item.mui-active .icon4 {
+			background: url(../../img/order/evaluate_press.png) no-repeat;
+			background-size: 20px 20px;
+		}
+		.mui-segmented-control.mui-segmented-control-inverted .mui-control-item {
+			color: #575757;
+		}
+		.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+			color: #FE5F35;
+		}
+		.mui-segmented-control.mui-segmented-control-inverted~.mui-slider-progress-bar {
+		    background-color: #FE5F35;
+		}
+		.mui-fullscreen .mui-segmented-control~.mui-slider-group {
+			top: 44px;
+		}
+		/*********列表复选框*******/
+		.mui-table-view-cell .mui-checkbox {
+			width: 40px;
+		}
+		.mui-table-view-cell .mui-checkbox input[type='checkbox'] {
+			line-height: 80px;
+		}
+		/*******设置列表样式*********/
+		.mui-table-view .mui-media-object {
+			line-height: 80px;
+			max-width: 70px;
+			height: 80px;
+		}
+		.mui-tab-item .mui-btn {
+			position: absolute;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			width: 100px;
+			border-radius: 0;
+		    border-top-left-radius: 0;
+		    border-top-right-radius: 0;
+		    border-bottom-right-radius: 0;
+		    border-bottom-left-radius: 0;
+		}
+		.mui-media-body .mui-ellipsis.goods-name {
+			width: 88%;
+			display: inline-block;
+			vertical-align: top;
+		}
+		.mui-media-body .goods-num {
+			display: inline-block;
+			vertical-align: top;
+			color: #a2a2a2;
+		}
+		.mui-media-body .mui-numbox {
+			width: 110px;
+			height: 30px;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.mui-media-body .right .mui-btn {
+			padding: 4px 12px;
+			margin-left: 10px;
+		}
+		.attribute-type {
+			color: gay;
+		}
+		.attribute-value {
+			padding-right: 5px;
+		}
+	</style>
 </head>
 <body>
 	<header class="mui-bar mui-bar-nav">
@@ -16,11 +167,11 @@
 		<h1 id="title" class="mui-title">我的订单</h1>
 	</header>
 	<div class="mui-content">
-		<div class="my-info">
+		<div class="order-my-info">
 			<img class="head-portrait" src="../../img/d02060.jpg" />
 			<div class="user">
-				<div class="inline">王丽</div><div class="inline li-price">积分：99999</div>
-				<div class="mui-ellipsis-2">生活就是这么简单个人描述</div>
+				<div class="inline name"></div><div class="inline li-price integral">积分：0</div>
+				<div class="mui-ellipsis-2 descrp"></div>
 			</div>
 			<div class="right-forward"><img src="../../img/order/forward.png" /></div>
 			<div class="clear"></div>
@@ -28,177 +179,104 @@
 
 		<div id="slider" class="mui-slider mui-fullscreen">
 			<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-				<a class="mui-control-item mui-active" href="#item1mobile">
+				<a class="mui-control-item order-menu mui-active" href="#order_tab_1" data-tap=0>
 					<div class="item-icon icon1"></div>
 					待支付
 				</a>
-				<a class="mui-control-item" href="#item2mobile">
+				<a class="mui-control-item order-menu" href="#order_tab_2" data-tap=1>
 					<div class="item-icon icon2"></div>
 					待发货
 				</a>
-				<a class="mui-control-item" href="#item3mobile">
+				<a class="mui-control-item order-menu" href="#order_tab_3" data-tap=2>
 					<div class="item-icon icon3"></div>
 					待收货
 				</a>
-				<a class="mui-control-item" href="#item4mobile">
+				<a class="mui-control-item order-menu" href="#order_tab_4" data-tap=3>
 					<div class="item-icon icon4"></div>
 					待评价
 				</a>
 			</div>
 			<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-3"></div>
-			<div class="mui-slider-group">
-				<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
-					<div id="scroll1" class="mui-scroll-wrapper">
+			<div class="mui-slider-group" id="order-container">
+				<div id="order_tab_1" class="mui-slider-item mui-control-content order-content mui-active">
+					<div class="mui-scroll-wrapper">
 						<div class="mui-scroll">
-							<ul class="mui-table-view">
-								<li class="mui-table-view-cell">
-									<a href="javascript:;">
-										<div class="mui-slider-right mui-disabled">
-											<a class="mui-btn mui-btn-red">删除</a>
-										</div>
-										<div class="mui-slider-handle">
-											<div class="mui-checkbox mui-pull-left">
-												<input name="checkbox" value="Item 1" type="checkbox" >
-											</div>
-											<div style="margin-left: 30px;" class="mui-media-body">
-												<img class="mui-media-object mui-pull-left" src="../../img/img1.jpg">
-												<div class="mui-media-body">
-													<div class="mui-ellipsis goods-name">云南草莓</div><div class="goods-num">X2</div>
-													<div class="font-black">蓝色&nbsp;长款&nbsp;加绒</div>
-													<div class="font-black">订单号：201601131006</div>
-													<div class="font-black">
-														购买数量
-														<div class="mui-numbox" data-numbox-min="1">
-															<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-															<input class="mui-input-numbox" type="number" value="1" />
-															<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
-														</div>
-													</div>
-													<div class="li-price">￥121.00</div>
-												</div>
-											</div>
-										</div>
-									</a>
-								</li>
+							<div class="mui-loading">
+								<div class="mui-spinner">
+								</div>
+							</div>
+							<ul class="mui-table-view" style="padding-bottom:40px;">
 							</ul>
 						</div>
 					</div>
-
-					<nav class="mui-bar mui-bar-tab">
+					<nav class="mui-bar mui-bar-tab order-total-bar">
 					    <a class="mui-tab-item mui-active" href="#">
-					     	 合计：<span id="totalPrice">￥12345.00</span>
+					     	 合计：<span id="totalPrice">￥0.00</span>
 					    </a>
 					    <a class="mui-tab-item" href="#">
 							<button type="button" class="mui-btn mui-btn-danger">支付</button>
 					    </a>
 					</nav>
 				</div>
-				<div id="item2mobile" class="mui-slider-item mui-control-content">
-					<div id="scroll2" class="mui-scroll-wrapper">
+				<div id="order_tab_2" class="mui-slider-item mui-control-content order-content">
+					<div class="mui-scroll-wrapper">
 						<div class="mui-scroll">
-							<!--<div class="mui-loading">
+							<div class="mui-loading">
 								<div class="mui-spinner">
 								</div>
-							</div>-->
+							</div>
 							<ul class="mui-table-view">
-								<li class="mui-table-view-cell">
-									<a href="javascript:;">
-										<img class="mui-media-object mui-pull-left" src="../../img/img1.jpg">
-										<div class="mui-media-body">
-											<div class="mui-ellipsis goods-name">云南草莓</div><div class="goods-num">X2</div>
-											<div class="font-black">蓝色&nbsp;长款&nbsp;加绒</div>
-											<div class="li-price">￥12</div>
-											<div class="font-black">订单号：201601131006</div>
-										</div>
-									</a>
-								</li>
-
 							</ul>
 						</div>
 					</div>
 
 				</div>
-				<div id="item3mobile" class="mui-slider-item mui-control-content">
-					<div id="scroll3" class="mui-scroll-wrapper">
+				<div id="order_tab_3" class="mui-slider-item mui-control-content order-content">
+					<div class="mui-scroll-wrapper">
 						<div class="mui-scroll">
-							<!--<div class="mui-loading">
+							<div class="mui-loading">
 								<div class="mui-spinner">
 								</div>
-							</div>-->
+							</div>
 							<ul class="mui-table-view">
-								<li class="mui-table-view-cell">
-									<a href="javascript:;">
-										<img class="mui-media-object mui-pull-left" src="../../img/img1.jpg">
-										<div class="mui-media-body">
-											<div class="mui-ellipsis goods-name">云南草莓</div><div class="goods-num">X2</div>
-											<div class="font-black">蓝色&nbsp;长款&nbsp;加绒</div>
-											<div class="font-black">订单号：201601131006</div>
-											<div class="li-price">￥121.00</div>
-											<div class="right">
-												<button type="button" class="mui-btn">物流信息</button>
-												<button type="button" class="mui-btn  mui-btn-danger">确认签收</button>
-											</div>
-										</div>
-									</a>
-								</li>
-
 							</ul>
 						</div>
 					</div>
-
 				</div>
-				<div id="item4mobile" class="mui-slider-item mui-control-content">
-					<div id="scroll4" class="mui-scroll-wrapper">
+				<div id="order_tab_4" class="mui-slider-item mui-control-content order-content">
+					<div  class="mui-scroll-wrapper">
 						<div class="mui-scroll">
-							<!--<div class="mui-loading">
+							<div class="mui-loading">
 								<div class="mui-spinner">
 								</div>
-							</div>-->
+							</div>
 							<ul class="mui-table-view">
-								<li class="mui-table-view-cell">
-									<a href="javascript:;">
-										<div class="mui-slider-right mui-disabled">
-											<a class="mui-btn mui-btn-red">删除</a>
-											<a class="mui-btn mui-btn-blue">评价</a>
-										</div>
-										<div class="mui-slider-handle">
-											<img class="mui-media-object mui-pull-left" src="../../img/img1.jpg">
-											<div class="mui-media-body">
-												<div class="mui-ellipsis goods-name">云南草莓</div><div class="goods-num">X2</div>
-												<div class="font-black">蓝色&nbsp;长款&nbsp;加绒</div>
-												<div class="li-price">￥12</div>
-												<div class="font-black">订单号：201601131006</div>
-											</div>
-										</div>
-									</a>
-								</li>
-
 							</ul>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
-		<div class="case hide">
+		<div class="case hide delete-confirm">
 			<div class="top">提&nbsp;&nbsp;示</div>
 			<div class="center">
 				是否删除选中商品？
 			</div>
 			<div class="footer">
-				<div class="left cancel">取&nbsp;&nbsp;消</div><div class="right">确&nbsp;&nbsp;定</div>
+				<div class="left cancel">取&nbsp;&nbsp;消</div><div class="right confirm">确&nbsp;&nbsp;定</div>
 			</div>
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/mui.min.js" ></script>
 <script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
 <script src="../../js/utils/app.js"></script>
 <script>
+	"use strict";
 	function getWaitPayOrder() {
 		var url = app.route.ROUTE_GET_WAIT_PAY_ORDER;
 		var data = {
-			openid: params.openid,
+			openID: params.openid,
 		};
 		app.utils.post({
 			url : url,
@@ -207,16 +285,16 @@
 		});
 	}
 	function getWaitPayOrderSuccess(data) {
-		if (data.status === 'success' && data.context) {
+		if (data.success === true && data.context) {
 			var context = data.context;
 			saved.waitPayOrder = context;
-			showPage(context);
+			showWaitPayOrderPage(context);
 		}
 	}
 	function getWaitDeliverOrder() {
 		var url = app.route.ROUTE_GET_WAIT_DELIVER_ORDER;
 		var data = {
-			openid: params.openid,
+			openID: params.openid,
 		};
 		app.utils.post({
 			url : url,
@@ -225,16 +303,16 @@
 		});
 	}
 	function getWaitDeliverOrderSuccess(data) {
-		if (data.status === 'success' && data.context) {
+		if (data.success === true && data.context) {
 			var context = data.context;
 			saved.waitDeliverOrder = context;
-			showPage(context);
+			showWaitDeliverOrderPage(context);
 		}
 	}
 	function getWaitReceiveOrder() {
 		var url = app.route.ROUTE_GET_WAIT_RECEIVE_ORDER;
 		var data = {
-			openid: params.openid,
+			openID: params.openid,
 		};
 		app.utils.post({
 			url : url,
@@ -243,16 +321,16 @@
 		});
 	}
 	function getWaitReceiveOrderSuccess(data) {
-		if (data.status === 'success' && data.context) {
+		if (data.success === true && data.context) {
 			var context = data.context;
 			saved.waitReceiveOrder = context;
-			showPage(context);
+			showWaitReceiveOrderPage(context);
 		}
 	}
 	function getWaitCommentOrder() {
 		var url = app.route.ROUTE_GET_WAIT_COMMENT_ORDER;
 		var data = {
-			openid: params.openid,
+			openID: params.openid,
 		};
 		app.utils.post({
 			url : url,
@@ -261,25 +339,447 @@
 		});
 	}
 	function getWaitCommentOrderSuccess(data) {
-		if (data.status === 'success' && data.context) {
+		if (data.success === true && data.context) {
 			var context = data.context;
 			saved.waitCommentOrder = context;
-			showPage(context);
+			showWaitCommentOrderPage(context);
 		}
 	}
-	function showPage(data) {
+	function ensureReceiveOrder(index) {
+		var url = app.route.ROUTE_ENSURE_RECEIVE_ORDER;
+		var item = saved.waitReceiveOrder.goodsList[index];
+		item._ensureIndex = index;
+		var data = {
+			openID: params.openid,
+			orderNo: item.orderNO,
+		};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : ensureReceiveOrderSuccess,
+			error : ensureReceiveOrderError,
+		});
+	}
+	function ensureReceiveOrderSuccess(data) {
+		if (data.success === true) {
+			var arr = saved.waitReceiveOrder.goodsList;
+			for (var i in arr) {
+				var item = arr[i];
+				var ensureIndex = item._ensureIndex;
+				if (ensureIndex != null) {
+					$('#order_tab_3 .mui-table-view-cell[data-index="'+item._ensureIndex+'"]').remove();
+					arr.splice(ensureIndex, 1);
+					$('#order_tab_3 .mui-table-view-cell').each(function(){
+						var index = $(this).data('index');
+						if (index > ensureIndex) {
+							$(this).data('index', index-1);
+						}
+					});
+					break;
+				}
+			}
+			app.utils.showError('签收成功');
+		} else {
+			ensureReceiveOrderError();
+		}
+	}
+	function ensureReceiveOrderError() {
+		var arr = saved.waitReceiveOrder.goodsList;
+		for (var i in arr) {
+			var item = arr[i];
+			var ensureIndex = item._ensureIndex;
+			if (ensureIndex != null) {
+				delete item._ensureIndex;
+				$('#order_tab_3 .mui-table-view-cell[data-index="'+ensureIndex+'"]').find('.ensure-receive').addClass('mui-btn-danger');
+			}
+		}
+		app.utils.showError('操作失败');
+		return true;
+	}
+	function deleteOrder(index) {
+		var url = app.route.ROUTE_DELETE_ORDER;
+		var item;
+		if (saved.orderTabIndex != 3) {
+			item  = saved.waitPayOrder.goodsList[index];
+		} else {
+			item  = saved.waitCommentOrder.goodsList[index];
+		}
+		item._ensureIndex = index;
+		var data = {
+			openID: params.openid,
+			order: item.orderNO,
+		};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : deleteOrderSuccess,
+			error : deleteOrderError,
+		});
+	}
+	function deleteOrderSuccess(data) {
+		if (data.success === true) {
+			var arr, index;
+			if (saved.orderTabIndex != 3) {
+				arr = saved.waitPayOrder.goodsList;
+				index = 1;
+			} else {
+				arr  = saved.waitCommentOrder.goodsList;
+				index = 4;
+			}
+			for (var i in arr) {
+				var item = arr[i];
+				var ensureIndex = item._ensureIndex;
+				if (ensureIndex != null) {
+					$('#order_tab_'+index+' .mui-table-view-cell[data-index="'+item._ensureIndex+'"]').remove();
+					arr.splice(ensureIndex, 1);
+					$('#order_tab_'+index+' .mui-table-view-cell').each(function(){
+						var index = $(this).data('index');
+						if (index > ensureIndex) {
+							$(this).data('index', index-1);
+						}
+					});
+					break;
+				}
+				app.utils.showError('删除成功');
+			}
+		} else {
+			deleteOrderError();
+		}
+	}
+	function deleteOrderError() {
+		var arr;
+		if (saved.orderTabIndex != 3) {
+			arr = saved.waitPayOrder.goodsList;
+		} else {
+			arr  = saved.waitCommentOrder.goodsList;
+		}
+		for (var i in arr) {
+			var item = arr[i];
+			var ensureIndex = item._ensureIndex;
+			if (ensureIndex != null) {
+				delete item._ensureIndex;
+			}
+		}
+		app.utils.showError('删除失败');
+		return true;
+	}
+	function getGoodsDec(item) {
+		var code = item.goodsDec.code;
+		var goodsDec = item.goodsDec.price;
+		var keys = [];
+		do {
+			if (typeof goodsDec != 'object') { //适配微信浏览器
+				break;
+			}
+			var ks = Object.keys(goodsDec);
+			if (!ks.length) {
+				break;
+			}
+			keys.push(ks[0]);
+			goodsDec = goodsDec[ks[0]];
+		} while (1);
+		item.goodsPrice = goodsDec;
 
+		var discr = '';
+		for (var ki in keys) {
+			for (var k in code) {
+				var secondary = code[k].secondary;
+				for (var kj in secondary) {
+					if (kj == keys[ki]) {
+						discr += '<span class="attribute-type">'+code[k].primary+':</span><span class="attribute-value">'+secondary[kj]+'</span>';
+						break;
+					}
+				}
+			}
+		}
+		return discr;
+	}
+	function showWaitPayOrderPage(data) {
+		$('.order-my-info .head-portrait').attr('src', data.headImg);
+		$('.order-my-info .name').html(data.name);
+		$('.order-my-info .integral').html('积分：'+data.integral);
+		$('.order-my-info .descrp').html(data.des);
+
+		var html = '';
+		var goodsList = data.goodsList;
+		var total = 0;
+		for (var i in goodsList) {
+			var item = goodsList[i];
+			var goodsDec = getGoodsDec(item);
+			total += (item.checked)?item.goodsNum*item.goodsPrice:0;
+			html += '<li class="mui-table-view-cell" data-id="'+item.goodsID+'" data-name="'+item.goodsName+'" data-index="'+i+'">';
+			html += '	<a href="javascript:;">';
+			html += '		<div class="mui-slider-right mui-disabled">';
+			html += '			<a class="mui-btn mui-btn-red delete-order">删除</a>';
+			html += '		</div>';
+			html += '		<div class="mui-slider-handle">';
+			html += '			<div class="mui-checkbox mui-pull-left">';
+			html += '				<input name="checkbox" value="'+i+'" type="checkbox"'+(item.checked?' checked':'')+'>';
+			html += '			</div>';
+			html += '			<div style="margin-left: 30px;" class="mui-media-body">';
+			html += '				<img class="mui-media-object mui-pull-left" src="'+item.goodsImg+'">';
+			html += '				<div class="mui-media-body">';
+			html += '					<div class="mui-ellipsis goods-name">'+item.goodsName+'</div><div class="goods-num">X'+item.goodsNum+'</div>';
+			html += '					<div class="font-black">'+goodsDec+'</div>';
+			html += '					<div class="font-black">订单号：'+item.orderNO+'</div>';
+			html += '					<div class="font-black">';
+			html += '						购买数量';
+			html += '						<div class="mui-numbox" data-numbox-min="1">';
+			html += '							<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>';
+			html += '							<input class="mui-input-numbox" type="number" value="'+item.goodsNum+'" data-index="'+i+'"/>';
+			html += '							<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>';
+			html += '						</div>';
+			html += '					</div>';
+			html += '					<div class="li-price">￥'+item.goodsPrice+'</div>';
+			html += '				</div>';
+			html += '			</div>';
+			html += '		</div>';
+			html += '	</a>';
+			html += '</li>';
+		}
+		$('#order_tab_1 .mui-table-view').html(html);
+		$('#order_tab_1 .mui-loading').hide();
+		mui('.mui-numbox').numbox();
+		$('#order_tab_1 .mui-input-numbox').on('change', function() {
+			$(this).parents('.mui-table-view-cell').find('.goods-num').html('X'+$(this).val());
+			var index = $(this).data('index');
+			goodsList[index].goodsNum = $(this).val();
+			var ntotal = 0;
+			for (var i in goodsList) {
+				var item = goodsList[i];
+				ntotal += (item.checked)?item.goodsNum*item.goodsPrice:0;
+			}
+			$('.order-total-bar #totalPrice').html('￥'+ntotal.toFixed(2));
+		});
+		$('#order_tab_1 input[type=checkbox]').on('change', function() {
+			var index = $(this).val();
+			goodsList[index].checked = $(this).attr("checked");
+			var ntotal = 0;
+			for (var i in goodsList) {
+				var item = goodsList[i];
+				ntotal += (item.checked)?item.goodsNum*item.goodsPrice:0;
+			}
+			$('.order-total-bar #totalPrice').html('￥'+ntotal.toFixed(2));
+		});
+		var checkedlist = $("input[type=checkbox]:checked").map(function(){return $(this).val()});
+		$('.order-total-bar #totalPrice').html('￥'+total);
+		$('#order_tab_1 .mui-table-view-cell .mui-media-object').on('click', function() {
+			showGoodsDetail(this);
+		});
+		$('#order_tab_1 .mui-table-view-cell .delete-order').on('click', function() {
+			var index = $(this).parents('li').data('index');
+			if (saved.waitPayOrder.goodsList[index]._ensureIndex == null) {
+				$("body").append('<div class="modal-backdrop"></div>');
+				var box = $(".case.delete-confirm");
+				box.data('index', index);
+				box.show();
+			}
+		});
+		var scroll = mui('#order_tab_1 .mui-scroll-wrapper').scroll();
+		if (saved.orderScrollTop) {
+			scroll.scrollTo(0, saved.orderScrollTop[1])
+		}
+	}
+	function showWaitDeliverOrderPage(data) {
+		var html = '';
+		var goodsList = data.goodsList;
+		for (var i in goodsList) {
+			var item = goodsList[i];
+			var goodsDec = getGoodsDec(item);
+			html += '<li class="mui-table-view-cell" data-id="'+item.goodsID+'" data-name="'+item.goodsName+'">';
+			html += '	<a href="javascript:;">';
+			html += '		<img class="mui-media-object mui-pull-left" src="'+item.goodsImg+'">';
+			html += '		<div class="mui-media-body">';
+			html += '			<div class="mui-ellipsis goods-name">'+item.goodsName+'</div><div class="goods-num">X'+item.goodsNum+'</div>';
+			html += '			<div class="font-black">'+goodsDec+'</div>';
+			html += '			<div class="li-price">￥'+item.goodsPrice+'</div>';
+			html += '			<div class="font-black">订单号：'+item.orderNO+'</div>';
+			html += '		</div>';
+			html += '	</a>';
+			html += '</li>';
+		}
+		$('#order_tab_2 .mui-table-view').html(html);
+		$('#order_tab_2 .mui-loading').hide();
+		$('#order_tab_2 .mui-table-view-cell .mui-media-object').on('click', function() {
+			showGoodsDetail(this);
+		});
+		var scroll = mui('#order_tab_2 .mui-scroll-wrapper').scroll();
+		if (saved.orderScrollTop) {
+			scroll.scrollTo(0, saved.orderScrollTop[2])
+		}
+	}
+	function showWaitReceiveOrderPage(data) {
+		var html = '';
+		var goodsList = data.goodsList;
+		for (var i in goodsList) {
+			var item = goodsList[i];
+			var goodsDec = getGoodsDec(item);
+			html += '<li class="mui-table-view-cell" data-id="'+item.goodsID+'" data-name="'+item.goodsName+'" data-index="'+i+'">';
+			html += '	<a href="javascript:;">';
+			html += '		<img class="mui-media-object mui-pull-left" src="'+item.goodsImg+'">';
+			html += '		<div class="mui-media-body">';
+			html += '			<div class="mui-ellipsis goods-name">'+item.goodsName+'</div><div class="goods-num">X'+item.goodsNum+'</div>';
+			html += '			<div class="font-black">'+goodsDec+'</div>';
+			html += '			<div class="font-black">订单号：'+item.orderNO+'</div>';
+			html += '			<div class="li-price">￥'+item.goodsPrice+'</div>';
+			html += '			<div class="right">';
+			html += '				<button type="button" class="mui-btn logistics-info">物流信息</button>';
+			html += '				<button type="button" class="mui-btn  mui-btn-danger ensure-receive">确认签收</button>';
+			html += '			</div>';
+			html += '		</div>';
+			html += '	</a>';
+			html += '</li>';
+		}
+		$('#order_tab_3 .mui-table-view').html(html);
+		$('#order_tab_3 .mui-loading').hide();
+		$('#order_tab_3 .mui-table-view-cell .mui-media-object').on('click', function() {
+			showGoodsDetail(this);
+		});
+		$('#order_tab_3 .mui-table-view-cell .logistics-info').on('click', function() {
+			//to do
+		});
+		$('#order_tab_3 .mui-table-view-cell .ensure-receive').on('click', function() {
+			if ($(this).hasClass('.mui-btn-danger')) {
+				$(this).removeClass('mui-btn-danger');
+				var index = $(this).parents('li').data('index');
+				ensureReceiveOrder(index);
+			}
+		});
+		var scroll = mui('#order_tab_3 .mui-scroll-wrapper').scroll();
+		if (saved.orderScrollTop) {
+			scroll.scrollTo(0, saved.orderScrollTop[3])
+		}
+	}
+	function showWaitCommentOrderPage(data) {
+		var html = '';
+		var goodsList = data.goodsList;
+		for (var i in goodsList) {
+			var item = goodsList[i];
+			var goodsDec = getGoodsDec(item);
+			html += '<li class="mui-table-view-cell" data-id="'+item.goodsID+'" data-name="'+item.goodsName+'" data-index="'+i+'">';
+			html += '	<a href="javascript:;">';
+			html += '		<div class="mui-slider-right mui-disabled">';
+			html += '			<a class="mui-btn mui-btn-red delete-order">删除</a>';
+			html += '			<a class="mui-btn mui-btn-blue commnet-order">评价</a>';
+			html += '		</div>';
+			html += '		<div class="mui-slider-handle">';
+			html += '			<img class="mui-media-object mui-pull-left" src="'+item.goodsImg+'">';
+			html += '			<div class="mui-media-body">';
+			html += '				<div class="mui-ellipsis goods-name">'+item.goodsName+'</div><div class="goods-num">X'+item.goodsNum+'</div>';
+			html += '				<div class="font-black">'+goodsDec+'</div>';
+			html += '				<div class="li-price">￥'+item.goodsPrice+'</div>';
+			html += '				<div class="font-black">订单号：'+item.orderNO+'</div>';
+			html += '			</div>';
+			html += '		</div>';
+			html += '	</a>';
+			html += '</li>';
+		}
+		$('#order_tab_4 .mui-table-view').html(html);
+		$('#order_tab_4 .mui-loading').hide();
+		$('#order_tab_4 .mui-table-view-cell .mui-media-object').on('click', function() {
+			showGoodsDetail(this);
+		});
+		$('#order_tab_4 .mui-table-view-cell .delete-order').on('click', function() {
+			var index = $(this).parents('li').data('index');
+			if (saved.waitCommentOrder.goodsList[index]._ensureIndex == null) {
+				$("body").append('<div class="modal-backdrop"></div>');
+				var box = $(".case.delete-confirm");
+				box.data('index', index);
+				box.show();
+			}
+		});
+		$('#order_tab_4 .mui-table-view-cell .commnet-order').on('click', function() {
+			var index = $(this).parents('li').data('index');
+			var item = saved.waitCommentOrder.goodsList[index];
+			var data = {
+				goodsID: item.goodsID,
+				goodsName: item.goodsName,
+				openID: params.openid,
+			}
+			saved.orderScrollTop = saved.orderScrollTop||{};
+			saved.orderScrollTop[4] = mui('#order_tab_4 .mui-scroll-wrapper').scroll().y;
+			app.router.showView('../goods-detail/submit-appraise.html', data, saved);
+		});
+		var scroll = mui('#order_tab_4 .mui-scroll-wrapper').scroll();
+		if (saved.orderScrollTop) {
+			scroll.scrollTo(0, saved.orderScrollTop[4])
+		}
+	}
+	function restoreOrderTabSegment(index) {
+		$('#sliderSegmentedControl .order-menu.mui-active').removeClass("mui-active");
+		$('#sliderSegmentedControl .order-menu[data-tap="'+index+'"]').addClass("mui-active");
+		$('#order-container .order-content.mui-active').removeClass("mui-active");
+		$($('#order-container .order-content')[index]).addClass("mui-active");
+	}
+	function showGoodsDetail(el) {
+		el = $(el).parents('li.mui-table-view-cell');
+		var id = el.data('id');
+		var name = el.data('name');
+		var data = {
+			goodsID: id,
+			goodsName: name,
+			openID: params.openid,
+		}
+		saved.orderScrollTop = {
+			1:mui('#order_tab_1 .mui-scroll-wrapper').scroll().y,
+			2:mui('#order_tab_2 .mui-scroll-wrapper').scroll().y,
+			3:mui('#order_tab_3 .mui-scroll-wrapper').scroll().y,
+			4:mui('#order_tab_4 .mui-scroll-wrapper').scroll().y,
+		}
+		app.router.showView('../goods-detail/goods-details.html', data, saved);
 	}
 
 	mui.init();
+	mui('#order-container').on('shown.mui.tab', '.order-content', function(e) {
+		var id = e.target.id;
+		if (id == 'order_tab_1') {
+			saved.orderTabIndex = 0;
+		} else if (id == 'order_tab_2') {
+			saved.orderTabIndex = 1;
+		} else if (id == 'order_tab_3') {
+			saved.orderTabIndex = 2;
+		} else if (id == 'order_tab_4') {
+			saved.orderTabIndex = 3;
+		}
+	});
+	//弹出框事件注册
+	$(".case.delete-confirm").on('tap', '.cancel', function() {
+		$(".modal-backdrop").remove();
+		$(".case.delete-confirm").hide(300);
+	}).on('tap', '.confirm', function(e) {
+		var el = $(".case.delete-confirm");
+		$(".modal-backdrop").remove();
+		el.hide(300);
+		deleteOrder(el.data('index'));
+	});
 
 	var params = app.router.getParameter();
 	var saved = app.router.getSavedData();
-
-	if (saved.data) {
-		showPage(saved.data);
+	if (params.shouldShowSuccess) {
+		mui.toast("评分成功");
+	}
+	if (saved.waitPayOrder) {
+		showWaitPayOrderPage(saved.waitPayOrder);
 	} else {
-		getDisstributorBarcodeData();
+		getWaitPayOrder();
+	}
+	if (saved.waitDeliverOrder) {
+		showWaitDeliverOrderPage(saved.waitDeliverOrder);
+	} else {
+		getWaitDeliverOrder();
+	}
+	if (saved.waitReceiveOrder) {
+		showWaitReceiveOrderPage(saved.waitReceiveOrder);
+	} else {
+		getWaitReceiveOrder();
+	}
+	if (saved.waitCommentOrder) {
+		showWaitCommentOrderPage(saved.waitCommentOrder);
+	} else {
+		getWaitCommentOrder();
+	}
+	if (saved.orderTabIndex) {
+		restoreOrderTabSegment(saved.orderTabIndex);
 	}
 </script>
 </html>
