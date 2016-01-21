@@ -2,8 +2,10 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta http-equiv="content-security-policy">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
+	<title>赢销截拳道电子商城</title>
 	<link rel="stylesheet" href="../../css/mui.min.css" />
 	<link rel="stylesheet" href="../../css/common.css" />
 	<style>
@@ -111,24 +113,80 @@
 					</div>
 				</div>
 			 </li>
-			 <li class="mui-table-view-cell">
-				 <div class="box1to4">
-					 <img src="../../img/img1.jpg"  class="box-full-image"/>
-				 </div>
-				<div class="info-container">
-					<div class="shop-logo-container">
-						<img class="shop-logo" src="../../img/logo.png" >
-					</div>
-					<div class="shop-name">LV 官方旗舰店</div>
-					<div class="shop-sign">世界品牌 值得信赖</div>
-					<div class="praise-container">
-						<img src="../../img/personal/collect.png"/>
-						<span class="shop-praise">1000</span>
-					</div>
-				</div>
-			 </li>
+ <li class="mui-table-view-cell">
+	 <div class="box1to4">
+		 <img src="../../img/img1.jpg"  class="box-full-image"/>
+	 </div>
+	<div class="info-container">
+		<div class="shop-logo-container">
+			<img class="shop-logo" src="../../img/logo.png" >
+		</div>
+		<div class="shop-name">LV 官方旗舰店</div>
+		<div class="shop-sign">世界品牌 值得信赖</div>
+		<div class="praise-container">
+			<img src="../../img/personal/collect.png"/>
+			<span class="shop-praise">1000</span>
+		</div>
+	</div>
+ </li>
 		</ul>
 	</div>
 </body>
 <script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+<script src="../../js/utils/app.js"></script>
+<script>
+	function getShopCollectionData() {
+		var url = app.route.ROUTE_GET_SHOP_COLLECTION_DATA;
+		var data = {
+			openid: params.openid,
+		};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : getShopCollectionDataSuccess,
+		});
+	}
+	function getShopCollectionDataSuccess(data) {
+		if (data.status === 'success' && data.context && data.context.goodsList) {
+			var goodsList = data.context.goodsList;
+			saved.data = goodsList;
+			showPage(goodsList);
+		}
+	}
+	function showPage(data) {
+		var html = '';
+		for (var i in data) {
+			var item = data[i];
+			html += '<li class="mui-table-view-cell">';
+			html += '	<div class="box1to4">';
+			html += '		<img src="'+item.shopBackImg+'"  class="box-full-image"/>';
+			html += '	</div>';
+			html += '	<div class="info-container">';
+			html += '		<div class="shop-logo-container">';
+			html += '			<img class="shop-logo" src="'+item.shopImg+'" >';
+			html += '		</div>';
+			html += '		<div class="shop-name">'+item.shopName+'</div>';
+			html += '		<div class="shop-sign">'+item.shopIntroduction+'</div>';
+			html += '		<div class="praise-container">';
+			html += '			<img src="../../img/personal/collect.png"/>';
+			html += '			<span class="shop-praise">'+item.shopCollection+'</span>';
+			html += '		</div>';
+			html += '	</div>';
+			html += '</li>';
+		}
+		$('.mui-content .mui-table-view').html(html);
+		app.router.resetScollerBar();
+	}
+
+	mui.init();
+
+	var params = app.router.getParameter();
+	var saved = app.router.getSavedData();
+	if (saved.data) {
+		showPage(saved.data);
+	} else {
+		getShopCollectionData();
+	}
+</script>
 </html>

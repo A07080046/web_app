@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd ../server/modules
+
+ip=192.168.1.119
+if [ -z "$1" ];then
+    vim -e -s ../../www/js/utils/app.js -c ":%s/localhost/${ip}/" -c ":wq"
+    xfind -t "localhost" -v "-c \":%s/localhost/${ip}/g\""
+else
+    xfind -t "${ip}" -v "-c \":%s/${ip}/localhost/g\""
+    vim -e -s ../../www/js/utils/app.js -c ":%s/${ip}/localhost/" -c ":wq"
+fi
+

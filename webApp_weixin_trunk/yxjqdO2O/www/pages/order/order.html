@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta http-equiv="content-security-policy">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>赢销截拳道电子商城</title>
+	<link rel="stylesheet" href="../../css/mui.min.css" />
+	<link rel="stylesheet" href="../../css/common.css" />
+	<link rel="stylesheet" href="../../css/yxjqd/order.css" />
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 id="title" class="mui-title">我的订单</h1>
+	</header>
+	<div class="mui-content">
+		<div class="my-info">
+			<img class="head-portrait" src="../../img/d02060.jpg" />
+			<div class="user">
+				<div class="inline">王丽</div><div class="inline li-price">积分：99999</div>
+				<div class="mui-ellipsis-2">生活就是这么简单个人描述</div>
+			</div>
+			<div class="right-forward"><img src="../../img/order/forward.png" /></div>
+			<div class="clear"></div>
+		</div>
+
+		<div id="slider" class="mui-slider mui-fullscreen">
+			<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+				<a class="mui-control-item mui-active" href="#item1mobile">
+					<div class="item-icon icon1"></div>
+					待支付
+				</a>
+				<a class="mui-control-item" href="#item2mobile">
+					<div class="item-icon icon2"></div>
+					待发货
+				</a>
+				<a class="mui-control-item" href="#item3mobile">
+					<div class="item-icon icon3"></div>
+					待收货
+				</a>
+				<a class="mui-control-item" href="#item4mobile">
+					<div class="item-icon icon4"></div>
+					待评价
+				</a>
+			</div>
+			<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-3"></div>
+			<div class="mui-slider-group">
+				<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+					<div id="scroll1" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									<a href="javascript:;">
+										<div class="mui-slider-right mui-disabled">
+											<a class="mui-btn mui-btn-red">删除</a>
+										</div>
+										<div class="mui-slider-handle">
+											<div class="mui-checkbox mui-pull-left">
+												<input name="checkbox" value="Item 1" type="checkbox" >
+											</div>
+											<div style="margin-left: 30px;" class="mui-media-body">
+												<img class="mui-media-object mui-pull-left" src="../../img/img1.jpg">
+												<div class="mui-media-body">
+													<div class="mui-ellipsis goods-name">云南草莓</div><div class="goods-num">X2</div>
+													<div class="font-black">蓝色&nbsp;长款&nbsp;加绒</div>
+													<div class="font-black">订单号：201601131006</div>
+													<div class="font-black">
+														购买数量
+														<div class="mui-numbox" data-numbox-min="1">
+															<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+															<input class="mui-input-numbox" type="number" value="1" />
+															<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+														</div>
+													</div>
+													<div class="li-price">￥121.00</div>
+												</div>
+											</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<nav class="mui-bar mui-bar-tab">
+					    <a class="mui-tab-item mui-active" href="#">
+					     	 合计：<span id="totalPrice">￥12345.00</span>
+					    </a>
+					    <a class="mui-tab-item" href="#">
+							<button type="button" class="mui-btn mui-btn-danger">支付</button>
+					    </a>
+					</nav>
+				</div>
+				<div id="item2mobile" class="mui-slider-item mui-control-content">
+					<div id="scroll2" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<!--<div class="mui-loading">
+								<div class="mui-spinner">
+								</div>
+							</div>-->
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="../../img/img1.jpg">
+										<div class="mui-media-body">
+											<div class="mui-ellipsis goods-name">云南草莓</div><div class="goods-num">X2</div>
+											<div class="font-black">蓝色&nbsp;长款&nbsp;加绒</div>
+											<div class="li-price">￥12</div>
+											<div class="font-black">订单号：201601131006</div>
+										</div>
+									</a>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+
+				</div>
+				<div id="item3mobile" class="mui-slider-item mui-control-content">
+					<div id="scroll3" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<!--<div class="mui-loading">
+								<div class="mui-spinner">
+								</div>
+							</div>-->
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="../../img/img1.jpg">
+										<div class="mui-media-body">
+											<div class="mui-ellipsis goods-name">云南草莓</div><div class="goods-num">X2</div>
+											<div class="font-black">蓝色&nbsp;长款&nbsp;加绒</div>
+											<div class="font-black">订单号：201601131006</div>
+											<div class="li-price">￥121.00</div>
+											<div class="right">
+												<button type="button" class="mui-btn">物流信息</button>
+												<button type="button" class="mui-btn  mui-btn-danger">确认签收</button>
+											</div>
+										</div>
+									</a>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+
+				</div>
+				<div id="item4mobile" class="mui-slider-item mui-control-content">
+					<div id="scroll4" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<!--<div class="mui-loading">
+								<div class="mui-spinner">
+								</div>
+							</div>-->
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									<a href="javascript:;">
+										<div class="mui-slider-right mui-disabled">
+											<a class="mui-btn mui-btn-red">删除</a>
+											<a class="mui-btn mui-btn-blue">评价</a>
+										</div>
+										<div class="mui-slider-handle">
+											<img class="mui-media-object mui-pull-left" src="../../img/img1.jpg">
+											<div class="mui-media-body">
+												<div class="mui-ellipsis goods-name">云南草莓</div><div class="goods-num">X2</div>
+												<div class="font-black">蓝色&nbsp;长款&nbsp;加绒</div>
+												<div class="li-price">￥12</div>
+												<div class="font-black">订单号：201601131006</div>
+											</div>
+										</div>
+									</a>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="case hide">
+			<div class="top">提&nbsp;&nbsp;示</div>
+			<div class="center">
+				是否删除选中商品？
+			</div>
+			<div class="footer">
+				<div class="left cancel">取&nbsp;&nbsp;消</div><div class="right">确&nbsp;&nbsp;定</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+<script src="../../js/utils/app.js"></script>
+<script>
+	function getWaitPayOrder() {
+		var url = app.route.ROUTE_GET_WAIT_PAY_ORDER;
+		var data = {
+			openid: params.openid,
+		};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : getWaitPayOrderSuccess,
+		});
+	}
+	function getWaitPayOrderSuccess(data) {
+		if (data.status === 'success' && data.context) {
+			var context = data.context;
+			saved.waitPayOrder = context;
+			showPage(context);
+		}
+	}
+	function getWaitDeliverOrder() {
+		var url = app.route.ROUTE_GET_WAIT_DELIVER_ORDER;
+		var data = {
+			openid: params.openid,
+		};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : getWaitDeliverOrderSuccess,
+		});
+	}
+	function getWaitDeliverOrderSuccess(data) {
+		if (data.status === 'success' && data.context) {
+			var context = data.context;
+			saved.waitDeliverOrder = context;
+			showPage(context);
+		}
+	}
+	function getWaitReceiveOrder() {
+		var url = app.route.ROUTE_GET_WAIT_RECEIVE_ORDER;
+		var data = {
+			openid: params.openid,
+		};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : getWaitReceiveOrderSuccess,
+		});
+	}
+	function getWaitReceiveOrderSuccess(data) {
+		if (data.status === 'success' && data.context) {
+			var context = data.context;
+			saved.waitReceiveOrder = context;
+			showPage(context);
+		}
+	}
+	function getWaitCommentOrder() {
+		var url = app.route.ROUTE_GET_WAIT_COMMENT_ORDER;
+		var data = {
+			openid: params.openid,
+		};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : getWaitCommentOrderSuccess,
+		});
+	}
+	function getWaitCommentOrderSuccess(data) {
+		if (data.status === 'success' && data.context) {
+			var context = data.context;
+			saved.waitCommentOrder = context;
+			showPage(context);
+		}
+	}
+	function showPage(data) {
+
+	}
+
+	mui.init();
+
+	var params = app.router.getParameter();
+	var saved = app.router.getSavedData();
+
+	if (saved.data) {
+		showPage(saved.data);
+	} else {
+		getDisstributorBarcodeData();
+	}
+</script>
+</html>

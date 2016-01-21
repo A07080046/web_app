@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta http-equiv="content-security-policy">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>赢销截拳道电子商城</title>
+	<link rel="stylesheet" href="../../css/mui.min.css" />
+	<link rel="stylesheet" href="../../css/common.css" />
+	<style>
+		.mui-table-view-cell {
+			padding: 0px;
+		}
+		.title-bar-left {
+			position: absolute;
+			width: 35%;
+			height: 2px;
+			background: #C3C4C5;
+			top: 15px;
+		}
+		.title-bar-right {
+			position: absolute;
+			width: 35%;
+			height: 2px;
+			right: 0px;
+			background: #C3C4C5;
+			top: 15px;
+		}
+		.title-container {
+			position: relative;
+			height: 30px;
+		}
+		.title-context-container {
+			position: absolute;
+			left: 35%;
+			width: 30%;
+			text-align: center;
+		}
+		.title-text {
+			padding-left: 5px;
+			color: red;
+			font-size: 18px;
+		}
+		.box1to4 {
+			display:inline-block;
+			position: relative;
+			width: 100%;
+		}
+		.box1to4::after{
+		  display: block;
+		  padding-top: 50%;
+		  content : '';
+		}
+		.box-full-image {
+			width:100%;
+			height:100%;
+			left:0px;
+			top:0px;
+			position:absolute;
+		}
+		.font-content {
+			padding: 10px 5px 10px 10px;
+			font-size: 16px;
+		}
+		.font-content .info {
+			font-size: 15px;
+			color: darkgray;
+			padding-bottom: 5px;
+		}
+		.or-price {
+			font-size: 12px;
+		}
+		.empty_list {
+			color:red;
+			padding-top: 150px;
+			padding-bottom: 150px;
+			background-color: #efeff4;
+			text-align: center;
+			font-size: 25px;
+		}
+	</style>
+</head>
+<body style="background-color: #fff;">
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 id="title" class="mui-title"></h1>
+	</header>
+	<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+		<div class="mui-scroll">
+			<ul class="mui-table-view" id="goods_list"></ul>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+<script src="../../js/thirdparty/spin.min.js"></script>
+<script src="../../js/utils/app.js"></script>
+<script>
+	function getScrollTop() {
+		return mui('#pullrefresh').pullRefresh().y;
+	}
+	function setScrollTop(y) {
+		setTimeout(function() {
+			mui('#pullrefresh').pullRefresh().scrollTo(0, y);
+		}, 0);
+	}
+	function getListItem(item, index, append) {
+		index = index*1 + (append||0)*1;
+		html = '';
+		html += '<li class="mui-table-view-cell" data-index='+index+'>';
+		html += '   <div style="position:relative">';
+		html += '	   <div class="title-bar-left"></div>';
+		html += '	   <div class="title-container">';
+		html += '		   <span class="title-context-container">';
+		html += '			   <span class="title-text">'+item.goodsName+'</span>';
+		html += '		   </span>';
+		html += '	   </div>';
+		html += '	   <div class="title-bar-right"></div>';
+		html += '   </div>';
+		html += '   <div class="box1to4">';
+		html += '	   <img src="'+item.goodsImg+'"  class="box-full-image"/>';
+		html += '   </div>';
+		html += '   <div class="font-content">';
+		html += '	   <div class="info">'+item.goodsIntroduces+'</div>';
+		html += '	   <div class="left"><span class="li-price">赢价￥'+item.goodsSalePrice+'</span>&nbsp;&nbsp;<span class="line-through or-price">原件￥'+item.goodsPrice+'</span></div>';
+		html += '	   <div class="right">已售:'+item.salse+'件</div>';
+		html += '	   <div class="clear"></div>';
+		html += '   </div>';
+		html += '</li>';
+		return html;
+	}
+	function getVisibleTitle(title, cnt) {
+		if (!title)return title;
+		var realLength = 0, len = title.length, preLen = -1, charCode = -1, needCut = false;
+		for (var i=0; i<len; i++) {
+			charCode = title.charCodeAt(i);
+			if (charCode >= 0 && charCode <= 128) {
+				realLength += 1;
+			} else {
+				realLength += 2;
+			}
+			if (preLen===-1 && realLength >= cnt-2) {
+				preLen = i+1;
+			} else if (realLength > cnt) {
+				needCut = true;
+				break;
+			}
+		}
+		if (needCut) {
+			title = title.substr(0, preLen)+'..';
+		}
+		return title;
+	}
+	function showEmptyList() {
+		$('#top5_list').html('<div class="empty_list">没有相关数据</div>');
+	}
+	function showList(list, append) {
+		html = '';
+		for (var i in list) {
+			html += getListItem(list[i], i, append);
+		}
+		if (!append) {
+			$('#goods_list').html(html);
+		} else {
+			$('#goods_list').append(html);
+		}
+		if (query.dir === "none") {
+			app.router.resetScollerBar(setScrollTop);
+		}
+	}
+	function getList(type, pageNo, needWait) {
+		var url = app.route.ROUTE_GET_CATEGORIES_LIST;
+		var data = {
+			type: type,
+			pageNo: pageNo,
+			rows: 5,
+		};
+		needWait&&app.utils.setWait("请稍后...");
+		app.utils.post({
+			url : url,
+			data: data,
+			success : onGetListSuccess,
+			error : onGetListError
+		});
+	};
+	function onGetListSuccess(data) {
+		if (data.status === 'success') {
+			var context = data.context||{};
+			var list = data.context.goodsList;
+			console.log(list);
+			if (!list || !list.length) {
+				if (query.pageNo == FIRST_PAGE_NO) {
+					showEmptyList();
+				}
+			} else {
+				if (query.dir==='up') {
+					showList(list, saved.list.length);
+					saved.list = saved.list.concat(list);
+				} else {
+					showList(list);
+					saved.list = list;
+				}
+			}
+			if (query.dir === 'down') {
+				mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+				mui('#pullrefresh').pullRefresh().refresh(true);
+			} else if (query.dir === 'up') {
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+			}
+		} else {
+			if (query.dir === 'down') {
+				mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+			} else if (query.dir === 'up') {
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+			}
+			if (query.pageNo == FIRST_PAGE_NO) {
+				showEmptyList();
+			}
+		}
+		query.dir = 'none';
+		app.utils.clearWait();
+	};
+	function onGetListError(error) {
+		if (query.dir === 'down') {
+			mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+		} else if (query.dir === 'up') {
+			mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+		}
+		query.dir = 'none';
+	};
+	function pulldownRefresh() {
+		query.pageNo = FIRST_PAGE_NO;
+		query.dir = 'down';
+		getList(query.type, query.pageNo);
+	}
+	function pullupRefresh() {
+		query.pageNo++;
+		query.dir = 'up';
+		getList(query.type, query.pageNo);
+	}
+
+	mui.init({
+		pullRefresh: {
+			container: '#pullrefresh',
+			down: {
+				callback: pulldownRefresh
+			},
+			up: {
+				contentrefresh: '正在加载...',
+				callback: pullupRefresh
+			}
+		}
+	});
+	mui('.mui-scroll-wrapper').scroll();
+	$('#pullrefresh').on('tap', 'li', function() {
+		var index = $(this).data('index');
+		var data = {
+			goodsID: saved.list[index].goodsID,
+			goodsName: saved.list[index].goodsName,
+			openid: params.openid,
+		}
+		saved.query = query;
+		app.router.showView('../goods-detail/goods-details.html', data, saved, getScrollTop);
+	});
+
+	var FIRST_PAGE_NO = 0;
+	var params = app.router.getParameter();
+	var saved = app.router.getSavedData();
+	var query = saved.query||{pageNo: FIRST_PAGE_NO, type: params.typeID, dir:'none'};
+	$('#title').html(params.title);
+
+	if (saved.list) {
+		showList(saved.list);
+	} else {
+		getList(query.type, query.pageNo, true);
+	}
+</script>
+</html>

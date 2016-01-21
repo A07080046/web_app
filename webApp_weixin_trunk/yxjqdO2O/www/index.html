@@ -3,11 +3,14 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>赢销商城</title>
+		<title>赢销截拳道电子商城</title>
+		<meta http-equiv="Access-Control-Allow-Origin" content="*">
+		<meta http-equiv="content-security-policy">
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/common.css" />
 		<style>
 			.mui-bar {
 				padding: 0px 0px 0px 0px;
@@ -147,7 +150,6 @@
 			}
 			.box{
 		      display:inline-block;
-		      background: gray;
 			  position: relative;
 		    }
 			.box.box2 {
@@ -163,7 +165,6 @@
 		    }
 			.box1to4 {
 				display:inline-block;
-  		      	background: gray;
 				position: relative;
 				width: 96%;
 			}
@@ -216,7 +217,7 @@
 			}
 			.box-v2-image-m {
 				width:100%;
-				height:50%;
+				height:60%;
 				left:0px;
 				bottom:0px;
 				position:absolute;
@@ -372,7 +373,7 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<div class="search-header">
-				<input type="search" class="mui-input-clear" placeholder="">
+				<input type="search" class="mui-input-clear" placeholder="搜索商品" disabled="disabled">
 				<img src="img/home/search_line.png" class="search-line">
 				<a class="search-button">
 					<img src="img/home/search_press.png" class="search-button-image">
@@ -380,20 +381,20 @@
 			</div>
 		</header>
 		<nav class="mui-bar mui-bar-tab navbar">
-			<a class="mui-tab-item mui-active navbar-tab-item" href="#tabbar-with-home">
+			<a class="mui-tab-item navbar-tab-item mui-active" href="#tabbar-with-home" data-tap=0>
 				<div class="mui-icon navbar-icon home"></div>
 				<span class="mui-tab-label">首页</span>
 			</a>
-			<a class="mui-tab-item navbar-tab-item" href="#tabbar-with-order">
+			<a class="mui-tab-item navbar-tab-item" href="#tabbar-with-order" data-tap=1>
 				<div class="mui-icon navbar-icon order"></div>
 				<span class="mui-badge navbar-icon-badge">9</span>
 				<span class="mui-tab-label">我的订单</span>
 			</a>
-			<a class="mui-tab-item navbar-tab-item" href="#tabbar-with-trolley">
+			<a class="mui-tab-item navbar-tab-item" href="#tabbar-with-trolley" data-tap=2>
 				<div class="mui-icon navbar-icon trolley"></div>
 				<span class="mui-tab-label">购物车</span>
 			</a>
-			<a class="mui-tab-item navbar-tab-item" href="#tabbar-with-person-center">
+			<a class="mui-tab-item navbar-tab-item" href="#tabbar-with-person-center" data-tap=3>
 				<div class="mui-icon navbar-icon person-center"></div>
 				<span class="mui-tab-label">个人中心</span>
 			</a>
@@ -402,56 +403,59 @@
 			<div id="tabbar-with-home" class="mui-control-content mui-active">
 				<!-- 广告栏 -->
 				<div id="bannerImg" class="mui-slider" >
+					<img src="img/home/banner.png" style="width:100%;">
 				</div>
-
+				<div class="announcement-container">
+					<div id="scroll-text"></div>
+				</div>
 				<!-- 菜单 -->
-				<ul class="mui-table-view mui-grid-view mui-grid-9">
-					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
-						<a href="#">
+				<ul id="main-menu" class="mui-table-view mui-grid-view mui-grid-9">
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" data-index=1 data-href="pages/categories/imageList.html">
+						<a>
 							<img src="img/home/life.png" class="menu-icon"/>
 							<span class="mui-badge menu-icon-badge">5</span>
 							<div class="mui-media-body">生活</div>
 						</a>
 					</li>
-					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
-						<a href="#">
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" data-index=2 data-href="pages/categories/tableList.html">
+						<a>
 							<img src="img/home/materna_and_child.png" class="menu-icon"/>
 							<span class="mui-badge menu-icon-badge">3</span>
 							<div class="mui-media-body">母婴</div>
 						</a>
 					</li>
-					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
-						<a href="#">
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" data-index=3 data-href="pages/categories/mediaList.html">
+						<a>
 							<img src="img/home/travel.png" class="menu-icon"/>
 							<div class="mui-media-body">旅行</div>
 						</a>
 					</li>
-					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
-						<a href="#">
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" data-index=4 data-href="pages/categories/mediaList.html">
+						<a>
 							<img src="img/home/car.png" class="menu-icon"/>
 							<div class="mui-media-body">汽车</div>
 						</a>
 					</li>
-					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3 bottom">
-						<a href="#">
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3 bottom" data-index=5 data-href="pages/categories/imageList.html">
+						<a>
 							<img src="img/home/year.png" class="menu-icon"/>
 							<div class="mui-media-body">年货</div>
 						</a>
 					</li>
-					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3 bottom">
-						<a href="#">
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3 bottom" data-index=6 data-href="pages/categories/tableList.html">
+						<a>
 							<img src="img/home/gift.png" class="menu-icon"/>
 							<div class="mui-media-body">礼品</div>
 						</a>
 					</li>
-					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3 bottom">
-						<a href="#">
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3 bottom" data-index=7 data-href="pages/categories/imageList.html">
+						<a>
 							<img src="img/home/appliances.png" class="menu-icon"/>
 							<div class="mui-media-body">电器</div>
 						</a>
 					</li>
-					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3 bottom">
-						<a href="#">
+					<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3 bottom" data-index=8 data-href="pages/categories/tableList.html">
+						<a>
 							<img src="img/home/other.png" class="menu-icon"/>
 							<div class="mui-media-body">其他</div>
 						</a>
@@ -468,15 +472,15 @@
 						</div>
 						<div class="title-bar-right"></div>
 					</div>
-					<div style="text-align:center">
+					<div style="text-align:center" id="popularity_list">
 						<div class="box box2">
-							<img src="img/home/life.png"  class="box-full-image"/>
+							<img src="img/common/image_default.png"  class="box-full-image"/>
 						</div>
 						<div class="box box2">
-							<img src="img/home/life.png"  class="box-4-image-1"/>
-							<img src="img/home/life.png"  class="box-4-image-2"/>
-							<img src="img/home/life.png"  class="box-4-image-3"/>
-							<img src="img/home/life.png"  class="box-4-image-4"/>
+							<img src="img/common/image_default.png"  class="box-4-image-1"/>
+							<img src="img/common/image_default.png"  class="box-4-image-2"/>
+							<img src="img/common/image_default.png"  class="box-4-image-3"/>
+							<img src="img/common/image_default.png"  class="box-4-image-4"/>
 						</div>
 					</div>
 					<div style="position:relative">
@@ -488,23 +492,25 @@
 						</div>
 						<div class="title-bar-right"></div>
 					</div>
-					<div style="text-align:center">
-						<div class="box1to4">
-							<img src="img/home/life.png"  class="box-full-image"/>
+					<div id="characteristic_list">
+						<div style="text-align:center">
+							<div class="box1to4">
+								<img src="img/common/image_default.png"  class="box-full-image"/>
+							</div>
 						</div>
-					</div>
-					<div style="text-align:center">
-						<div class="box box4">
-							<img src="img/home/life.png"  class="box-full-image"/>
-						</div>
-						<div class="box box4">
-							<img src="img/home/life.png"  class="box-full-image"/>
-						</div>
-						<div class="box box4">
-							<img src="img/home/life.png"  class="box-full-image"/>
-						</div>
-						<div class="box box4">
-							<img src="img/home/life.png"  class="box-full-image"/>
+						<div style="text-align:center">
+							<div class="box box4">
+								<img src="img/common/image_default.png"  class="box-full-image"/>
+							</div>
+							<div class="box box4">
+								<img src="img/common/image_default.png"  class="box-full-image"/>
+							</div>
+							<div class="box box4">
+								<img src="img/common/image_default.png"  class="box-full-image"/>
+							</div>
+							<div class="box box4">
+								<img src="img/common/image_default.png"  class="box-full-image"/>
+							</div>
 						</div>
 					</div>
 					<div style="position:relative">
@@ -516,15 +522,15 @@
 						</div>
 						<div class="title-bar-right"></div>
 					</div>
-					<div style="text-align:center">
+					<div style="text-align:center" id="recommend_list">
 						<div class="box box2">
-							<img src="img/home/life.png"  class="box-v2-image-b"/>
-							<img src="img/home/life.png"  class="box-v2-image-m"/>
+							<img src="img/common/image_default.png"  class="box-v2-image-b"/>
+							<img src="img/common/image_default.png"  class="box-v2-image-m"/>
 						</div>
 						<div class="box box2">
-							<img src="img/home/life.png"  class="box-v2-image-m" style="top:0px;"/>
-							<img src="img/home/life.png"  class="box-v2-image-b1"/>
-							<img src="img/home/life.png"  class="box-v2-image-b2"/>
+							<img src="img/common/image_default.png"  class="box-v2-image-m" style="top:0px;"/>
+							<img src="img/common/image_default.png"  class="box-v2-image-b1"/>
+							<img src="img/common/image_default.png"  class="box-v2-image-b2"/>
 						</div>
 					</div>
 				</div>
@@ -538,7 +544,7 @@
 				<div class="trolly-content">
 					<ul class="mui-table-view">
 						<li class="mui-table-view-cell mui-media">
-							<a href="#">
+							<a>
 								<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">
 								<img class="mui-media-object mui-pull-left" src="./img/goods-detail/muwu.jpg">
 								<div class="mui-media-body">
@@ -558,7 +564,7 @@
 							</a>
 						</li>
 						<li class="mui-table-view-cell mui-media">
-							<a href="#">
+							<a>
 								<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">
 								<img class="mui-media-object mui-pull-left" src="./img/goods-detail/muwu.jpg">
 								<div class="mui-media-body">
@@ -578,7 +584,7 @@
 							</a>
 						</li>
 						<li class="mui-table-view-cell mui-media">
-							<a href="#">
+							<a>
 								<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">
 								<img class="mui-media-object mui-pull-left" src="./img/goods-detail/muwu.jpg">
 								<div class="mui-media-body">
@@ -598,7 +604,7 @@
 							</a>
 						</li>
 						<li class="mui-table-view-cell mui-media">
-							<a href="#">
+							<a>
 								<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">
 								<img class="mui-media-object mui-pull-left" src="./img/goods-detail/muwu.jpg">
 								<div class="mui-media-body">
@@ -618,7 +624,7 @@
 							</a>
 						</li>
 						<li class="mui-table-view-cell mui-media">
-							<a href="#">
+							<a>
 								<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">
 								<img class="mui-media-object mui-pull-left" src="./img/goods-detail/muwu.jpg">
 								<div class="mui-media-body">
@@ -639,13 +645,13 @@
 						</li>
 					</ul>
 					<nav class="trolley-footer">
-						<div class="trolley-select-all" href="#">
+						<div class="trolley-select-all">
 							<input id="CheckedAll" type="checkbox">全选</input>
 					  	</div>
-						<a class="trolley-amount" href="#">
+						<a class="trolley-amount">
 							¥1283.00
 					  	</a>
-					  	<a class="trolley-accounts" href="#">
+					  	<a class="trolley-accounts">
 					    		结算
 					  	</a>
 					</nav>
@@ -664,44 +670,35 @@
 						</div>
 					</div>
 				</div>
-				<ul id="list" class="mui-table-view mui-table-view-chevron">
+				<ul id="personal-menu-list" class="mui-table-view mui-table-view-chevron">
 					<li class="mui-table-view-cell">
-						<a class="mui-navigate-right" href="examples/1.html">
+						<a class="mui-navigate-right" data-href="pages/order/order.html">
 							我的订单
 						</a>
 					</li>
 					<li class="mui-table-view-cell">
-						<a class="mui-navigate-right" href="examples/2.html">
+						<a class="mui-navigate-right" data-href="pages/personal/applyDistributor.html">
 							申请成为商家
 						</a>
 					</li>
 					<li class="mui-table-view-cell">
-						<a class="mui-navigate-right" href="examples/3.html">
+						<a class="mui-navigate-right" data-href="pages/personal/integralExchange.html">
 							积分购换
 						</a>
 					</li>
 				</ul>
 				<!-- 菜单 -->
-				<div id="slider" class="mui-slider">
-					<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-						<a class="mui-control-item  mui-active" href="#collect_shop" id="collect_commodity_menu">
+				<div id="personal-menu-slider" class="mui-slider">
+					<div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+						<a class="mui-control-item  mui-active" data-href="pages/personal/shopCollection.html" data-index=0>
 							<span class="menu_icon1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>收藏店铺
 						</a>
-						<a class="mui-control-item" href="#collect_commodity" id="collect_good_menu">
+						<a class="mui-control-item" data-href="pages/personal/commodityCollection.html" data-index=1>
 							<span class="menu_icon2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>收藏商品
 						</a>
-						<a class="mui-control-item" href="#my_distributor">
+						<a class="mui-control-item" data-href="pages/personal/myDistributor.html" data-index=2>
 							<span class="menu_icon3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>我的分销商
 						</a>
-					</div>
-					<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
-					<div class="mui-slider-group">
-						<div id="collect_shop" class="mui-slider-item mui-control-content mui-active">
-						</div>
-						<div id="collect_commodity" class="mui-slider-item mui-control-content">
-						</div>
-						<div id="my_distributor" class="mui-slider-item mui-control-content">
-						</div>
 					</div>
 				</div>
 				<!-- 公司信息 -->
@@ -721,8 +718,9 @@
 			</div>
 		</div>
 	</body>
-	<script src="js/thirdparty/mui.min.js"></script>
-	<script src="js/thirdparty/jquery-1.11.3.min.js"></script>
+	<script src="js/thirdparty/mui.js"></script>
+	<script src="js/thirdparty/zepto.1.1.6.min.js"></script>
+	<script src="js/thirdparty/marquee.js" ></script>
 	<script src="js/utils/app.js"></script>
 	<script>
 		function getHomeData() {
@@ -739,8 +737,8 @@
 		function getHomeDataSuccess(data) {
 			if (data.status === 'success' && data.context) {
 				var context = data.context;
-				saved.data = context;
-				showPage(context);
+				saved.home = context;
+				showMainPage(context);
 			}
 		}
 		function showBannerImg(imgs) {
@@ -751,22 +749,22 @@
 			}
 
 			html1 += '<div class="mui-slider-item mui-slider-item-duplicate">';
-			html1 += '	<a href="#">';
+			html1 += '	<a>';
 			html1 += '		<img src="'+imgs[imgs.length-1].goodsImg+'">';
 			html1 += '	</a>';
 			html1 += '</div>';
 			for (var i in imgs) {
 				var img = imgs[i];
 				html1 += '<div class="mui-slider-item">';
-				html1 += '	<a href="#">';
+				html1 += '	<a>';
 				html1 += '		<img src="'+img.goodsImg+'">';
 				html1 += '	</a>';
 				html1 += '</div>';
 
-				html2 += '<div class="mui-indicator'+((!i)?" mui-active":"")+'"></div>';
+				html2 += '<div class="mui-indicator'+((i==0)?" mui-active":"")+'"></div>';
 			}
 			html1 += '<div class="mui-slider-item mui-slider-item-duplicate">';
-			html1 += '	<a href="#">';
+			html1 += '	<a>';
 			html1 += '		<img src="'+imgs[0].goodsImg+'">';
 			html1 += '	</a>';
 			html1 += '</div>';
@@ -776,29 +774,121 @@
 			$('#bannerImg').html(html1+html2);
 			mui('#bannerImg').slider();
 		}
-		function showPage(data) {
+		function showGoodDetailView(data) {
+			var data = {
+				goodsID: data.goodsID,
+				goodsName: data.goodsName,
+				openid: params.openid,
+			}
+			app.router.showView('pages/goods-detail/goods-details.html', data, saved);
+		}
+		function showGoodsImage(data) {
+			var els, imgs, goods;
+			els = [$('#popularity_list'),  $('#characteristic_list'), $('#recommend_list')];
+			for (var i in els) {
+				imgs = els[i].find('img');
+				goods = data.popularity;
+				imgs.each(function(j){
+					var good = goods[j];
+					if (good) {
+						$(this).attr('src', good.goodsImg);
+						$(this).on('tap', showGoodDetailView.bind(null, good))
+					}
+				});
+			}
+		}
+		function showAnnouncementPage(data) {
+			if (data.announcement) {
+				marquee.ScrollText($('#scroll-text'), 23, $(document).width(), data.announcement, 'right', 1, 20);
+			}
+		}
+		function showMainPage(data) {
 			showBannerImg(data.bannerImg);
+			showAnnouncementPage(data);
+			showGoodsImage(data);
 			app.router.resetScollerBar();
 		}
+		function getPersonalData() {
+			var url = app.route.ROUTE_GET_PERSONAL_DATA;
+			var data = {
+				openid: '',
+			};
+			app.utils.post({
+				url : url,
+				data: data,
+				success : getPersonalDataSuccess,
+			});
+		}
+		function getPersonalDataSuccess(data) {
+			if (data.status === 'success' && data.context) {
+				var context = data.context;
+				saved.personal = context;
+				showPersonalPage(context);
+			}
+		}
+		function showPersonalPage(data) {
+			var el = $('#tabbar-with-person-center .personal_info_container');
+			el.find('.personal_info_head').attr('src', data.headImg);
+			el.find('.personal_info_name').html(data.name);
+			el.find('#personal_grade').html(data.integral);
+			el.find('#personal_sign').html(data.des);
+		}
+		function restoreTabSegment(index) {
+			$('.navbar .navbar-tab-item.mui-active').removeClass("mui-active");
+			$('.navbar .navbar-tab-item[data-tap="'+index+'"]').addClass("mui-active");
+			$('.mui-content .mui-control-content.mui-active').removeClass("mui-active");
+			$($('.mui-content .mui-control-content')[index]).addClass("mui-active");
+			if (index == 1) {
+				$('header').html('<h1 class="mui-title">我的订单</h1>');
+			} else if (index == 2) {
+				$('header').html('<h1 class="mui-title">购物车</h1>');
+			} else if (index == 3) {
+				$('header').html('<h1 class="mui-title">个人中心</h1>');
+			}
+		}
+		function restorePersonalTabSegment(index) {
+			var el = $('#personal-menu-slider');
+			el.find('.mui-control-item.mui-active').removeClass("mui-active");
+			el.find('.mui-control-item[data-index="'+index+'"]').addClass("mui-active");
+		}
+		function showSearchView() {
+			app.router.showView('pages/search/search.html', {openid:params.openid}, saved);
+		}
+
 		mui.init();
-		mui('.mui-content').on('shown.mui.tab', '.mui-control-content', function(e, b,c) {
+		//总体事件注册
+		mui('.mui-content').on('shown.mui.tab', '.mui-control-content', function(e) {
 			var id = e.target.id;
 			if (id == 'tabbar-with-home') {
-				$('header').html('<div class="search-header"><input type="search" class="mui-input-clear" placeholder=""><img src="img/home/search_line.png" class="search-line"><a class="search-button"><img src="img/home/search_press.png" class="search-button-image"></a></div>');
+				saved.tabIndex = 0;
+				$('header').html('<div class="search-header"><input type="search" class="mui-input-clear" placeholder="搜索商品" disabled="disabled"><img src="img/home/search_line.png" class="search-line"><a class="search-button"><img src="img/home/search_press.png" class="search-button-image"></a></div>');
+				$('.search-header').click(function() {
+					showSearchView();
+				});
 			} else if (id == 'tabbar-with-order') {
+				saved.tabIndex = 1;
 				$('header').html('<h1 class="mui-title">我的订单</h1>');
 			} else if (id == 'tabbar-with-trolley') {
+				saved.tabIndex = 2;
 				$('header').html('<h1 class="mui-title">购物车</h1>');
 			} else if (id == 'tabbar-with-person-center') {
+				saved.tabIndex = 3;
 				$('header').html('<h1 class="mui-title">个人中心</h1>');
 			}
 		});
-		$('#collect_shop_menu').on('click', function() {
-			window.location.href = 'personal/shopCollection.html';
+
+		//主页面注册事件
+		$("#tabbar-with-home #main-menu li").click(function () {
+            var typeID = $(this).data('index');
+			var href = $(this).data('href');
+			var title = $(this).find('.mui-media-body').html();
+			app.router.showView(href, {openid:params.openid, typeID:typeID, title:title}, saved);
+        });
+		$('.search-header').click(function() {
+			showSearchView();
 		});
-		$('#collect_commodity_menu').on('click', function() {
-			window.location.href = 'personal/commodityCollection.html';
-		});
+
+		//购物车注册事件
 		$("#CheckedAll").click(function () {
             if ($(this).is(":checked")) {
                 $("[name=items]:checkbox").prop("checked", true);
@@ -807,12 +897,38 @@
             }
         });
 
+		//个人中心事件注册
+		$('#personal-menu-list').find('a').on('tap', function(){
+			var href = $(this).data('href');
+			app.router.showView(href, {openid:params.openid}, saved);
+		});
+
+		$('#personal-menu-slider').find('.mui-control-item').on('tap', function() {
+			var href = $(this).data('href');
+			var index = $(this).data('index');
+			saved.personalTabIndex = index;
+			app.router.showView(href, {openid:params.openid}, saved);
+		});
+
 		var params = app.router.getParameter();
 		var saved = app.router.getSavedData();
-		if (saved.data) {
-			showPage(saved.data);
+		if (saved.home) {
+			showMainPage(saved.home);
 		} else {
 			getHomeData();
+		}
+		if (saved.personal) {
+			showPersonalPage(saved.personal);
+		} else {
+			getPersonalData();
+		}
+
+		if (saved.tabIndex) {
+			restoreTabSegment(saved.tabIndex);
+		}
+
+		if (saved.personalTabIndex) {
+			restorePersonalTabSegment(saved.personalTabIndex);
 		}
 
 	</script>

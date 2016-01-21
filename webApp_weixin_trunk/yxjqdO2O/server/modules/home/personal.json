@@ -1,0 +1,1 @@
+{    "status": "success",    "msg": "获取数据成功",    "context": {        "headImg": "http://localhost:3000/home/head.jpg",        "name": "刘刚",        "des": "其实我是一个帅哥",        "integral": 5454    }}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta http-equiv="content-security-policy">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>赢销截拳道电子商城</title>
+	<link rel="stylesheet" href="../../css/mui.min.css" />
+	<link rel="stylesheet" href="../../css/common.css" />
+</head>
+<style>
+	.fulltop img {
+		width: 100%;
+		height: 220px;
+	}
+	.content-padding {
+		padding: 0 10px;
+	}
+	.content-padding input {
+		margin-top: 15px;
+		margin-bottom: 0;
+	}
+	.font-black {
+		font-size: 15px;
+	}
+	.mui-btn-block {
+		margin-top: 15px;
+		padding: 10px 0;
+	}
+	.font-gray {
+		font-size: 14px;
+	}
+	.mui-card {
+		margin: 0;
+	}
+	.store-btn {
+		margin: 20px 0;
+		padding: 2px 10px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+		background: -webkit-linear-gradient(top, #FFBC35,#FA9033);
+		background: -moz-linear-gradient(top, #FFBC35,#FA9033);
+		background: linear-gradient(top, #FFBC35,#FA9033);
+	}
+	.store-btn img {
+		float: left;
+		width: 153px;
+		height: 45px;
+	}
+	.store-btn span {
+		float: right;
+		color: #fff;
+		line-height: 45px;
+		font-weight: bold;
+	}
+</style>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 id="title" class="mui-title">成为分销商</h1>
+	</header>
+	<div class="mui-content">
+		<div class="fulltop">
+			<img src="../../img/picture.png" />
+		</div>
+		<div class="content-padding">
+			<div class="font-black">欢迎加入<span class="font-red">赢销家俱乐部</span>，请填写申请信息！</div>
+			<div class="font-black">邀请人：<span class="font-red">李宇春</span>（请核对）</div>
+			<input type="text" placeholder="请填写真实姓名，用于佣金结算" />
+			<input type="number" placeholder="请填写手机号码方便联系" />
+			<input type="text" placeholder="请填写微信号" />
+			<button type="button" class="mui-btn mui-btn-danger mui-btn-block">申请成为分销商</button>
+			<div class="font-gray">分销商特权</div>
+			<div class="mui-card">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;">
+							<img class="mui-media-object mui-pull-left" src="../../img/distributor/shop.png">
+							<div class="mui-media-body">
+								独立微店
+								<div class="font-gray">拥有自己的微店及推广二维码；</div>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;">
+							<img class="mui-media-object mui-pull-left" src="../../img/distributor/commission.png">
+							<div class="mui-media-body">
+								销售拿佣金
+								<div class="font-gray">微店卖出商品，您可以获得佣金；</div>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="font-gray">分销商的商品销售统一由厂家直接收款、直接发货、并提供产品的售后服务，分销商佣金由厂家统一设置。</div>
+					</li>
+	
+				</ul>
+			</div>
+			<div class="store-btn">
+				<img src="../../img/distributor/yingxiao_loogo.png" />
+				<span>点击直接关注</span>
+				<div style="clear: both;"></div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script>
+	mui.init();
+</script>
+</html>

@@ -1,7 +1,6 @@
 /*******头部背景样式****/
 header {
-	background: url(../img/top-navigation.png) no-repeat;
-	background-size: 100% 100%;
+	background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#FD5524), to(#F9291F));
 	color: #fff;
 }
 .mui-bar .mui-icon {
@@ -35,9 +34,9 @@ header {
 	background-color: #fff;
 }
 .mui-input-row.mui-search input[type=search] {
-	-moz-border-radius: 17px; 
-	-webkit-border-radius: 17px; 
-	border-radius: 17px; 
+	-moz-border-radius: 17px;
+	-webkit-border-radius: 17px;
+	border-radius: 17px;
 }
 .search-wrapper {
 	top: 104px;
@@ -88,11 +87,56 @@ header {
     border: 1px solid rgba(0, 0, 0, 0.3);
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
     outline: 0 none;
-    -moz-border-radius: 5px; 
-	-webkit-border-radius: 5px; 
+    -moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	font-size: 16px;
     z-index: 1050;
+}
+.case .top {
+	width: 100%;
+	height: 40px;
+	background-color: #ED3E2F;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	color: #fff;
+	text-align: center;
+	line-height: 40px;
+}
+.case .center {
+	padding: 20px 10px;
+	text-align: center;
+	color: #6a6761;
+}
+.case .footer {
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	text-align: center;
+}
+.case .footer .left {
+	display: inline-block;
+	width: 50%;
+	background: -webkit-linear-gradient(top, #FCBD3D,#F88D31);
+	background: -moz-linear-gradient(top, #FCBD3D,#F88D31);
+	background: linear-gradient(top, #FCBD3D,#F88D31);
+}
+.case .footer .left:active {
+	background: -webkit-linear-gradient(top, #FA4635,#FF6835);
+	background: -moz-linear-gradient(top, #FA4635,#FF6835);
+	background: linear-gradient(top, #FA4635,#FF6835);
+}
+.case .footer .right {
+	display: inline-block;
+	width: 50%;
+	background: -webkit-linear-gradient(top, #FC703F,#FA4534);
+	background: -moz-linear-gradient(top, #FC703F,#FA4534);
+	background: linear-gradient(top, #FC703F,#FA4534);
+}
+.case .footer .right:active {
+	background: -webkit-linear-gradient(top, #C32A1B,#C74C1B);
+	background: -moz-linear-gradient(top, #C32A1B,#C74C1B);
+	background: linear-gradient(top, #C32A1B,#C74C1B);
 }
 /*******按钮**********/
 .btn-back {

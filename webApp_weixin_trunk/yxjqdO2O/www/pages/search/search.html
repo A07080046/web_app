@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>赢销截拳道电子商城</title>
+		<meta http-equiv="Access-Control-Allow-Origin" content="*">
+		<meta http-equiv="content-security-policy">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/common.css" />
+		<style>
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				padding: 0px 2px;
+			}
+			.mui-bar {
+				padding: 0px 0px 0px 0px;
+			}
+			.search-header {
+				background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#E74C28), to(#F32D28));
+				height: 100%;
+				text-align: center;
+			}
+			.search-line {
+				position: absolute;
+				right: 15%;
+				height: 50%;
+				top: 10px;
+			}
+			.search-button {
+				position: absolute;
+				right: 5%;
+				height: 50%;
+				top: 10px;
+			}
+			.search-button-image {
+				height: 100%;
+			}
+			.mui-input-clear {
+				width: 90% !important;
+				border-radius: 10px !important;
+				padding-right: 18% !important;
+				background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#FAC7B7), to(#F9AC94)) !important;
+			}
+			.menu-title {
+				font-size: 20px;
+				color: #43433C;
+				margin: 20px 0px 0px 20px;
+			}
+			.menu-button-container {
+				background-color: #C3C7C8;
+				border-radius: 1.2em;
+				padding: 2px;
+				color: white;
+				font-size: 18px;
+				line-height: 2.4em;
+			}
+			.menu-button {
+				background-repeat: no-repeat;
+				padding: 0 6px;
+				background-size: 100% 100%;
+				position: relative;
+			}
+			.menu-button.hot {
+				background-image: url(../../img/search/historical_search_normal.png);
+			}
+			.menu-button.history {
+				background-image: url(../../img/search/hot_search_normal.png);
+			}
+			.menu-text {
+				overflow: hidden;
+				margin: 0 3px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<div class="search-header">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<input type="search" class="mui-input-clear" placeholder="搜索商品">
+				<img src="../../img/home/search_line.png" class="search-line">
+				<a class="search-button">
+					<img src="../../img/home/search_press.png" class="search-button-image">
+				</a>
+			</div>
+		</header>
+		<div class="mui-content">
+			<div class="menu-title">热门搜索</div>
+			<ul id="hot-menu" class="mui-table-view mui-grid-view mui-grid-9">
+			</ul>
+			<div class="menu-title">历史搜索</div>
+			<ul id="history-menu" class="mui-table-view mui-grid-view mui-grid-9">
+			</ul>
+		</div>
+	</body>
+	<script src="../../js/thirdparty/mui.js"></script>
+	<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+	<script src="../../js/utils/app.js"></script>
+	<script>
+		function getSearchData() {
+			var url = app.route.ROUTE_GET_SEARCH_DATA;
+			var data = {
+				openid: params.openid,
+			};
+			app.utils.post({
+				url : url,
+				data: data,
+				success : getSearchDataSuccess,
+			});
+		}
+		function getSearchDataSuccess(data) {
+			if (data.status === 'success' && data.context) {
+				var context = data.context;
+				saved.data = context;
+				showPage(context);
+			}
+		}
+		function showPage(data) {
+			var topGoods = data.topGoods, searchHistory = data.searchHistory, html ='';
+			for (var i in topGoods) {
+				html += '<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-keyword="'+topGoods[i]+'"><a>';
+				html += '<div class="menu-button-container"><div class="menu-button hot"><div class="menu-text">'+topGoods[i]+'</div></div></div>';
+				html += '</a></li>';
+			}
+			$('#hot-menu').html(html);
+			html = '';
+			for (var i in searchHistory) {
+				html += '<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-keyword="'+searchHistory[i]+'"><a>';
+				html += '<div class="menu-button-container"><div class="menu-button history"><div class="menu-text">'+searchHistory[i]+'</div></div></div>';
+				html += '</a></li>';
+			}
+			$('#history-menu').html(html);
+
+			$('.mui-content li').on('tap', function() {
+				var keyword = $(this).data('keyword');
+				showSearchPage(keyword);
+			});
+			app.router.resetScollerBar();
+		}
+		function showSearchPage(keyword) {
+			app.router.showView('searchResult.html', {openid:params.openid,  keyword:keyword}, saved);
+		}
+		mui.init();
+		$('header .search-button').on('tap', function() {
+			var keyword = $('.search-header input').val().trim();
+			if (!keyword) {
+				app.utils.showError('请输入需要搜索的商品');
+				return;
+			}
+			$('.search-header input').val('');
+			saved.data.searchHistory = saved.data.searchHistory||[];
+			saved.data.searchHistory.unshift(keyword);
+			showSearchPage(keyword);
+		});
+
+		var params = app.router.getParameter();
+		var saved = app.router.getSavedData();
+		console.log(saved);
+		if (saved.data) {
+			showPage(saved.data);
+		} else {
+			getSearchData();
+		}
+
+	</script>
+</html>

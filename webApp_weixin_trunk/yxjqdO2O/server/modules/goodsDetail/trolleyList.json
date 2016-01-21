@@ -2,18 +2,64 @@
     "status": "success",
     "msg": "获取数据成功",
     "context": {
-        "goodsImgs": 6,
-        "goodsImgURLs":"http://hdfghdfg| http://hdfghdfg| http://hdfghdfg",
-        "goodsName": "pen",
-        "goodsPrice": "100",
-        "goodsSalePrice": "85",
-        "score": 4.5,
-        "goodsIntroduces": "dflkjgdfghjljdfg",
-        "phone": "18698524587",
-        "loves": "10000",
-        "shopID": 56,
-        "goodsIntroducesImgs": 5,
-        "goodsIntroducesImgURLs": "http:sdfsdf|http://sdfdsf|http://fdgfdg"
-    }
+        "goodsList": [
+            {
+                "goodsID": 55,
+                "goodsName": "henhao",
+                "goodsNum": 8,
+                "goodsPrice": "15.00",
+                "goodsDec": "5千克|红色"
+            },
+            {
+                "goodsID": 55,
+                "goodsName": "henhao",
+                "goodsNum": 8,
+                "goodsPrice": "15.00",
+                "goodsDec": "5千克|红色"
+            },
+            {
+                "goodsID": 55,
+                "goodsName": "henhao",
+                "goodsNum": 8,
+                "goodsPrice": "15.00",
+                "goodsDec": "5千克|红色"
+            },
+            {
+                "goodsID": 55,
+                "goodsName": "henhao",
+                "goodsNum": 8,
+                "goodsPrice": "15.00",
+                "goodsDec": "5千克|红色"
+            },
+            {
+                "goodsID": 55,
+                "goodsName": "henhao",
+                "goodsNum": 8,
+                "goodsPrice": "15.00",
+                "goodsDec": "5千克|红色"
+            },
+            {
+                "goodsID": 55,
+                "goodsName": "henhao",
+                "goodsNum": 8,
+                "goodsPrice": "15.00",
+                "goodsDec": "5千克|红色"
+            },
+		{
+                "goodsID": 55,
+                "goodsName": "henhao",
+                "goodsNum": 8,
+                "goodsPrice": "15.00",
+                "goodsDec": "5千克|红色"
+            },
+            {
+                "goodsID": 55,
+                "goodsName": "henhao",
+                "goodsNum": 8,
+                "goodsPrice": "15.00",
+                "goodsDec": "5千克|红色"
+            }
+        ]
+	}
 }
 

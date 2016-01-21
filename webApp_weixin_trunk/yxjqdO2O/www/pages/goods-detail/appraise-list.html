@@ -7,18 +7,17 @@
     <script src="../../js/thirdparty/mui.min.js"></script>
     <link href="../../css/mui.min.css" rel="stylesheet"/>
     <link href="../../css/common.css" rel="stylesheet"/>
-    <script type="text/javascript" charset="utf-8">
-      	mui.init();
-    </script>
+
 </head>
 <body>
 	<header class="mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 		<h1 id="title" class="mui-title">评论</h1>
 	</header>
-	<div class="mui-content">
-	<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
-        <li class="mui-table-view-cell">
+	<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+		<div class="mui-scroll">
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed" id="appraise-list">
+        <!--<li class="mui-table-view-cell">
             <div class="mui-table">
                 <div class="mui-table-cell mui-col-xs-10">
                 		<img src="../../img/goods-detail/comments_icon.png" width="35" height="35" align="center">李某某</img>
@@ -50,8 +49,134 @@
                     <span class="mui-h5">2012-12-22 09:12:25</span>
                 </div>
             </div>
-        </li>
-	</ul>
+        </li>-->
+			</ul>
+		</div>
 	</div>
+	<script src="../../js/utils/app.js"></script>
+	<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+      	mui.init({
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: {
+					callback: pulldownRefresh
+				},
+				up: {
+					contentrefresh: '正在加载...',
+					callback: pullupRefresh
+				}
+			}
+		});
+      	mui('.mui-scroll-wrapper').scroll();
+      	function getAppraiseList(type, pageNo, needWait) {
+			var url = app.route.ROUTE_GET_APPRAISE_LIST;
+			var data = {
+				openid: '',
+				goodID: '',
+				pageNo:pageNo,
+			};
+			app.utils.post({
+				url : url,
+				data: data,
+				success : onGetAppraiseListSuccess,
+				error: onGetAppraiseListError
+			});
+		};
+		function onGetAppraiseListSuccess(data) {
+			if (data.status === 'success' && data.context) {
+				var list = data.context.commentsList;
+//				showList(list,'up');
+				if (!list || !list.length) {
+					if (query.pageNo == FIRST_PAGE_NO) {
+						showEmptyList();
+					}
+				} else {
+					if (query.dir==='up') {
+						showList(list, saved.list.length);
+						saved.list = saved.list.concat(list);
+					} else {
+						showList(list);
+						saved.list = list;
+					}
+				}
+				if (query.dir === 'down') {
+					mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+					mui('#pullrefresh').pullRefresh().refresh(true);
+				} else if (query.dir === 'up') {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+				}
+			}
+		};
+		function onGetAppraiseListError(error) {
+			if (query.dir === 'down') {
+				mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+			} else if (query.dir === 'up') {
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+			}
+			query.dir = 'none';
+		};
+		function getScrollTop() {
+			return mui('#pullrefresh').pullRefresh().y;
+		}
+		function setScrollTop(y) {
+			setTimeout(function() {
+				mui('#pullrefresh').pullRefresh().scrollTo(0, y);
+			}, 0);
+		}
+		function getListItem(item) {
+				html = '';
+				html += '<li class="mui-table-view-cell">'
+				html += 		'<div class="mui-table">'
+				html += 			'<div class="mui-table-cell mui-col-xs-10">'
+				html += 				'<img src="../../img/goods-detail/comments_icon.png" width="35" height="35" align="center">'+item.commentsName+'</img>'
+				html += 				'<p class="mui-h6 mui-ellipsis">'+item.comments+'</p>'
+				html += 			'</div>'
+				html += 			'<div class="mui-table-cell mui-col-xs-2 mui-text-right">'
+				html += 				'<span class="mui-h5">'+item.commentsTime+'</span>'
+				html += 			'</div>'
+				html += 		'</div>'
+				html += '</li>'
+				return html;
+		}
+		function showEmptyList() {
+		$('#appraise-list').html('<div class="empty_list">没有相关数据</div>');
+		}
+		function showList(list, append) {
+			html = '';
+			for (var i in list) {
+				html += getListItem(list[i]);
+			}
+			if (!append) {
+				$('#appraise-list').html(html);
+			} else {
+				$('#appraise-list').append(html);
+			}
+			if (query.dir === "none") {
+				app.router.resetScollerBar(setScrollTop);
+			}
+		}
+		function pulldownRefresh() {
+			query.pageNo = FIRST_PAGE_NO;
+			query.dir = 'down';
+			getAppraiseList(query.type, query.pageNo);
+		}
+		function pullupRefresh() {
+			query.pageNo++;
+			query.dir = 'up';
+			getAppraiseList(query.type, query.pageNo);
+		}
+		var FIRST_PAGE_NO = 0;
+		var params = app.router.getParameter();
+		var saved = app.router.getSavedData();
+		var query = saved.query||{pageNo: FIRST_PAGE_NO, type: params.typeID, dir:'none'};
+		$('#title').html(params.title);
+	
+		if (saved.list) {
+			showList(saved.list);
+		} else {
+			getAppraiseList(query.type, query.pageNo, true);
+		}
+</script>
 </body>
 </html>

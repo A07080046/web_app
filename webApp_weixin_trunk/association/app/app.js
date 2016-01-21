@@ -1,7 +1,7 @@
 window.app = {};
 
-var SERVER = 'http://www.gyyxjqd.com/association/associationPhone/';
-// var SERVER = 'http://192.168.1.119:3000/';
+// var SERVER = 'http://www.gyyxjqd.com/association/associationPhone/';
+var SERVER = 'http://192.168.1.119:3000/';
 app.route = {
     ROUTE_GET_COMPANYINFO: SERVER+'enterpriseList',
     ROUTE_GET_WEEKTOP: SERVER+'enterpriseList',

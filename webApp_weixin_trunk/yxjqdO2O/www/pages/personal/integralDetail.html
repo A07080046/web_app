@@ -2,22 +2,20 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta http-equiv="content-security-policy">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
+	<title>赢销截拳道电子商城</title>
 	<link rel="stylesheet" href="../../css/mui.min.css" />
 	<link rel="stylesheet" href="../../css/common.css" />
 	<style>
-		.integral_container {
-			color: red;
-		}
-		.info_container {
-			text-align:left !important;
-			line-height:1.5em;
-			color: darkgray;
+		.mui-table-view.mui-grid-view {
+			padding: 0px;
 		}
 		.box1to4 {
 			display:inline-block;
 			position: relative;
+			background: black;
 			width: 100%;
 		}
 		.box1to4::after{
@@ -32,6 +30,48 @@
 			top:0px;
 			position:absolute;
 		}
+		.integral_container {
+			color: red;
+			font-size: 18px;
+		}
+		.info_container {
+			text-align:left !important;
+			line-height:2em;
+			font-size: 14px !important;
+		}
+		.goods-name {
+			font-size: 18px;
+		}
+		.goods-integral {
+			font-size: 14px;
+			color: red;
+			padding-right: 10px;
+			float: right;
+		}
+		.mui-table-view-cell .button {
+			margin-top: 10px;
+			height: 40px;
+			width: 100%;
+			line-height: 40px;
+			color: #fff;
+			text-align: center;
+			background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#FFAF14), to(#F87D19));
+		}
+		.mui-table-view-cell .button:active {
+			background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#F92A20), to(#FF4E1F));
+		}
+		.goods-disc-container {
+			padding-bottom: 8px;
+		}
+		.menu-button-container {
+			height: 40px;
+			position: relative;
+		}
+		.menu-button-img {
+			height: 60%;
+			float: right;
+			margin: 5px;
+		}
 	</style>
 </head>
 <body>
@@ -41,22 +81,98 @@
 	</header>
 	<div class="mui-content">
 		<ul class="mui-table-view mui-grid-view" style="margin-top:0px;">
-	        <li class="mui-table-view-cell mui-media info_container">
-	            <div class="integral_container">我的积分：<span>899999</span></div>
-				<div><span>收件人：<span>刘刚</span></span><span>电话：<span>189</span></span></div>
-				<div>地址：<span>贵州省贵阳市云岩区樱花巷科技情报所</span></div>
+	        <li class="mui-table-view-cell mui-media info_container" style="width:100%;">
+				<img id="button-info" class="mui-media-object mui-pull-right" style="width: 40px;height: 40px;margin:20px 5px 0 0;" src="../../img/order/forward.png" />
+	            <div class="integral_container">我的积分：<span class="my_integral">899999</span></div>
+				<div><span>收件人：<span id="receiver_name">刘刚</span></span> <span style="margin-left:40px;">电话：<span id="receiver_phone">18984805902</span></span></div>
+				<div style="margin-bottom:10px;">地址：<span id="receiver_addr">贵州省贵阳市云岩区樱花巷科技情报所</span></div>
 			</li>
-			<li class="mui-table-view-cell mui-media">
-				<div class="box1to4">
-					<img src="../../img/img1.jpg"  class="box-full-image"/>
+			<li id="goods-images" class="mui-table-view-cell mui-media" style="width:100%;padding:0px;margin:0px;">
+			</li>
+			<li class="mui-table-view-cell mui-media info_container" style="width:100%;">
+	            <div><span class="goods-name">KISSKIN免洗睡眠面膜</span><span class="goods-integral">2000积分换购</span></div>
+				<div class="goods-disc-container">产品简介：<spanclass="goods-disc">抗氧化去黄美肤补水 增强细胞活力</span></div>
+				<div class="menu-button-container">
+					<img id="button-shop" class="menu-button-img" src="../../img/personal/go_to_the_shop_button_press.png" style="margin-right:10px;"/>
+					<img class="menu-button-img" src="../../img/personal/go_to_the_shop_icon.png"/>
+					<img id="button-share" class="menu-button-img" src="../../img/personal/share_button.png"/>
+					<img class="menu-button-img" src="../../img/personal/share_icon.png"/>
 				</div>
+			</li>
+			<li class="mui-table-view-cell mui-media" style="width:100%;padding:0px;margin:0px;">
+				<img src="../../img/personal/commodity_introduction.png"  style="width:100%;"/>
+				<div id="goods-desc-image-container">
+				</div>
+				<div class="button">换&nbsp;&nbsp;购</div>
+				<br>
 			</li>
 	    </ul>
 	</div>
 </body>
 <script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+<script src="../../js/utils/app.js"></script>
 <script>
+	function getIntegralDetailData() {
+		var url = app.route.ROUTE_GET_INTEGRAL_DETAIL_DATA;
+		var data = {
+			openid: params.openid,
+		};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : getIntegralDetailDataSuccess,
+		});
+	}
+	function getIntegralDetailDataSuccess(data) {
+		if (data.status === 'success' && data.context) {
+			var context = data.context;
+			saved.data = context;
+			showPage(context);
+		}
+	}
+	function showPage(data) {
+		$('.my_integral').html(data.goodsScore);
+		$('#receiver_name').html(data.name);
+		$('#receiver_phone').html(data.phone);
+		$('#receiver_addr').html(data.addr);
+
+		var html = '', imgs = data.goodsImgURLs.split('|');
+		for (var i in imgs) {
+			html += '<div class="box1to4"><img src="'+imgs[i]+'"  class="box-full-image"/></div>';
+		}
+		$('#goods-images').html(html);
+
+		$('.goods-name').html(data.goodsName);
+		$('.goods-integral').html(data.goodsScore+'积分换购');
+		$('.goods-disc').html(data.goodsDec);
+
+		html = '', imgs = data.goodsIntroducesImgURLs.split('|');
+		for (var i in imgs) {
+			html += '<img src="'+imgs[i]+'"  style="width:100%;"/>';
+		}
+		$('#goods-desc-image-container').html(html);
+		app.router.resetScollerBar();
+	}
+
 	mui.init();
-	mui('.mui-scroll-wrapper').scroll();
+	$('#button-shop').on('click', function() {
+		// app.showView();
+	});
+	$('#button-share').on('click', function() {
+		// app.showView();
+	});
+	$('#button-info').on('click', function() {
+		// app.showView();
+	});
+
+	var params = app.router.getParameter();
+	var saved = app.router.getSavedData();
+
+	if (saved.data) {
+		showPage(saved.data);
+	} else {
+		getIntegralDetailData();
+	}
 </script>
 </html>

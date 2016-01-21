@@ -2,8 +2,10 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta http-equiv="content-security-policy">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
+	<title>赢销截拳道电子商城</title>
 	<link rel="stylesheet" href="../../css/mui.min.css" />
 	<link rel="stylesheet" href="../../css/common.css" />
 	<style>
@@ -51,8 +53,8 @@
 					 <img class="dis_image" src="../../img/personal/brand_1.png">
 				 </div>
 				 <div class="dis_info_container">
-					 <span class="dis_person_num">共50人</span>
-					 <span class="dis_person_dist">贡献<span class="dis_person_coin">￥15000.40</span></span>
+					 <span class="dis_person_num">共0人</span>
+					 <span class="dis_person_dist">贡献<span class="dis_person_coin">￥0.00</span></span>
 				 </div>
 			 </li>
 			 <li class="mui-table-view-cell">
@@ -60,8 +62,8 @@
 					 <img class="dis_image" src="../../img/personal/brand_2.png">
 				 </div>
 				 <div class="dis_info_container">
-					 <span class="dis_person_num">共50人</span>
-					 <span class="dis_person_dist">贡献<span class="dis_person_coin">￥15000.40</span></span>
+					 <span class="dis_person_num">共0人</span>
+					 <span class="dis_person_dist">贡献<span class="dis_person_coin">￥0.00</span></span>
 				 </div>
 			 </li>
 			 <li class="mui-table-view-cell">
@@ -69,12 +71,58 @@
 					 <img class="dis_image" src="../../img/personal/brand_3.png">
 				 </div>
 				 <div class="dis_info_container">
-					 <span class="dis_person_num">共50人</span>
-					 <span class="dis_person_dist">贡献<span class="dis_person_coin">￥15000.40</span></span>
+					 <span class="dis_person_num">共0人</span>
+					 <span class="dis_person_dist">贡献<span class="dis_person_coin">￥0.00</span></span>
 				 </div>
 			 </li>
 		</ul>
 	</div>
 </body>
 <script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+<script src="../../js/utils/app.js"></script>
+<script>
+	function getMyDisstributorData() {
+		var url = app.route.ROUTE_GET_MY_DISTRIBUTOR_DATA;
+		var data = {
+			openid: params.openid,
+		};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : getMyDisstributorDataSuccess,
+		});
+	}
+	function getMyDisstributorDataSuccess(data) {
+		if (data.status === 'success' && data.context) {
+			var context = data.context;
+			saved.data = context;
+			showPage(context);
+		}
+	}
+	function showPage(data) {
+		var list = [
+			{num: data.classAPersons, coin: data.classAMoney},
+			{num: data.classBPersons, coin: data.classBMoney},
+			{num: data.classCPersons, coin: data.classCMoney}
+		];
+
+		$('.mui-table-view .mui-table-view-cell').each(function(i) {
+			$(this).find('.dis_person_num').html('共'+list[i].num+'人');
+			$(this).find('.dis_person_coin').html('￥'+list[i].coin);
+		});
+	}
+
+	mui.init();
+
+	var params = app.router.getParameter();
+	var saved = app.router.getSavedData();
+	app.router.resetScollerBar();
+	
+	if (saved.data) {
+		showPage(saved.data);
+	} else {
+		getMyDisstributorData();
+	}
+</script>
 </html>

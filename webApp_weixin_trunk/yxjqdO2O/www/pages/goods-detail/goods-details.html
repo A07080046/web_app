@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*">
+		<meta http-equiv="content-security-policy">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>赢销截拳道电子商城</title>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common.css" />
+	</head>
+
+	<body style="padding: 3px;">
+		<!--css-->
+		<style>
+			.brief {
+				text-align: left;
+				height: 80px;
+				margin-top: 2px;
+				margin-bottom: 2px;
+				background-color: white;
+			}
+			
+			.titleDIV {
+				position: absolute;
+				z-index: 1;
+				top: 8px;
+				width: 35%;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+				background-color: white;
+			}
+			
+			.title {
+				display: inline;
+				font-size: 15px;
+				color: #FF6060;
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+			
+			.xian {
+				position: absolute;
+				background: #CCCCCC;
+				z-index: 0;
+				width: 100%;
+				top: 20px;
+				height: 1px;
+			}
+			
+			.goods-name-title {
+				position: relative;
+				text-align: center;
+				width: 100%;
+				height: 50px;
+				background-color: white;
+			}
+			
+			.contact-seller {
+				float: left;
+			}
+			
+			.flex-container {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-flex-flow: row wrap;
+				justify-content: space-between;
+				text-align: center;
+			}
+			
+			.mui-control-content {
+				background-color: white;
+				min-height: 215px;
+			}
+			
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			
+			.img-info img {
+				width: 100%;
+				height: auto;
+				margin: 0;
+			}
+			
+			.button-custom {
+				float: left;
+				width: 25%;
+				height: 40px;
+				color: white;
+				border-right: 1px solid white;
+				background-color: orange;
+			}
+			
+			.button-custom:hovfer {
+				background-color: red;
+				color: black;
+			}
+			
+			.choice-text {
+				color: white;
+				font-size: 12px;
+				position: absolute;
+				top: 0;
+				left: 50%;
+				margin-top: 10px;
+			}
+		</style>
+		</head>
+		</style>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<a class="mui-icon mui-pull-right" onclick="gotoChoosePage()"><img style="width: 26px;height: 24px;" src="../../img/goods-detail/iconfont-gouwu.png"></a>
+			<h1 class="mui-title">商品详情</h1>
+		</header>
+		<div class="mui-content">
+			<div id="goods_name" class="goods-name-title">
+				<div class="titleDIV">
+					<p class="title">商品名称</p>
+				</div>
+				<div class="xian"></div>
+			</div>
+			<!--轮播商品图片区-->
+			<div id="bannerImg" class="mui-slider">
+				<img src="img/home/banner.png" style="width:100%;">
+			</div>
+			<!--商品简介-->
+			<div id="IntroducesAndPraise" class="brief">
+				<div style="width:65%;float: left;text-align: left;border-color: gray;margin-top: 10px;margin-left: 10px;">
+					<div>这不是一只普通的猫这是两只加肥猫</div>
+					<div style="margin-top: 10px;">
+						<span style="color: red;">¥:8.50</span><span style="text-decoration: line-through;margin-left: 20px;">原价：¥888.50</span>
+					</div>
+				</div>
+				<div onclick="gotoPraise()" style="float: right;width: 30%;height: 40px;background-color: white;margin-top: 30px;">
+					<img src="../../img/goods-detail/comments_normal_1.png" width="20" height="25" align="center" style="margin: auto;"></img>
+					<img src="../../img/goods-detail/comments_normal_1.png" width="20" height="25" align="center" style="margin: auto;"></img>
+					<img src="../../img/goods-detail/comments_normal_2.png" width="20" height="25" align="center" style="margin: auto;"></img>
+					<img src="../../img/order/evaluate.png" width="20" height="25" align="center" style="margin: auto;"></img>
+					<img src="../../img/order/evaluate.png" width="20" height="25" align="center" style="margin: auto;"></img>
+				</div>
+			</div>
+
+			<!--咨询、分享、去店铺、评论-->
+			<div id="btn-div" style="width: 100%;height:40px;">
+				<button id="btn-consult" onclick="gotoConsult()" style="background:url(../../img/goods-detail/consultation_normal.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">咨询</span></button>
+				<button id="btn-share" onclick="gotoShare()" style="background:url(../../img/goods-detail/share_normal.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">分享</span></button>
+				<button id="btn-shop" onclick="gotoShop" style="background:url(../../img/goods-detail/go_to_the_shop_normal.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">去店铺</span></button>
+				<button id="btn-praise" onclick="gotoPraise" style="background:url(../../img/goods-detail/love_buttion.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">121231</span><span style="position: absolute;top: 0;left: 5%;margin-top: 7px;"><img src="../../img/goods-detail/love_normal.png" width="60%" height="50%" alt="" /></span></button>
+			</div>
+			<div id="goodsIntroduces" style="background: white;">
+				<div style="margin-top: 10px;">
+					<br>
+				</div>
+				<div class="goods-name-title">
+					<div class="titleDIV">
+						<p class="title">商品介绍</p>
+					</div>
+					<div class="xian"></div>
+				</div>
+				<p style="margin:5px;padding: 15px; background: #FF5053;color: black;">商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....商品的详情.....</p>
+				<img src="../../img/goods-detail/shuijiao.jpg" style="width: 100%;">
+				<img src="../../img/goods-detail/cbd.jpg" style="width: 100%;">
+				<img src="../../img/goods-detail/muwu.jpg" style="width: 100%;">
+				<img src="../../img/goods-detail/yuantiao.jpg" style="width: 100%;">
+			</div>
+			<!--底部导航-->
+			<nav class="mui-bar mui-bar-tab">
+				<a class="mui-tab-item" href="http://www.runoob.com/html/html-tutorial.html">收藏</a>
+				<a class="mui-tab-item" href="#" onclick="gotoSubmitAppraisePage()">喜爱</a>
+				<a class="mui-tab-item" href="#" onclick="gotoShopingTrolleyPage()">加入购物车</a>
+				<a class="mui-tab-item" href="#" onclick="gotoChoosePage()">立即购买</a>
+			</nav>
+
+			<script src="../../js/thirdparty/mui.js"></script>
+			<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+			<script src="../../js/utils/app.js"></script>
+			<script>
+				mui.init({
+					swipeBack: true
+				});
+
+				function gotoShopingTrolleyPage() {
+					var param = 1;
+					app.router.showView('../goods-detail/shopping-trolley.html', param, saved);
+				}
+
+				function gotoChoosePage() {
+					var param = 1;
+					app.router.showView('../goods-detail/goods-choose.html', param, saved);
+				}
+
+				function gotoSubmitAppraisePage() {
+					//var param = 1;
+					//app.router.showView('../goods-detail/submit-appraise.html', param, saved);
+				}
+
+				function gotoConsult() {}
+
+				function gotoShare() {}
+
+				function gotoShop() {}
+
+				function gotoPraise() {
+					var param = 1;
+					app.router.showView('../goods-detail/appraise-list.html', param, saved);
+				}
+			</script>
+	</body>
+	<script>
+		function getIntegralExchangeData() {
+			var url = app.route.ROUTE_GET_GOODS_DETAILS_DATA;
+			var data = {
+				goodsID: params.goodsID,
+				openid: params.openid,
+			};
+			app.utils.post({
+				url: url,
+				data: data,
+				success: getGoodsDetailsDataSuccess,
+			});
+		}
+
+		function getGoodsDetailsDataSuccess(data) {
+			if (data.status === 'success' && data.context) {
+				var dataContext = data.context;
+				saved.data = dataContext;
+				showPage(dataContext);
+			}
+		}
+
+		function showBannerImg(imgs) {
+			var html1 = '',
+				html2 = '';
+			if (imgs == "") {
+				return;
+			}
+			var imgURL = imgs.split("|");
+			html1 += '<div class="mui-slider-item mui-slider-item-duplicate">';
+			html1 += '	<a href="#">';
+			html1 += '		<img src="' + imgURL[0] + '"style="height: 220px;"/>';
+			html1 += '	</a>';
+			html1 += '</div>';
+			for (var i in imgURL) {
+				var img = imgURL[i];
+				html1 += '<div class="mui-slider-item">';
+				html1 += '	<a href="#">';
+				html1 += '		<img src="' + img + '"style="height: 220px;"/>';
+				html1 += '	</a>';
+				html1 += '</div>';
+				html2 += '<div class="mui-indicator' + ((i == 0) ? " mui-active" : "") + '"></div>';
+			}
+			html1 += '<div class="mui-slider-item mui-slider-item-duplicate">';
+			html1 += '	<a href="#">';
+			html1 += '		<img src="' + imgURL[0] + '"style="height: 220px;"/>';
+			html1 += '	</a>';
+			html1 += '</div>';
+			html1 = '<div class="mui-slider-group mui-slider-loop">' + html1 + '</div>';
+			html2 = '<div class="mui-slider-indicator">' + html2 + '</div>';
+			$('#bannerImg').html(html1 + html2);
+			mui('#bannerImg').slider();
+		}
+
+		function showGoodsIntroducesData(data) {
+			if (data.goodsIntroducesImgURLs == "") {
+				return;
+			}
+			var IntroducesImgURL = data.goodsIntroducesImgURLs.split("|");
+			var html1 = '';
+			html1 += '<div class="goods-name-title">';
+			html1 += '<div class="titleDIV"><p class="title">商品介绍</p></div>';
+			html1 += '<div class="xian"></div></div>';
+			html1 += '<p style = "margin:5px;padding: 15px; background: #FF5053;color: black;">' + data.goodsIntroduces + '</p>';
+			for (var i in IntroducesImgURL) {
+				var img = IntroducesImgURL[i];
+				html1 += '<img src="' + img + '"style="width: 100%;"/>';
+			}
+			$('#goodsIntroduces').html(html1);
+			mui('#goodsIntroduces').slider();
+		}
+
+		function showGoodsDetailsData(data) {
+			var htm1_1 = '';
+			htm1_1 += '<div style="width:65%;float: left;text-align: left;border-color: gray;margin-top: 10px;margin-left: 10px;">';
+			htm1_1 += '<div>' + data.goodsIntroduces + '</div>';
+			htm1_1 += '<div style="margin-top: 10px;">';
+			htm1_1 += '<span style="color: red;">￥:' + data.goodsSalePrice + '</span>';
+			htm1_1 += '<span style="text-decoration: line-through;margin-left: 20px;">原价：' + data.goodsPrice + '</span>';
+			htm1_1 += '</div></div>';
+			htm1_1 += '<div onclick="gotoPraise()" style="float: right;width: 30%;height: 40px;background-color: white;margin-top: 30px;">';
+			//根据数据设置评分
+			var temp = data.score.toString();
+			if (temp.indexOf(".") > 0) {
+				var str = temp.split(".");
+				var strInt = parseInt(str[0]);
+				if (strInt < 5) {
+					for (var i = 0; i < strInt; i++) {
+						htm1_1 += '<img src="../../img/goods-detail/comments_normal_1.png" width="20" height="25" align="center" style="margin: auto;"></img>';
+					}
+					var temp = 5 - strInt; //得到剩余的需要设置的空心图数量
+					if (parseInt(str[1]) >= 5) {
+						temp = temp - 1; //如果有半颗就减一，保证空心图的数量正确
+						htm1_1 += '<img src="../../img/goods-detail/comments_normal_2.png" width="20" height="25" align="center" style="margin: auto;"></img>';
+					}
+					if (temp >= 1) {
+						for (var i = 0; i < temp; i++) {
+							htm1_1 += '<img src="../../img/order/evaluate.png" width="20" height="25" align="center" style="margin: auto;"></img>';
+						}
+					}
+				} else if (strInt >= 5) {
+					//超出时只设置五颗星
+					for (var i = 0; i < 5; i++) {
+						htm1_1 += '<img src="../../img/goods-detail/comments_normal_1.png" width="20" height="25" align="center" style="margin: auto;"></img>';
+					}
+				}
+			} else {
+				//  小数后为0（如： 3.0 ）时， 转换的结果会去掉后面的零，只得到整数
+				var tp = parseInt(temp);
+				if (tp <= 5) {
+					for (var i = 0; i < tp; i++) {
+						htm1_1 += '<img src="../../img/goods-detail/comments_normal_1.png" width="20" height="25" align="center" style="margin: auto;"></img>';
+					}
+					var tpTemp = 5 - tp;
+					if (tpTemp >= 1) {
+						//设置剩余的空心图
+						for (var j = 0; j < tpTemp; j++) {
+							htm1_1 += '<img src="../../img/order/evaluate.png" width="20" height="25" align="center" style="margin: auto;"></img>';
+						}
+					}
+				} else if (tp >= 5) {
+					//超出时只设置五颗星
+					for (var i = 0; i < 5; i++) {
+						htm1_1 += '<img src="../../img/goods-detail/comments_normal_1.png" width="20" height="25" align="center" style="margin: auto;"></img>';
+					}
+				}
+			}
+			htm1_1 += '</div>';
+			$('#IntroducesAndPraise').html(htm1_1);
+			mui('#IntroducesAndPraise').slider();
+		}
+
+		function showGoodsName(data) {
+			var html_name = '';
+			html_name += '<div class="titleDIV">';
+			html_name += '<p class="title">' + data.goodsName + '</p></div>';
+			html_name += '<div class="xian"></div>';
+			$('#goods_name').html(html_name);
+			mui('#goods_name').slider();
+		}
+
+		function showShareData(data) {
+			var html_sd = '';
+			html_sd += '<button id="btn-consult" onclick="gotoConsult()" style="background:url(../../img/goods-detail/consultation_normal.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">咨询</span></button>';
+			html_sd += '<button id="btn-share" onclick="gotoShare()" style="background:url(../../img/goods-detail/share_normal.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">分享</span></button>';
+			html_sd += '<button id="btn-shop" onclick="gotoShop" style="background:url(../../img/goods-detail/go_to_the_shop_normal.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">去店铺</span></button>';
+			html_sd += '<button id="btn-praise" onclick="gotoPraise" style="background:url(../../img/goods-detail/love_buttion.png);background-size:100% 100%;float:left;width: 25%;height:100%;display:inline"><span class="choice-text">';
+			html_sd += data.loves + '</span><span style="position: absolute;top: 0;left: 5%;margin-top: 7px;"><img src="../../img/goods-detail/love_normal.png"width="60%" height="50%" alt="" /></span></button>';
+			$('#btn-div').html(html_sd);
+			mui('#btn-div').slider();
+		}
+
+		function showPage(data) {
+			showGoodsName(data); //商品名称
+			showShareData(data); //商品喜爱人数
+			showGoodsDetailsData(data); //商品价格、评分部分
+			showGoodsIntroducesData(data); //商品介绍部分
+			showBannerImg(data.goodsImgURLs); //顶部滚动图片部分
+		}
+		var params = app.router.getParameter();
+		var saved = app.router.getSavedData();
+		$('#title').html(params.goodsName);
+		if (saved.data) {
+			showPage(saved.data);
+		} else {
+			getIntegralExchangeData();
+		}
+	</script>
+
+</html>

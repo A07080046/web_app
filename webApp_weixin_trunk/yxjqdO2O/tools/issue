@@ -1,0 +1,32 @@
+#!/bin/bash
+
+proj=xx
+projtar=xx.tar.gz
+ip="139.129.99.185"
+user="root"
+password="88164657XHrt"
+remote_path="/home/lynx/association/apache-tomcat-7.0.56/webapps/"
+
+cp -r ../www ${proj}
+
+tar zcvf ${projtar} $proj
+expect -c "
+    spawn scp "${projtar}" root@$ip:${remote_path}${projtar}
+    expect {
+        \"*password:\" {send \"$password\r\"}
+    }
+    interact
+"
+expect -c "
+    spawn ssh $user@$ip;
+    expect {
+        \"*password:\" {send \"$password\r\"; exp_continue}
+        \"*#\" {send \" cd ${remote_path}\rrm -fr phone\rtar zxvf ${projtar}\rmv ${proj} phone\rrm -f ${projtar}\r exit\r\"}
+    }
+    interact
+"
+rm -f ${projtar}
+rm -fr ${proj}
+
+
+

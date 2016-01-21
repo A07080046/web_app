@@ -2,8 +2,89 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title></title>
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta http-equiv="content-security-policy">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>赢销截拳道电子商城</title>
+	<link rel="stylesheet" href="../../css/mui.min.css" />
+	<link rel="stylesheet" href="../../css/common.css" />
 </head>
+<style>
+	.font-black {
+		margin-top: 10px;
+		font-size: 16px;
+		text-align: center;
+	}
+	.button-back {
+		padding: 0 10px;
+	}
+	.btn-backimg {
+		margin-top: 20px;
+		width: 100%;
+		padding: 5px;
+		background: -webkit-linear-gradient(top, #FFBB33,#F89031);
+		background: -moz-linear-gradient(top, #FFBB33,#F89031);
+		background: linear-gradient(top, #FFBB33,#F89031);
+	}
+	.btn-backimg span {
+		float: left;
+		color: #fff;
+		font-size: 14px;
+		line-height: 35px;
+	}
+	.btn-backimg input[type=text] {
+		float: right;
+		margin-bottom: 0;
+		width: 200px;
+		height: 35px;
+		text-align: right;
+	}
+	.mui-bar-tab .mui-tab-item {
+		color: #fff;
+		font-weight: 500;
+		background: -webkit-linear-gradient(top, #FF6835,#FA4534);
+		background: -moz-linear-gradient(top, #FF6835,#FA4534);
+		background: linear-gradient(top, #FF6835,#FA4534);
+	}
+	.mui-bar-tab .mui-tab-item.mui-active {
+		color: #fff;
+		font-weight: 500;
+	}
+</style>
 <body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 id="title" class="mui-title">申请提现</h1>
+	</header>
+	<nav class="mui-bar mui-bar-tab">
+	    <a class="mui-tab-item" href="#">
+	     	 确&nbsp;&nbsp;定
+	    </a>
+	</nav>
+	<div class="mui-content">
+		<div class="font-black">双休日不处理提现业务，满100提现</div>
+		<div class="button-back">
+			<div class="btn-backimg">
+				<span>提现到</span><input type="text" placeholder="微信钱包" readonly="readonly" />
+				<div style="clear: both;"></div>
+			</div>
+			<div class="btn-backimg">
+				<span>可提资金</span><input type="text" class="font-red" value="￥1234.00" readonly="readonly" />
+				<div style="clear: both;"></div>
+			</div>
+			<div class="btn-backimg">
+				<span>提现金额</span><input type="text" placeholder="请输入您需要提现的金额" />
+				<div style="clear: both;"></div>
+			</div>
+			<div class="btn-backimg">
+				<span>预计到账时间</span><input type="text" placeholder="2小时之内" readonly="readonly" />
+				<div style="clear: both;"></div>
+			</div>
+		</div>
+	</div>
 </body>
+<script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script>
+	mui.init();
+</script>
 </html>

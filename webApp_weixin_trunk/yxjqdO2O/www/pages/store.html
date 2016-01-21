@@ -2,8 +2,10 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta http-equiv="content-security-policy">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
+	<title>赢销截拳道电子商城</title>
 	<link rel="stylesheet" href="../css/mui.min.css" />
 	<link rel="stylesheet" href="../css/common.css" />
 	<link rel="stylesheet" href="../css/yxjqd/store.css" />
@@ -63,95 +65,20 @@
 			                <div class="mui-ellipsis">无机水果，正宗鲜美。</div>
 			                <div><span class="li-price">￥3.5</span>&nbsp;&nbsp;<span class="line-through">原件：￥5.0</span></div>
 			            </a></li>
-			    </ul>																			    
+			    </ul>
 			</div>
 		</div>
 	</div>
 </body>
 <script type="text/javascript" src="../js/thirdparty/mui.min.js" ></script>
-<script type="text/javascript" src="../js/thirdparty/jquery-1.11.3.min.js" ></script>
+<script type="text/javascript" src="../js/thirdparty/zepto.1.1.6.min.js" ></script>
+<script type="text/javascript" src="../js/thirdparty/marquee.js" ></script>
 <script>
 	mui.init();
 	mui('.mui-scroll-wrapper').scroll();
-	
+
 	$(document).ready(function () {
-		  ScrollText($('#scrollText'),23,$(document).width(),'这里是放广告滚动条的！','right',1,20);
+		  marquee.ScrollText($('#scrollText'),23,$(document).width(),'这里是放广告滚动条的！','right',1,20);
 	});
-	
-	var ScrollTime;
-	function ScrollAutoPlay(contID,scrolldir,showwidth,textwidth,steper){
-	    var PosInit,currPos;
-	    with($('#'+contID)){
-	        currPos = parseInt(css('margin-left'));
-	        if(scrolldir=='left'){
-	            if(currPos<0 && Math.abs(currPos)>textwidth){
-	                css('margin-left',showwidth);
-	            }
-	            else{
-	                css('margin-left',currPos-steper);
-	            }
-	        }
-	        else{
-	            if(currPos>showwidth){
-	                css('margin-left',(0-textwidth));
-	            }
-	            else{
-	                css('margin-left',currPos-steper);
-	            }
-	        }
-	    }
-	}
-	/*
-	AppendToObj：        显示位置（目标对象）
-	ShowHeight：        显示高度
-	ShowWidth：        显示宽度
-	ShowText：        显示信息
-	ScrollDirection：    滚动方向（值：left、right）
-	Steper：        每次移动的间距（单位：px；数值越小，滚动越流畅，建议设置为1px）
-	Interval:        每次执行运动的时间间隔（单位：毫秒；数值越小，运动越快）
-	*/
-	function ScrollText(AppendToObj,ShowHeight,ShowWidth,ShowText,ScrollDirection,Steper,Interval){
-	    var TextWidth,PosInit,PosSteper;
-	    with(AppendToObj){
-	        html('');
-	        css('overflow','hidden');
-	        css('height',ShowHeight+'px');
-	        css('line-height',ShowHeight+'px');
-	        css('width',ShowWidth);
-	    }
-	    if (ScrollDirection=='left'){
-	        PosInit = ShowWidth;
-	        PosSteper = Steper;
-	    }
-	    else{
-	        PosSteper = 0 - Steper;
-	    }
-	    if(Steper<1 || Steper>ShowWidth){Steper = 1}//每次移动间距超出限制(单位:px)
-	    if(Interval<1){Interval = 10}//每次移动的时间间隔（单位：毫秒）
-	    var Container = $('<div></div>');
-	    var ContainerID = 'ContainerTemp';
-	    var i = 0;
-	    while($('#'+ContainerID).length>0){
-	        ContainerID = ContainerID + '_' + i;
-	        i++;
-	    }
-	    with(Container){
-	      attr('id',ContainerID);
-	      css('float','left');
-	      css('cursor','default');
-	      appendTo(AppendToObj);
-	      html(ShowText);
-	      TextWidth = width();
-	      if(isNaN(PosInit)){PosInit = 0 - TextWidth;}
-	      css('margin-left',PosInit);
-	      mouseover(function(){
-	          clearInterval(ScrollTime);
-	      });
-	      mouseout(function(){
-	          ScrollTime = setInterval("ScrollAutoPlay('"+ContainerID+"','"+ScrollDirection+"',"+ShowWidth+','+TextWidth+","+PosSteper+")",Interval);
-	      });
-	    }
-	    ScrollTime = setInterval("ScrollAutoPlay('"+ContainerID+"','"+ScrollDirection+"',"+ShowWidth+','+TextWidth+","+PosSteper+")",Interval);
-	}
 </script>
 </html>

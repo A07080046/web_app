@@ -151,6 +151,14 @@
 		.menu-item.active .menu-item-text{
 			background-image: url(img/top5/select_button_press.png);
 		}
+		.empty_list {
+			color:red;
+			padding-top: 150px;
+			padding-bottom: 150px;
+			background-color: #efeff4;
+			text-align: center;
+			font-size: 25px;
+		}
 		@media (min-width: 320px) {
 			.top5-title-image {
 				height: 20px;
@@ -229,7 +237,8 @@
 				mui('#pullrefresh').pullRefresh().scrollTo(0, y);
 			}, 0);
 		}
-		function getListItem(item, index) {
+		function getListItem(item, index, append) {
+			index = index*1 + (append||0)*1;
 			html = '';
 			html += '<li class="mui-table-view-cell mui-media" data-index="'+index+'">';
 			html += '    <div class="top5-title-container">';
@@ -271,10 +280,13 @@
 			}
 			return title;
 		}
+		function showEmptyList() {
+			$('#top5_list').html('<div class="empty_list">没有相关数据</div>');
+		}
 		function showList(list, append) {
 			html = '';
 			for (var i in list) {
-				html += getListItem(list[i], i);
+				html += getListItem(list[i], i, append);
 			}
 			if (!append) {
 				$('#top5_list').html(html);
@@ -289,7 +301,6 @@
 			var param = {
 			};
 			var url = app.route.ROUTE_GET_COMPANYINFO+"?"+ $.param(param);
-			console.log(url);
 
 			var data = {
 				type: type,
@@ -315,11 +326,12 @@
 					}
 				} else {
 					if (query.dir==='up') {
+						showList(list, saved.list.length);
 						saved.list = saved.list.concat(list);
 					} else {
+						showList(list);
 						saved.list = list;
 					}
-					showList(list, query.dir==='up');
 				}
 				if (query.dir === 'down') {
 					mui('#pullrefresh').pullRefresh().endPulldownToRefresh();

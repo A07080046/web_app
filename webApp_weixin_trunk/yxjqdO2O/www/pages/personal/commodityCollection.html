@@ -2,8 +2,10 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta http-equiv="content-security-policy">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
+	<title>赢销截拳道电子商城</title>
 	<link rel="stylesheet" href="../../css/mui.min.css" />
 	<link rel="stylesheet" href="../../css/common.css" />
 	<style>
@@ -50,66 +52,57 @@
 	</header>
 	<div class="mui-content">
 		<ul class="mui-table-view mui-grid-view" style="margin-top:0px;">
-	        <li class="mui-table-view-cell mui-media mui-col-xs-6">
-	            <a href="#">
-	                <div class="box"><img class="box-full-image" src="../../img/img1.jpg"></div>
-	                <div class="left good-name">富士通苹果</div><div class="right info">已售:830</div>
-	                <div class="clear"></div>
-	                <div class="mui-ellipsis good-descript">无机水果，正宗鲜美。</div>
-	                <div><span class="li-price">￥3.5</span>&nbsp;&nbsp;<span class="line-through">原价:￥5.0</span></div>
-	            </a>
-			</li>
-	        <li class="mui-table-view-cell mui-media mui-col-xs-6">
-	            <a href="#">
-	                <div class="box"><img class="box-full-image" src="../../img/img2.jpg"></div>
-	                <div class="left good-name">草莓</div><div class="right info">已售:830</div>
-	                <div class="clear"></div>
-	                <div class="mui-ellipsis good-descript">无机水果，正宗鲜美。</div>
-	                <div><span class="li-price">￥3.5</span>&nbsp;&nbsp;<span class="line-through">原价:￥5.0</span></div>
-	            </a>
-			</li>
-			<li class="mui-table-view-cell mui-media mui-col-xs-6">
-	            <a href="#">
-	                <div class="box"><img class="box-full-image" src="../../img/img1.jpg"></div>
-	                <div class="left good-name">富士通苹果</div><div class="right info">已售:830</div>
-	                <div class="clear"></div>
-	                <div class="mui-ellipsis good-descript">无机水果，正宗鲜美。</div>
-	                <div><span class="li-price">￥3.5</span>&nbsp;&nbsp;<span class="line-through">原价:￥5.0</span></div>
-	            </a>
-			</li>
-	        <li class="mui-table-view-cell mui-media mui-col-xs-6">
-	            <a href="#">
-	                <div class="box"><img class="box-full-image" src="../../img/img2.jpg"></div>
-	                <div class="left good-name">草莓</div><div class="right info">已售:830</div>
-	                <div class="clear"></div>
-	                <div class="mui-ellipsis good-descript">无机水果，正宗鲜美。</div>
-	                <div><span class="li-price">￥3.5</span>&nbsp;&nbsp;<span class="line-through">原价:￥5.0</span></div>
-	            </a>
-			</li>
-			<li class="mui-table-view-cell mui-media mui-col-xs-6">
-	            <a href="#">
-	                <div class="box"><img class="box-full-image" src="../../img/img1.jpg"></div>
-	                <div class="left good-name">富士通苹果</div><div class="right info">已售:830</div>
-	                <div class="clear"></div>
-	                <div class="mui-ellipsis good-descript">无机水果，正宗鲜美。</div>
-	                <div><span class="li-price">￥3.5</span>&nbsp;&nbsp;<span class="line-through">原价:￥5.0</span></div>
-	            </a>
-			</li>
-	        <li class="mui-table-view-cell mui-media mui-col-xs-6">
-	            <a href="#">
-	                <div class="box"><img class="box-full-image" src="../../img/img2.jpg"></div>
-	                <div class="left good-name">草莓</div><div class="right info">已售:830</div>
-	                <div class="clear"></div>
-	                <div class="mui-ellipsis good-descript">无机水果，正宗鲜美。</div>
-	                <div><span class="li-price">￥3.5</span>&nbsp;&nbsp;<span class="line-through">原价:￥5.0</span></div>
-	            </a>
-			</li>
 	    </ul>
 	</div>
 </body>
 <script type="text/javascript" src="../../js/thirdparty/mui.min.js" ></script>
+<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+<script src="../../js/utils/app.js"></script>
 <script>
+	function getCommodityCollectionData() {
+		var url = app.route.ROUTE_GET_COMMODITY_COLLECTION_DATA;
+		var data = {
+			openid: params.openid,
+		};
+		app.utils.post({
+			url : url,
+			data: data,
+			success : getCommodityCollectionDataSuccess,
+		});
+	}
+	function getCommodityCollectionDataSuccess(data) {
+		if (data.status === 'success' && data.context && data.context.goodsList) {
+			var goodsList = data.context.goodsList;
+			saved.data = goodsList;
+			showPage(goodsList);
+		}
+	}
+	function showPage(data) {
+		var html = '';
+		for (var i in data) {
+			var item = data[i];
+			html += '<li class="mui-table-view-cell mui-media mui-col-xs-6">';
+			html += '    <a href="#">';
+			html += '        <div class="box"><img class="box-full-image" src="'+item.goodsImg+'"></div>';
+			html += '        <div class="left good-name">'+item.goodsName+'</div><div class="right info">已售:'+item.salse+'</div>';
+			html += '        <div class="clear"></div>';
+			html += '        <div class="mui-ellipsis good-descript">'+item.goodsIntroduces+'</div>';
+			html += '        <div><span class="li-price">￥'+item.goodsSalePrice+'</span>&nbsp;&nbsp;<span class="line-through">原价:￥'+item.goodsPrice+'</span></div>';
+			html += '    </a>';
+			html += '</li>';
+		}
+		$('.mui-content .mui-table-view').html(html);
+		app.router.resetScollerBar();
+	}
 	mui.init();
-	mui('.mui-scroll-wrapper').scroll();
+
+	var params = app.router.getParameter();
+	var saved = app.router.getSavedData();
+	if (saved.data) {
+		showPage(saved.data);
+	} else {
+		getCommodityCollectionData();
+	}
+
 </script>
 </html>
