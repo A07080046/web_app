@@ -68,9 +68,9 @@
 		function getOrderNo() {
 			var url = app.route.ROUTE_GET_ORDER_NO;
 			var data = {
-				integral: params.personal.integral,
-				goodsList:getPayGoodsList(params.goodsList),
-				openID: params.openid,
+				integral: app.global.get('personal').integral,
+				goodsList:getPayGoodsList(app.global.get('goodsList')),
+				openID: params.openid
 			};
 			app.utils.post({
 				url: url,
@@ -92,7 +92,7 @@
 				var goods = {
 					goodsID: data[obj].goodsID,
 		            goodsNum: data[obj].goodsNum,
-		            goodsDec: data[obj].goodsID+'-'+data[obj].goodsDecStr+'-'+data[obj].goodsPrice,
+		            goodsDec: data[obj].goodsID+'-'+data[obj].goodsDecStr+'-'+data[obj].goodsPrice
 				};
 				payGoodsList.push(goods);
 			}
@@ -132,28 +132,7 @@
 				html_list += '<div class="mui-media-body">';
 				html_list += '<div class="product-name mui-ellipsis">' + listData[i].goodsName + '</div>';
 				html_list += '<div class="product-price">￥ ' + price + '</div>';
-				var str = listData[i].goodsDecStr;
-				if (str.indexOf("-") > 0) {
-					var decStr = str.split("-");
-					var goodsStyle = ''; //商品的属性(颜色，大小，规格等)
-					var colorNum = '';
-					for (var j in decStr) {
-						colorNum = decStr[j];
-						for (var k in listData[i].goodsDec.code) {
-							var obj = listData[i].goodsDec.code[k].secondary;
-							for (var key in obj) {
-								if (obj.hasOwnProperty(key)) {
-									if (colorNum == key) {
-										var styleStr = obj[key];
-										console.log('dsdsds    ', "colorNum: " + colorNum + " styleStr: " + styleStr);
-										goodsStyle += ' ' + styleStr;
-									}
-								}
-							}
-						}
-					}
-				}
-				html_list += '<div class="font-black">' + goodsStyle + '</div>';
+				html_list += '<div class="font-black">' + listData[i].goodsDes + '</div>';
 				html_list += '<div class="product-num">x ' + listData[i].goodsNum + '</div>';
 				html_list += '</div></a></li>';
 				$('#goodslist_ul').html(html_list);
@@ -164,15 +143,9 @@
 			$('#totalPrice').text('￥ ' + allPrice);
 		}
 
-		function showPage(params) {
-			showPersonInfo(params.personal);
-			showGoodsList(params.goodsList);
-		}
-		var params = app.router.getParameter();
 		var saved = app.router.getSavedData();
-		if (params) {
-			showPage(params);
-		}
+		showPersonInfo(app.global.get('personal'));
+		showGoodsList(app.global.get('goodsList'));
 		$("#payBtn").on('tap', function() {
 			getOrderNo();
 		});

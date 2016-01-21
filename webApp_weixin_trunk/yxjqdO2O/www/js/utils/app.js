@@ -64,6 +64,11 @@ app.global = (function() {
 			global[key] = data;
 			ls[GLOBAL] = JSON.stringify(global);
 		},
+		add: function(key, data) {
+			var global = JSON.parse(ls[GLOBAL] || '{}');
+			global[key].push(data);
+			ls[GLOBAL] = JSON.stringify(global);
+		},
 		get: function(key) {
 			var global = JSON.parse(ls[GLOBAL] || '{}');
 			return global[key];

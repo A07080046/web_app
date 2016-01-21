@@ -49,6 +49,9 @@
 			#tabbar-with-home #distributor_container {
 				background-color: lightgray;
 			}
+			#tabbar-with-home #bannerImg, #tabbar-with-home #bannerImg img{
+				height: 150px;
+			}
 			#tabbar-with-home .shop-logo-container {
 				width: 80px;
 				height: 80px;
@@ -924,7 +927,6 @@
 			});
 		}
 		function getHomeDataTwoSuccess(data) {
-			console.log("===");
 			if (data.success === true && data.context) {
 				var context = data.context;
 				saved.hometwo = context;
@@ -1148,21 +1150,62 @@
 			}
 		}
 		function showSettlementPage() {
+			var list = getSettlementData();
+			if (!list.length) {
+				showMessageBox("请先选中商品");
+			}
+			app.global.set("goodsList", list);
+			app.global.set("personal",saved.personal);
+			showView('pages/goods-detail/settlement.html', {}, saved);
+		}
+		
+		function getSettlementData() {
 			var goodsList = saved.trolleyList;
 			var list = [];
 			for (var i in goodsList) {
 				if (goodsList[i].checked) {
-					list.push(goodsList[i]);
+					var data = {
+						goodsImg:goodsList[i].goodsImg,
+						goodsID:goodsList[i].goodsID,
+						goodsName:goodsList[i].goodsName,
+						goodsNum:goodsList[i].goodsNum,
+						goodsgoodsDecStr:goodsList[i].goodsDecStr,
+						goodsPrice:goodsList[i].goodsPrice,
+						goodsDes:getGoodsAttrDec(goodsList[i])
+					}
+					list.push(data);
 				}
 			}
-			if (!list.length) {
-				showMessageBox("请先选中商品");
+			return list;
+		}
+		function getGoodsAttrDec(item) {
+			var code = item.goodsDec.code;
+			var goodsDec = item.goodsDec.price;
+			var keys = [];
+			do {
+				var ks = Object.keys(goodsDec);
+				if (!ks.length) {
+					break;
+				}
+				keys.push(ks[0]);
+				goodsDec = goodsDec[ks[0]];
+			} while (1);
+			item.goodsPrice = goodsDec;
+			item.goodsDecStr = keys.join('-');
+
+			var discr = '';
+			for (var ki in keys) {
+				for (var k in code) {
+					var secondary = code[k].secondary;
+					for (var kj in secondary) {
+						if (kj == keys[ki]) {
+							discr += code[k].primary+':'+secondary[kj]+';';
+							break;
+						}
+					}
+				}
 			}
-			var param = {
-				goodsList:list,
-				personal: saved.personal
-			};
-			showView('pages/goods-detail/settlement.html', param, saved);
+			return discr.substr(0,discr.length-1);
 		}
 		function updateTrolleyTotalAmount(goodsList) {
 			if (saved.trolleyEditing) {

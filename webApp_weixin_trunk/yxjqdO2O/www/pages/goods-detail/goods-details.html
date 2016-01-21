@@ -609,14 +609,18 @@
 		function getShoppingDataSuccess(data) {
 			if (data.success === true && data.context) {
 				var context = data.context;
+				saved.code = context.code;
+				saved.goodsID = context.goodsID;
+				saved.goodsImg = context.goodsImg;
 				priceDic = context.price;
 				var html = '';
 				html = getChooseGoodsView(context);
 				$('.choose-goods').html(html);
 				mui('.mui-numbox').numbox();
-				$('#price').text('¥:' + getChooseGoodsTotalPrice(priceDic).toFixed(2));
 				singlePrice = getChooseGoodsTotalPrice(priceDic);
-				attribute.push(getChooseGoodsTotalPrice(priceDic));
+				$('#price').text('¥:' + singlePrice);
+				attribute.push(singlePrice);
+				saved.goodsPrice = singlePrice;
 			}
 		};
 
@@ -759,10 +763,10 @@
 				//			}
 			return html;
 		}
-		$(".choose-goods").on('tap', '.choose-para button', function() {
-			$(this).parent().find("button").removeClass("choose-active");
-			$(this).addClass("choose-active");
-		});
+//		$(".choose-goods").on('tap', '.choose-para button', function() {
+//			$(this).parent().find("button").removeClass("choose-active");
+//			$(this).addClass("choose-active");
+//		});
 		//注册选择按钮事件
 		$('.mui-content').on('tap', '.choose-para button', function() {
 			$(this).siblings().css({
@@ -785,6 +789,18 @@
 			if (chooseGoodsType === 1) {
 				addShoppingCart()
 			} else {
+			saved.goodsNum = $('#chooseGoodsNum').val();
+			saved.goodsDecStr=attribute.slice(1,attribute.length-1).join('-');
+				var data = {
+						goodsImg:saved.goodsImg,
+						goodsID:saved.goodsID,
+						goodsName:saved.data.goodsName,
+						goodsNum:saved.goodsNum,
+						goodsgoodsDecStr:saved.goodsDecStr,
+						goodsPrice:saved.goodsPrice,
+						goodsDes:getGoodsAttrDec(saved.code,saved.goodsDecStr)
+					}
+				app.global.set("goodsList",[data]);
 				app.router.showView('../goods-detail/settlement.html', '1', saved);
 			}
 		});
@@ -793,7 +809,21 @@
 			ntotal = singlePrice * $(this).val();
 			$('#price').text('¥:' + ntotal.toFixed(2));
 		});
-
+		function getGoodsAttrDec(code,decStr) {
+			var discr = '';
+			for (var ki in decStr) {
+				for (var k in code) {
+					var secondary = code[k].secondary;
+					for (var kj in secondary) {
+						if (kj == decStr[ki]) {
+							discr += code[k].primary+':'+secondary[kj]+';';
+							break;
+						}
+					}
+				}
+			}
+			return discr.substr(0,discr.length-1);
+		}
 		function submitAddShoppingcar(data) {
 			if (data.success === true) {
 				mui.toast("添加成功");

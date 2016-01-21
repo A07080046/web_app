@@ -15,7 +15,9 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<a class="mui-pull-right"><button id="collectStore" type="button" style="padding: 5px 10px;" class="mui-btn mui-btn-primary">收藏店铺</button></a>
+			<a class="mui-pull-right">
+				<button id="collectStore" style="color: black;margin-top:5px;border:none;background-size:100% 100%;background: url(../../img/goods-detail/love_buttion.png);">收藏店铺</button>
+			</a>
 			<h1 id="h1_title" class="mui-title"></h1>
 		</header>
 		<div class="mui-content">
@@ -243,7 +245,7 @@
 			saved.query = query;
 			app.router.showView('../goods-detail/goods-details.html', data, saved, getScrollTop);
 		});
-		$("#collectStore").on('tap',function(){
+		$("#collectStore").on('tap', function() {
 			var url = app.route.ROUTE_POST_COLLECTSHOP_DATA;
 			var data = {
 				shopID: params.shopID,
@@ -255,14 +257,14 @@
 				success: collectshop,
 			});
 		});
-		function collectshop(data){
+
+		function collectshop(data) {
 			if (data.success === true) {
 				alert("收藏成功！");
-			}else{
+			} else {
 				alert(data.msg);
 			}
 		}
-		
 		var FIRST_PAGE_NO = 0;
 		var params = app.router.getParameter();
 		var saved = app.router.getSavedData();

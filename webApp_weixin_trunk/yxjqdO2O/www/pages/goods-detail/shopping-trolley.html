@@ -12,6 +12,7 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<a id="trolleyEdit" onclick="clickTrolleyEdit()" class="mui-btn mui-btn-link mui-pull-right">编辑</a>
 			<!--<a class="mui-icon mui-pull-right"><img style="width: 26px;height: 24px;" src="../../img/goods-detail/iconfont-gouwu.png"></a>-->
 			<h1 class="mui-title">购物车</h1>
 		</header>
@@ -20,12 +21,8 @@
 			<div class="mui-tab-item" href="#" style="background-color:#F14E41;color: black;clear: all;">
 				<input id="CheckedAll" type="checkbox">全选</input>
 			</div>
-			<a class="mui-tab-item" href="#" style="background-color: #F14E41;color: blue;">
-			¥1283.00
-	  	</a>
-			<a class="mui-tab-item" id="settlement" style="background-color: red;color: black;">
-	    		结算
-	  	</a>
+			<a id="nototal" class="mui-tab-item" href="#" style="background-color: #F14E41;color: blue;">¥ 0.00 </a>
+			<a class="mui-tab-item" id="settlement" style="background-color: red;color: black;">结算 </a>
 		</nav>
 		<style>
 			.mui-table-view .mui-media-object {
@@ -59,72 +56,7 @@
 						</div>
 					</div>
 				</a>
-			</li>
-			<li class="mui-table-view-cell mui-media">
-				<a href="#">
-					<div class="mui-slider-right mui-disabled">
-						<a class="mui-btn mui-btn-red">删除</a>
-					</div>
-					<div class="mui-slider-handle">
-						<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">
-						<img class="mui-media-object mui-pull-left" src="../../img/goods-detail/muwu.jpg">
-						<div class="mui-media-body">
-							<p>商品名称</p>
-							<div style="clear: all;font-size: small;color: gray">
-								<span style="vertical-align: middle;">购买数量：</span>
-								<div class="mui-numbox" data-numbox-step='1' data-numbox-min='0' style="float: right;">
-									<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-									<input class="mui-input-numbox" type="number" />
-									<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
-								</div>
-							</div>
-							<div style="clear: all;font-size: small;color: gray">
-								¥1283.00
-							</div>
-						</div>
-					</div>
-				</a>
-			</li>
-			<li class="mui-table-view-cell mui-media">
-				<a href="#">
-					<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">
-					<img class="mui-media-object mui-pull-left" src="../../img/goods-detail/muwu.jpg">
-					<div class="mui-media-body">
-						<p>商品名称</p>
-						<div style="clear: all;font-size: small;color: gray">
-							<span style="vertical-align: middle;">购买数量：</span>
-							<div class="mui-numbox" data-numbox-step='1' data-numbox-min='0' style="float: right;">
-								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-								<input class="mui-input-numbox" type="number" />
-								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
-							</div>
-						</div>
-						<div style="clear: all;font-size: small;color: gray">
-							¥1283.00
-						</div>
-					</div>
-				</a>
-			</li>
-			<li class="mui-table-view-cell mui-media">
-				<a href="#">
-					<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">
-					<img class="mui-media-object mui-pull-left" src="../../img/goods-detail/muwu.jpg">
-					<div class="mui-media-body">
-						<p>商品名称</p>
-						<div style="clear: all;font-size: small;color: gray">
-							<span style="vertical-align: middle;">购买数量：</span>
-							<div class="mui-numbox" data-numbox-step='1' data-numbox-min='0' style="float: right;">
-								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-								<input class="mui-input-numbox" type="number" />
-								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
-							</div>
-						</div>
-						<div style="clear: all;font-size: small;color: gray">
-							¥1283.00
-						</div>
-					</div>
-				</a>
-			</li>>-->
+			</li>-->
 			</ul>
 		</div>
 
@@ -138,107 +70,295 @@
 				<div class="right confirm">确&nbsp;&nbsp;定</div>
 			</div>
 		</div>
-		<script src="../../js/thirdparty/mui.min.js"></script>
-		<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
-		<script src="../../js/utils/app.js"></script>
-		<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
-		<script>
-			"use strict";
-			mui.init();
-			$("#CheckedAll").click(function() {
-				if ($(this).is(":checked")) {
-					$("[name=items]:checkbox").prop("checked", true);
-				} else {
-					$("[name=items]:checkbox").prop("checked", false);
+	</body>
+	<script src="../../js/thirdparty/mui.min.js"></script>
+	<script src="../../js/thirdparty/zepto.1.1.6.min.js"></script>
+	<script src="../../js/utils/app.js"></script>
+	<script>
+		"use strict";
+		mui.init({
+			swipeBack: true
+		});
+
+		function getTrolleyList() {
+			var url = app.route.ROUTE_GET_TROLLEY_LIST;
+			var data = {
+				openID: params.openid,
+				pageNo: '0',
+			};
+			app.utils.post({
+				url: url,
+				data: data,
+				success: getTrolleyListSuccess
+			});
+		};
+
+		function getTrolleyListSuccess(data) {
+			if (data.success === true && data.context) {
+				var list = data.context.goodsList;
+				saved.trolleyList = list;
+				showList(list, 'up');
+			}
+		};
+		// 切换编辑模式
+		function clickTrolleyEdit() {
+			if (TROLLEY_OPERATION_MODE == 1) {
+				$('#trolleyEdit').text('完成');
+				$('#settlement').text('删除');
+				TROLLEY_OPERATION_MODE = 2;
+			} else if (TROLLEY_OPERATION_MODE == 2) {
+				$('#trolleyEdit').text('编辑');
+				$('#settlement').text('结算');
+				TROLLEY_OPERATION_MODE = 1;
+			}
+		}
+
+		function getListItem(item, i) {
+			var itemDec = getGoodsDec(item);
+			var html = '';
+			html += '<li class="mui-table-view-cell mui-media" data-index="' + i + '">'
+			html += '<div class="mui-slider-right mui-disabled">'
+			html += '<a	 class="mui-btn mui-btn-red" id="deleteTrolleyItem">删除</a>'
+			html += '</div>'
+			html += '<div class="mui-slider-handle">'
+			html += '<input name="trolley" style="float: left;margin-top: 45px;margin-right: 6px;" value="' + i + '" type="checkbox"' + (item.checked ? ' checked' : '') + '>';
+			html += '<img class="mui-media-object mui-pull-left" src="../../img/goods-detail/muwu.jpg">'
+			html += '<div class="mui-media-body">'
+			html += '<p style="font-size: 20px;color: black;">' + item.goodsName + '</p>'
+			html += '<div style="clear: all;font-size: small;color: gray;margin-top: 5px;">'
+			html += '<span style="vertical-align: middle;">购买数量：</span>'
+			html += '<div class="mui-numbox" data-numbox-step="1" data-numbox-min="0" style="float: right;">'
+			html += '<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>'
+			html += '<input id="chooseGoodsNum" class="mui-input-numbox" type="number" value=' + item.goodsNum + ' />'
+			html += '<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>'
+			html += '</div>'
+			html += '</div>'
+			html += '</div>'
+			html += '<div style="margin-top: 8px;clear: all;font-size: small;color: gray">' + itemDec + '</div>'
+			html += '<p id="price" style="float:right;margin-top: 3px;color: red;clear: all;font-size: 18px;">¥ ' + item.goodsPrice + '</p>'
+			html += '</div>'
+			html += '</li>'
+			return html;
+		}
+
+		function getGoodsDec(item) {
+			var code = item.goodsDec.code;
+			var goodsDec = item.goodsDec.price;
+			var keys = [];
+			do {
+				if (typeof goodsDec != 'object') { //适配微信浏览器
+					break;
 				}
+				var ks = Object.keys(goodsDec);
+				if (!ks.length) {
+					break;
+				}
+				keys.push(ks[0]);
+				goodsDec = goodsDec[ks[0]];
+			} while (1);
+			item.goodsPrice = goodsDec;
+			item.goodsDecStr = keys.join('-');
+			var discr = '';
+			for (var ki in keys) {
+				for (var k in code) {
+					var secondary = code[k].secondary;
+					for (var kj in secondary) {
+						if (kj == keys[ki]) {
+							discr += '<span class="attribute-type">' + code[k].primary + ':</span><span class="attribute-value" ><b>' + secondary[kj] + '</b>&nbsp;&nbsp;</span>';
+							break;
+						}
+					}
+				}
+			}
+			return discr;
+		}
+
+		function showList(list, append) {
+			var html = '';
+			for (var i in list) {
+				html += getListItem(list[i], i);
+			}
+			if (!append) {
+				$('#trolley-list').html(html);
+			} else {
+				$('#trolley-list').append(html);
+			}
+			//复选框选中事件与数量变化事件
+			mui('#trolley-list .mui-numbox').numbox();
+			$('#trolley-list .mui-input-numbox').on('change', function() {
+				var index = $(this).parents('li').data('index');
+				list[index].goodsNum = $(this).val();
+				updateTrolleyTotalAmount(list);
 			});
-			var delNode;
-			//关闭
-			$(".case").on('tap', '.cancel', function() {
-				$(".modal-backdrop").remove();
-				$(".case").hide(300);
+			$('#trolley-list input[type=checkbox]').on('change', function() {
+				var index = $(this).val();
+				list[index].checked = $(this).prop("checked");
+				updateTrolleyTotalAmount(list);
 			});
-			//确定
-			$(".case").on('tap', '.confirm', function(e) {
-				delNode.parentNode.removeChild(delNode);
-				$(".modal-backdrop").remove();
-				$(".case").hide(300);
-			});
+			//删除
 			$('#trolley-list').on('tap', '#deleteTrolleyItem', function(event) {
 				$("body").append('<div class="modal-backdrop"></div>');
 				$(".case").show();
 				delNode = this.parentNode.parentNode;
 			});
-
-			function getTrolleyList() {
-				var url = app.route.ROUTE_GET_TROLLEY_LIST;
-				var data = {
-					openID: params.openid,
-					pageNo: '0',
-				};
-				app.utils.post({
-					url: url,
-					data: data,
-					success: getTrolleyListSuccess
-				});
-			};
-
-			function getTrolleyListSuccess(data) {
-				if (data.success === true && data.context) {
-					var list = data.context.goodsList;
-					showList(list, 'up');
+		}
+		//全选
+		$("#CheckedAll").click(function() {
+			var goodsList = saved.trolleyList;
+			var checked = $(this).is(":checked");
+			$('#trolley-list input[name=trolley]').prop("checked", checked);
+			for (var i in goodsList) {
+				if (goodsList[i].deleted) {
+					continue;
 				}
-			};
-
-			function getListItem(item) {
-				var html = '';
-				html += '<li class="mui-table-view-cell mui-media">'
-				html += '<div class="mui-slider-right mui-disabled">'
-				html += '<a class="mui-btn mui-btn-red" id="deleteTrolleyItem">删除</a>'
-				html += '</div>'
-				html += '<div class="mui-slider-handle">'
-				html += '<input name="items" type="checkbox" style="float: left;margin-top: 45px;margin-right: 6px;">'
-				html += '<img class="mui-media-object mui-pull-left" src="../../img/goods-detail/muwu.jpg">'
-				html += '<div class="mui-media-body">'
-				html += '<p>' + item.goodsName + '</p>'
-				html += '<div style="clear: all;font-size: small;color: gray">'
-				html += '<span style="vertical-align: middle;">购买数量：</span>'
-				html += '<div class="mui-numbox" data-numbox-step="1" data-numbox-min="0" style="float: right;">'
-				html += '<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>'
-				html += '<input class="mui-input-numbox" type="number" value=' + item.goodsNum + ' />'
-				html += '<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>'
-				html += '</div>'
-				html += '</div>'
-				html += '</div>'
-				html += '<div style="clear: all;font-size: small;color: gray">¥' + item.goodsPrice + '</div>'
-				html += '</div>'
-				html += '</li>'
-				return html;
+				goodsList[i].checked = checked;
 			}
-
-			function showList(list, append) {
-				var html = '';
-				for (var i in list) {
-					html += getListItem(list[i]);
-				}
-				if (!append) {
-					$('#trolley-list').html(html);
+			updateTrolleyTotalAmount(goodsList);
+		});
+		// 结算
+		$("#settlement").on('tap', function() {
+			if (TROLLEY_OPERATION_MODE == 1) {
+				showSettlementPage();
+			} else if (TROLLEY_OPERATION_MODE == 2) {
+				var list = getCheckedIndex();
+				if (!list.length) {
+					mui.toast("请选择要删除的商品");
 				} else {
-					$('#trolley-list').append(html);
+					$(".case").data('index', list);
+					$(".case").show();
 				}
 			}
-			var params = app.router.getParameter();
-			var saved = app.router.getSavedData();
-			if (params) {
-				getTrolleyList();
+		});
+		// 关闭
+		$(".case").on('tap', '.cancel', function() {
+			$(".modal-backdrop").remove();
+			$(".case").hide(300);
+		});
+		// 确定删除
+		$(".case").on('tap', '.confirm', function(e) {
+			var el = $(".case").data('index');
+			if (el) {
+				//多选删除
+				for (var i in el) {
+					var item = el[i];
+					if (item != ',') {
+						$('#trolley-list .mui-table-view-cell[data-index="' + item + '"]').remove();
+					}
+				}
+				$(".case").data('index', []); //避免重复
+			} else {
+				//右滑删除
+				delNode.parentNode.removeChild(delNode);
 			}
-			$("#settlement").on('tap', function() {
-				app.router.showView('./settlement.html', 1, saved);
-			});
-			$('.mui-content').on('tap', '.mui-media-object', function() {
-				app.router.showView('./goods-details.html', 1, saved);
-			});
-		</script>
-	</body>
+			updateTrolleyTotalAmount(saved.trolleyList);
+			$(".modal-backdrop").remove();
+			$(".case").hide(300);
+			if (!$('#trolley-list').html()) {
+				showEmptyTrolleyList();
+			}
+		});
+		// 详情
+		$('.mui-content').on('tap', '.mui-media-object', function() {
+			app.router.showView('./goods-details.html', 1, saved);
+		});
+
+		function showEmptyTrolleyList() {
+			$('#trolley-list').html('<div class="empty_list">购物车被清空了</div>');
+		}
+
+		function updateTrolleyTotalAmount(goodsList) {
+			//计算并改变总价显示
+			var ntotal = 0;
+			for (var i in goodsList) {
+				var item = goodsList[i];
+				ntotal += (item.checked) ? item.goodsNum * item.goodsPrice : 0;
+			}
+			$('#nototal').text('￥ ' + ntotal.toFixed(2));
+		}
+
+		function showSettlementPage() {
+			var list = getSettlementData();
+			if (!list.length) {
+				mui.toast("请选择商品");
+			} else {
+				app.global.set("goodsList", list);
+				app.global.set("personal", saved.personal);
+				showView('settlement.html', {}, saved);
+			}
+		}
+
+		function getSettlementData() {
+			var goodsList = saved.trolleyList;
+			var list = [];
+			for (var i in goodsList) {
+				if (goodsList[i].checked) {
+					var data = {
+						goodsImg: goodsList[i].goodsImg,
+						goodsID: goodsList[i].goodsID,
+						goodsName: goodsList[i].goodsName,
+						goodsNum: goodsList[i].goodsNum,
+						goodsgoodsDecStr: goodsList[i].goodsDecStr,
+						goodsPrice: goodsList[i].goodsPrice,
+						goodsDes: getGoodsAttrDec(goodsList[i])
+					}
+					list.push(data);
+				}
+			}
+			return list;
+		}
+
+		function getCheckedIndex() {
+			var goodsList = saved.trolleyList;
+			var goodsIndex;
+			var list = [];
+			for (var i in goodsList) {
+				if (goodsList[i].checked) {
+					list.push(i);
+				}
+			}
+			return list;
+		}
+
+		function getGoodsAttrDec(item) {
+			var code = item.goodsDec.code;
+			var goodsDec = item.goodsDec.price;
+			var keys = [];
+			do {
+				var ks = Object.keys(goodsDec);
+				if (!ks.length) {
+					break;
+				}
+				keys.push(ks[0]);
+				goodsDec = goodsDec[ks[0]];
+			} while (1);
+			item.goodsPrice = goodsDec;
+			item.goodsDecStr = keys.join('-');
+			var discr = '';
+			for (var ki in keys) {
+				for (var k in code) {
+					var secondary = code[k].secondary;
+					for (var kj in secondary) {
+						if (kj == keys[ki]) {
+							discr += code[k].primary + ':' + secondary[kj] + ';';
+							break;
+						}
+					}
+				}
+			}
+			return discr.substr(0, discr.length - 1);
+		}
+
+		function showView(url, param, saved) {
+			app.router.showView(url, param, saved);
+		}
+		//购物车操作状态(1:正常  2：编辑)
+		var TROLLEY_OPERATION_MODE = 1;
+		var delNode;
+		var params = app.router.getParameter();
+		var saved = app.router.getSavedData();
+		if (params) {
+			getTrolleyList();
+		}
+	</script>
 
 </html>
